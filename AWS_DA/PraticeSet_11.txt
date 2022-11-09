@@ -1,0 +1,1191 @@
+1. Question
+SQS guarantees delivery but there can be duplicates. Choose the correct answer from the options below.
+
+ A. True		-Correct
+ B. False
+Unattempted
+Amazon SWF keeps track of all tasks and events in an application. Amazon SQS requires you to implement your own application-level tracking, especially if your application uses multiple queues. For more information on SQS, please visit the link: https://aws.amazon.com/sqs/faqs/
+
+
+
+2. Question
+In DynamoDB, an atomic counter allows all write requests to be applied in the order they are received by incrementing or decrementing the attribute value.
+
+ A. True		-Correct
+ B. False
+Unattempted
+DynamoDB supports atomic counters, where you use the UpdateItem operation to increment or decrement the value of an existing attribute without interfering with other write requests. (All write requests are applied in the order in which they were received.) For example, a web application might want to maintain a counter per visitor to their site. In this case, the application would need to increment this counter regardless of its current value. For more information on working with items in dynamoDB , please visit the link: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html
+
+
+
+3. Question
+Any local secondary index in a DynamoDB table can be updated once it is created.
+
+ A. False		-Correct
+ B. True
+Unattempted
+This is clearly provided in the AWS documentation For more information on DynamoDB please refer to the below link: https://aws.amazon.com/dynamodb/faqs/
+
+
+
+4. Question
+Can expressions be used as part of the Query API call in DynamoDB? Choose an answer from the options below
+
+ A. True		-Correct
+ B. False
+Unattempted
+This is clearly provided in the AWS documentation For more information on DynamoDB please refer to the below link: https://aws.amazon.com/dynamodb/faqs/
+
+
+
+5. Question
+Once a message has been published to SNS, can it be recalled? Choose one answer from the options below
+
+ A. True
+ B. False		-Correct
+Unattempted
+This is clearly given in the AWS documentation For more information on SNS please refer to the below link: https://aws.amazon.com/sns/faqs/
+
+
+
+6. Question
+Does SNS guarantee message delivery to SQS? Choose one answer from the options below
+
+ A. True		-Correct
+ B. False
+Unattempted
+This is clearly given in the AWS documentation For more information on SNS please refer to the below link: https://aws.amazon.com/sns/faqs/
+
+
+
+7. Question
+Does AWS CloudFormation assume default template version if one is not explicitly mentioned in a CloudFormation template?
+
+ A. True		-Correct
+ B. False
+Unattempted
+The AWSTemplateFormatVersion section (optional) identifies the capabilities of the template. The latest template format version is 2010-09-09 and is currently the only valid value. The value for the template format version declaration must be a literal string. You cannot use a parameter or function to specify the template format version. If you don’t specify a value, AWS CloudFormation assumes the latest template format version. For more information on the AWSTemplateFormatVersion  please refer to the below link: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/format-version-structure.html
+
+
+
+8. Question
+AWSTemplateFormatVersion declaration is required for the template to work inside CloudFormation. Choose an answer from the options below
+
+ A. True
+ B. False		-Correct
+Unattempted
+The AWSTemplateFormatVersion section (optional) identifies the capabilities of the template. The latest template format version is 2010-09-09 and is currently the only valid value. For more information on the AWSTemplateFormatVersion  please refer to the below link: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/format-version-structure.html
+
+
+
+9. Question
+AWS CloudFormation provides a set of Python helper scripts that you can use to install software and start services on an Amazon EC2 instance in your stack. You can call the helper scripts directly from your template. Choose an answer from the options below.
+
+ A. True		-Correct
+ B. False
+Unattempted
+AWS CloudFormation provides a set of Python helper scripts that you can use to install software and start services on an Amazon EC2 instance that you create as part of your stack. You can call the helper scripts directly from your template. The scripts work in conjunction with resource metadata that you define in the same template. The helper scripts run on the Amazon EC2 instance as part of the stack creation process. For more information on these commands please refer to the below link: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-helper-scripts-reference.html
+
+
+
+10. Question
+Can software’s be installed at stack creation process in Cloudformation? Choose the correct answers from the options below
+
+ A. True		-Correct
+ B. False
+Unattempted
+AWS CloudFormation provides a set of application bootstrapping scripts that enable you to install packages, files, and services on your EC2 instances by simply describing them in your CloudFormation template
+
+
+
+11. Question
+Can Cloudformation be used with Chef and Puppet? Choose the correct answer from the options below
+
+ A. True		-Correct
+ B. False
+Unattempted
+This is clearly mentioned in the AWS documentation For more information on intrinsic function please refer to the below link: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference.html
+
+
+
+12. Question
+Can data be saved when a stack is deleted in Cloudformation? Choose the correct answer from the options below
+
+ A. True		-Correct
+ B. False
+Unattempted
+AWS CloudFormation allows you to define deletion policies for resources in the template. You can specify that snapshots be created for Amazon EBS volumes or Amazon RDS database instances before they are deleted. You can also specify that a resource should be preserved and not deleted when the stack is deleted. This is useful for preserving Amazon S3 buckets when the stack is deleted.
+
+
+
+13. Question
+Is it possible to use IAM to manage access to SWF? Choose the correct answer from the options below.
+
+ A. True		-Correct
+ B. False
+Unattempted
+This is clearly mentioned in the AWS documentation For more information on SWF , please visit the link: https://aws.amazon.com/swf/faqs/
+
+
+
+14. Question
+One DynamoDB read capacity unit represents one strongly consistent read per second, for an item up to 4 KB in size. Choose the correct answer from the options below.
+
+ A. True		-Correct
+ B. False
+Unattempted
+This is clearly mentioned in the AWS documentation. For more information on DynamoDB read consistency please visit the below link: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ProvisionedThroughput.html
+
+
+
+15. Question
+S3 does not generally handle error codes with HTTP responses. Choose the correct answer from the options below
+
+ A. True
+ B. False		-Correct
+Unattempted
+When there is an error, the header information contains: Content-Type: application/xml An appropriate 3xx, 4xx, or 5xx HTTP status code For more information on S3 error codes please visit the below link: http://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html
+
+
+
+16. Question
+The only SNS notification event supported by S3 is S3:ReducedRedundancyLostObject. Choose the correct answer from the options below
+
+ A. True
+ B. False		-Correct
+Unattempted
+Currently, Amazon S3 can publish the following events:
+A new object created event—Amazon S3 supports multiple APIs to create objects. You can request notification when only a specific API is used (e.g., s3:ObjectCreated:Put) or you can use a wildcard (e.g., s3:ObjectCreated:*) to request notification when an object is created regardless of the API used.
+An object removal event—Amazon S3 supports deletes of versioned and unversioned objects. You can request notification when an object is deleted or a versioned object is permanently deleted by using the s3:ObjectRemoved:Delete event type. Or you can request notification when a delete marker is created for a versioned object by usings3:ObjectRemoved:DeleteMarkerCreated. You can also use a wildcards3:ObjectRemoved:* to request notification anytime an object is deleted.
+A Reduced Redundancy Storage (RRS) object lost event—Amazon S3 sends a notification message when it detects that an object of the RRS storage class has been lost.
+For more information on S3 event notifications please visit the below link:
+http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html
+
+
+
+17. Question
+10.2.181.56 is a valid S3 bucket name. Choose a correct answer from the options below
+
+ A. True
+ B. False		-Correct
+Unattempted
+See AWS Doc for the naming conventions for S3 buckets
+The bucket name can be between 3 and 63 characters long, and can contain only lower-case characters, numbers, periods, and dashes.
+Each label in the bucket name must start with a lowercase letter or number.
+The bucket name cannot contain underscores, end with a dash, have consecutive periods, or use dashes adjacent to periods.
+The bucket name cannot be formatted as an IP address (198.51.100.24).
+For more information on the S3 naming conventions please visit the below link:
+http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-s3-bucket-naming-requirements.html
+
+
+
+18. Question
+A global secondary index is an index with a hash and range key that can be different from those on the table. Choose a correct answer from the options below
+
+ A. True		-Correct
+ B. False
+Unattempted
+This is clearly mentioned in the AWS documentation
+You can create indexes and perform lookups using attributes other than the item’s primary key. With this change, DynamoDB goes beyond the functionality traditionally provided by a key/value store, while retaining the scalability and performance benefits that have made it so popular with our customers.
+You can now create up to five Global Secondary Indexes when you create a table, each referencing either a hash key or a hash key and a range key. You can also create up to five Local Secondary Indexes, and  you can choose to project some or all of the table’s attributes into each of the tables indexes.
+For more information on dynamo DB hash and range key, please visit the below link:
+https://aws.amazon.com/blogs/aws/now-available-global-secondary-indexes-for-amazon-dynamodb/
+
+
+
+19. Question
+S3 Bucket ownership is transferable. Choose a correct answer from the options below
+
+ A. True
+ B. False		-Correct
+Unattempted
+By default, all Amazon S3 resources—buckets, objects, and related subresources (for example, lifecycleconfiguration and website configuration)—are private: only the resource owner, an AWS account that created it, can access the resource. The resource owner can optionally grant access permissions to others by writing an access policy. For more information on S3 access control please visit the below link: http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html
+
+
+
+20. Question
+A DynamoDB item is a collection of name and value attributes. Choose a correct answer from the options below
+
+ A. True		-Correct
+ B. False
+Unattempted
+In DynamoDB, an item is a collection of attributes. Each attribute has a name and a value. An attribute value can be a scalar, a set, or a document type. For more information on DynamoDB items please visit the below link: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html
+
+
+
+21. Question
+Multi-part upload API allows you to stop and resume uploads. Choose a correct answer from the options below
+
+ A. True		-Correct
+ B. False
+Unattempted
+Using multipart upload provides the following advantages:
+Improved throughput—You can upload parts in parallel to improve throughput.
+Quick recovery from any network issues—Smaller part size minimizes the impact of restarting a failed upload due to a network error.
+Pause and resume object uploads—You can upload object parts over time. Once you initiate a multipart upload there is no expiry; you must explicitly complete or abort the multipart upload.
+Begin an upload before you know the final object size—You can upload an object as you are creating it.
+For more information on S3 multipart uploads conditions please visit the below link:
+http://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html
+
+
+
+22. Question
+DynamoDB supports cross table joins.
+
+ A. True
+ B. False		-Correct
+Unattempted
+This is given in the AWS documentation For more information on dynamoDB please refer to the below URL: https://aws.amazon.com/dynamodb/faqs/
+
+
+
+23. Question
+A benefit of multi-part upload is that you can upload a file as it is being created. Choose the correct answer from the options below
+
+ A. True		-Correct
+ B. False
+Unattempted
+This is clearly given in the AWS documentation For more information on S3 multi-part upload please refer to the below URL: http://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html
+
+
+
+24. Question
+S3 object key names are stored lexicographically (alphabetical order). Choose the correct answer from the options below
+
+ A. True		-Correct
+ B. False
+Unattempted
+An example of this is given in the AWS documentation which showcases that S3 object key names are stored lexicographically For more information on S3 REST API for GetBucket please refer to the below URL: http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGET.html
+
+
+
+25. Question
+A local secondary index is an index that has the same hash key as the table, but a different range key. Choose the correct answer from the options below
+
+ A. True		-Correct
+ B. False
+Unattempted
+A local secondary index maintains an alternate sort key for a given partition key value. A local secondary index also contains a copy of some or all of the attributes from its base table; you specify which attributes are projected into the local secondary index when you create the table. The data in a local secondary index is organized by the same partition key as the base table, but with a different sort key. This lets you access data items efficiently across this different dimension. For greater query or scan flexibility, you can create up to five local secondary indexes per table. For more information on local secondary indexes, please refer to the below URL: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LSI.html
+
+
+
+26. Question
+Parts of a multi-part upload will not be completed until the “complete” request has been called which puts all the parts of the file together. Choose the correct answer from the options below
+
+ A. True		-Correct
+ B. False
+Unattempted
+This is clearly mentioned in the AWS documentation For more information on S3 multi part file upload, please refer to the below URL: http://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html
+
+
+
+27. Question
+Bucket names must be unique across all S3.
+
+ A. True		-Correct
+ B. False
+Unattempted
+Bucket names have to be unique across all regions. Let’s say you have created a bucket names devtoolslogging in the Singapore region. Now if you want to create a bucket of the same name in the Oregon region, you will get an error that the bucket already exists. For more information on S3 buckets, please visit the link: http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html
+
+
+
+28. Question
+DynamoDB supports two types of primary keys, “Hash” and “Hash and Range” primary keys. Choose the correct answer from the options below
+
+ A. True		-Correct
+ B. False
+Unattempted
+The partition key of an item is also known as its hash attribute. The term hash attribute derives from DynamoDB’s usage of an internal hash function to evenly distribute data items across partitions, based on their partition key values.
+The sort key of an item is also known as its range attribute. The term range attribute derives from the way DynamoDB stores items with the same partition key physically close together, in sorted order by the sort key value.
+For more information on DynamoDB items please refer to the below URL:
+http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.CoreComponents.html
+
+
+
+29. Question
+S3 bucket names may only contain only lower case letters, periods, numbers, and dashes but do not have to contain them all. Choose the correct answer from the options below
+
+ A. True		-Correct
+ B. False
+Unattempted
+Exception for S3 Nomenclature : Uppercase S3 bucket names are allowed in US-East(N.Virginia)
+Following is the naming convention for S3. There is no rule mentioned that the names should have all combinations.
+Bucket names must be at least 3 and no more than 63 characters long.
+Bucket names must be a series of one or more labels. Adjacent labels are separated by a single period (.). Bucket names can contain lowercase letters, numbers, and hyphens. Each label must start and end with a lowercase letter or a number.
+Bucket names must not be formatted as an IP address (e.g., 192.168.5.4).
+When using virtual hosted–style buckets with SSL, the SSL wildcard certificate only matches buckets that do not contain periods. To work around this, use HTTP or write your own certificate verification logic. We recommend that you do not use periods (“.”) in bucket names.
+For more information on S3 naming convention please refer to the below URL:
+http://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html
+
+
+
+30. Question
+Is DynamoDB suited only for high scale based applications? Choose an answer from the options below
+
+ A. True
+ B. False		-Correct
+Unattempted
+This is clearly given in the AWS documentation For more information on DynamoDB , please visit the following URL: https://aws.amazon.com/dynamodb/faqs/
+
+
+
+31. Question
+Can conditional operations be used in a DynamoDB query? Choose an answer from the options below
+
+ A. True		-Correct
+ B. False
+Unattempted
+This is clearly given in the AWS documentation For more information on DynamoDB , please visit the following URL: https://aws.amazon.com/dynamodb/faqs/
+
+
+
+32. Question
+In SQS does long polling cost more than short polling? Choose an answer from the options below
+
+ A. True
+ B. False		-Correct
+Unattempted
+This is clearly given in the AWS documentation For more information on SQS , please visit the following URL: https://aws.amazon.com/sqs/faqs/
+
+
+
+33. Question
+In SNS are push notifications allowed for multiple platforms.
+
+ A. True		-Correct
+ B. False
+Unattempted
+This is clearly given in the AWS documentation For more information on SNS , please visit the following URL: https://aws.amazon.com/sns/faqs/
+
+
+
+34. Question
+Is a best practice to allow code to run on an EC2 instance via a role rather than access keys? Choose the correct answer from the options below
+
+ A. True 		-Correct
+ B. False
+Unattempted
+The best practise for IAM is to create roles which has specific access to an AWS service and then give the user permission to the AWS service via the role.
+To get the role in place , follow the below steps
+Step 1) Create a role which has the required ELB access
+Step 2) You need to provide permissions to the underlying EC2 instances in the Elastic Load Balancer
+For the best practises on IAM policies, please visit the link:
+http://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html
+
+
+
+35. Question
+A user named john has an AWS account. He has created an AMI in the us-east1 region. Is it possible for him to share the AMI with another user account in AWS? Choose the correct answer from the options below
+
+ A. True		-Correct
+ B. False
+Unattempted
+This is clearly mentioned in the AWS documentation. For more information on how to share AMI’s, please refer to the below link: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharingamis-explicit.html
+
+
+
+36. Question
+Is a public IP address required for an instance to be accessed from the internet in a VPC? Choose the correct answer from the options below
+
+ A. True		-Correct
+ B. False
+Unattempted
+The below example shows a VPC which has an EC2 instance in a subnet which has an internet gateway. You can see that in order to get to the internet, it needs to have a public IP address. For more information on the default VPC, please refer to the below link: http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/default-vpc.html
+
+
+
+37. Question
+Is it possible for duplicate messages to be received within SQS? Choose the correct answer from the options below.
+
+ A. True		-Correct
+ B. False
+Unattempted
+Amazon SWF keeps track of all tasks and events in an application. Amazon SQS requires you to implement your own application-level tracking, especially if your application uses multiple queues. For more information on SQS, please visit the link: https://aws.amazon.com/sqs/faqs/
+
+
+
+38. Question
+True of False. A local secondary index has the same partition key as the primary key?
+
+ A. True		-Correct
+ B. False
+Unattempted
+Global secondary index — an index with a partition key and a sort key that can be different from those on the base table. A global secondary index is considered “global” because queries on the index can span all of the data in the base table, across all partitions.
+Local secondary index — an index that has the same partition key as the base table, but a different sort key. A local secondary index is “local” in the sense that every partition of a local secondary index is scoped to a base table partition that has the same partition key value.
+For more information on DynamoDB Indexes, please visit the link:
+http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SecondaryIndexes.html
+
+
+
+39. Question
+True of False. A global secondary index has the same partition key as the primary key?
+
+ A. True
+ B. False		-Correct
+Unattempted
+Global secondary index — an index with a partition key and a sort key that can be different from those on the base table. A global secondary index is considered “global” because queries on the index can span all of the data in the base table, across all partitions. Local secondary index — an index that has the same partition key as the base table, but a different sort key. A local secondary index is “local” in the sense that every partition of a local secondary index is scoped to a base table partition that has the same partition key value. For more information on DynamoDB Indexes, please visit the link: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SecondaryIndexes.html
+
+
+
+40. Question
+True or False. Can a global secondary index created at the same time as the table creation.
+
+ A. True		-Correct
+ B. False
+Unattempted
+This is clearly given in the AWS documentation For more information on DynamoDB Indexes, please visit the link: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SecondaryIndexes.html
+
+
+
+41. Question
+When designing Cloudformation templates, is the Resources section optional?
+
+ A. True
+ B. False		-Correct
+Unattempted
+If you refer to the documentation, you will see that Resources is the only mandatory field Specifies the stack resources and their properties, such as an Amazon Elastic Compute Cloud instance or an Amazon Simple Storage Service bucket.  For more information on cloudformation templates, please refer to the below link: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html
+
+
+
+42. Question
+When a failure occurs in a stack creation in Cloudformation, does a rollback occur?
+
+ A. True		-Correct
+ B. False
+Unattempted
+By default, the “automatic rollback on error” feature is enabled. This will cause all AWS resources that AWS CloudFormation created successfully for a stack up to the point where an error occurred to be deleted. This is useful when, for example, you accidentally exceed your default limit of Elastic IP addresses, or you don’t have access to an EC2 AMI you’re trying to run. This feature enables you to rely on the fact that stacks are either fully created, or not at all, which simplifies system administration and layered solutions built on top of AWS CloudFormation. For more information on cloudformation, please refer to the below link: https://aws.amazon.com/cloudformation/faqs/
+
+
+
+43. Question
+One DynamoDB consistent read capacity unit is equal to two eventual consistent read per second. Choose the correct answer from the options below
+
+ A. True		-Correct
+ B. False
+Unattempted
+This is clearly mentioned in the AWS documentation. For more information on DynamoDB read consistency please visit the below link: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ProvisionedThroughput.html
+
+
+
+44. Question
+Is the default visibility timeout for an SQS queue 1 minute?
+
+ A. True
+ B. False		-Correct
+Unattempted
+Each queue starts with a default setting of 30 seconds for the visibility timeout. You can change that setting for the entire queue. Typically, you’ll set the visibility timeout to the average time it takes to process and delete a message from the queue. When receiving messages, you can also set a special visibility timeout for the returned messages without changing the overall queue timeout. For more information on SQS please visit the below link: https://aws.amazon.com/sqs/faqs/
+
+
+
+45. Question
+Is Example.com a valid S3 bucket name?
+
+ A. True
+ B. False		-Correct
+Unattempted
+AWS Doc shows the naming conventions for S3 buckets
+The bucket name can be between 3 and 63 characters long, and can contain only lower-case characters, numbers, periods, and dashes.
+Each label in the bucket name must start with a lowercase letter or number.
+The bucket name cannot contain underscores, end with a dash, have consecutive periods, or use dashes adjacent to periods.
+The bucket name cannot be formatted as an IP address (198.51.100.24).
+For more information on the S3 naming conventions please visit the below link:
+http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-s3-bucket-naming-requirements.html
+
+
+
+46. Question
+Does Cloudformation support Amazon Ec2 tagging?
+
+ A. True		-Correct
+ B. False
+Unattempted
+This is clearly given in the AWS documentation For more information on the cloudformation please visit the below link: https://aws.amazon.com/cloudformation/faqs/
+
+
+
+47. Question
+Can you have 10 local secondary indexes on a table?  Choose a correct answer from the options below
+
+ A. True
+ B. False		-Correct
+Unattempted
+This is clearly mentioned in the AWS documentation For more information on DynamoDB please visit the below link: https://aws.amazon.com/dynamodb/faqs/
+
+
+
+48. Question
+Can S3 bucket names be formatted as an IP Address?
+
+ A. True
+ B. False		-Correct
+Unattempted
+Following is the naming convention for S3. There is no rule mentioned that the names should have all combinations.
+Bucket names must be at least 3 and no more than 63 characters long.
+Bucket names must be a series of one or more labels. Adjacent labels are separated by a single period (.). Bucket names can contain lowercase letters, numbers, and hyphens. Each label must start and end with a lowercase letter or a number.
+Bucket names must not be formatted as an IP address (e.g., 192.168.5.4).
+When using virtual hosted–style buckets with SSL, the SSL wildcard certificate only matches buckets that do not contain periods. To work around this, use HTTP or write your own certificate verification logic. We recommend that you do not use periods (“.”) in bucket names.
+For more information on S3 naming convention please refer to the below URL:
+http://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html
+
+
+
+49. Question
+DynamoDB supports complex relational queries. Choose an correct answer from the options below
+
+ A. True
+ B. False		-Correct
+Unattempted
+This is given in the AWS documentation For more information on dynamoDB please refer to the below URL: https://aws.amazon.com/dynamodb/faqs/
+
+
+
+50. Question
+A benefit of multi-part upload is that you can have quick recovery from any network issues. Choose the correct answer from the options below
+
+ A. True		-Correct
+ B. False
+Unattempted
+This is clearly given in the AWS documentation For more information on S3 multi-part upload please refer to the below URL: http://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html
+
+
+
+51. Question
+Is there a limit to the size of a table in DynamoDB?. Choose the correct answer from the options below
+
+ A. True
+ B. False		-Correct
+Unattempted
+This is clearly mentioned in the AWS documentation For more information on DynamoDB limits, please refer to the below URL: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html
+
+
+
+52. Question
+Is data in S3 stored as simple key based objects?
+
+ A. True		-Correct
+ B. False
+Unattempted
+This is clearly given in the AWS documentation For more information on S3 please visit the below link: https://aws.amazon.com/s3/faqs/
+
+
+
+53. Question
+Can SWF workers run behind a firewall?
+
+ A. True		-Correct
+ B. False
+Unattempted
+This is clearly given in the AWS documentation For more information on SWF , please visit the URL: https://aws.amazon.com/swf/faqs/
+
+
+
+54. Question
+Can SWF workflows be managed across availability zones?
+
+ A. True		-Correct
+ B. False
+Unattempted
+This is clearly given in the AWS documentation For more information on SWF , please visit the URL: https://aws.amazon.com/swf/faqs/
+
+
+
+55. Question
+Can you have the same bucket names in 2 regions in AWS?
+
+ A. True
+ B. False		-Correct
+Unattempted
+Bucket names have to be unique across all regions. Let’s say you have created a bucket names devtoolslogging in the Singapore region. Now if you want to create a bucket of the same name in the Oregon region, you will get an error that the bucket already exists. For more information on S3 buckets, please visit the link: http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html
+
+
+
+56. Question
+Can you use all the IP Addresses assigned to a subnet.
+
+ A. True
+ B. False		-Correct
+Unattempted
+This is clearly given in the AWS documentation For more information on VPC, please refer to the link: https://aws.amazon.com/vpc/faqs/
+
+
+
+57. Question
+Does S3 Infrequent Access storage provide the same performance as standard storage?
+
+ A. True		-Correct
+ B. False
+Unattempted
+This is clearly given in the AWS documentation For more information on S3 please visit the below link: https://aws.amazon.com/s3/faqs/
+
+
+
+58. Question
+Is S3 ideal for hosting web sites with server side interactions?
+
+ A. True
+ B. False		-Correct
+Unattempted
+S3 is ideal for static hosting and not for server side interactions. This is clearly given in the AWS documentation For more information on S3 please visit the below link: https://aws.amazon.com/s3/faqs/
+
+
+
+59. Question
+You have launched a windows server EC2 instance which is up and running. You however cannot connect from your corporate laptop using Remote Desktop Connection over the internet. Which of the following can be a cause. Choose 3 answers from the options below
+
+ A. The instance security group does not support ingress to port 22
+ B. The instance security group does not support ingress to port 3389		-Correct
+ C. The instance does not have a route to the internet gateway		-Correct
+ D. Windows instances do not support the RDP protocol
+ E. The IP Address of the laptop is being masked by the corporate network proxy server		-Correct
+Unattempted
+Option A is wrong because port 22 is for SSH protocol and Windows RDP works on 3389 port , hence Option B is one of the right answers.
+Option C is right because you need to have an Internet or NAT gateway to connect to the internet.
+Option D is wrong because Windows does have support the RDP protocol
+Option E is another possibility wherein the source IP address is being blocked by the corporate network proxy server
+
+
+
+60. Question
+Which is the following services can be used to deploy systems into AWS. Choose 3 answers from the options below
+
+ A. AWS Elastic Beanstalk		-Correct
+ B. Amazon ElasticCache
+ C. AWS Cloudformation		-Correct
+ D. Amazon Kinesis
+ E. AWS Opsworks		-Correct
+Unattempted
+With Elastic Beanstalk, you can quickly deploy and manage applications in the AWS Cloud without worrying about the infrastructure that runs those applications. AWS Elastic Beanstalk reduces management complexity without restricting choice or control. You simply upload your application, and Elastic Beanstalk automatically handles the details of capacity provisioning, load balancing, scaling, and application health monitoring. 
+For more information on elastic beanstalk, please refer to the below URL:
+http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/Welcome.html
+AWS CloudFormation gives developers and systems administrators an easy way to create and manage a collection of related AWS resources, provisioning and updating them in an orderly and predictable fashion.
+For more information on cloudformation, please refer to the below URL:
+https://aws.amazon.com/cloudformation/
+AWS OpsWorks is a configuration management service that uses Chef, an automation platform that treats server configurations as code. OpsWorks uses Chef to automate how servers are configured, deployed, and managed across your Amazon Elastic Compute Cloud (Amazon EC2) instances or on-premises compute environments. OpsWorks has two offerings, AWS Opsworks for Chef Automate, and AWS OpsWorks Stacks.
+For more information on Opswork, please refer to the below URL:
+https://aws.amazon.com/opsworks/
+
+
+
+61. Question
+Which of the following programming languages are officially supported AWS SDk’s. Choose 2 answers from the options below
+
+ A. C
+ B. Delpi
+ C. Lisp
+ D. Ruby		-Correct
+ E. Python		-Correct
+Unattempted
+This is as per the AWS documentation For more information on AWS toolkits available, please refer to the below URL: https://aws.amazon.com/tools/
+
+
+
+62. Question
+What HTTP response code indicates that an AWS REST API call was successful. Choose an answer from the options below
+
+ A. 300
+ B. 200		-Correct
+ C. 404
+ D. 0
+ E. 201
+Unattempted
+S3 REST API calls follow the standards for the web. Hence the option of 200 is the right answer for successful API calls. For more information on HTTP codes, please refer to the below URL: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+
+
+
+63. Question
+Which of the following are valid sections in AWS Cloudformation template.  Choose 3 answers from the options below
+
+ A. Parameters		-Correct
+ B. Services
+ C. Outputs		-Correct
+ D. Declarations
+ E. Resources		-Correct
+Unattempted
+The valid parts of the cloudformation template are
+Parameters – Specifies values that you can pass in to your template at runtime (when you create or update a stack). You can refer to parameters in the Resources and Outputs sections of the template.
+Outputs – Describes the values that are returned whenever you view your stack’s properties. For example, you can declare an output for an Amazon S3 bucket name and then call the AWS cloudformation describe-stacks AWS CLI command to view the name.
+Resources – Specifies the stack resources and their properties, such as an Amazon Elastic Compute Cloud instance or an Amazon Simple Storage Service bucket. You can refer to resources in the Resourcesand Outputs sections of the template.
+For more information on Cloudformation templates , please visit the URL:
+http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html
+
+
+
+64. Question
+Which of the following notification endpoints or clients are supported by Amazon Simple Notification Service? Choose 2 answers from the options below.
+
+ A. Email		-Correct
+ B. CloudFront distribution
+ C. File Transfer Protocol
+ D. Short Message Service		-Correct
+ E. Simple Network Management Protocol
+Unattempted
+When you create a subscription in SNS , below are the protocols available. For more information on AWS SNS, please visit the link: https://aws.amazon.com/sns/
+
+
+
+65. Question
+A startups photo-sharing site is deployed in a VPC. An ELB distributes web traffic across two subnets. ELB session stickiness is configured to use the AWS-generated session cookie, with a session TTL of 5 minutes. The webserver Auto Scaling Group is configured as: min-size=4, max-size=4. The startups preparing for a public launch, by running load-testing software installed on a single EC2 instance running in us-west-2a. After 60 minutes of load-testing, the webserver logs show: Which recommendations can help ensure load-testing HTTP requests are evenly distributed across the four webservers? Choose 2 answers from the options below
+
+ A. Re-configure the load-testing software to re-resolve DNS for each web request.		-Correct
+ B. Use a 3rd-party load-testing service which offers globally-distributed test clients.		-Correct
+ C. Configure ELB and Auto Scaling to distribute across us-west-2a and us-west-2c.
+ D. Configure ELB session stickiness to use the app-specific session cookie.
+ E. Launch and run the load-tester EC2 instance from us-east-1 instead.
+Unattempted
+“If you do not ensure that DNS is re-resolved or use multiple test clients to simulate increased load, the test may continue to hit a single IP address when Elastic Load Balancing has actually allocated many more IP addresses. Because your end users will not all be resolving to that single IP address, your test will not be a realistic sampling of real-world behavior.” Please refer to the below article URL: http://aws.amazon.com/articles/1636185810492479
+
+
+
+66. Question
+Which DynamoDB limits can be raised by contacting AWS support? Choose 2 answers from the options below
+
+ A. The number of hash keys per account
+ B. The maximum storage used per account
+ C. The number of tables per account		-Correct
+ D. The number of local secondary indexes per account
+ E. The number of provisioned throughput units per account		-Correct
+Unattempted
+Please find the supporting AWS documentation
+Provisioned throughputs
+Tables per account
+For more information on the service limits for DynamoDB please refer to the link:
+http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html
+
+
+
+67. Question
+Which EC2 API call would you use to retrieve a list of Amazon Machine Images (AMIs)? Choose an answer from the options below
+
+ A. DescribeInstances
+ B. You cannot retrieve a list of AMIs as there are over 10,000 AMIs
+ C. GetAMls
+ D. DescribeImages		-Correct
+ E. DescribeAMls
+Unattempted
+Describes one or more of the images (AMIs, AKIs, and ARIs) available to you. Images available to you include public images, private images that you own, and private images owned by other AWS accounts but for which you have explicit launch permissions.
+Additionally, you can use Request Parameter Filters to list images on conditions.
+Please read the reference and examples listed at
+http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeImages.html#API_DescribeImages_Examples
+For more information on DescribeImages, please refer to the below link:
+http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeImages.html
+
+
+
+68. Question
+A corporate web application is deployed within an Amazon VPC, and is connected to the corporate data center via IPSec VPN. The application must authenticate against the on-premise LDAP server. Once authenticated, logged-in users can only access an S3 keyspace specific to the user. Which two approaches can satisfy the objectives?
+Choose 2 answers from the options below
+
+ A. The application authenticates against LDAP, and retrieves the name of an IAM role associated with the user. The application then calls the IAM Security Token Service to assume that IAM Role. The application can use the temporary credentials to access the appropriate S3 bucket.		-Correct
+ B. Develop an identity broker which authenticates against IAM Security Token Service to assume an IAM Role to get temporary AWS security credentials. The application calls the identity broker to get AWS temporary security credentials with access to the appropriate S3 bucket.
+ C. The application authenticates against IAM Security Token Service using the LDAP credentials. The application uses those temporary AWS security credentials to access the appropriate S3 bucket.
+ D. The application authenticates against LDAP. The application then calls the IAM Security Service to login to IAM using the LDAP credentials. The application can use the IAM temporary credentials to access the appropriate S3 bucket.
+ E. Develop an identity broker which authenticates against LDAP, and then calls IAM Security Token Service to get IAM federated user credentials. The application calls the identity broker to get IAM federated user credentials with access to the appropriate S3 bucket.		-Correct
+Unattempted
+If you already manage user identities outside of AWS, you can use IAM identity providers instead of creating IAM users in your AWS account. With an identity provider , you can manage your user identities outside of AWS and give these external user identities permissions to use AWS resources in your account. This is useful if your organization already has its own identity system, such as a corporate user directory. It is also useful if you are creating a mobile app or web application that requires access to AWS resources.
+Option B is incorrect as it Needs to authenticate against LDAP and not IAM.
+Option C is incorrect as Need to authenticate with LDAP
+Option D is incorrect as Can’t login to IAM using LDAP credentials
+For more information on identity providers please visit the below link:
+http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers.html
+
+
+
+69. Question
+You have written an application that uses the Elastic Load Balancing service to spread traffic to several web servers Your users complain that they are sometimes forced to login again in the middle of using your application, after they have already togged in. This is not behavior you have designed. What is a possible solution to prevent this happening? Choose an answer from the options below
+
+ A. Use instance memory to save session state.
+ B. Use instance storage to save session state.
+ C. Use EBS to save session state
+ D. Use ElastiCache to save session state.		-Correct
+ E. Use Glacier to save session slate.
+Unattempted
+Amazon ElastiCache is a web service that makes it easy to deploy and run Memcached or Redis protocol-compliant server nodes in the cloud. Amazon ElastiCache improves the performance of web applications by allowing you to retrieve information from a fast, managed, in-memory system, instead of relying entirely on slower disk-based databases. The service simplifies and offloads the management, monitoring and operation of in-memory environments, enabling your engineering resources to focus on developing applications. Using Amazon ElastiCache, you can not only improve load and response times to user actions and queries, but also reduce the cost associated with scaling web applications. As an example for application session stickiness using Elastic cache, please refer to the below link: https://aws.amazon.com/blogs/developer/elasticache-as-an-asp-net-session-store/
+
+
+
+70. Question
+Which of the following are correct statements with policy evaluation logic in AWS Identity and Access Management? Choose 2 answers from the options below
+
+ A. An explicit deny does not override an explicit allow
+ B. By default, all request are allowed
+ C. An explicit allow overrides default deny.		-Correct
+ D. An explicit allow overrides an explicit deny
+ E. By default, all requests are denied		-Correct
+Unattempted
+AWS Doc shows the evaluation logic of IAM policies. And as per the evaluation logic, it is clear that the above scenario leads to a default deny. For more information on the IAM policy evaluation logic, please refer to the link: http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html
+
+
+
+71. Question
+Which statements about DynamoDB are true? Choose 2 answers from the options below
+
+ A. DynamoDB uses optimistic concurrency control		-Correct
+ B. DynamoDB restricts item access during writes
+ C. DynamoDB uses a pessimistic locking model
+ D. DynamoDB restricts item access during reads
+ E. DynamoDB uses conditional writes for consistency		-Correct
+Unattempted
+Optimistic locking is a strategy to ensure that the client-side item that you are updating (or deleting) is the same as the item in DynamoDB. If you use this strategy, then your database writes are protected from being overwritten by the writes of others — and vice-versa To help clients coordinate writes to data items, DynamoDB supports conditional writes for PutItem, DeleteItem, and UpdateItem operations. With a conditional write, an operation succeeds only if the item attributes meet one or more expected conditions; otherwise it returns an error For more information on working with items , please visit the link: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html
+
+
+
+72. Question
+You are writing to a DynamoDB table and receive the following exception:” ProvisionedThroughputExceededException”, though according to your Cloudwatch metrics for the table, you are not exceeding your provisioned throughput. What could be an explanation for this?
+
+ A. You haven’t provisioned enough DynamoDB storage instances
+ B. You’re exceeding your capacity on a particular Range Key
+ C. You’re exceeding your capacity on a particular Hash Key		-Correct
+ D. You’re exceeding your capacity on a particular Sort Key
+ E. You haven’t configured DynamoDB Auto Scaling triggers
+Unattempted
+This error normally occurs when the capacity on the main index key or hash key goes out of bounds. For more information on DynamoDB errors , please visit the link: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html
+
+
+
+73. Question
+A meteorological system monitors 600 temperature gauges, obtaining temperature samples every minute and saving each sample to a DynamoDB table. Each sample involves writing 1K of data and the writes are evenly distributed over time. How much write throughput is required for the target table? Choose an answer from the options below
+
+ A. 3600 write capacity units
+ B. 1 write capacity unit
+ C. 10 write capacity units		-Correct
+ D. 60 write capacity units
+ E. 600 write capacity units
+Unattempted
+Since each item is 1KB and if we near it to the nearest 1KB , we get 1 write capacity. Since we need 600 temperature gauges per minute , it becomes (600/60) = 1 per second. This gives is 10 write capacity units. For more information on DynamoDB provisioned throughput please visit the below link: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ProvisionedThroughput.html
+
+
+
+74. Question
+How can you secure data at rest on an EBS volume? Choose an answer from the options below
+
+ A. Write the data randomly instead of sequentially.
+ B. Use an encrypted file system on top of the EBS volume.		-Correct
+ C. Encrypt the volume using the S3 server-side encryption service.
+ D. Create an IAM policy that restricts read and write access to the volume.
+ E. Attach the volume to an instance using EC2’s SSL interface.
+Unattempted
+EBS encryption can be enabled during the creation of an EBS volume. For an existing EBS volume , you need to use the encryption available at the Operating system level URL: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html
+
+
+
+75. Question
+Which of the following are valid SNS delivery transports? Choose 2 answers from the options below
+
+ A. SMS		-Correct
+ B. DynamoDB
+ C. HTTP		-Correct
+ D. UDP
+ E. Named Pipes
+Unattempted
+In SNS the following subscription request are possible
+“HTTP”, “HTTPS” – Subscribers specify a URL as part of the subscription registration; notifications will be delivered through an HTTP POST to the specified URL.
+”Email”, “Email-JSON” – Messages are sent to registered addresses as email. Email-JSON sends notifications as a JSON object, while Email sends text-based email.
+“SQS” – Users can specify an SQS standard queue as the endpoint; Amazon SNS will enqueue a notification message to the specified queue (which subscribers can then process using SQS APIs such as ReceiveMessage, DeleteMessage, etc.). Note that FIFO queues are not currently supported.
+“SMS” – Messages are sent to registered phone numbers as SMS text messages.
+For more information on SNS, please visit the below link:
+https://aws.amazon.com/sns/faqs/
+
+
+
+76. Question
+Which of the following programming languages have an officially supported AWS SDK? Choose 2 answers from the options below
+
+ A. PHP		-Correct
+ B. Pascal
+ C. Java		-Correct
+ D. SQL
+ E. Perl
+Unattempted
+This is as per the AWS documentation For more information on AWS toolkits available, please refer to the below URL: https://aws.amazon.com/tools/
+
+
+
+77. Question
+Which of the following is chosen as the default region when making an API call with an AWS SDK? Choose an answer from the options below
+
+ A. ap-northeast-1
+ B. us-west-2
+ C. us-east-1		-Correct
+ D. eu-west-1
+ E. us-central-1
+Unattempted
+The default region for API calls is us-east-1 For more information on regions and AZ’s, please refer to the below URL: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html
+
+
+
+78. Question
+If an application is storing hourly log files from thousands of instances from a high traffic web site, which naming scheme would give optimal performance on S3? Choose an answer from the options below
+
+ A. Sequential
+ B. HH-DD-MM-YYYY-log_instanceID		-Correct
+ C. YYYY-MM-DD-HH-log_instanceID
+ D. instanceID_log-HH-DD-MM-YYYY
+ E. instanceID_log-YYYY-MM-DD-HH
+Unattempted
+Amazon S3 maintains an index of object key names in each AWS region. Object keys are stored in UTF-8 binary ordering across multiple partitions in the index. The key name dictates which partition the key is stored in. So if it is in an alphabetical sequence it can overwhelm the I/O capacity of the partition.
+So introducing some randomness at the beginning of the file name in the naming scheme would give optimal performance.
+In this scenario, thousands of instances are generating log files and are storing these log files on to S3 in an hourly manner. All the instance ID-s start with i-0*********. So if we go with this naming convention, thousands of log files are generated in each hour with these characters in the beginning of all the log files which doesn’t bring in the randomness required for the file names at the beginning. Hence options D & E are incorrect.
+Option A is incorrect as it is mentioning to be Sequential. 
+Option C is also incorrect since the Year value will take an year to change.
+So out of the options given in the question option B seems to be ideal in this scenario.
+For more information on request rate considerations please visit the below link:
+http://docs.aws.amazon.com/AmazonS3/latest/dev/request-rate-perf-considerations.html
+
+
+
+79. Question
+Which of the following services are key/value stores? Choose 3 answers from the options below
+
+ A. Amazon ElastiCache		-Correct
+ B. Simple Notification Service
+ C. DynamoDB		-Correct
+ D. Simple Workflow Service
+ E. Simple Storage Service		-Correct
+Unattempted
+This is provided in the AWS documentation
+AWS Elastic cache URL:
+https://aws.amazon.com/elasticache/faqs/
+AWS DynamoDB
+URL:
+http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html
+AWS S3
+URL:
+http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingObjects.html
+
+
+
+80. Question
+If a message is retrieved from a queue in Amazon SQS, how long is the message inaccessible to other users by default? Choose an answer from the options below
+
+ A. 30 seconds		-Correct
+ B. 0 seconds
+ C. 1 hour
+ D. 1 day
+ E. forever
+Unattempted
+Each queue starts with a default setting of 30 seconds for the visibility timeout. You can change that setting for the entire queue. Typically, you’ll set the visibility timeout to the average time it takes to process and delete a message from the queue. When receiving messages, you can also set a special visibility timeout for the returned messages without changing the overall queue timeout. For more information on SQS please visit the below link: https://aws.amazon.com/sqs/faqs/
+
+
+
+81. Question
+Your support teams calls you and tells you that the application you developed is giving the error “Your proposed upload exceeds the maximum allowed object size.” error message when uploading an object to S3. What is a possible solution for this? Choose an answer from the options below
+
+ A. None, Simple Storage Service objects are limited to 5 GB
+ B. Use the multi-part upload API for this object		-Correct
+ C. Use the large object upload API for this object
+ D. Contact support to increase your object size limit
+ E. Upload to a different region
+Unattempted
+The Multipart upload API enables you to upload large objects in parts. You can use this API to upload new large objects or make a copy of an existing object (see Operations on Objects). Multipart uploading is a three-step process: You initiate the upload, you upload the object parts, and after you have uploaded all the parts, you complete the multipart upload. Upon receiving the complete multipart upload request, Amazon S3 constructs the object from the uploaded parts, and you can then access the object just as you would any other object in your bucket. For more information on S3 Multi Part file upload, please visit the link: http://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html
+
+
+
+82. Question
+Company C is currently hosting their corporate site in an Amazon S3 bucket with Static Website Hosting enabled. Currently, when visitors go to http://www.companyc.com the index.html page is returned. Company C now would like a new page welcome.html to be returned when a visitor enters http://www.companyc.com in the browser. Which of the following steps will allow Company C to meet this requirement? Choose 2 answers from the options below
+
+ A. Upload an html page named welcome.html to their S3 bucket		-Correct
+ B. Create a welcome subfolder in their S3 bucket
+ C. Set the Index Document property to welcome.html		-Correct
+ D. Move the index.html page to a welcome subfolder
+ E. Set the Error Document property to welcome.html
+Unattempted
+When you go to S3, make sure that static website hosting is enabled. Also upload the index.html document , make sure it is Public and also ensure that it is put as the Index document. For more information on all S3 web site hosting please refer to the below URL: http://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html
+
+
+
+83. Question
+What HTP response code indicates that an AWS REST API call resulted in a redirection? Choose an answer from the options below
+
+ A. 300		-Correct
+ B. 200
+ C. 404
+ D. 0
+ E. 201
+Unattempted
+This class of status code indicates that further action needs to be taken by the user agent in order to fulfill the request.  For more information on HTTP codes, please refer to the below URL: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+
+
+
+84. Question
+Which of the following are in-valid sections in AWS Cloudformation template.  Choose 2 answers from the options below
+
+ A. Parameters
+ B. Services		-Correct
+ C. Outputs
+ D. Declarations		-Correct
+ E. Resources
+Unattempted
+The valid parts of the cloudformation template are
+Parameters – Specifies values that you can pass in to your template at runtime (when you create or update a stack). You can refer to parameters in the Resources and Outputs sections of the template.
+Outputs – Describes the values that are returned whenever you view your stack’s properties. For example, you can declare an output for an Amazon S3 bucket name and then call the AWS cloudformation describe-stacks AWS CLI command to view the name.
+Resources – Specifies the stack resources and their properties, such as an Amazon Elastic Compute Cloud instance or an Amazon Simple Storage Service bucket. You can refer to resources in the Resourcesand Outputs sections of the template.
+For more information on Cloudformation templates , please visit the URL:
+http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html
+
+
+
+85. Question
+Which of the following notification endpoints or clients are supported by Amazon Simple Notification Service? Choose 4 answers from the options below.
+
+ A. Email		-Correct
+ B. HTTPS		-Correct
+ C. SQS		-Correct
+ D. Short Message Service		-Correct
+ E. Simple Network Management Protocol
+Unattempted
+When you create a subscription in SNS , below are the protocols available. For more information on AWS SNS, please visit the link: https://aws.amazon.com/sns/
+
+
+
+86. Question
+You have been requested to ensure that for your application all data in EBS is secured at rest. How can you achieve this? Choose an answer from the options below
+
+ A. Write the data randomly instead of sequentially.
+ B. Use an encrypted file system on top of the EBS volume.		-Correct
+ C. Encrypt the volume using the S3 server-side encryption service.
+ D. Create an IAM policy that restricts read and write access to the volume.
+ E. Attach the volume to an instance using EC2’s SSL interface.
+Unattempted
+EBS encryption can be enabled during the creation of an EBS volume. For an existing EBS volume , you need to use the encryption available at the Operating system level. URL: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html
+
+
+
+87. Question
+Which of the following are AWS IAM entities. Choose 3 answers from the options below
+
+ A. User		-Correct
+ B. Group		-Correct
+ C. Team
+ D. Role		-Correct
+ E. Root
+ F. Organization
+Unattempted
+An IAM user is an entity that you create in AWS. The IAM user represents the person or service who uses the IAM user to interact with AWS
+An IAM group is a collection of IAM users. You can use groups to specify permissions for a collection of users, which can make those permissions easier to manage for those users
+An IAM role is very similar to a user, in that it is an identity with permission policies that determine what the identity can and cannot do in AWS
+For more information on IAM entities , please visit the URL:
+http://docs.aws.amazon.com/IAM/latest/UserGuide/id.html
+
+
+
+88. Question
+Which of the following are actors in an Amazon SWF workflow. Choose 3 answers from the options below
+
+ A. Workflow activity
+ B. Decider		-Correct
+ C. Activity worker		-Correct
+ D. Adapter
+ E. Message port
+ F. Workflow starter		-Correct
+Unattempted
+The decider and activity worker are part SWF that polls the tasks for work and making decisions. The Workflow starter is the first task of the workflow.
+For all parts of the SWF workflow , please refer to the below link:
+http://docs.aws.amazon.com/amazonswf/latest/awsrbflowguide/concepts-parts.html
+http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-actors.html
+
+
+
+89. Question
+In AWS, which security aspects are the customer’s responsibility? Choose 4 answers
+
+ A. Security Group and ACL (Access Control List) settings		-Correct
+ B. Decommissioning storage devices
+ C. Patch management on the EC2 instance’s operating system		-Correct
+ D. Life-cycle management of IAM credentials		-Correct
+ E. Controlling physical access to compute resources
+ F. Encryption of EBS (Elastic Block Storage) volumes		-Correct
+Unattempted
+See shared responsibility model as shared by AWS
+
+
+
+90. Question
+Which of the following are valid arguments for an SNS Publish request? Choose three answers from the options below
+
+ A. Language
+ B. Subject		-Correct
+ C. Message		-Correct
+ D. Destination
+ E. TopicArn		-Correct
+ F. Format
+Unattempted
+For more information on SNS notification format, please refer to the link: http://docs.aws.amazon.com/sns/latest/dg/json-formats.html
+
+
+
+91. Question
+What AWS products and features can be deployed by Elastic Beanstalk? Choose 3 answers from the options below
+
+ A. Auto scaling groups		-Correct
+ B. Route 53 hosted zones
+ C. Elastic Load Balancers		-Correct
+ D. RDS Instances		-Correct
+ E. Elastic IP addresses
+ F. SQS Queues
+Unattempted
+This is clearly given in the AWS documentation For more information on elastic beanstalk, please refer to the below URL: http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/Welcome.html
+
+
+
+92. Question
+Which of the following statements about SWF are true? Choose 3 answers from the options below
+
+ A. SWF uses deciders and workers to complete tasks		-Correct
+ B. SWF requires at least 1 EC2 instance per domain
+ C. SWF triggers SNS notifications on task assignment
+ D. SWF requires an S3 bucket for workflow storage
+ E. SWF tasks are assigned once and never duplicated		-Correct
+ F. SWF workflow executions can last up to a year		-Correct
+Unattempted
+Option A is correct because of the below excerpt from the AWS documentation
+In Amazon SWF, tasks represent invocations of logical steps in applications. Tasks are processed by workers which are programs that interact with Amazon SWF to get tasks, process them, and return their results. A worker implements an application processing step. You can build workers in different programming languages and even reuse existing components to quickly create the worker. For example, you can use cloud services, enterprise applications, legacy systems, and even simple scripts to implement workers. By independently controlling the number of workers for processing each type of task, you can control the throughput of your application efficiently.
+To coordinate the application execution across workers, you write a program called the decider in your choice of programming language. 
+Option E is correct because of the below excerpt from the AWS documentation
+Option F is correct because of the below excerpt from the AWS documentation
+For more information on SWF please visit the below link:
+https://aws.amazon.com/swf/faqs/
+
+
+
+93. Question
+Which of the following services are included at no additional cost with the use of the AWS platform? Choose 2 answers from the options below
+
+ A. CloudFormation		-Correct
+ B. Simple Workflow Service
+ C. Elastic Load Balancing
+ D. Elastic Compute Cloud
+ E. Simple Storage Service
+ F. Auto Scaling		-Correct
+Unattempted
+This is clearly given in the AWS documentation URL: https://aws.amazon.com/cloudformation/pricing/ URL: https://aws.amazon.com/autoscaling/pricing/
+
+
+
+94. Question
+In AWS, which security aspects are is AWS responsibility? Choose 2 answers from the options below
+
+ A. Security Group and ACL (Access Control List) settings
+ B. Decommissioning storage devices		-Correct
+ C. Patch management on the EC2 instance’s operating system
+ D. Life-cycle management of IAM credentials
+ E. Controlling physical access to compute resources		-Correct
+ F. Encryption of EBS (Elastic Block Storage) volumes
+Unattempted
+Please see the shared responsibility model as shared by AWS
+
+
+
+95. Question
+Which of the following are valid arguments for an SNS Publish request? Choose 3 answers from the options below
+
+ A. Subject		-Correct
+ B. Language
+ C. Message		-Correct
+ D. Destination
+ E. Timestamp		-Correct
+ F. Format
+Unattempted
+For more information on SNS request notification format, please refer to the link:
+https://docs.aws.amazon.com/sns/latest/api/API_Publish.html
+For more information on SNS notification format, please refer to the link:
+http://docs.aws.amazon.com/sns/latest/dg/json-formats.htm
