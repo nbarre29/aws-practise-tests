@@ -1,0 +1,1303 @@
+1. Question
+A Developer is migrating an on-premises web application to the AWS Cloud. The application currently runs on a 32-processor server and stores session state in memory. On Friday afternoons the server runs at 75% CPU utilization, but only about 5% CPU utilization at other times. How should the Developer change to code to better take advantage of running in the cloud?
+
+ Compress the session state data in memory
+ Store session state on EC2 instance Store
+ Encrypt the session state data in memory
+ Store session state in an ElastiCache cluster.		-Correct
+Unattempted
+Answer – D
+ElastiCache is the perfect solution for managing session state. This is also given in the AWS Documentation
+In order to address scalability and to provide a shared data storage for sessions that can be accessible from any individual web server, you can abstract the HTTP sessions from the web servers themselves. A common solution to for this is to leverage an In-Memory Key/Value store such as Redis and Memcached.
+Option A is incorrect since compression is not the ideal solution
+Option B is incorrect since EC2 Instance Store is too volatile.
+Option C is incorrect since this is ok from a security standpoint but will just make the performance worse for the application
+For more information on Session Management , please refer to the below Link:
+https://aws.amazon.com/caching/session-management/
+
+
+
+2. Question
+An organization’s application needs to monitor application specific events with a standard AWS service. The service should capture the number of logged in users and trigger events accordingly. During peak times, monitoring frequency will occur every 10 seconds. What should be done to meet these requirements?
+
+ Create an Amazon SNS notification
+ Create a standard resolution custom Amazon CloudWatch log
+ Create a high-resolution custom Amazon CloudWatch metric		-Correct
+ Create a custom Amazon CloudTrail log.
+Unattempted
+Answer – C
+This is clearly mentioned in the AWS Documentation
+When creating an alarm, select a period that is greater than or equal to the frequency of the metric to be monitored. For example, basic monitoring for Amazon EC2 provides metrics for your instances every 5 minutes. When setting an alarm on a basic monitoring metric, select a period of at least 300 seconds (5 minutes). Detailed monitoring for Amazon EC2 provides metrics for your instances every 1 minute. When setting an alarm on a detailed monitoring metric, select a period of at least 60 seconds (1 minute).
+If you set an alarm on a high-resolution metric, you can specify a high-resolution alarm with a period of 10 seconds or 30 seconds, or you can set a regular alarm with a period of any multiple of 60 seconds
+Option A is incorrect since the question does not mention anything on notifications.
+Option B is incorrect since the standard resolution counters will not help define triggers within a 10 second interval
+Option D is incorrect since Cloudtrail is used for API Activity logging
+For more information on Cloudwatch metrics , please refer to the below Link:
+https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html
+
+
+
+3. Question
+Which of the following is the best way to update a S3 notification configuration when a change in the lambda version needs to be referred by an S3 bucket after new objects are created in the bucket?
+
+ Specify Lambda Alias ARN in the notification configuration.		-Correct
+ Specify Lambda Function ARN in the notification configuration.
+ Specify Lambda Qualified ARN in the notification configuration.
+ Specify Lambda $LATEST ARN in the notification configuration.
+Unattempted
+Correct Answer – A
+When a Lambda Alias ARN is used in the notification configuration, & a new version of Lambda Function is created, you just need to update Alias ARN pointing to new function. No changes are required to be done at Amazon S3 bucket.
+Option B is incorrect as When a Lambda Function ARN is used in the notification configuration, whenever there is a new Lambda Function created , you will need to update ARN in notification configuration to point to the latest version.
+Option C is incorrect as When a Lambda Qualified ARN is used in the notification configuration, whenever there is a new Lambda Function created , you will need to update ARN in notification configuration to point to the latest version.
+Option D is incorrect as there is nothing as $LATEST ARN. $LATEST version has two ARN associated with it , Qualified ARN & Unqualified ARN.
+For more information on AWS Lambda Aliases, refer to the following URL,
+https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html
+
+
+
+4. Question
+A Developer working on an AWS CodeBuild project wants to override a build command as part of a build run to test a change. The developer has access to run the builds but does not have access to edit the CodeBuild project What process should the Developer use to override the build command?
+
+ Update the buildspec.yml configuration file that is part of the source code and run a new build.
+ Update the command in the Build Commands section during the build run in the AWS console.
+ Run the start build AWS CLI command with buildspecOverride property set to the new buildspec.yml file.		-Correct
+ Update the buildspec property in the StartBuild API to override the build command during build run.
+Unattempted
+Answer – C
+Use the AWS CLI command to specify different parameters that need to be run for the build. Since the developer has access to run the build , he can run the build changing the parameters from the command line. The same is also mentioned in the AWS Documentation
+All other option are incorrect since we need to use the AWS CLI
+
+For more information on running the command via the CLI, please refer to the below Link:
+https://docs.aws.amazon.com/codebuild/latest/userguide/run-build.html#run-build-cli
+
+Note:
+As per the question the developer doesn’t have access to edit the code build project but only have access to run the build. So for overriding the existing build we can make use of the BuildspecOverride attribute.
+
+As per AWS,
+buildspecOverride: Optional string. A build spec declaration that overrides for this build the one defined in the build project. If this value is set, it can be either an inline build spec definition or the path to an alternate build spec file relative to the value of the built-in CODEBUILD_SRC_DIR environment variable.
+
+
+
+5. Question
+You are working on a new project involving creation of Lambda functions for a Serverless Web Application. A large team of developers are going to work on this project performing multiple changes to the Lambda function code. As a best practice, you have been asked to publish a version while creating Lambda function or updating a function code. Which of the following is TRUE with regards to the published version of a Lambda Function?
+
+ A published version is a snapshot of function code and has the same version number when a previous version is deleted & recreated.
+ A published version is a snapshot of function code and has a unique Amazon Resource Name which can be updated by using “UpdateFunctionCode”.
+ A published version is a snapshot of function code and configuration that can be updated using “Publish” parameter.
+ A published version is a snapshot of function code and configuration that can't be changed.		-Correct
+Unattempted
+Correct Answer – D
+A Publish version is a snapshot copy of a Lambda Function code & configuration in $LATEST version. No configuration changes can be done to a publish version & has a unique ARN which can’t be modified.
+Option A is incorrect as a published version can only have different version from previous ones, even when the previous version is deleted & recreated.
+Option B is incorrect as after a version is published, ARN can’t be modified.
+Option C is incorrect as when a version is published , no configuration changes can be made into this version.
+For more information on AWS Lambda Versioning, refer to the following URL,
+https://docs.aws.amazon.com/lambda/latest/dg/versioning-intro.html
+
+
+
+6. Question
+A Developer is building an application that needs access to an S3 bucket. An IAM role is created with the required permissions to access the S3 bucket. Which API call should the Developer use in the application so that the code can access to the S3 bucket?
+
+ IAM: AccessRole
+ STS: GetSessionToken
+ IAM:GetRoleAccess
+ STS:AssumeRole		-Correct
+Unattempted
+Answer – D
+This is given in the AWS Documentation
+A role specifies a set of permissions that you can use to access AWS resources. In that sense, it is similar to an IAM user. An application assumes a role to receive permissions to carry out required tasks and interact with AWS resources. The role can be in your own account or any other AWS account. For more information about roles, their benefits, and how to create and configure them, see IAM Roles, and Creating IAM Roles. To learn about the different methods that you can use to assume a role, see Using IAM Roles.
+Important
+The permissions of your IAM user and any roles that you assume are not cumulative. Only one set of permissions is active at a time. When you assume a role, you temporarily give up your previous user or role permissions and work with the permissions that are assigned to the role. When you exit the role, your user permissions are automatically restored.
+To assume a role, an application calls the AWS STS AssumeRole API operation and passes the ARN of the role to use. When you call AssumeRole, you can optionally pass a JSON policy. This allows you to restrict permissions for that for the role’s temporary credentials. This is useful when you need to give the temporary credentials to someone else. They can use the role’s temporary credentials in subsequent AWS API calls to access resources in the account that owns the role. You cannot use the passed policy to grant permissions that are in excess of those allowed by the permissions policy of the role that is being assumed. To learn more about how AWS determines the effective permissions of a role, see Policy Evaluation Logic.
+All other options are invalid since the right way for the application to use the Role is to assume the role to get access to the S3 bucket.
+For more information on switching roles, please refer to the below Link:
+https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-api.html
+
+
+
+7. Question
+A developer has recently deployed an AWS Lambda function that computes a Fibonacci sequence using recursive Lambda invocations. A pre-defined AWS IAM policy is being used for this function, and only the required dependencies were packaged. A few days after deployment, the Lambda function is being throttled. What should the Developer have done to prevent this, according to best practices?
+
+ Use more restrictive IAM policies
+ Avoid the use of recursion		-Correct
+ Request a concurrency service limit increase
+ Increase the memory allocation range.
+Unattempted
+Answer – B
+The question’s focus is on the best practice methods for Lambda functions. Since the question is asking us to choose the best option that the developer might have done to prevent this throttling issue is that he should have written a code that avoids the recursive call of the function within itself as it is not a recommended as a best practice.
+
+For “Lambda function code” best practice it is recommended that we should avoid recursive code in the Lambda function.
+
+“Avoid using recursive code in your Lambda function, wherein the function automatically calls itself until some arbitrary criteria is met. This could lead to unintended volume of function invocations and escalated costs. If you do accidentally do so, set the function concurrent execution limit to ‘0’ (Zero) immediately to throttle all invocations to the function, while you update the code.”
+
+Option A is incorrect since using IAM Policies will not help in resolving the issue
+Option C is incorrect since this is about concurrency on the number of AWS Lambda executions.
+Option D is incorrect since the issue here is with the number of executions and not on the amount of memory used for the executions
+For more information, please refer to the below Link:
+https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html
+
+
+
+8. Question
+A company is writing a Lambda function that will run in multiple stages, such a dev, test and production. The function is dependent upon several external services, and it must call different endpoints for these services based on function’s deployment stage. What Lambda feature will enable the developer to ensure that the code references the correct endpoints when running in each stage?
+
+ Tagging
+ Concurrency
+ Aliases
+ Environment variables		-Correct
+Unattempted
+Answer – D
+You can create different environment variables in the Lambda function that can be used to point to the different services. The below screenshot from the AWS Documentation shows how this can be done with databases.
+Option A is invalid since this can only be used to add metadata for the function
+Option B is invalid since this is used for managing the concurrency of execution
+Option C is invalid since this is used for managing the different versions of your Lambda function
+For more information on AWS Lambda environment variables, please refer to the below Link:
+https://docs.aws.amazon.com/lambda/latest/dg/env_variables.html
+
+
+
+9. Question
+You are using AWS SAM to define a Lambda function and configure CodeDeploy to manage deployment patterns. With new Lambda function working as per expectation which of the following will shift traffic from original Lambda function to new Lambda function in the shortest time frame?
+
+ Canary10Percent5Minutes		-Correct
+ Linear10PercentEvery10Minutes
+ Canary10Percent15Minutes
+ Linear10PercentEvery1Minute
+Unattempted
+Correct Answer – A
+With Canary Deployment Preference type, Traffic is shifted in two intervals. With Canary10Percent5Minutes, 10 percent of traffic is shifted in the first interval while remaining all traffic is shifted after 5 minutes.
+Option B is incorrect as Linear10PercentEvery10Minutes will add 10 percent traffic linearly to a new version every 10 minutes. So, after 100 minutes all traffic will be shifted to the new version.
+Option C is incorrect as Canary10Percent15Minutes will send 10 percent traffic to the new version and 15 minutes later complete deployment by sending all traffic to the new version.
+Option D is incorrect as Linear10PercentEvery1Minute will add 10 percent traffic linearly to the new version every 1 minute. So, after 10 minutes all traffic will be shifted to the new version.
+
+For more information on Deployment Preference Type for AWS SAM templates, refer to the following URL,https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/automating-updates-to-serverless-apps.html
+
+
+
+10. Question
+A Developer is migrating an on-premises application to the AWS Cloud. The application currently uses Microsoft SQL, encrypting some of the data using Transparent Data Encryption. Which service should the Developer use to minimize code changes?
+
+ Amazon RDS		-Correct
+ Amazon Aurora
+ Amazon Redshift
+ Amazon DynamoDB
+Unattempted
+Explanation:
+
+Answer – A
+This is also mentioned in the AWS Documentation
+Amazon RDS supports using Transparent Data Encryption (TDE) to encrypt stored data on your DB instances running Microsoft SQL Server. TDE automatically encrypts data before it is written to storage, and automatically decrypts data when the data is read from storage.
+Amazon RDS supports TDE for the following SQL Server versions and editions:
+SQL Server 2017 Enterprise Edition
+SQL Server 2016 Enterprise Edition
+SQL Server 2014 Enterprise Edition
+SQL Server 2012 Enterprise Edition
+SQL Server 2008 R2 Enterprise Edition
+To enable transparent data encryption for a DB instance that is running SQL Server, specify the TDE option in an Amazon RDS option group that is associated with that DB instance.
+All other options are incorrect since the developer wants to minimize code changes. So going onto a different database engine is not preferred
+For more information on Encryption on Microsoft SQL Server AWS, please refer to the below Link:
+https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.SQLServer.Options.TDE.html
+
+
+
+11. Question
+A Developer is writing several Lambda functions that each access data in a common RDS DB instance. They must share a connection string that contains the database credentials, which are a secret. A company policy requires that all secrets be stored encrypted. Which solution will minimize the amount of code the Developer must write?
+
+ Use common DynamoDB table to store settings
+ Use AWS Lambda environment variables
+ Use Systems Manager Parameter Store secure strings		-Correct
+ Use a table in a separate RDS database.
+Unattempted
+Answer – C
+The AWS Documentation mentions the following to support this
+AWS Systems Manager Parameter Store provides secure, hierarchical storage for configuration data management and secrets management. You can store data such as passwords, database strings, and license codes as parameter values. You can store values as plain text or encrypted data. You can then reference values by using the unique name that you specified when you created the parameter
+Options A and D are incorrect and inefficient since you don’t need a separate table. Also, it does not mention in the answer about the encryption of the underlying tables.
+Option B is not correct since you need to share the encrypted connection strings
+For more information on the Systems Manager Parameter store, please refer to the below Link:
+https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-paramstore.html
+https://aws.amazon.com/blogs/compute/sharing-secrets-with-aws-lambda-using-aws-systems-manager-parameter-store/
+
+
+
+12. Question
+A developer is using Amazon API Gateway as an HTTP proxy to a backend endpoint. There are three separate environments: Development, Testing, Production and three corresponding stages in the API gateway. How should traffic be directed to different backend endpoints for each of these stages without creating a separate API for each?
+
+ Add a model to the API and add a schema to differentiate different backend endpoints.
+ Use stage variables and configure the stage variables in the HTTP integration Request of the API		-Correct
+ Use API Custom Authorizers to create an authorizer for each of the different stages.
+ Update the Integration Response of the API to add different backend endpoints.
+Unattempted
+Answer – B
+The AWS Documentation mentions the following to support this
+Stage variables are name-value pairs that you can define as configuration attributes associated with a deployment stage of an API. They act like environment variables and can be used in your API setup and mapping templates.
+Option A is incorrect since this would only allow for additions of schema’s
+Option C is incorrect since this is only used for Authorization and would not help to differentiate the environments
+Option D is incorrect since this would help in integrating the responses to the API gateway
+For more information on Stage variables in the API gateway, please refer to the below Link:
+https://docs.aws.amazon.com/apigateway/latest/developerguide/stage-variables.html
+
+
+
+13. Question
+An application is publishing a custom CloudWatch metric any time an HTTP 504 error appears in the application error logs. These errors are being received intermittently. There is a CloudWatch Alarm for this metric and the Developer would like the alarm to trigger ONLY if it breaches two evaluation periods or more. What should be done to meet these requirements?
+
+ Update the CloudWatch Alarm to send a custom notification depending on results
+ Publish the value zero whenever there are no “HTTP 504” errors
+ Use high – resolution metrics to get data pushed to CloudWatch more frequently
+ The evaluation period and Data Points to Alarm should be set to 2 while creating this alarm		-Correct
+Unattempted
+Answer – D
+Our scenario states that we are receiving HTTP Error 504 intermittently. The requirement of the scenario is that the ALARM should trigger ONLY of it breaches 2 evaluation periods.
+
+None of the options listed is a good choice.
+
+When you create an alarm, you specify three settings to enable CloudWatch to evaluate when to change the alarm state:
+Period is the length of time to evaluate the metric to create each individual data point for a metric. It is expressed in seconds. If you choose one minute as the period, there is one datapoint every minute.
+Evaluation Period is the number of the most recent data points to evaluate when determining alarm state.
+Datapoints to Alarm is the number of data points within the evaluation period that must be breaching to cause the alarm to go to the ALARM state. The breaching data points do not have to be consecutive, they just must all be within the last number of data points equal to Evaluation Period.
+
+Let us look at an example.
+In the following figure, the alarm threshold is set to three units. The alarm is configured to go to the ALARM state and both Evaluation Period and Datapoints to Alarm are 3. That is, when all three datapoints in the most recent three consecutive periods are above the threshold, the alarm goes to the ALARM state. In the figure, this happens in the third through fifth time periods. At period six, the value dips below the threshold, so one of the periods being evaluated is not breaching, and the alarm state changes to OK. During the ninth time period, the threshold is breached again, but for only one period. Consequently, the alarm state remains OK.
+Option A is incorrect since here there is no mention of any special kind of notification
+Option B is incorrect since you don’t need to mention a 0 value , just place a 1 value when the result is received.
+Option C is incorrect since there is no mention on the frequency , so we don’t know if we need high resolution for metrics
+For more information on aggregation of data in Cloudwatch please refer to the below Link:
+https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-common-scenarios.html#CloudWatch-Agent-aggregating-metrics
+
+
+
+14. Question
+A Developer has been asked to create an AWS Elastic Beanstalk environment for a production web application which needs to handle thousands of requests. Currently, the dev environment is running on a t1.micro instance. What is the best way for the developer to provision a new production environment with a m4.large instance instead of a t1.micro?
+
+ Use CloudFormation to migrate the Amazon EC2 instance type from t1.micro to m4.large.
+ Create a new configuration file with the instance type as m4.large and reference this file when provisioning the new environment.		-Correct
+ Provision a m4.large instance directly in the dev environment and deploy to the new production environment.
+ Change the instance type value in the configurations file to m4.large by using the update autoscaling group CLI command.
+Unattempted
+Explanation:
+Answer – B
+The Elastic Beanstalk console and EB CLI set configuration options when you create an environment. You can also set configuration options in saved configurations and configuration files. If the same option is set in multiple locations, the value used is determined by the order of precedence.
+Configuration option settings can be composed in text format and saved prior to environment creation, applied during environment creation using any supported client, and added, modified or removed after environment creation.
+
+During environment creation, configuration options are applied from multiple sources with the following precedence, from highest to lowest:
+Settings applied directly to the environment – Settings specified during a create environment or update environment operation on the Elastic Beanstalk API by any client, including the AWS Management Console, EB CLI, AWS CLI, and SDKs. The AWS Management Console and EB CLI also apply recommended values for some options that apply at this level unless overridden.
+Saved Configurations – Settings for any options that are not applied directly to the environment are loaded from a saved configuration, if specified.
+Configuration Files (.ebextensions) – Settings for any options that are not applied directly to the environment, and also not specified in a saved configuration, are loaded from configuration files in the .ebextensions folder at the root of the application source bundle.
+Configuration files are executed in alphabetical order. For example, .ebextensions/01run.config is executed before .ebextensions/02do.config.
+Default Values – If a configuration option has a default value, it only applies when the option is not set at any of the above levels.
+
+If the same configuration option is defined in more than one location, the setting with the highest precedence is applied. When a setting is applied from a saved configuration or settings applied directly to the environment, the setting is stored as part of the environment’s configuration. These settings can be removed with the AWS CLI or with the EB CLI
+.
+Settings in configuration files are not applied directly to the environment and cannot be removed without modifying the configuration files and deploying a new application version. If a setting applied with one of the other methods is removed, the same setting will be loaded from configuration files in the source bundle.
+
+Option A is incorrect since the environment is already managed by the Elastic Beanstalk service and we don’t need Cloudformation for this.
+Option C is incorrect since the changes need to be done for the current configuration.
+
+For more information on making this change, please refer to the below Link:https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.managing.ec2.html
+
+
+
+15. Question
+A developer is writing an application that will store data in a DynamoDB table. The ratio of reads operations to write operations will be 1000 to 1, with the same data being accessed frequently. What should the Developer enable on the DynamoDB table to optimize performance and minimize costs?
+
+ Amazon DynamoDB auto scaling
+ Amazon DynamoDB cross-region replication
+ Amazon DynamoDB Streams
+ Amazon DynamoDB Accelerator		-Correct
+Unattempted
+Answer – D
+The AWS Documentation mentions the following
+DAX is a DynamoDB-compatible caching service that enables you to benefit from fast in-memory performance for demanding applications. DAX addresses three core scenarios:
+1. As an in-memory cache, DAX reduces the response times of eventually-consistent read workloads by an order of magnitude, from single-digit milliseconds to microseconds.
+2. DAX reduces operational and application complexity by providing a managed service that is API-compatible with Amazon DynamoDB, and thus requires only minimal functional changes to use with an existing application.
+3. For read-heavy or bursty workloads, DAX provides increased throughput and potential operational cost savings by reducing the need to over-provision read capacity units. This is especially beneficial for applications that require repeated reads for individual keys.
+
+Option A is incorrect since this is good when you have unpredictable workloads
+Option B is incorrect since this is good for disaster recovery scenarios
+Option C is incorrect since this is good to stream data to other sources
+For more information on DynamoDB Accelerator, please refer to the below Link:
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.html
+
+
+
+16. Question
+You are using AWS SAM templates to deploy a serverless application. Which of the following resource will embed nested application from Amazon S3 buckets?
+
+ AWS::Serverless::Api
+ AWS::Serverless::Application		-Correct
+ AWS::Serverless::LayerVersion
+ AWS::Serverless::Function
+Unattempted
+Correct Answer – B
+AWS::Serverless::Application resource in AWS SAM template is used to embed application from Amazon S3 buckets.
+Option A is incorrect as AWS::Serverless::Api is used for creating API Gateway resources & methods that can be invoked through HTTPS endpoints.
+Option C is incorrect as AWS::Serverless::LayerVersion resource type creates Lambda layered function.
+Option D is incorrect as AWS::Serverless::Function resource describes configuration for creating Lambda function.
+For more information on using AWS SAM templates, refer to the following URL,
+https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-template.html
+
+
+
+17. Question
+You’re developing an AWS Lambda function that is interacting with a DynamoDB table. The function was working well, but now is giving the results with a time delay. You need to debug the code to understand where the bottleneck is which is causing the performance issue. Which of the following is the ideal way to debug the code?
+
+ Use Log statements in the code to detect the delay
+ Use Cloudwatch logs to detect where the delay could be
+ Look at the throttling errors in Cloudwatch metrics
+ Use AWS X-Ray to see where the downstream delay could be		-Correct
+Unattempted
+Answer – D
+With AWS X-Ray, you can actually see traces in your AWS Lambda function which can allow you to see a detailed level of tracing to your downstream services. The below snapshot from the AWS documentation shows an example of this.
+
+Option A is incorrect since this is not an efficient way to check for the performance errors.
+
+Option B is incorrect since the logs might not be able to give you that level of tracing to detect the error
+Option C is incorrect since throttling errors will not give you the cause of the performance issue
+For more information on using AWS Lambda with X-Ray, please refer to the below Link:
+https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html
+
+
+
+18. Question
+An application hosted in AWS has been configured to use a DynamoDB table. A number of items are written to the DynamoDB table. These items are only accessed in a particular time frame, after which they can be deleted. Which of the following is an ideal way to manage the deletion of the stale items?
+
+ Perform a scan on the table for the stale items and issue the Delete operation.
+ Create an additional column to store the date. Perform a query for the stale objects and the perform the Delete operation.
+ Enable versioning for the items in DynamoDB and delete the last accessed version.
+ Enable TTL for the items in DynamoDB		-Correct
+Unattempted
+Answer – D
+The AWS Documentation mentions the following
+Time To Live (TTL) for DynamoDB allows you to define when items in a table expire so that they can be automatically deleted from the database.
+TTL is provided at no extra cost as a way to reduce storage usage and reduce the cost of storing irrelevant data without using provisioned throughput. With TTL enabled on a table, you can set a timestamp for deletion on a per-item basis, allowing you to limit storage usage to only those records that are relevant.
+Options A and B are incorrect since these would not be cost effective and have a performance issue on the underlying DynamoDB table.
+Option C is incorrect since versioning is not possible in DynamoDB.
+For more information on Time to Live for items in DynamoDB, please refer to the below Link:
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html
+
+
+
+19. Question
+You are using AWS Envelope Encryption to encrypt all of your sensitive data. Which of the following is true with regards to the AWS Envelope Encryption service?
+
+ First, the data is encrypted using an encrypted Data Key. The encrypted Data Key is then further encrypted using an encrypted Master Key.
+ First, the data is encrypted using a plaintext Data Key. The Data Key is then further encrypted using an encrypted Master Key.
+ First, the data is encrypted using an encrypted Data Key. The encrypted Data Key is then further encrypted using a plaintext Master Key.
+ First, the data is encrypted using a plaintext Data Key. The Data Key is then further encrypted using a plaintext Master Key.		-Correct
+Unattempted
+Correct Answer – D
+With Envelope Encryption, unencrypted data is encrypted using a plaintext Data key. This Data key is further encrypted using a plaintext Master key. This plaintext Master key is securely stored in AWS KMS & known as Customer Master Keys.
+Option A is incorrect as Data Key used for encryption of data is plaintext along with Master key used to encrypt Data Keys.
+Option B is incorrect as the Master key used to encrypt Data Keys is in plaintext format.
+Option C is incorrect as Data Key used for encryption of data is in plaintext format.
+For more information on AWS KMS Envelope Encryption, refer to the following URL,https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html
+
+
+
+20. Question
+Your team has been instructed on deploying a Microservices and an ETL based application on AWS. There is a requirement to manage the orchestration of application. Which of the following would the ideal way to implement this with the least amount of administrative effort?
+
+ Use the Elastic Beanstalk Service
+ Use the Elastic Container Service		-Correct
+ Deploy Kubernetes on EC2 Instances
+ Use the Opswork service
+Unattempted
+Answer – B
+The Elastic Container service is a fully managed orchestration service available in AWS.
+The AWS Documentation mentions the following
+Amazon Elastic Container Service (Amazon ECS) is a highly scalable, high-performance container orchestration service that supports Docker containers and allows you to easily run and scale containerized applications on AWS. Amazon ECS eliminates the need for you to install and operate your own container orchestration software, manage and scale a cluster of virtual machines, or schedule containers on those virtual machines.
+Options A and D are incorrect since they can be used to effectively manage Docker Containers. But for a fully orchestration service, use the Elastic Container Service
+Option C is incorrect since even though Kubernetes is a fully managed solution, hosting it on EC2 Instances will incur more administrative headache
+For more information on Amazon ECS, please refer to the below Link:
+https://aws.amazon.com/ecs/
+The following diagram illustrates an architectural implementation of microservices on AWS.
+
+The API of a microservice is the central entry point for all client requests. The application logic hides behind a set of programmatic interfaces, typically a RESTful web services API. This API accepts and processes calls from clients and might implement functionality such as traffic management, request filtering, routing, caching, and authentication and authorization.
+Many AWS customers use the Elastic Load Balancing (ELB) Application Load Balancer together with Amazon EC2 Container Service (Amazon ECS) and Auto Scaling to implement a microservices application. The Application Load Balancer routes traffic based on advanced application-level information that includes the content of the request.
+For more information please refer:https://docs.aws.amazon.com/aws-technical-content/latest/microservices-on-aws/simple-microservices-architecture-on-aws.html
+
+
+
+21. Question
+You are developing an application that will interact with a DynamoDB table. The table is going to take in a lot of read and write operations. Which of the following would be the ideal partition key for the DynamoDB table to ensure ideal performance?
+
+ CustomerID		-Correct
+ CustomerName
+ Location
+ Age
+Unattempted
+Answer – A
+The AWS Documentation gives the ideal way to construct partition Keys
+Recommendations for partition keys
+Use high-cardinality attributes. These are attributes that have distinct values for each item, like e-mailid, employee_no, customerid, sessionid, orderid, and so on.
+Use composite attributes. Try to combine more than one attribute to form a unique key, if that meets your access pattern. For example, consider an orders table with customerid+productid+countrycode as the partition key and order_date as the sort key.
+In such a scenario all other options become invalid since they are not the ideal candidates for partition keys.
+For more information on choosing the right partition Key, please refer to the below Link:
+https://aws.amazon.com/blogs/database/choosing-the-right-dynamodb-partition-key/
+
+
+
+22. Question
+You are developing an application that will be comprised of the following architecture –
+1. A set of EC2 instances to process the videos.
+2. These (EC2 instances) will be spun up by an Autoscaling group.
+3. SQS Queues to maintain the processing messages.
+4. There will be 2 pricing tiers.
+How will you ensure that the premium customers’ videos are given more preference?
+
+ Create 2 Autoscaling Groups, one for normal and one for premium customers
+ Create 2 sets of EC2 Instances, one for normal and one for premium customers
+ Create 2 SQS queues, one for normal and one for premium customers		-Correct
+ Create 2 Elastic Load Balancers, one for normal and one for premium customers
+Unattempted
+Answer – C
+The ideal option would be to create 2 SQS queues. Messages can then be processed by the application from the high priority queue first.
+The other options are not the ideal options. They would lead to extra cost and also for extra maintenance
+For more information on SQS, please refer to the below Link:
+https://aws.amazon.com/sqs/
+
+
+
+23. Question
+You have currently defined the following set of stages in CodePipeline?
+
+Source –> Build –> Staging
+What happens if there is a failure which is detected at the Build Stage?
+You have currently defined the following set of stages in CodePipeline?
+
+Source –> Build –> Staging
+What happens if there is a failure which is detected at the Build Stage?
+
+ A rollback will happen at the Source stage.
+ The Build will be tried again
+ The Build step will be skipped, and the Staging stage will be started.
+ The entire process will stop		-Correct
+Unattempted
+Answer – D
+The AWS Documentation mentions the following
+In AWS CodePipeline, an action is a task performed on an artifact in a stage. If an action or a set of parallel actions is not completed successfully, the pipeline stops running.
+Options A,B and C are incorrect since the default action will be that the entire pipeline will be stopped if the build does not succeed.
+For more information on Actions retry, please refer to the below Link:
+https://docs.aws.amazon.com/codepipeline/latest/userguide/actions-retry.html
+
+
+
+24. Question
+Your architect has drawn out the details for a mobile based application. Below are the key requirements when it comes to authentication:
+– Users should have the ability to sign-in using external identities such as Facebook or Google.
+– There should be a facility to manage user profiles Which of the following would you consider as part of the development process for the application?
+
+ Consider using IAM Roles which can be mapped to the individual users
+ Consider using User pools in AWS Cognito		-Correct
+ Consider building the logic into the application
+ Consider using SAML federation identities
+Unattempted
+Answer – B
+The AWS Documentation mentions the following
+User pools provide:
+Sign-up and sign-in services.
+A built-in, customizable web UI to sign in users.
+Social sign-in with Facebook, Google, and Login with Amazon, as well as sign-in with SAML identity providers from your user pool.
+User directory management and user profiles.
+Security features such as multi-factor authentication (MFA), checks for compromised credentials, account takeover protection, and phone and email verification.
+Customized workflows and user migration through AWS Lambda triggers.
+
+Options A and C is incorrect since this would require a lot of effort to develop and maintain
+Option D is incorrect since this is normally used for external directories such as Active Directory
+For more information on user identity pools, please refer to the below Link:
+https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html
+
+
+
+25. Question
+You are using AWS DynamoDB as a database to save sales data for a global appliance company. All data at rest is encrypted using AWS KMS. Which of the following can be used for encryption of global secondary indexes with minimum cost ?
+
+ Data Keys with AWS Managed CMK.
+ Table Keys with AWS Managed CMK.
+ Table Keys with AWS owned CMK.		-Correct
+ Data Keys with AWS owned CMK
+Unattempted
+Correct Answer – C
+DynamoDB uses the CMK to generate and encrypt a unique data key for the table, known as the table key. With DynamoDB, AWS Owned, or AWS Managed CMK can be used to generate & encrypt keys. AWS Owned CMK is free of charge while AWS Managed CMK is chargeable. Customer managed CMK’s are not supported with encryption at rest. “With encryption at rest, DynamoDB transparently encrypts all customer data in a DynamoDB table, including its primary key and local and global secondary indexes, whenever the table is persisted to disk
+Option A is incorrect as AWS DynamoDB uses Table keys & not Data keys to encrypt global secondary tables. Also, AWS managed CMK with incur charges.
+Option B is incorrect as AWS managed CMK with incur charges.
+Option D is incorrect as AWS DynamoDB uses Table keys & not Data keys to encrypt global secondary tables.
+
+For more information on AWS KMS, refer to the following URL,https://docs.aws.amazon.com/kms/latest/developerguide/services-dynamodb.html
+
+
+
+26. Question
+Your company is going to develop an application in .Net Core which is going to work with a DynamoDB table. There is a requirement that all data needs to be encrypted at rest. How can you achieve this?
+
+ Nothing, since Server-side encryption is enabled on all DynamoDB table data.		-Correct
+ Enable Encryption on the existing table
+ You cannot enable encryption at rest , consider using the AWS RDS service instead
+ You cannot enable encryption at rest , consider using the S3 service instead
+Unattempted
+Answer – A
+Option B is incorrect since Encryption can only be configured during table creation time
+Options C and D are incorrect since Encryption is possible in DynamoDB
+The AWS Documentation mentions the following
+Amazon DynamoDB offers fully managed encryption at rest. DynamoDB encryption at rest provides enhanced security by encrypting your data at rest using an AWS Key Management Service (AWS KMS) managed encryption key for DynamoDB. This functionality eliminates the operational burden and complexity involved in protecting sensitive data.
+For more information on DynamoDB Encryption at rest, please refer to the below Link:
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/EncryptionAtRest.html
+
+
+
+27. Question
+You have been instructed to manage the deployments of an application onto Elastic Beanstalk. Since this is just a development environment, you have been told to ensure that the least amount of time is taken for each deployment. Which of the following deployment mechanism would you consider based on this requirement.
+
+ All at once		-Correct
+ Rolling
+ Immutable
+ Rolling with additional batch
+Unattempted
+Answer – A
+Below is the screenshot of the deployment options. The ‘All at once’ is the least deployment option.
+
+Based on the above screenshot , all the other options become invalid.
+
+For more information on the deployment options, please refer to the below Link:
+https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.deploy-existing-version.html
+
+
+
+28. Question
+You’re developing an application on AWS which is based on the Microservices. These Microservices will be created based on AWS Lambda functions. Because of the complexity of the flow of these different components, you need some way to manage the workflow of execution of these various Lambda functions. How could you manage this effectively now and for future addition of Lambda functions to the application?
+
+ Consider creating a master Lambda function which would coordinate the execution of the other Lambda functions.
+ Consider creating a separate application hosted on an EC2 Instance which would coordinate the execution of the other Lambda functions
+ Consider using Step Functions to coordinate the execution of the other Lambda functions		-Correct
+ Consider using SQS queues to coordinate the execution of the other Lambda functions
+Unattempted
+Answer – C
+The best way to manage this is to use Step Functions. The AWS Documentation mentions the following about Step Functions
+AWS Step Functions is a web service that enables you to coordinate the components of distributed applications and microservices using visual workflows. You build applications from individual components that each perform a discrete function, or task, allowing you to scale and change applications quickly. Step Functions provides a reliable way to coordinate components and step through the functions of your application.
+Options A and B are invalid. Even though feasible, it would just bring too much of effort and maintenance into the entire system
+Option D is invalid because this is good in managing the messaging between distributed components of an application.
+For more information on Step Functions, please refer to the below Link:
+https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html
+
+
+
+29. Question
+You are developing an application that will be used to receive data from multiple devices. You need to ensure that some preprocessing happens on the data before it can be analyzed by your Analytics based tool. Which of the following can be used to carry out this intermediate activity?
+
+ Use Step Functions to pre-process the data
+ Use Kinesis with AWS Lambda functions to pre-process the data		-Correct
+ Use the API gateway service to pre-process the data
+ Use ELB to pre-process the data
+Unattempted
+Answer – B
+The AWS Documentation mentions the following
+Many customers use Amazon Kinesis to ingest, analyze, and persist their streaming data. One of the easiest ways to gain real-time insights into your streaming data is to use Kinesis Analytics. It enables you to query the data in your stream or build entire streaming applications using SQL. Customers use Kinesis Analytics for things like filtering, aggregation, and anomaly detection.
+Kinesis Analytics now gives you the option to preprocess your data with AWS Lambda. This gives you a great deal of flexibility in defining what data gets analyzed by your Kinesis Analytics application. You can also define how that data is structured before it is queried by your SQL.
+Option A is incorrect since this service is used to coordinate different parts of a distributed application
+Option C is incorrect since this service is used to give a pathway to your API services
+Option D is incorrect since this service is used for streaming data
+For more information on preprocessing data in Kinesis, please refer to the below Link:
+https://aws.amazon.com/blogs/big-data/preprocessing-data-in-amazon-kinesis-analytics-with-aws-lambda/
+
+
+
+30. Question
+Your team has completed the development of an application and now this needs to be deployed to an application on an EC2 Instance. The Application data will be stored on a separate volume which needs to be encrypted at rest. How can you ensure this requirement is met?
+
+ Ensure that Encryption is enabled during volume creation time.		-Correct
+ Ensure to use Throughput Optimized HDD to allow for Encryption
+ Create a Customer master key in the KMS service
+ Create an EBS Encryption Key
+Unattempted
+Answer – A
+The AWS Documentation mentions the following
+Amazon EBS encryption uses AWS Key Management Service (AWS KMS) customer master keys (CMKs) when creating encrypted volumes and any snapshots created from them. A unique AWS-managed CMK is created for you automatically in each region where you store AWS assets. This key is used for Amazon EBS encryption.
+Option B is incorrect since Encryption is possible on all EBS volume types
+Option C is incorrect because encryption of an ebs volume can be done without generating a CMK in the console.
+Option D is incorrect since you need to create the Encryption Key in the KMS service
+For more information on EBS Encryption, please refer to the below Link:https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html
+
+
+
+31. Question
+You’ve been given the requirement to customize the content which is distributed to users via a Cloudfront Distribution. The content origin is an S3 bucket. How could you achieve this?
+
+ Add an event to the S3 bucket. Make the event invoke a Lambda function which would customize the content.
+ Add a Step Function. Add a step with a Lambda function just before the content gets delivered to the users.
+ Consider using Lambda@Edge		-Correct
+ Consider using a separate application on an EC2 Instance for this purpose.
+Unattempted
+Answer – C
+The AWS Documentation mentions the following
+Lambda@Edge is an extension of AWS Lambda, a compute service that lets you execute functions that customize the content that CloudFront delivers. You can author functions in one region and execute them in AWS locations globally that are closer to the viewer, without provisioning or managing servers. Lambda@Edge scales automatically, from a few requests per day to thousands per second. Processing requests at AWS locations closer to the viewer instead of on origin servers significantly reduces latency and improves the user experience.
+All other options are incorrect since none of these are valid ways to customize content via Cloudfront distributions.
+For more information on Lambda@Edge, please refer to the below Link:
+https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-at-the-edge.html
+
+
+
+32. Question
+Your team has been instructed to develop a completely new solution onto AWS. Currently you have a limitation on the tools available to manage the complete lifecycle of the project. Which of the following service from AWS could help you in this aspect
+
+ AWS CodePipeline
+ AWS CodeBuild
+ AWS CodeCommit
+ AWS CodeStar		-Correct
+Unattempted
+Answer – D
+The AWS Documentation mentions the following
+AWS CodeStar is a cloud-based service for creating, managing, and working with software development projects on AWS. You can quickly develop, build, and deploy applications on AWS with an AWS CodeStar project. An AWS CodeStar project creates and integrates AWS services for your project development toolchain. Depending on your choice of AWS CodeStar project template, that toolchain might include source control, build, deployment, virtual servers or serverless resources, and more. AWS CodeStar also manages the permissions required for project users (called team members). By adding users as team members to an AWS CodeStar project, project owners can quickly and simply grant each team member role-appropriate access to a project and its resources.
+Option A is incorrect since this service is used for managing CI/CD pipelines
+Option B is incorrect since this service is used for managing code builds
+Option C is incorrect since this service is used for managing source code versioning repositories
+For more information on AWS CodeStar, please refer to the below Link:
+https://docs.aws.amazon.com/codestar/latest/userguide/welcome.html
+
+
+
+33. Question
+Your team has just finished developing a new version of an existing application. This is a web-based application hosted on AWS. Currently Route 53 is being used to point the company’s DNS name to the web site. Your Management has instructed you to deliver the new application to a portion of the users for testing. How can you achieve this?
+
+ Port the application onto Elastic beanstalk and use the Swap URL feature
+ Use Route 53 weighted Routing policies		-Correct
+ Port the application onto Opswork by creating a new stack
+ Use Route 53 failover Routing policies
+Unattempted
+Answer – B
+The AWS Documentation mentions the following to support this
+Weighted Routing
+Weighted routing lets you associate multiple resources with a single domain name (example.com) or subdomain name (acme.example.com) and choose how much traffic is routed to each resource. This can be useful for a variety of purposes, including load balancing and testing new versions of software.
+To configure weighted routing, you create records that have the same name and type for each of your resources. You assign each record a relative weight that corresponds with how much traffic you want to send to each resource. Amazon Route 53 sends traffic to a resource based on the weight that you assign to the record as a proportion of the total weight for all records in the group:
+Formula for how much traffic is routed to a given resource:
+
+weight for a specified record / sum of the weights for all records.
+
+For example, if you want to send a tiny portion of your traffic to one resource and the rest to another resource, you might specify weights of 1 and 255. The resource with a weight of 1 gets 1/256th of the traffic (1/1+255), and the other resource gets 255/256ths (255/1+255). You can gradually change the balance by changing the weights. If you want to stop sending traffic to a resource, you can change the weight for that record to 0.
+Options A and C is incorrect since this would cause a full flown deployment of the new app and is just a maintenance overhead to port the application to a new service environment
+Option D is incorrect since this should only be used for failover conditions
+For more information on the weighted routing policy, please refer to the below Link:
+https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-weighted
+
+
+
+34. Question
+Your AWS Lambda function writes to an S3 bucket. Which of the following is best practice to pass operational parameters, such as the bucket name, to your Lambda function?
+
+ Configure Amazon S3 bucket name with AWS Lambda Environment Variables		-Correct
+ Hard Code Amazon S3 bucket name to Lambda Function.
+ Configure Amazon S3 bucket name with AWS Lambda Function Variables
+ Configure an Alias with Amazon S3 bucket name & pass it to Lambda Function.
+Unattempted
+Correct Answer – A
+For Lambda functions, Environment variables can be enabled to dynamically pass settings to function code and libraries, without making changes to your code. Environment variables are key-value pairs which are created as a part of function configuration. In above requirement, instead of hard coding S3 bucket name in Lambda function , its can be pass as an environmental variable.
+Option B is incorrect as Hard coding S3 Bucket name in a Lambda function is not a best practice.
+Option C is incorrect as Function Variables enables one or more Lambda functions to be published while environmental variables allow to dynamically pass settings to function codes. In the above case, the S3 bucket name needs to be passed as a setting to function codes.
+Option D is incorrect as this is not a correct way of passing S3 bucket name to a Lambda function.
+
+For more information on AWS Lambda Environment Variables, refer to the following URL,https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html
+
+
+
+35. Question
+You have a number of Lambda functions that need to be deployed using AWS CodeDeploy. The lambda functions have gone through multiple code revisions and versioning in Lambda is being used to maintain the revisions. Which of the following must be done to ensure that the right version of the function is deployed in AWS CodeDeploy?
+
+ Specify the version to be deployed in the AppSpec file.		-Correct
+ Specify the version to be deployed in the BuildSpec file
+ Create a Lambda function environment variable called ‘VER’ and mention the version that needs to be deployed.
+ Create an ALIAS for the Lambda function. Mark this as the recent version. Use this ALIAS in CodeDeploy.
+Unattempted
+Answer – A
+The AWS Documentation mentions the following
+If your application uses the AWS Lambda compute platform, the AppSpec file can be formatted with either YAML or JSON. It can also be typed directly into an editor in the console. The AppSpec file is used to specify:
+The AWS Lambda function version to deploy.
+The functions to be used as validation tests.
+
+All other options are incorrect since the right approach is to use the AppSpec file.
+For more information on the application specification files, please refer to the below Link:
+https://docs.aws.amazon.com/codedeploy/latest/userguide/application-specification-files.html
+
+
+
+36. Question
+You’ve been hired to develop a gaming application for a large company. The application will be developed using AWS resources. You need to ensure the right services are used during the development and subsequent deployment of the application. Which of the following would you consider incorporating to ensure leaderboards can be maintained accurately in the application?
+
+ AWS ElasticBeanstalk
+ AWS ElastiCache – Redis		-Correct
+ AWS ElastiCache – Memcached
+ AWS Opswork
+Unattempted
+Answer – B
+The AWS Documentation mentions the following as one of the key advantages of using AWS Redis ElastiCache
+Gaming Leaderboards (Redis Sorted Sets)
+Redis sorted sets move the computational complexity associated with leaderboards from your application to your Redis cluster.
+Leaderboards, such as the Top 10 scores for a game, are computationally complex, especially with a large number of concurrent players and continually changing scores. Redis sorted sets guarantee both uniqueness and element ordering. Using Redis sorted sets, each time a new element is added to the sorted set it’s reranked in real time. It’s then added to the set in its appropriate numeric position.
+In the following diagram, you can see how an ElastiCache for Redis gaming leaderboard works.
+All other options are invalid since the ideal approach is to use AWS ElastiCache – Redis
+For more information on AWS ElastiCache Redis , please refer to the below Link:
+https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/elasticache-use-cases.html#elasticache-for-redis-use-cases
+
+
+
+37. Question
+You’re developing an application that will be hosted on an EC2 Instance. This will be part of an Autoscaling Group. The application needs to get the private IP of the instance so that it can send it across to a controller-based application. Which of the following can be done to achieve this?
+
+ Query the Instance Meta Data		-Correct
+ Query the Instance User Data
+ Have an Admin get the IP address from the console
+ Make the application run IFConfig
+Unattempted
+Answer – A
+The application can use the application meta data to get the private IP address. The below snapshot from the AWS Documentation shows the information that you can get from the Instance metadata
+
+Option B is invalid because this cannot be used to get the IP address of the instance
+Option C is invalid because this is not an automated approach
+Option D is invalid because we don’t know the type of instance the application is running on.
+For more information on AWS Instance Metadata , please refer to the below link
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html
+
+
+
+38. Question
+You are using S3 buckets to store images. These S3 buckets invoke a lambda function on upload. The Lambda function creates thumbnails of the images and stores them in another S3 bucket. An AWS CloudFormation template is used to create the Lambda function with the resource “AWS::Lambda::Function”. Which of the following functions would Lambda call to execute this?
+
+ FunctionName
+ Layers
+ Environment
+ Handler		-Correct
+Unattempted
+Correct Answer – D
+The handler is the name of the method within a code that Lambda calls to execute the function.
+Option A is incorrect as it is the name of a function,
+Option B is incorrect as it’s a list of function layers which is added to the Lambda function execution environment.
+Option C is incorrect as these are variables which are accessible during Lambda function execution.
+For more information on declaring Lambda Function in AWS CloudFormation Template, refer to the following URL,
+https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html
+
+
+
+39. Question
+You’ve been asked to develop an application on the AWS Cloud. The application will be used to store confidential documents in an S3 bucket. You need to ensure that the bucket is defined in such a way that it does not accept objects that are not encrypted?
+
+ Ensure a condition is set in the bucket policy.		-Correct
+ Ensure that a condition is set in an IAM policy.
+ Enable MFA for the underlying bucket
+ Enable CORS for the underlying bucket
+Unattempted
+Answer – A
+The AWS Documentation gives an example on the same
+
+Option B is incorrect since the condition needs to be put in the Bucket policy.
+Option C is incorrect since this is only used for MFA Delete for accidental deletion of objects.
+Option D is incorrect since CORS is only used for cross domain access.
+For more information on using KMS Encryption for S3, please refer to the below link
+https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html
+
+
+
+40. Question
+Your application has the requirement to store data in a backend data store. Indexing should be possible on the data, but the data does not conform to any schema. Which of the following would be the ideal data store to choose for this application?
+
+ AWS RDS
+ AWS DynamoDB		-Correct
+ AWS Redshift
+ AWS S3
+Unattempted
+Explanation:
+Answer – B
+The below AWS Documentation mentions the differences between AWS DynamoDB and other traditional database systems. One of the major differences is the schemaless nature of the database
+
+Option A is invalid since this is normally used for databases which perform to a particular schema
+Option C is invalid since this is normally used for columnar based databases
+Option D is invalid since this is normally used for object level storage
+For more information on the differences, please refer to the below link
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SQLtoNoSQL.html
+
+
+
+41. Question
+An application is being developed that is going to write data to a DynamoDB table. You have to setup the read and write throughput for the table. Data is going to be read at the rate of 300 items every 30 seconds. Each item is of size 6KB. The reads can be eventual consistent reads. What should be the read capacity that needs to be set on the table?
+
+ 10		-Correct
+ 20
+ 6
+ 30
+Unattempted
+Answer – A
+Since there are 300 items read every 30 seconds, that means there are (300/30) = 10 items read every second.
+Since each item is 6KB in size, that means, 2 reads will be required for each item. the question specified “eventual consistent reads” which means we need to divide by 2 since 1 RCU has two eventually consistent reads.
+So we have a total of (2*10) / 2 = 20 / 2 = 10 reads for the number of items per second
+For more information on Read and Write capacity, please refer to the below linkhttps://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ProvisionedThroughput.html
+
+
+
+42. Question
+You are in charge of deploying an application that will be hosted on an EC2 Instance and sit behind an Elastic Load Balancer. You have been requested to monitor the incoming API connections to the Elastic Load Balancer. Which of the below options can suffice this requirement?
+
+ Use AWS CloudTrail with your load balancer		-Correct
+ Enable access logs on the load balancer
+ Use a CloudWatch Logs Agent by installing on EC2.
+ Create a custom metric CloudWatch filter on your load balancer
+Unattempted
+Answer – A
+The AWS Documentation mentions the following
+Elastic Load Balancing provides access logs that capture detailed information about requests sent to your load balancer. Each log contains information such as the time the request was received, the client’s IP address, latencies, request paths, and server responses. You can use these access logs to analyze traffic patterns and troubleshoot issues.
+Option A is CORRECT because Elastic Load Balancing is integrated with AWS CloudTrail, a service that provides a record of actions taken by a user, role, or an AWS service in Elastic Load Balancing. CloudTrail captures all API calls for Elastic Load Balancing as events. The calls captured include calls from the AWS Management Console and code calls to the Elastic Load Balancing API operations.
+Option B is INCORRECT because enabling access logging on the load balancer would be more apt in case the ELB needs to store logs in a S3 bucket
+Option C is invalid since the Logs agents are installed on EC2 Instances and not on the ELB
+Option D is invalid since the metrics will not provide detailed information on the incoming connections
+
+For more information on Application Load balancer Logs, please refer to the below linkhttps://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html
+
+
+
+43. Question
+You are in charge of developing an application that will make use of AWS services. There is a key requirement from an architecture point of view that the entire system is decoupled to ensure less dependency. Which of the following is an ideal service to use to decouple different parts of a system?
+
+ AWS CodePipeline
+ AWS Simple Queue Service		-Correct
+ AWS Simple Notification Service
+ AWS CodeBuild
+Unattempted
+Answer – B
+The AWS Documentation mentions the following
+Amazon Simple Queue Service (Amazon SQS) offers a secure, durable, and available hosted queue that lets you integrate and decouple distributed software systems and components. Amazon SQS offers common constructs such as dead-letter queues and cost allocation tags. It provides a generic web services API and it can be accessed by any programming language that the AWS SDK supports.
+Option A is incorrect since this service is used to build CI/CD pipelines
+Option C is incorrect since this service is used to send notifications
+Option D is incorrect since this service is used to build applications
+For more information on the Simple Queue Service, please refer to the below link
+https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html
+
+
+
+44. Question
+A static web site has been hosted on a bucket and is now being accessed by users. One of the web pages javascript section has been changed to access data which is hosted in another S3 bucket. Now that same web page is no longer loading in the browser. Which of the following can help alleviate the error?
+
+ Enable versioning for the underlying S3 bucket.
+ Enable Replication so that the objects get replicated to the other bucket
+ Enable CORS for the bucket		-Correct
+ Change the Bucket policy for the bucket to allow access from the other bucket
+Unattempted
+Answer – C
+This is given as use case scenarios in the AWS Documentation
+Cross-Origin Resource Sharing: Use-case Scenarios
+The following are example scenarios for using CORS:
+
+Scenario 1: Suppose that you are hosting a website in an Amazon S3 bucket named website as described in Hosting a Static Website on Amazon S3. Your users load the website endpoint http://website.s3-website-us-east-1.amazonaws.com. Now you want to use JavaScript on the webpages that are stored in this bucket to be able to make authenticated GET and PUT requests against the same bucket by using the Amazon S3 API endpoint for the bucket, website.s3.amazonaws.com. A browser would normally block JavaScript from allowing those requests, but with CORS you can configure your bucket to explicitly enable cross-origin requests from website.s3-website-us-east-1.amazonaws.com.
+Scenario 2: Suppose that you want to host a web font from your S3 bucket. Again, browsers require a CORS check (also called a preflight check) for loading web fonts. You would configure the bucket that is hosting the web font to allow any origin to make these requests.
+
+All other options are invalid since none of these options will help rectify the issue
+For more information on Cross Origin Resource Sharing, please refer to the below link
+https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html
+
+
+
+45. Question
+Your current log analysis application takes more than four hours to generate a report of the top 10 users of your web application. You have been asked to implement a system that can report this information in real time, ensure that the report is always up to date, and handle increases in the number of requests to your web application. Choose the option that is cost-effective and can fulfill the requirements.
+
+ Publish your data to CloudWatch Logs, and configure your application to Autoscale to handle the load on demand.
+ Publish your log data to an Amazon S3 bucket. Use AWS CloudFormation to create an Auto Scaling group to scale your post-processing application which is configured to pull down your log files stored an Amazon S3.
+ Post your log data to an Amazon Kinesis data stream, and subscribe your log-processing application so that is configured to process your logging data.		-Correct
+ Create a multi-AZ Amazon RDS MySQL cluster, post the logging data to MySQL, and run a map reduce job to retrieve the required information on user counts.
+Unattempted
+Answer – C
+When you see Amazon Kinesis as an option, this becomes the ideal option to process data in real time.
+Amazon Kinesis makes it easy to collect, process, and analyze real-time, streaming data so you can get timely insights and react quickly to new information. Amazon Kinesis offers key capabilities to cost effectively process streaming data at any scale, along with the flexibility to choose the tools that best suit the requirements of your application. With Amazon Kinesis, you can ingest real-time data such as application logs, website clickstreams, IoT telemetry data, and more into your databases, data lakes and data warehouses, or build your own real-time applications using this data.
+For more information on AWS Kinesis, please refer to the below link
+https://aws.amazon.com/kinesis/
+
+
+
+46. Question
+You’ve been instructed to develop a mobile application that will make use of AWS services. You need to decide on a data store to store the user sessions. Which of the following would be an ideal data store for session management?
+
+ AWS Simple Storage Service
+ AWS DynamoDB		-Correct
+ AWS RDS
+ AWS Redshift
+Unattempted
+Answer – B
+DynamoDB is a alternative solution which can be used for storage of session management. The latency of access to data is less , hence this can be used as a data store for session management
+Option A is incorrect since this service is used for object level storage
+Option C is incorrect since this service is used for storing relational data
+Option D is incorrect since this service is used as a data warehousing solution.
+For more information on an example on this, please refer to the below link
+https://aws.amazon.com/blogs/aws/scalable-session-handling-in-php-using-amazon-dynamodb/
+
+
+
+47. Question
+Your application currently interacts with a DynamoDB table. Records are inserted into the table via the application. There is now a requirement to ensure that whenever items are updated in the DynamoDB primary table , another record is inserted into a secondary table. Which of the below feature should be used when developing such a solution?
+
+ AWS DynamoDB Encryption
+ AWS DynamoDB Streams		-Correct
+ AWS DynamoDB Accelerator
+ AWSTable Accelerator
+Unattempted
+Answer – B
+This is also mentioned as a use case in the AWS Documentation
+DynamoDB Streams Use Cases and Design Patterns
+This post describes some common use cases you might encounter, along with their design options and solutions, when migrating data from relational data stores to Amazon DynamoDB.
+We will consider how to manage the following scenarios:
+
+How do you set up a relationship across multiple tables in which, based on the value of an item from one table, you update the item in a second table?
+How do you trigger an event based on a particular transaction?
+How do you audit or archive transactions?
+How do you replicate data across multiple tables (similar to that of materialized views/streams/replication in relational data stores)?
+
+Relational databases provide native support for transactions, triggers, auditing, and replication. Typically, a transaction in a database refers to performing create, read, update, and delete (CRUD) operations against multiple tables in a block. A transaction can have only two states—success or failure. In other words, there is no partial completion.
+As a NoSQL database, DynamoDB is not designed to support transactions. Although client-side libraries are available to mimic the transaction capabilities, they are not scalable and cost-effective. For example, the Java Transaction Library for DynamoDB creates 7N+4 additional writes for every write operation. This is partly because the library holds metadata to manage the transactions to ensure that it’s consistent and can be rolled back before commit.
+You can use DynamoDB Streams to address all these use cases. DynamoDB Streams is a powerful service that you can combine with other AWS services to solve many similar problems. When enabled, DynamoDB Streams captures a time-ordered sequence of item-level modifications in a DynamoDB table and durably stores the information for up to 24 hours. Applications can access a series of stream records, which contain an item change, from a DynamoDB stream in near real time.
+AWS maintains separate endpoints for DynamoDB and DynamoDB Streams. To work with database tables and indexes, your application must access a DynamoDB endpoint. To read and process DynamoDB Streams records, your application must access a DynamoDB Streams endpoint in the same Region.
+All of the other options are incorrect since none of these would meet the core requirement.
+For more information on use cases and design patterns for DynamoDB streams, please refer to the below link
+https://aws.amazon.com/blogs/database/dynamodb-streams-use-cases-and-design-patterns/
+
+
+
+48. Question
+An application has been making use of AWS DynamoDB for its back-end data store. The size of the table has now grown to 20 GB , and the scans on the table are causing throttling errors. Which of the following should now be implemented to avoid such errors?
+
+ Large Page size
+ Reduced page size		-Correct
+ Parallel Scans
+ Sequential scans
+Unattempted
+Answer – B
+
+When you scan your table in Amazon DynamoDB, you should follow the DynamoDB best practices for avoiding sudden bursts of read activity.
+You can use the following technique to minimize the impact of a scan on a table’s provisioned throughput.
+
+Reduce page size
+Because a Scan operation reads an entire page (by default, 1 MB), you can reduce the impact of the scan operation by setting a smaller page size. The Scan operation provides a Limit parameter that you can use to set the page size for your request. Each Query or Scan request that has a smaller page size uses fewer read operations and creates a “pause” between each request. For example, suppose that each item is 4 KB and you set the page size to 40 items. A Query request would then consume only 20 eventually consistent read operations or 40 strongly consistent read operations. A larger number of smaller Query or Scan operations would allow your other critical requests to succeed without throttling.
+For more information, please check below AWS Docs:
+https://aws.amazon.com/blogs/developer/rate-limited-scans-in-amazon-dynamodb/
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-query-scan.html
+
+
+
+49. Question
+Your company is planning on creating new development environments in AWS. They want to make use of their existing Chef recipes which they use for their on-premise configuration for servers in AWS. Which of the following service would be ideal to use in this regard?
+
+ AWS Elastic Beanstalk
+ AWS OpsWorks		-Correct
+ AWS Cloudformation
+ AWS SQS
+Unattempted
+Answer – B
+The AWS Documentation mentions the following
+AWS OpsWorks is a configuration management service that provides managed instances of Chef and Puppet. Chef and Puppet are automation platforms that allow you to use code to automate the configurations of your servers. OpsWorks lets you use Chef and Puppet to automate how servers are configured, deployed, and managed across your Amazon EC2 instances or on-premises compute environments
+All other options are invalid since they cannot be used to work with Chef recipes for configuration management.
+For more information on AWS Opswork, please refer to the below link
+https://aws.amazon.com/opsworks/
+
+
+
+50. Question
+Your company has developed a web application and is hosting it in an Amazon S3 bucket configured for static website hosting. The users can log in to this app using their Google/Facebook login accounts. The application is using the AWS SDK for JavaScript in the browser to access data stored in an Amazon DynamoDB table. How can you ensure that API keys for access to your data in DynamoDB are kept secure?
+
+ Create an Amazon S3 role in IAM with access to the specific DynamoDB tables, and assign it to the bucket hosting your website.
+ Configure S3 bucket tags with your AWS access keys for your bucket hosing your website so that the application can query them for access.
+ Configure a web identity federation role within IAM to enable access to the correct DynamoDB resources and retrieve temporary credentials.		-Correct
+ Store AWS keys in global variables within your application and configure the application to use these credentials when making requests.
+Unattempted
+Answer – C
+With web identity federation, you don’t need to create custom sign-in code or manage your own user identities. Instead, users of your app can sign in using a well-known identity provider (IdP) —such as Login with Amazon, Facebook, Google, or any other OpenID Connect (OIDC)-compatible IdP, receive an authentication token, and then exchange that token for temporary security credentials in AWS that map to an IAM role with permissions to use the resources in your AWS account. Using an IdP helps you keep your AWS account secure, because you don’t have to embed and distribute long-term security credentials with your application.
+Option A is invalid since Roles cannot be assigned to S3 buckets
+Options B and D are invalid since the AWS Access keys should not be used
+For more information on Web Identity Federation, please refer to the below link AWS
+https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc.html
+
+
+
+51. Question
+You are planning on deploying a built application onto an EC2 Instance. There will be a number of tests conducted on this Instance. You want to have the ability to capture the logs from the web server so that it can help diagnose any issues if they occur? How can you achieve this?
+
+ Enable Cloudtrail for the region
+ Install the Cloudwatch agent on the Instance		-Correct
+ Use the VPC Flow logs to get the logs from the Instance
+ Create a dashboard for the key Cloudwatch metrics
+Unattempted
+Answer – B
+You can install the Cloudwatch agent on the machine and then configure it to send the logs for the web server to a central location in Cloudwatch.
+Option A is invalid since this is used for API monitoring activity
+Option C is invalid since this is used for just getting the network traffic coming to an Instance hosted in a VPC
+Option D is invalid since this will not give the detailed level of logs which is required.
+For more information on the Cloudwatch agent, please refer to the below link
+https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html
+
+
+
+52. Question
+Your application currently makes use of AWS Cognito for managing user identities. You want to analyze the information that is stored in AWS Cognito for your application. Which of the following features of AWS Cognito should you use for this purpose?
+
+ Cognito Data
+ Cognito Events
+ Cognito Streams		-Correct
+ Cognito Callbacks
+Unattempted
+Answer – C
+The AWS Documentation mentions the following
+Amazon Cognito Streams gives developers control and insight into their data stored in Amazon Cognito. Developers can now configure a Kinesis stream to receive events as data is updated and synchronized. Amazon Cognito can push each dataset change to a Kinesis stream you own in real time.
+All other options are invalid since you should use Cognito Streams
+For more information on Cognito Streams, please refer to the below link
+https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-streams.html
+
+
+
+53. Question
+You’ve currently been tasked to migrate an existing on-premise environment into Elastic Beanstalk. The application does not make use of Docker containers. You also can’t see any relevant environments in the beanstalk service that would be suitable to host your application. What should you consider doing in this case?
+
+ Migrate your application to using Docker containers and then migrate the app to the Elastic Beanstalk environment.
+ Consider using Cloudformation to deploy your environment to Elastic Beanstalk
+ Consider using Packer to create a custom platform		-Correct
+ Consider deploying your application using the Elastic Container Service
+Unattempted
+Answer – C
+The AWS Documentation mentions the following to support this
+Custom Platforms
+Elastic Beanstalk supports custom platforms. A custom platform is a more advanced customization than a Custom Image in several ways. A custom platform lets you develop an entire new platform from scratch, customizing the operating system, additional software, and scripts that Elastic Beanstalk runs on platform instances. This flexibility allows you to build a platform for an application that uses a language or other infrastructure software, for which Elastic Beanstalk doesn’t provide a platform out of the box. Compare that to custom images, where you modify an AMI for use with an existing Elastic Beanstalk platform, and Elastic Beanstalk still provides the platform scripts and controls the platform’s software stack. In addition, with custom platforms you use an automated, scripted way to create and maintain your customization, whereas with custom images you make the changes manually over a running instance.
+To create a custom platform, you build an Amazon Machine Image (AMI) from one of the supported operating systems—Ubuntu, RHEL, or Amazon Linux (see the flavor entry in Platform.yaml File Format for the exact version numbers)—and add further customizations. You create your own Elastic Beanstalk platform using Packer, which is an open-source tool for creating machine images for many platforms, including AMIs for use with Amazon EC2. An Elastic Beanstalk platform comprises an AMI configured to run a set of software that supports an application, and metadata that can include custom configuration options and default configuration option settings.
+Options A and D are invalid because it could require a lot of effort to migrate the application to start using Docker containers
+Option B is invalid because using Cloudformation alone cannot be used alone for this requirement
+For more information on Custom Platforms, please refer to the below linkhttps://docs.aws.amazon.com/elasticbeanstalk/latest/dg/custom-platforms.html
+
+
+
+54. Question
+Company B is writing 10 items to the DynamoDB table every second. Each item is 15.5Kb in size. What would be the required provisioned write throughput for best performance? Choose the correct answer from the options below.
+
+ 10
+ 160		-Correct
+ 155
+ 16
+Unattempted
+Answer – B
+As per the documentation, when working with write capacity, the rule is to divide the item size by 1KB. Hence, 15.5 divided by 1 is 15.5, and when we round-off to the nearest 1KB value it’s 16. Since we are writing 10 items per second, we need to multiply 10*16 = 160.
+For more information on Read and Write capacity, please refer to the below linkhttps://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ProvisionedThroughput.html
+
+
+
+55. Question
+You have created REST API using API Gateway. Which of the following mechanism can be used to deny specific IP Address from accessing API Gateway? Select 2 correct options.
+
+ AWS KMS
+ AWS Security Center
+ Resource Policies		-Correct
+ AWS WAF		-Correct
+Unattempted
+Correct Answer – C and D
+Option A is incorrect as AWS Key Management Service (KMS) is an encryption and key management service scaled for the cloud.
+Option B is incorrect as AWS Security Center is a central location from which you can receive security updates and where you can report any security concerns.
+Option C is correct as Resource Policies for API Gateway allows you to deny or permit a specific IP address from where API Gateway can be accessed.
+Option D is correct because you can use AWS WAF for your Amazon API Gateway APIs to protect from attacks such as SQL injection and Cross-Site Scripting (XSS). Additionally, you can filter web requests based on IP address, geographic area, request size, and/or string or regular expression patterns using the rules.
+Please refer the below link
+https://aws.amazon.com/about-aws/whats-new/2018/10/amazon-api-gateway-adds-support-for-aws-waf/
+
+
+
+56. Question
+You are working on a mobile application which will be using AWS ElastiCache for caching application data to reduce latency & improve throughput. You have been asked by management team to evaluate both in-memory cache supported by AWS ElastiCache engines – Memcached and Redis. Which of the following features are available only with Memcached which you should consider while developing the application? (Select Two.)
+
+ Simple data types		-Correct
+ Pub/Sub capability support.
+ Multithreaded performance with utilization of multiple cores		-Correct
+ Data replication to multiple AZ’s.Data persistence
+Unattempted
+Correct Answer – A, C
+AWS ElastiCache Memcached cache engine supports multithreaded performance with the utilization of multiple cores & simple data types & objects like a database.
+Options B & D are incorrect as these features are available with AWS ElastiCache Redis Cache engine.
+For more information on Comparison between Memcached and Redis, refer to the following URLs,https://aws.amazon.com/elasticache/redis-vs-memcached/https://d0.awsstatic.com/whitepapers/performance-at-scale-with-amazon-elasticache.pdf
+
+
+
+57. Question
+An organization deployed their static website on Amazon S3. Now, the Developer has a requirement to serve dynamic content using a serverless solution. Which combination of services should be used to implement a serverless application for the dynamic content? Select 2 answers from the options given below
+
+ Amazon API Gateway		-Correct
+ Amazon EC2
+ AWS ECS
+ AWS Lambda		-Correct
+ Amazon kinesis
+Unattempted
+Answer – A and D
+Out of the above list, Given the scenerio, API Gateway and AWS Lambda are the best two choices to build this serverless application.
+The AWS Documentation mentions the following
+AWS Lambda lets you run code without provisioning or managing servers. You pay only for the compute time you consume – there is no charge when your code is not running.
+For more information on AWS Lambda, please refer to the below Link:
+https://aws.amazon.com/lambda/
+
+Amazon API Gateway is a fully managed service that makes it easy for developers to create, publish, maintain, monitor, and secure APIs at any scale.
+https://aws.amazon.com/api-gateway/
+
+All other services are based on managing infrastructure.
+
+
+
+58. Question
+An organization has an Amazon Aurora RDS instance that handles all of its AWS-based e-commerce activity. The application accessing the database needs to create large sales reports on an hourly basis, running 15 minutes after the hour. This reporting activity is slowing down the e-commerce application.
+
+ Point the reporting application to the read replica		-Correct
+ Migrate the data to a set of highly available Amazon EC2 instances
+ Use SQS Buffering to retrieve data for reports
+ Create a read replica of the database		-Correct
+ Create an SQS queue to implement SQS Buffering
+Unattempted
+Answer – A and D
+The AWS Documentation mentions the following
+Amazon RDS Read Replicas provide enhanced performance and durability for database (DB) instances. This feature makes it easy to elastically scale out beyond the capacity constraints of a single DB instance for read-heavy database workloads. You can create one or more replicas of a given source DB Instance and serve high-volume application read traffic from multiple copies of your data, thereby increasing aggregate read throughput.
+Option B is incorrect, since the AWS RDS service already has features to support the requirement
+Options C and E are incorrect since using SQS would be inefficient.
+For more information on AWS Read Replica’s, please refer to the below Link:
+https://aws.amazon.com/rds/details/read-replicas/
+
+
+
+59. Question
+An organization is using AWS Elastic Beanstalk for a web application. The Developer needs to configure the Elastic Beanstalk environment with deployment methods that will create new instances and deploy code to those instances.
+Which methods will deploy code ONLY to new instances? Choose 2 answers from the options given below.
+
+ All at once deployment
+ Immutable deployment		-Correct
+ Rolling deployment
+ Linear deployment
+ Blue/Green deployment		-Correct
+Unattempted
+Answer – B and E
+The AWS Documentation mentions the following
+Immutable deployments perform an immutable update to launch a full set of new instances running the new version of the application in a separate Auto Scaling group, alongside the instances running the old version. Immutable deployments can prevent issues caused by partially completed rolling deployments. If the new instances don’t pass health checks, Elastic Beanstalk terminates them, leaving the original instances untouched.
+And with Blue Green deployments, you can have a separate deployment environment as well.
+All other options are invalid since these would not allow deployment onto separate environments.
+For more information on Deployment options, please refer to the below Link:
+https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.rolling-version-deploy.html
+https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.CNAMESwap.html
+
+
+
+60. Question
+You are an API developer that has been hired to work in a company. You have been asked to use the AWS services for development and deployment via the API gateway. You need to control the behavior of the API’s frontend interaction. Which of the following could be done to achieve this?
+Select 2 options.
+
+ Modify the configuration of the Method request		-Correct
+ Modify the configuration of the Integration request
+ Modify the configuration of the Method response		-Correct
+ Modify the configuration of the Integration response
+Unattempted
+Answer – A and C
+This is also mentioned in the AWS Documentation
+As an API developer, you control the behaviors of your API’s frontend interactions by configuring the method request and a method response. You control the behaviors of your API’s backend interactions by setting up the integration request and integration response. These involve data mappings between a method and its corresponding integration
+Options B and D are incorrect since these are used control the behaviors of your API’s backend interactions
+For more information on creating an API via the gateway, please refer to the below Link:
+https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-api-from-example-console.html
+
+
+
+61. Question
+A company is planning on using AWS CodePipeline for their underlying CI/CD process. The code will be picked up from an S3 bucket. The company policy mandates that all data should be encrypted at rest and that the keys are managed by the customer. Which of the following measures would you take to ensure that the CI/CD process conforms to this policy? Choose 2 possible actions from the options given below.
+
+ Ensure that server side encryption is enabled on the S3 bucket and data is encrypted at-rest on the CodeBuild environment using customer managed CMK		-Correct
+ Ensure that server-side encryption is enabled on the CodePipeline stage
+ Configure the code pickup stage in CodePipeline to use AWS KMS
+ Configure AWS KMS with customer managed keys and use it for S3 bucket encryption		-Correct
+Unattempted
+Answer – A and D
+This is also mentioned in the AWS Documentation
+There are two ways to configure server-side encryption for Amazon S3 artifacts:
+AWS CodePipeline creates an Amazon S3 artifact bucket and default AWS-managed SSE-KMS encryption keys when you create a pipeline using the Create Pipeline wizard. The master key is encrypted along with object data and managed by AWS.
+You can create and manage your own customer-managed SSE-KMS keys.
+
+Options B and C are incorrect since this needs to be configured at the S3 bucket level.
+For more information on Encryption in S3 with CodePipeline, please refer to the below Link:
+https://docs.aws.amazon.com/codepipeline/latest/userguide/S3-artifact-encryption.html
+Please refer the following link on page 252
+https://docs.aws.amazon.com/codebuild/latest/userguide/codebuild-user.pdf
+
+
+
+62. Question
+A developer is making use of AWS services to develop an application. He has been asked to develop the application in a manner to compensate any network delays. Which of the following two mechanisms should he implement in the application?
+
+ Multiple SQS queues
+ Exponential backoff algorithm		-Correct
+ Retries in your application code		-Correct
+ Consider using the Java SDK
+Unattempted
+Answer – B and C
+Options A and D are incorrect since these practices would not help in the requirement for the application
+The AWS Documentation mentions the following
+In addition to simple retries, each AWS SDK implements exponential backoff algorithm for better flow control. The idea behind exponential backoff is to use progressively longer waits between retries for consecutive error responses. You should implement a maximum delay interval, as well as a maximum number of retries. The maximum delay interval and maximum number of retries are not necessarily fixed values, and should be set based on the operation being performed, as well as other local factors, such as network latency.
+For more information on API retries, please refer to the below Link:
+https://docs.aws.amazon.com/general/latest/gr/api-retries.html
+
+
+
+63. Question
+Your mobile application includes a photo-sharing service that is expecting tens of thousands of users at launch. You will leverage Amazon Simple Storage Service (S3) for storage of the user Images, and you must decide how to authenticate and authorize your users for access to these images. You also need to manage the storage of these images. Which two of the following approaches should you use? Choose two answers from the options below
+
+ Create an Amazon S3 bucket per user, and use your application to generate the S3 URL for the appropriate content.
+ 
+ Use AWS Identity and Access Management (IAM) user accounts as your application-level user database, and offload the burden of authentication from your application code.
+ 
+ Authenticate your users at the application level, and use AWS Security Token Service (STS)to grant token-based authorization to S3 objects.		-Correct
+ 
+ Authenticate your users at the application level, and send an SMS token message to the user. Create an Amazon S3 bucket with the same name as the SMS message token, and move the user’s objects to that bucket.
+ 
+ Use a key-based naming scheme comprised from the user IDs for all user objects in a single Amazon S3 bucket.		-Correct
+Unattempted
+Answer – C and E
+The AWS Security Token Service (STS) is a web service that enables you to request temporary, limited-privilege credentials for AWS Identity and Access Management (IAM) users or for users that you authenticate (federated users).
+The token can then be used to grant access to the objects in S3.
+You can then provides access to the objects based on the key values generated via the user id.
+Option A is possible but then becomes a maintenance overhead because of the number of buckets.
+Option B is invalid because IAM users is not a good security practice.
+Option D is invalid because SMS tokens are not efficient for this requirement.
+For more information on the Security Token Service please refer to the below link
+https://docs.aws.amazon.com/STS/latest/APIReference/Welcome.html
+
+
+
+64. Question
+Which of the following is correct way of passing a stage variable to an HTTP URL ? (Select TWO.)
+
+ http://example.com/${}/prod
+ 
+ http://example.com/${stageVariables.}/prod		-Correct
+ 
+ http://${stageVariables.}.example.com/dev/operation		-Correct
+ 
+ http://${stageVariables}.example.com/dev/operation
+ 
+ http://${}.example.com/dev/operation
+ 
+ http://example.com/${stageVariables}/prod
+ 
+Unattempted
+Correct Answer – B,C
+A stage variable can be used as part of HTTP integration URL as in following cases,
+· A full URI without protocol
+· A full domain
+· A subdomain
+· A path
+· A query string
+In the above case , option B & C displays stage variable as a path & sub-domain.
+
+Option A, D ,E & F are incorrect as these are incorrect ways of passing stage variables.
+For more information on Staging variables, refer to the following URL,
+https://docs.aws.amazon.com/apigateway/latest/developerguide/aws-api-gateway-stage-variables-reference.html
+
+
+
+65. Question
+You’ve developed a set of scripts using AWS Lambda. These scripts need to access EC2 Instances in a VPC. Which of the following needs to be done to ensure that the AWS Lambda function can access the resources in the VPC. Choose 2 answers from the options given below
+
+ Ensure that the subnet ID’s are mentioned when configuring the Lambda function		-Correct
+ Ensure that the NACL ID’s are mentioned when configuring the Lambda function
+ Ensure that the Security Group ID’s are mentioned when configuring the Lambda function		-Correct
+ Ensure that the VPC Flow Log ID’s are mentioned when configuring the Lambda function
+Unattempted
+Answer – A and C
+Options B and D are incorrect since you have to mention the Subnet and Security ID’s in order for the Lambda function to access the resources in the VPC.
+The AWS Documentation mentions the following
+AWS Lambda runs your function code securely within a VPC by default. However, to enable your Lambda function to access resources inside your private VPC, you must provide additional VPC-specific configuration information that includes VPC subnet IDs and security group IDs. AWS Lambda uses this information to set up elastic network interfaces (ENIs) that enable your function to connect securely to other resources within your private VPC.
+For more information on configuring a lambda function to access resources in a VPC, please refer to the below link
+https://docs.aws.amazon.com/lambda/latest/dg/vpc.html
