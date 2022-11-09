@@ -1,0 +1,914 @@
+1. Question
+You’ve enabled website hosting on a bucket named “demo.com” in the US-East-1 (US standard region). Select the URL you’ll receive from AWS as the URL for the bucket. Choose a correct answer from the options below
+
+ A. demo.com.s3-website-us-east-1.amazonaws.com		-Correct
+ B. demo-com.s3-website-us-east-1.amazonaws.com
+ C. demo.com.s3-website.amazonaws.com
+ D. demo.com.us-east-1-s3-website.amazonaws.com
+Unattempted
+To host your static website, you configure an Amazon S3 bucket for website hosting and then upload your website content to the bucket. The website is then available at the region-specific website endpoint of the bucket:
+.s3-website-.amazonaws.com
+For more information on S3 static web site hosting please visit the below link:
+http://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html
+
+
+
+2. Question
+While working with the S3 API you receive the error: 403 forbidden. What is the most likely cause of this? Choose a correct answer from the options below
+
+ A. BucketAlreadyExists
+ B. AccessDenied		-Correct
+ C. BadDigest
+ D. NoSuchBucket
+Unattempted
+This is clearly mentioned in the AWS documentation For more information on S3 error responses please visit the below link: http://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html
+
+
+
+3. Question
+A DynamoDB table can contain ____ local secondary indexes on a table. Choose a correct answer from the options below
+
+ A. 3
+ B. 5		-Correct
+ C. 10
+ D. 2
+Unattempted
+This is clearly mentioned in the AWS documentation  For more information on DynamoDB please visit the below link: https://aws.amazon.com/dynamodb/faqs/
+
+
+
+4. Question
+Which one of the following S3 error code does not have a corresponding HTTP 404 Status code? Choose a correct answer from the options below
+
+ A. NoSuchBucket
+ B. NoSuchUpload
+ C. NoSuchVersion
+ D. MissingSecurityHeader		-Correct
+Unattempted
+As per the AWS documentation, the MissingSecurityHeader don’t have the 404 error code. It is part of the 400 Bad request error code For more information on S3 error responses please visit the below link: http://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html
+
+
+
+5. Question
+You created three S3 buckets – “mydomain.com”, “downloads.mydomain.com”, and “www.mydomain.com”. You uploaded your files, enabled static website hosting, specified both of the default documents under the “enable static website hosting” header, and set the “Make Public” permission for the objects in each of the three buckets. All that’s left for you to do is to create the Route 53 Aliases for the three buckets.
+You are going to have your end users test your websites by browsing to http://mydomain.com/error.html, 
+http://downloads.mydomain.com/index.html, and 
+http://www.mydomain.com.
+What problems will your testers encounter? Choose an answer from the options below
+
+ A. http://mydomain.com/error.html will not work because you did not set a value for the error.html file
+ B. http://www.mydomain.com will not work because the URL does not include a file name at the end of it.
+ C. There will be no problems, all three sites should work.		-Correct
+ D. http://downloads.mydomain.com/index.html will not work because the “downloads” prefix is not a supported prefix for S3 websites using Route 53 aliases
+Unattempted
+AWS S3 coupled with Route53 ALIAS records supports all above. As the question lists all the required steps correctly, users should have no issues in accessing all three websites. Please read – http://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html
+
+
+
+6. Question
+Which API call would you use to attach an EBS volume to an EC2 instance? Choose a correct answer from the options below
+
+ A. AttachInstanceVolume
+ B. AttachVolumeInstance
+ C. AttachEBSVolume
+ D. AttachVolume		-Correct
+Unattempted
+Attaches an EBS volume to a running or stopped instance and exposes it to the instance with the specified device name. For more information on the command please visit the below link: http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AttachVolume.html
+
+
+
+7. Question
+You are creating a CloudFormation template in the Singapore region which will create an S3 website bucket. You have created a parameter “demo” which is used to store the name of your S3 bucket, and you are hoping to create output from your template which will list the URL of the S3 website. Which of the following Join statements will provide the URL of your S3 website? Choose a correct answer from the options below
+
+ A. "Fn::Join" : ["", [“http://”,{“Ref”:“demo”},”.s3”,”.amazonaws.com”]]
+ B. "Fn::Join" : ["", [“http://”,{“GetAtt”:“demo”},”.s3-bucket-”,”Singapore-1”,”.amazon.com”]]
+ C. "Fn::Join" : ["", [“http://”,{“GetAtt”:“demo”},”.s3-website-”,”ap-southeast-1”,”.amazonaws.com”]]
+ D. "Fn::Join" : ["", [“http://”,{"Ref":"demo"},".s3-website-",{"Ref":"AWS::Region"},".amazonaws.com"]]		-Correct
+Unattempted
+AWS CloudFormation provides several built-in functions that help you manage your stacks. Use intrinsic functions in your templates to assign values to properties that are not available until runtime.
+The website is then available at the region-specific website endpoint of the bucket:
+.s3-website-.amazonaws.com
+Hence Option A and B are wrong. Also you need to use the Ref function and not the GetAtt function hence Option C is wrong.
+For more information CloudFormation intrinsic functions on the please visit the below link:
+http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference.html
+
+
+
+8. Question
+While working with the S3 API you receive the error message: 404 Not Found. What is the most likely cause for this error? Choose a correct answer from the options below
+
+ A. AccessDenied
+ B. BucketAlreadyExists
+ C. NoSuchService
+ D. NoSuchBucket		-Correct
+Unattempted
+As per the AWS documentation For more information on S3 error responses please visit the below link: http://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html
+
+
+
+9. Question
+You have items in your table that are 12KB in size and you want to have 10 strongly consistent reads per second. How many read capacity units would you need to provision? Choose a correct answer from the options below
+
+ A. 300
+ B. 10
+ C. 30		-Correct
+ D. 1
+Unattempted
+Since we the item size is 12KB , hence if we near it the nearest 4KB , we get 3. And since we need 10 reads, its 3*10 = 30. For more information on DynamoDB throughput provisioning please visit the below link: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ProvisionedThroughput.html
+
+
+
+10. Question
+A taxi company uses a mobile GPS application to track the location of each of their 60 cabs. The application records the taxi’s location to a DynamoDB table every 6 seconds. Each transmission is just under 1 KB, and throughput is spread evenly within that minute. How many units of write capacity should you specify for this table? Choose a correct answer from the options below
+
+ A. 6
+ B. 60
+ C. 600
+ D. 10		-Correct
+Unattempted
+Since we the item size is 1KB , hence if we near it the nearest 1KB , we get 1.
+And since we have 60 cabs it becomes 1*60 = 60
+Since we have a sample every 6 seconds , per second it comes to 60/6 = 10
+For more information on DynamoDB throughput provisioning please visit the below link:
+http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ProvisionedThroughput.html
+
+
+
+11. Question
+Your app is using SQS to create distributed applications. Your messages need to contain more information than the 256KB SQS limit size allowed. How could you solve this problem? Choose a correct answer from the options below
+
+ A. Contact Amazon and request an increase to the message size for your account
+ B. Store the information in S3 and attach retrieval information to the message for the application to process		-Correct
+ C. Compress the information inside of SQS messages
+ D. Use DynamoDB instead of SQS
+Unattempted
+This is clearly given in the AWS documentation For more information on SQS please visit the below link: https://aws.amazon.com/sqs/faqs/
+
+
+
+12. Question
+Which of the following cannot be used inside a CloudFormation template? Choose a correct answer from the options below
+
+ A. Ruby statements		-Correct
+ B. Parameters
+ C. Intrinsic function
+ D. Regular expression
+Unattempted
+Parameters – Specifies values that you can pass in to your template at runtime (when you create or update a stack). You can refer to parameters in the Resources and Outputs sections of the template.
+For more information on Cloudformation templates please visit the below link:
+http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html
+AWS CloudFormation provides several built-in functions that help you manage your stacks. Use intrinsic functions in your templates to assign values to properties that are not available until runtime URL:
+http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference.html
+Regular expressions (commonly known as regexes) can be specified in a number of places within an AWS CloudFormation template, such as for the AllowedPattern property when creating a template parameter URL:
+http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-regexes.html
+
+
+
+13. Question
+Which of the following is an incorrect S3 bucket name? Choose 2 correct answer from the options below
+
+ A. 1-demo.com
+ B. 10.2.181.2		-Correct
+ C. 1Demo.com		-Correct
+ D. 1demo.com
+Unattempted
+AWS Doc shows the naming conventions for S3 buckets
+The bucket name can be between 3 and 63 characters long, and can contain only lower-case characters, numbers, periods, and dashes.
+Each label in the bucket name must start with a lowercase letter or number.
+The bucket name cannot contain underscores, end with a dash, have consecutive periods, or use dashes adjacent to periods.
+The bucket name cannot be formatted as an IP address (198.51.100.24).
+For more information on the S3 naming conventions please visit the below link:
+http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-s3-bucket-naming-requirements.html
+
+
+
+14. Question
+What would you set in your CloudFormation template to fire up different instance sizes based off of environment type? i.e. (If this is for prod, use m1.large instead of t1.micro) Choose a correct answer from the options below
+
+ A. Outputs
+ B. Resources
+ C. Mappings
+ D. Conditions		-Correct
+Unattempted
+The optional Conditions section includes statements that define when a resource is created or when a property is defined. For example, you can compare whether a value is equal to another value. Based on the result of that condition, you can conditionally create resources. If you have multiple conditions, separate them with commas.
+For more information on Cloudformation conditions please visit the below link:
+http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/conditions-section-structure.html
+CloudFormation template comprises of various elements such as Parameters, Description, Outputs, Mappings, Conditions, Format Versions, Metadata, Resources etc out of which Resources is the only section which is mandatory for it to function, rest are all Optional.
+Outputs: This section declares output values that you can import into other stacks.
+Resources: Specifies the stack resources and their properties, such as an Amazon Elastic Compute Cloud instance or an Amazon Simple Storage Service bucket.
+Mappings:
+This section matches a key to a corresponding set of named values. For example, if you want to set values based on a region, you can create a mapping that uses the region name as a key and contains the values you want to specify for each specific region.
+However it does not support parameters, pseudo parameters, or intrinsic functions.
+Conditions: This section controls whether certain resources are created or whether certain resource properties are assigned a value during stack creation or update. For example, you could conditionally create a resource that depends on whether the stack is for a production or test environment.
+For the production environment, you might include Amazon EC2 instances with certain capabilities; however, for the test environment, you want to use reduced capabilities to save money. With conditions, you can define which resources are created and how they’re configured for each environment type.
+So in this scenario, we need to launch various instance types either to production or to test environment. We don’t require large instances for test purposes. Hence the condition section checks whether the instance that need to be launched is for Prod or test environment based on the values provided during stack creation. 
+More information is available on the following links:
+https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/conditions-section-structure.html
+https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html
+
+
+
+15. Question
+You’re creating a forum DynamoDB database for hosting web forums. Your “thread” table contains the forum name and each “forum name” can have one or more “subjects”. What primary key type would you give the thread table in order to allow more than one subject to be tied to the forum primary key name? Choose an answer from the options below
+
+ A. Primary and range
+ B. Hash and Range		-Correct
+ C. Hash
+ D. Range and Hash
+Unattempted
+The partition key of an item is also known as its hash attribute. The term hash attribute derives from DynamoDB’s usage of an internal hash function to evenly distribute data items across partitions, based on their partition key values.
+The sort key of an item is also known as its range attribute. The term range attribute derives from the way DynamoDB stores items with the same partition key physically close together, in sorted order by the sort key value.
+For more information on the core components of DynamoDB please visit the below link:
+http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.CoreComponents.html
+
+
+
+16. Question
+You need to announce an emergency downtime for a production AWS web application. This downtime notification will require different sets of instructions for different devices. All of the application users signed up to receive SNS notifications from the “mywebapp” topic when they began using the application and they are currently subscribed to this topic. What are appropriate ways for you to provide timely, device-specific instructions to end users when announcing this downtime? Choose an answer from the options below
+
+ A. Create a different topic for each subscription type and send a message to SMS endpoints to one topic and a message to email endpoints to another topic
+ B. Send multiple messages to the topic and ask users to ignore the messages that do not pertain to their device
+ C. SNS is for automated notifications and you cannot send messages manually via SNS. The best option is to export the endpoints to a csv and send notifications to customers via your email client or SMS device.
+ D. Send a single message, but customize the text in the SNS message field so that each device gets only the information that is appropriate for them		-Correct
+Unattempted
+In addition to sending custom data as key-value pairs, you can also send platform-specific key-value pairs within the JSON payload. For example, if you wanted to include time_to_live and collapse_key GCM parameters after the custom data key-value pairs included in the data GCM parameter, then the JSON payload without escaped quotation marks would look similar to the following:
+{
+   “GCM”:”{
+      “data”:{
+         “message”:”Check out these awesome deals!”,
+         “url”:”www.amazon.com”
+      },
+         “time_to_live”: 3600,
+         “collapse_key”: “deals”
+   }”
+}
+For more information on customizing SNS messages please visit the below link:
+http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-custommessage.html
+
+
+
+17. Question
+Which of these CloudFormation snippets of code will return an address that can be used to access our application from our browser if we’re using a resource type of AWS::ElasticLoadBalancing::LoadBalancer with Logical ID “ElasticLoadBalancer”? Choose an answer from the options below
+
+ A. "Fn::Join" : [ "", [ "http://", { "Fn::GetAtt" : [ "ElasticLoadBalancer", "DNSName" ]}]]		-Correct
+ B. "Fn::Join" : [ "", [ "http://", { "Ref" : ["ElasticLoadBalancer" }]]
+ C. "Fn::Join" : [ "http://", [ ".", { "Fn::GetAtt" : [ "ElasticLoadBalancer", "DNSName" ]}]]
+ D. "Fn::Join" : [ "", [ "http://", { "Fn::GetAtt" : [ "ElasticLoadBalancer", "URL" ]}]]
+Unattempted
+We have to use the Fn::GetAtt to get the DNSName of the Elastic load balancer. Hence option B and D are wrong. Then we don’t need any delimiter, hence Option C is wrong. For more information on Fn::GetAtt command please visit the below link: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html
+
+
+
+18. Question
+Your supervisor is upset about the fact that SNS topics that he subscribed to are now cluttering up his email inbox. How can he stop receiving email from SNS without disrupting other users’ ability to receive email from SNS? Choose 2 answers from the options below
+
+ A. You can delete the subscription from the SNS topic responsible for the emails		-Correct
+ B. You can delete the endpoint from the SNS subscription responsible for the emails
+ C. You can delete the SNS topic responsible for the emails
+ D. He can use the unsubscribe information provided in the emails		-Correct
+Unattempted
+Every request has a unsubscribe URL which can be used. Also from the aws console , one can just delete the subscription For more information on SNS subscription please visit the below link: http://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html
+
+
+
+19. Question
+You have an Amazon S3 bucket that you use to store objects. You’d like to encrypt some of the new objects you upload to this bucket. What header do you need to use in order to request server-side encryption when using the REST API? Choose the correct answer from the options below
+
+ A. x-amz-content-sha256
+ B. x-amz-server-side-encryption		-Correct
+ C. Content-MD5
+ D. No header is needed
+Unattempted
+Server-side encryption is about protecting data at rest. Server-side encryption with Amazon S3-managed encryption keys (SSE-S3) employs strong multi-factor encryption. Amazon S3 encrypts each object with a unique key. As an additional safeguard, it encrypts the key itself with a master key that it regularly rotates. Amazon S3 server-side encryption uses one of the strongest block ciphers available, 256-bit Advanced Encryption Standard (AES-256), to encrypt your data.
+Amazon S3 supports bucket policies that you can use if you require server-side encryption for all objects that are stored in your bucket. 
+For this you need to set the header as x-amz-server-side-encryption in the REST API call.
+For more information on S3 server side encryption, please refer to the below URL:
+http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html
+
+
+
+20. Question
+At what size does does AWS recommend customers to use the multi-part upload tool when uploading object to S3?
+
+ A. 1 MB
+ B. 1 TB
+ C. 100 MB		-Correct
+ D. 1 GB
+Unattempted
+This is clearly mentioned in the AWS documentation For more information on S3 please refer to the below URL: https://aws.amazon.com/s3/faqs/
+
+
+
+21. Question
+If your table item’s size is 3KB and you want to have 90 strongly consistent reads per second, how many read capacity units will you need to provision on the table? Choose the correct answer from the options below
+
+ A. 90		-Correct
+ B. 45
+ C. 10
+ D. 19
+Unattempted
+When we round off the item size to 4KB, we get 1 read per item. Since there are 90 requests , it means 90 reads per seconds. For more information on provisioned throughtput, please refer to the below URL: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ProvisionedThroughput.html
+
+
+
+22. Question
+What kind of message does SNS send to endpoints? Choose the correct answer from the options below
+
+ A. An XML document with parameters like Message, Source, Destination, Type
+ B. A JSON document with parameters like Message, Source, Destination, Type
+ C. A JSON document with parameters like Message, Signature, Subject, Type		-Correct
+ D. An XML document with parameters like Message, Signature, Subject, Type
+Unattempted
+AWS documentation on the format of the SNS message. There is no source , hence Option A and B are wrong. And since SNS messages are JSON, only option C is correct. For more information on sending SNS messages, please refer to the below URL: http://docs.aws.amazon.com/sns/latest/dg/SendMessageToHttp.html
+
+
+
+23. Question
+Your EC2 component receives a message from a message queue. The message will then become invisible for 30 seconds. What is the ideal API request must be called in order to ensure that the message does not become visible again.
+
+ A. ReceiveMessage
+ B. DeleteMessage		-Correct
+ C. VisibilityTimeout
+ D. ChangeMessageVisibility
+Unattempted
+This is clearly given in the AWS documentation that you have to delete the message after it is processed. For more information on visibility timeout, please refer to the below URL: http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html
+
+
+
+24. Question
+Which of the following are supported platforms in Elastic Beanstalk? Choose 2 correct answer from the options below
+
+ A. IBM WebSphere
+ B. Oracle Weblogic
+ C. Microsoft IIS		-Correct
+ D. Apache		-Correct
+Unattempted
+This is clearly given in the AWS documentation For more information on elastic beanstalk, please refer to the below URL: https://aws.amazon.com/elasticbeanstalk/faqs/
+
+
+
+25. Question
+Your application instance takes 60 seconds to process instructions received in an SQS message. Assuming the SQS queue is configured with the default Visibility Timeout, what is the best way to configure your application to ensure that no other instances retrieve a message that has already been processed or is currently being processed? Choose the correct answer from the options below
+
+ A. Use the ReceiveMessage API call to retrieve the message, the ChangeMessageVisibility API call to increase the visibility timeout, and the DeleteMessage API call to delete the message when processing completes		-Correct
+ B. Use the ReceiveMessage API call to retrieve the message and the DeleteMessage API call to delete the message when processing completes.
+ C. Use the ReceiveMessage API call to retrieve the message, the ChangeMessageVisibility API call to lower the visibility timeout, and the DeleteMessage API call to delete the message when processing completes.
+ D. Use ReceiveMessage API call to retrieve the message, SetQueueAttributes API call to lower the visibility timeout, and DeleteMessage API call to delete the message when processing completes.
+Unattempted
+SQS has a visibility timeout which gets into effect when a message is read from the SQS queue. The default time is 30 seconds, so normally after a message is read, it would not be available for 30 seconds until the message is processed. So you need to increase the visibility timeout to 60 seconds , then read the message and then delete it. For more information on SQS visibility timeout, please refer to the below URL: http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html
+
+
+
+26. Question
+Your supervisor asks you to find a solution for scheduling a sequence of tasks. The sequence may take several months to complete and it’s very important that no tasks are processed more than once. What AWS service should you recommend? Choose the correct answer from the options below
+
+ A. SQS
+ B. OpsWorks
+ C. CloudFormation
+ D. SWF		-Correct
+Unattempted
+The benefits of SWF are clearly mentioned in the documentation When building solutions to coordinate tasks in a distributed environment, developers have to account for several variables. Tasks that drive processing steps can be long-running and may fail, timeout, or require restarts. They often complete with varying throughputs and latencies. Tracking and visualizing tasks in all these cases is not only challenging, but is also undifferentiated work. As applications and tasks scale up, developers face difficult distributed systems’ problems. For example, they must ensure that a task is assigned only once and that its outcome is tracked reliably through unexpected failures and outages. By using Amazon SWF, developers can focus on their differentiated application logic, i.e. how to process tasks and how to coordinate them. For more information on SWF, please refer to the below URL: https://aws.amazon.com/swf/faqs/
+
+
+
+27. Question
+A recent increase in the amount of users of an application hosted on an EC2 instance that you manage has caused the instance’s OS to run out of CPU resources and crash. The crash caused several users’ unsaved data to be lost and your supervisor wants to know how this problem can be avoided in the future.
+Which of the following would you not recommend?
+
+ A. Redesign the application so that users’ unsaved data is periodically written to disk.
+ B. Take frequent snapshots of the EBS volume during business hours to ensure users’ data is backed up.		-Correct
+ C. Snapshot the EBS volume and re-deploy the application server as a larger instance type.
+ D. Use autoscaling to deploy additional application server instances when load is high.
+Unattempted
+If you take snapshots during business hours , the situation can become worse since I/O is required to create the snapshot. Hence this is the worse solution to recommend for the problem. For more information on EBS snapshots, please refer to the below URL: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html
+
+
+
+28. Question
+You are working with the S3 API and receive an error message: 409 Conflict. What is the possible cause of this error? Choose the correct answer from the options below
+
+ A. You're attempting to remove a bucket without emptying the contents of the bucket first.		-Correct
+ B. You're attempting to upload an object to the bucket that is greater than 5TB in size.
+ C. Your request does not contain the proper metadata.
+ D. Amazon S3 is having internal issues.
+Unattempted
+This is clearly given in the AWS documentation for error codes For more information on all S3 error responses please refer to the below URL: http://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html
+
+
+
+29. Question
+You would like to set up a static website on S3 with the least possible effort. The URL of the website is unimportant to you. Which of the following steps are necessary? Choose 3 correct answer from the options below
+
+ A. Upload an index document to your S3 bucket		-Correct
+ B. Select the “Make Public” permission for your bucket’s objects		-Correct
+ C. Create an Alias record in Route 53
+ D. Enable static website hosting in your S3 bucket properties		-Correct
+Unattempted
+When you go to S3, make sure that static website hosting is enabled. Also upload the index.html document , make sure it is Public and also ensure that it is put as the Index document. For more information on all S3 web site hosting please refer to the below URL: http://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html
+
+
+
+30. Question
+In SQS What does the setting, VisibilityTimeout = 0 have an effect on your message? Choose the correct answer from the options below
+
+ A. Removes the message immediately upon receipt
+ B. Makes the message immediately available		-Correct
+ C. Automatically invokes a reprocessing call on your component
+ D. None of the above
+Unattempted
+SQS has a visibility timeout which gets into effect when a message is read from the SQS queue. The default time is 30 seconds, so normally after a message is read, it would not be available for 30 seconds until the message is processed. But if you set the visibility timeout it would mean that the message would be available instantly. For more information on SQS visibility timeout, please refer to the below URL: http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html
+
+
+
+31. Question
+A SWF workflow task or task execution can live up to ______ long? Choose the correct answer from the options below
+
+ A. 3 days
+ B. 24 hours
+ C. 14 Days
+ D. 1 year		-Correct
+Unattempted
+This is clearly mentioned in the AWS documentation For more information on SWF please refer to the below URL: https://aws.amazon.com/swf/faqs/
+
+
+
+32. Question
+You have software on an EC2 instance that needs to access both the private and public IP address of that instance. What’s the best way for the software to get that information? Choose the correct answer from the options below
+
+ A. Look it up in instance metadata		-Correct
+ B. Look it up in user data
+ C. Use the instance metadata for the private IP and user data for the public IP
+ D. Make a call to the EC2 API
+Unattempted
+You can get the below information from the instance metadata
+ami-id
+ami-launch-index
+ami-manifest-path
+block-device-mapping/
+hostname
+instance-action
+instance-id
+instance-type
+kernel-id
+local-hostname
+local-ipv4
+mac
+network/
+placement/
+public-hostname
+public-ipv4
+public-keys/
+reservation-id
+security-groups
+services/
+For more information on Ec2 instance metadata please refer to the below URL:
+http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html
+
+
+
+33. Question
+Which of the following statements about SQS is true? Choose the correct answer from the options below
+
+ A. Messages will be delivered exactly once, and messages will be delivered in First in, First out order.
+ B. Messages will be delivered one or more times, and message delivery order is indeterminate.		-Correct
+ C. Messages will be delivered exactly once, and message delivery order is indeterminate.
+ D. Messages will be delivered one or more times, and messages will be delivered in First in, First out order.
+Unattempted
+Amazon SQS makes a best effort to preserve order in messages, but due to the distributed nature of the queue, we cannot guarantee that you will receive messages in the exact order you sent them. You typically place sequencing information or timestamps in your messages so that you can reorder them upon receipt. Please find the article on the link which shows that messages can be in any order URL: https://aws.amazon.com/articles/Amazon-SQS/1343#03
+
+
+
+34. Question
+You want 5 strongly consistent 1KB writes per second. How many units of throughput capacity do you need to provision? Choose the correct answer from the options below
+
+ A. 10
+ B. 9
+ C. 5		-Correct
+ D. 4
+Unattempted
+When we round off the item size to 1KB, we get 1 write per item. Since there are 5 requests , it means 5 writes per seconds. For more information on provisioned throughtput, please refer to the below URL: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ProvisionedThroughput.html
+
+
+
+35. Question
+Why will the following CloudFormation template fail to deploy a stack? Choose the correct answer from the options below
+{
+  “AWSTemplateFormatVersion” : “2010-09-09”,
+  “Parameters” : {
+      “VPCId” : {
+          “Type”: “String”,
+           “Description” : “Enter current VPC Id”
+      },
+     “SubnetId : {
+          “Type”: “String”,
+           “Description” : “Enter a subnet Id”
+       }
+    },
+    “Outputs” : {
+         “InstanceId” : {
+                “Value” : { “Ref” : “MyInstance” },
+                “Description” : “Instance Id”
+          }
+     }
+}
+
+ A. CloudFormation templates do not use a “Parameters” section
+ B. A “Conditions” section is mandatory but is not included
+ C. A “Resources” section is mandatory but is not included		-Correct
+ D. A template description is mandatory but is not included
+Unattempted
+As per the documentation, the resources part is mandatory for the cloudformation template For more information on Cloudformation templates, please refer to the below URL: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html
+
+
+
+36. Question
+What is the function of a conditional write? Choose the correct answer from the options below
+
+ A. A change to a DynamoDB attribute will only be written if it that attribute’s value has not changed since it was read		-Correct
+ B. An S3 object will only be written to a bucket if is encrypted
+ C. A change to a DynamoDB attribute will only be written if no other users are accessing the table
+ D. An S3 object will only be written to a bucket if it is less than 5 GB
+Unattempted
+To help clients coordinate writes to data items, DynamoDB supports conditional writes for PutItem, DeleteItem, and UpdateItem operations. With a conditional write, an operation succeeds only if the item attributes meet one or more expected conditions; otherwise it returns an error For more information on DynamoDB conditional writes, please refer to the below URL: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html#WorkingWithItems.ConditionalUpdate
+
+
+
+37. Question
+If you have an item that is 4KB in size and you want to provision read capacity units for 100 requests per second, using strongly consistent reads how many read capacity units do you need to provision? Choose the correct answer from the options below
+
+ A. 100		-Correct
+ B. 90
+ C. 20
+ D. 50
+Unattempted
+When we round off the item size to 4KB, we get 1 read per item. Since there are 100 requests , it means 100 reads per seconds. For more information on provisioned throughtput, please refer to the below URL: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ProvisionedThroughput.html
+
+
+
+38. Question
+An item stored in a DynamoDB can contain any number of ___ associated to it. Choose the correct answer from the options below
+
+ A. Arguments
+ B. Attributes		-Correct
+ C. Items
+ D. Parameters
+Unattempted
+This is clearly mentioned in the AWS documentation For more information on working with DynamoDB items, please refer to the below URL: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html
+
+
+
+39. Question
+By default, AWS allows you to have ____ DynamoDB tables per account, per region. Choose the correct answer from the options below
+
+ A. 128
+ B. 256		-Correct
+ C. 224
+ D. 64
+Unattempted
+This is clearly mentioned in the AWS documentation For more information on DynamoDB limits, please refer to the below URL: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html
+
+
+
+40. Question
+Which of the following is NOT a common S3 API call? Choose the correct answer from the options below
+
+ A. PutObject
+ B. UploadPart
+ C. ReadObject		-Correct
+ D. GetBucket
+Unattempted
+https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectOps.html  There is no read object in S3. The API call to get an object is GetObject For more information on S3 GetObject, please refer to the below URL: http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html
+
+
+
+41. Question
+You are maintaining an application that is spread across multiple web servers and has incoming traffic balanced by ELB. The application allows users to upload pictures. Currently each web server stores the image and a background task synchronizes the data between servers. However the synchronization task can no longer keep up with the number of images uploaded
+What change could you make so that all web servers have a place to store and read images at the same time? Choose an answer from the options below
+
+ A. Store the images in Amazon S3		-Correct
+ B. Store the images on Amazon Cloudfront
+ C. Store the images on Amazon EBS
+ D. Store the images on the ELB
+Unattempted
+Amazon Simple Storage Service is storage for the Internet. It is designed to make web-scale computing easier for developers.
+Amazon S3 has a simple web services interface that you can use to store and retrieve any amount of data, at any time, from anywhere on the web. It gives any developer access to the same highly scalable, reliable, fast, inexpensive data storage infrastructure that Amazon uses to run its own global network of web sites. The service aims to maximize benefits of scale and to pass those benefits on to developers.
+For more information on AWS S3, please refer to the below URL:
+http://docs.aws.amazon.com/AmazonS3/latest/dev/Welcome.html
+
+
+
+42. Question
+Which of the following is a highly available, scalable deployment model for a web service. Choose an answer from the options below
+
+ A. A fixed number of web servers split across multiple AWS regions
+ B. A fixed number of web servers split across two or more AWS AZ's
+ C. An autoscaling group of web servers in two or more AWS AZ's		-Correct
+ D. A fixed number of web servers in one AZ
+Unattempted
+Auto Scaling helps you maintain application availability and allows you to scale your Amazon EC2 capacity up or down automatically according to conditions you define. You can use Auto Scaling to help ensure that you are running your desired number of Amazon EC2 instances By default all other answers are wrong because they have fixed number which is wrong for scalable deployment. For more information on Autoscaling, please refer to the below URL: https://aws.amazon.com/autoscaling/
+
+
+
+43. Question
+A security system monitors 3000 cameras saving image metadata every 30 seconds to an Amazon DynamoDB. Each sample involves writing 512 bytes of data and the writes are evenly distributed over time.
+How much write throughput is required for the target table. Choose an answer from the options below
+
+ A. 30 write capacity unit
+ B. 100 write capacity unit		-Correct
+ C. 600 write capacity unit
+ D. 300 write capacity unit
+Unattempted
+When we round off the item size to 1KB, we get 1 write per item. Since there are 3000 cameras saving data every 30 seconds , means that there are 3000 writes per 30 seconds and (3000/30) = 100 writes per second. For more information on provisioned throughtput, please refer to the below URL: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ProvisionedThroughput.html
+
+
+
+44. Question
+Which statements about Amazon RDS are true? Choose 2 answers from the options below
+
+ A. RDS supports Oracle, MySQL and DB2
+ B. RDS can be deployed within a VPC		-Correct
+ C. RDS supports automated backups		-Correct
+ D. RDS features are identical across all support database technologies
+Unattempted
+AWS RDS only supports the following databases   Amazon Aurora, PostgreSQL, MySQL, MariaDB, Oracle, and Microsoft SQL Server. Hence option A is wrong.
+RDS can be deployed in a VPC hence option B is right.
+You can have automated backups performed when you need them, or create your own backup snapshot. These backups can be used to restore a database, and the Amazon RDS restore process works reliably and efficiently. Hence Option C is right.
+Each DB has its own set of features as highlighted in the AWS documentation, hence option D is wrong.
+For more information on RDS, please refer to the below URL:
+https://aws.amazon.com/rds/
+
+
+
+45. Question
+For which of these languages does AWS provide an SDK? Choose 3 correct answer from the options below
+
+ A. PHP		-Correct
+ B. Go		-Correct
+ C. Perl
+ D. Java		-Correct
+Unattempted
+This is as per the AWS documentation For more information on AWS toolkits available, please refer to the below URL: https://aws.amazon.com/tools/
+
+
+
+46. Question
+Which of the following AWS services can be used to record logs of all AWS API calls. Choose an answer from the options below
+
+ A. AWS IAM
+ B. Amazon Cloudwatch
+ C. Amazon EC2
+ D. AWS CloudTrail		-Correct
+Unattempted
+AWS CloudTrail is a web service that records AWS API calls for your account and delivers log files to you. The recorded information includes the identity of the API caller, the time of the API call, the source IP address of the API caller, the request parameters, and the response elements returned by the AWS service. For more information on AWS cloudtrail, please refer to the below URL: https://aws.amazon.com/cloudtrail/
+
+
+
+47. Question
+Which of the following services could be used alone to host a static web site. Choose an answer from the options below
+
+ A. Amazon DyamoDB
+ B. Amazon S3		-Correct
+ C. Amazon SNS
+ D. Amazon Cloudfront
+Unattempted
+You can host a static website on Amazon S3. On a static website, individual web pages include static content. They may also contain client-side scripts. For more information on S3 static hosting, please refer to the below URL: http://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html
+
+
+
+48. Question
+Which object encryption options are available with Amazon S3. Choose an answer from the options below
+
+ A. Server side encryption using Amazon keys
+ B. Client side encryption using customer keys
+ C. Server side encryption using customer keys
+ D. All of the above.		-Correct
+Unattempted
+This is clearly mentioned in the AWS documentation For more information on S3 server side encryption, please refer to the below URL: http://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html
+
+
+
+49. Question
+What options are available to a customer who wants to perform penetration testing of his EC2 web servers? Choose an answer from the options below
+
+ A. Penetration testing is never allowed
+ B. AWS automatically performs penetration testing
+ C. A customer can perform penetration testing at any time		-Correct
+ D. A customer should request permission from AWS before performing perform penetration testing
+Unattempted
+This is clearly mentioned in the AWS documentation.
+
+AWS customers are welcome to carry out security assessments or penetration tests against their AWS infrastructure without prior approval for 8 services, listed in the next section under “Permitted Services.”
+
+Amazon EC2 instances, NAT Gateways, and Elastic Load Balancers
+Amazon RDS
+Amazon CloudFront
+Amazon Aurora
+Amazon API Gateways
+AWS Lambda and Lambda Edge functions
+Amazon Lightsail resources
+Amazon Elastic Beanstalk environments
+
+For more information on penetration testing using AWS, please refer to the below URL: https://aws.amazon.com/security/penetration-testing/
+
+https://aws.amazon.com/premiumsupport/knowledge-center/penetration-testing/
+
+
+
+50. Question
+You are debugging a problem with a web application that writes to an Amazon DynamoDB. You would like to see the actual data in the DynamoDB table to confirm that the data written was correct. How can you do this? Choose 2 answers from the options below
+
+ A. use the standard DynamoDB "export to CSV" feature
+ B. Use the AWS CLI to query the DynamoDB table and data		-Correct
+ C. Use the JSON documents stored in S3 by DynamoDB
+ D. Use the AWS console to view the DynamoDB table and data		-Correct
+Unattempted
+So as per the AWS documentation, you can use the console to get the data from DynamoDB
+For more information , please visit the URL:
+http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/AddUpdateDeleteItems.html
+You can also use the CLI , one option is to use the AWS dynamodb query command.
+For more information on DynamoDB CLI , please visit the URL:
+http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tools.CLI.html
+
+
+
+51. Question
+Which of the following is an example of a good Amazon DynamoDB hash key schema for provisioned throughput efficiency. Choose an answer from the options below
+
+ A. Student ID where every student has a unique ID		-Correct
+ B. College ID where there are two colleges in the university
+ C. Class ID where every student is in one of the four classes
+ D. Tuition Plan where the vast majority of students are in state and the rest are out of state
+Unattempted
+Always have the primary key or hash key for those attributes which will have many values. And only option A fits that requirement. For more information on DynamoDB tables , please visit the URL: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html
+
+
+
+52. Question
+Which of the following are the responsibility of AWS. Choose 2 answers from the options below
+
+ A. Virtualization Infrastructure		-Correct
+ B. Managing security groups
+ C. Physical security of AWS data centers		-Correct
+ D. Patching the OS on the running EC2 instance
+Unattempted
+Please find the shared responsibility model as shared by AWS
+
+
+
+53. Question
+You attempt to store a new object in the US-STANDARD region in Amazon S3 and receive a confirmation that it has been successfully stored. You then immediately make another API call and attempt to read this object. Will you be able to read this object immediately after? Choose the correct answer from the options below
+
+ A. It depends. Objects in Amazon S3 do not become visible until they are replicated to a second region, which can take a few milliseconds or sometimes even a few seconds.
+ B. Yes, unless you exceed API call limits.
+ C. Yes, US-Standard has read-after-write consistency which means you will have access to the object immediately after.		-Correct
+ D. US - STANDARD imposes a 1 second delay before new objects are readable.
+Unattempted
+Now this is because of the read after write consistency for US-Standard region This is also illustrated in the AWS documentation. For more information on S3, please refer to the below URL: https://aws.amazon.com/s3/faqs/
+
+
+
+54. Question
+A customer has enabled website hosting on a bucket named “devtoolslogging” in the Singapore region. What website URL is assigned to your bucket?
+
+ A. devtoolslogging.s3-website-ap-southeast-1.amazonaws.com		-Correct
+ B. s3-website.devtoolslogging.amazonaws.com
+ C. s3-website.devtoolslogging.website-ap-southeast-1.amazonaws.com
+ D. devtoolslogging.ap-southeast-1.amazonaws.com
+Unattempted
+You have the chance to enable static web site hosting for S3 buckets. This can be done via the properties option for the bucket. The end point of the bucket for static hosting will also be configured. For more information on S3 buckets, please visit the link: http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html
+
+
+
+55. Question
+SQS provides a timeout which is a period of time during which Amazon SQS prevents other consuming components from receiving and processing. What is this time period called?
+
+ A. Component Timeout
+ B. Visibility Timeout		-Correct
+ C. Processing Timeout
+ D. Receiving Timeout
+Unattempted
+This is clearly given in the AWS documentation For more information on S3 buckets, please visit the link: https://aws.amazon.com/sqs/faqs/
+
+
+
+56. Question
+What are the different services provided by AWS. Choose all that apply
+
+ A. SQS – Simple Queuing service		-Correct
+ B. MS Exchange service
+ C. EC2 Container Registry (ECR)		-Correct
+ D. AutoScaling		-Correct
+Unattempted
+To see the entire list of services, go to the Products section on AWS URL:  https://aws.amazon.com/products/
+
+
+
+57. Question
+What is the AWS service provided which provides a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability.
+
+ A. AWS RDS
+ B. DynamoDB		-Correct
+ C. Oracle RDS
+ D. Elastic Map Reduce
+Unattempted
+DynamoDB is a fully managed NoSQL offering provided by AWS. It is now available in most regions for users to consume. For more information on DynamoDB, please visit the link: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html
+
+
+
+58. Question
+A company is deploying a two-tier, highly available web application to AWS. Which service provides durable storage for static content while utilizing lower Overall CPU resources for the web tier?
+
+ A. Amazon EBS volume
+ B. Amazon S3		-Correct
+ C. Amazon EC2 instance store
+ D. Amazon RDS instance
+Unattempted
+Amazon S3 is the default storage service that should be considered for companies. If provides durable storage for all static content. For more information on AWS S3, please visit the link: http://docs.aws.amazon.com/AmazonS3/latest/dev/Welcome.html
+
+
+
+59. Question
+Which of the following AWS Services are offered at no cost? Choose 2 correct answer from the options below
+
+ A. Simple Storage Service
+ B. Elastic Load Balancing
+ C. Auto Scaling		-Correct
+ D. Amazon VPC		-Correct
+Unattempted
+This is clearly mentioned in the AWS documentation
+For more information on AWS autoscaling please refer to the below URL:
+https://aws.amazon.com/autoscaling/pricing/
+For more information on AWS VPC please refer to the below URL:
+https://aws.amazon.com/vpc/faqs/
+
+
+
+60. Question
+Resources that are created in AWS are identified by a unique identifier which is known as what option given below
+
+ A. Amazon Resource Number
+ B. Amazon Resource Nametag
+ C. Amazon Resource Name		-Correct
+ D. Amazon Resource Namespace
+Unattempted
+Amazon Resource Names (ARNs) are used to uniquely identify AWS resources. For information on ARN’s, refer to the link: http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
+
+
+
+61. Question
+Which of the following is true about S3 Server-Side Encryption? Choose the correct answer from the options below
+
+ A. You must encrypt the data before transmission
+ B. It uses AES-256		-Correct
+ C. You must decrypt the data after transmission
+ D. You are responsible for managing and rotating the encryption keys
+Unattempted
+Server-side encryption is about protecting data at rest. Server-side encryption with Amazon S3-managed encryption keys (SSE-S3) employs strong multi-factor encryption. Amazon S3 encrypts each object with a unique key. As an additional safeguard, it encrypts the key itself with a master key that it regularly rotates. Amazon S3 server-side encryption uses one of the strongest block ciphers available, 256-bit Advanced Encryption Standard (AES-256), to encrypt your data For more information on S3 server side encryption please refer to the below URL: http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html
+
+
+
+62. Question
+Company A has recently launched an online commerce site for bicycles on AWS. They have a “Product” DynamoDB table that stores details for each bicycle, such as, manufacturer, color, price, quantity and size to display in the online store. Due to customer demand, they want to include an image for each bicycle along with the existing details. Which approach below provides the least impact to provisioned throughput on the “Product” table? Choose an answer from the options below
+
+ A. Create an “Images” DynamoDB table to store the Image with a foreign key constraint to the “Product” table
+ B. Add an image data type to the “Product” table to store the images in binary format
+ C. Serialize the image and store it in multiple DynamoDB tables
+ D. Store the images in Amazon S3 and add an S3 URL pointer to the “Product” table item for each image		-Correct
+Unattempted
+This is clearly given in the AWS documentation For more information on DynamoDB, please refer to the link: https://aws.amazon.com/dynamodb/faqs/
+
+
+
+63. Question
+Which of the following items are required to allow an application deployed on an EC2 instance to write data to a DynamoDB table? Assume that no security Keys are allowed to be stored on the EC2 instance. Choose an answer from options below:
+
+ A. Create an IAM user that allows write access to the DynamoDB table.
+ B. Launch an EC2 instance with the IAM user included in the launch configuration.
+ C. Create an IAM role that allows write access to the DynamoDB table and attach to the instance.		-Correct
+ D. Create an IAM user and allow programmatic access.
+Unattempted
+As the question mentions no keys are allowed to be stored on EC2 instance and hence IAM user is incorrect option. Statement from AWS with regard to controlling access to DynamoDB:  Applications running on Amazon EC2 – You can use an IAM role to manage temporary credentials for applications that are running on an EC2 instance and making AWS API requests. This is preferable to storing access keys within the EC2 instance. To assign an AWS role to an EC2 instance and make it available to all of its applications, you create an instance profile that is attached to the instance. An instance profile contains the role and enables programs that are running on the EC2 instance to get temporary credentials. For more information, see Using an IAM Role to Grant Permissions to Applications Running on Amazon EC2 Instances in the IAM User Guide. Please refer to the link below for more information:  https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/authentication-and-access-control.html
+
+
+
+64. Question
+An Amazon S3 bucket, “myawsbucket” is configured with website hosting in Tokyo region,what is the region-specific website endpoint? Choose an answer from the options below
+
+ A. www.myawsbucket.ap-northeast-1.amazonaws.com
+ B. myawsbucket.s3-website-ap-northeast-1.amazonaws.com		-Correct
+ C. myawsbucket.amazonaws.com
+ D. myawsbucket.tokyo.amazonaws.com
+Unattempted
+You have the chance to enable static web site hosting for S3 buckets. This can be done via the properties option for the bucket. The end point of the bucket for static hosting will also be configured. For more information on S3 buckets, please visit the link: http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html
+
+
+
+65. Question
+You are providing AWS consulting services for a company developing a new mobile application that will be leveraging Amazon SNS Mobile Push for push notifications. In order to send direct notification messages to individual devices each device registration identifier or token needs to be registered with SNS; however the developers are not sure of the best way to do this. You advise them to
+
+ A. Call the CreatePlatformEndPoint API function to register multiple device tokens.		-Correct
+ B. Bulk upload the device tokens contained in a CSV file via the AWS Management Console.
+ C. Let the push notification service (e.g. Amazon Device Messaging) handle the registration.
+ D. Implement a token vending service to handle the registration.
+Unattempted
+The CreatePlatformEndPoint  API creates an endpoint for a device and mobile app on one of the supported push notification services, such as GCM and APNS. CreatePlatformEndpoint requires the PlatformApplicationArn that is returned from CreatePlatformApplication. The EndpointArn that is returned when using CreatePlatformEndpointcan then be used by the Publish action to send a message to a mobile app or by the Subscribe action for subscription to a topic.  For more information on the command please visit the below link: http://docs.aws.amazon.com/sns/latest/api/API_CreatePlatformEndpoint.html
