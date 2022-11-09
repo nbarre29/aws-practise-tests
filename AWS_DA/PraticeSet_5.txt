@@ -1,0 +1,1201 @@
+1. Question
+You’ve just started development on an application that will make use of the ElastiCache service. You need to ensure that objects are cached but not kept inadvertently for a long time. Which of the following strategy would you employ for the cache service?
+
+ A. TTL		-Correct
+ B. Lazy Loading
+ C. Write Through
+ D. Read Through
+Unattempted
+The AWS Documentation mentions the following
+Lazy loading allows for stale data but won’t fail with empty nodes. Write through ensures that data is always fresh but may fail with empty nodes and may populate the cache with superfluous data. By adding a time to live (TTL) value to each write, we are able to enjoy the advantages of each strategy and largely avoid cluttering up the cache with superfluous data.
+Option B is incorrect because this is a caching strategy that loads data into the cache only when necessary.
+Option C is incorrect because this is a caching strategy that adds data or updates data in the cache whenever data is written to the database.
+Option D is incorrect because there is no such caching strategy
+For more information on Caching strategies, please refer to the below URL
+https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Strategies.html
+The correct answer is: TTL
+
+
+
+2. Question
+Your team is looking into the Serverless deployment of an AWS lambda function. The function will be deployed using the Serverless application model. To test this out , you first create a sample function created below.
+var AWS = require(‘aws-sdk’);
+exports.handler = function(event, context, callback) {
+var bucketName = “Demobucket”;
+callback(null, bucketName);
+}
+What should be the next steps in the serverless deployment? Choose 2 answers from the options given below
+
+ A. Create a YAML file with the deployment specific’s and package that along with the function file.		-Correct
+ B. Upload the application function file onto an S3 bucket.
+ C. Upload the function on AWS Lambda
+ D. Upload the complete package onto an S3 bucket		-Correct
+Unattempted
+This is given in the AWS Documentation
+Option B is incorrect since you need to package both the application function and the YAML file
+Option C is incorrect since you have the requirement to deploy this in an automated fashion
+For more information on serverless deployment, please refer to the below URL
+https://docs.aws.amazon.com/lambda/latest/dg/serverless-deploy-wt.html
+The correct answers are: Create a YAML file with the deployment specific’s and package that along with the function file., Upload the complete package onto an S3 bucket
+
+
+
+3. Question
+You’re planning on using the DataPipeline service to transfer data from Amazon S3 to Redshift. You need to define the source and destination locations. Which of the following part of the DataPipeline service allows you to define these locations?
+
+ A. Data Nodes		-Correct
+ B. Task Runner
+ C. Activities
+ D. Resources
+Unattempted
+This is given in the AWS Documentation
+Option B is incorrect since the Task Runner is an application that polls AWS Data Pipeline for tasks and then performs those tasks.
+Option C is incorrect since an activity is a pipeline component that defines the work to perform
+Option D is incorrect since a resource is the computational resource that performs the work that a pipeline activity specifies
+For more information on Data Nodes, please refer to the below URL
+https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-concepts-datanodes.html
+The correct answer is: Data Nodes
+
+
+
+4. Question
+Your team has been instructed with the development of an application. The backend store needs to store data on which ad-hoc queries can run and table joins are required. Which of the following would you use to host the underlying data store?
+
+ A. AWS RDS		-Correct
+ B. AWS DynamoDB
+ C. AWS S3
+ D. AWS Athena
+Unattempted
+The AWS Documentation gives an example comparison of when to use AWS RDS for SQL data and DynamoDB for NoSQL data
+Option B is incorrect because this should not be used when you have table joins to be carried out.
+Option C is incorrect because this is used for object level storage
+Option D is incorrect because this is used for querying data in S3
+For more information on when to use SQL over NoSQL, please refer to the below URL
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SQLtoNoSQL.html
+The correct answer is: AWS RDS
+
+
+
+5. Question
+You are a developer for a company that is planning on using the AWS RDS service. Your Database administrator spins up a new MySQL RDS Instance in AWS. You now need to connect to that instance. How can you achieve this? Choose 2 answers from the options given below.
+
+ A. Use the DescribeDBInstances API and get the endpoint for the database instance		-Correct
+ B. Use the DescribeDBInstances API and get the IP address for the database instance
+ C. Request the DBA for the endpoint for the Instance via the AWS Console		-Correct
+ D. Request the DBA for the IP address for the Instance via the AWS Console
+Unattempted
+The AWS Documentation mentions the following
+Before you can connect to a DB instance running the MySQL database engine, you must create a DB instance. For information, seeCreating a DB Instance Running the MySQL Database Engine. Once Amazon RDS provisions your DB instance, you can use any standard MySQL client application or utility to connect to the instance. In the connection string, you specify the DNS address from the DB instance endpoint as the host parameter and specify the port number from the DB instance endpoint as the port parameter.
+You can use the AWS Management Console, the AWS CLI describe-db-instances command, or the Amazon RDS API DescribeDBInstances action to list the details of an Amazon RDS DB instance, including its endpoint
+Options B and D are incorrect since you need to use the endpoints to connect to the database
+For more information on connecting to a database endpoint , please refer to the below URL
+https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ConnectToInstance.html
+The correct answers are: Use the DescribeDBInstances API and get the endpoint for the database instance, Request the DBA for the endpoint for the Instance via the AWS Console
+
+
+
+6. Question
+Your team has an application deployed using the Elastic Beanstalk service. A Web environment has been configured for the production environment. There is now a requirement to perform a Blue Green deployment for a new version of the application. How can you achieve this?
+
+ A. Create a new application and swap the application environments.
+ B. Create a new application version and upload the new application version
+ C. Create a new environment in the application with the updated application version and perform a swap		-Correct
+ D. Create a new environment in the application and Load the configuration of an existing environment
+Unattempted
+This is mentioned in the AWS Documentation
+Since this is clearly mentioned in the AWS Documentation, all other options are invalid
+For more information on Blue Green deployments in Elastic Beanstalk, please refer to the below URL
+https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.CNAMESwap.html
+The correct answer is: Create a new environment in the application with the updated application version and perform a swap
+
+
+
+7. Question
+Your development team is currently working with an application that interacts with the DynamoDB table. Due to the proposed extensive use of the application, the underlying DynamoDB table would undergo a steady growth in size. Which of the following preferred options should be used for retrieving the data? Choose 3 answers from the options given below
+
+ A. Use the query operation		-Correct
+ B. Use the Scan operation
+ C. Use the GetItem API command		-Correct
+ D. Use the BatchGetItem API command		-Correct
+Unattempted
+The AWS Documentation mentions the following
+If possible, you should avoid using a Scan operation on a large table or index with a filter that removes many results. Also, as a table or index grows, the Scan operation slows. The Scan operation examines every item for the requested values and can use up the provisioned throughput for a large table or index in a single operation. For faster response times, design your tables and indexes so that your applications can use Query instead of Scan. (For tables, you can also consider using the GetItem and BatchGetItem APIs.)
+Option B is incorrect since this would cause performance issues as the amount of items starts to increase.
+For more information on best practises for the query and scan operation, please refer to the below URL
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-query-scan.html
+The correct answers are: Use the query operation, Use the GetItem API command, Use the BatchGetItem API command
+
+
+
+8. Question
+You are a developer for a company that has been given the responsibility to debug performance issues for an existing application. The application connects to a MySQL RDS Instance in AWS. There is a suspicion that there are performance issues in the underlying queries. Which of the following can help diagnose these issues?
+
+ A. The Cloudtrail logs for the region
+ B. Get the slow query logs for the RDS service		-Correct
+ C. Use the AWS Config service to diagnose the problem areas
+ D. Use the AWS Inspector service to diagnose the problem areas
+Unattempted
+The AWS RDS Service contains several logs such as the ones given below
+Error log – contains diagnostic messages generated by the database engine, along with startup and shutdown times.
+General query log – contains a record of all SQL statements received from clients, and also client connect and disconnect times.
+Slow query log – contains a record of SQL statements that took longer to execute than a set amount of time and that examined more than a defined number of rows. Both thresholds are configurable.
+Option A is incorrect because this is used to monitor API activity
+Option C is incorrect because this is used as a configuration service
+Option D is incorrect because this is used to inspect EC2 Instances for vulnerabilities
+For more information on monitoring Amazon RDS , please refer to the below URL
+https://aws.amazon.com/blogs/database/monitor-amazon-rds-for-mysql-and-mariadb-logs-with-amazon-cloudwatch/
+The correct answer is: Get the slow query logs for the RDS service
+
+
+
+9. Question
+You are developing an application that consist of the following architecture
+· A set of EC2 Instances hosting a web layer
+· A database hosting a MySQL instance
+You need to add a layer that can be used to ensure that the most frequently accessed data from the database is fetched in a more fast and efficient manner from the database. Which of the following can be used to accomplish this requirement?
+
+ A. An SQS queue to store the frequently accessed data
+ B. An SNS topic to store the frequently accessed data
+ C. A Cloudfront distribution to store the frequently accessed data
+ D. A Elasticache instance to store the frequently accessed data		-Correct
+Unattempted
+The AWS Documentation mentions the following
+Amazon ElastiCache offers fully managed Redis and Memcached. Seamlessly deploy, run, and scale popular open source compatible in-memory data stores. Build data-intensive apps or improve the performance of your existing apps by retrieving data from high throughput and low latency in-memory data stores. Amazon ElastiCache is a popular choice for Gaming, Ad-Tech, Financial Services, Healthcare, and IoT apps.
+Option A is incorrect because this is a messaging service
+Option B is incorrect because this is a notification service
+Option C is incorrect because this is a web distribution service
+For more information on Amazon ElastiCache, please refer to the below URL
+https://aws.amazon.com/elasticache/
+The correct answer is: A Elasticache instance to store the frequently accessed data
+
+
+
+10. Question
+Your team has an application deployed on the AWS platform. This application is making requests to an S3 bucket. There is a surge of increased number of GET requests. After monitoring using Cloudwatch metrics you can see the rate of GET requests going close to 5000 requests per second. Which of the following can be used to ensure the performance and cost are optimized?
+
+ A. Add an Elasticache in front of the S3 bucket
+ B. Use DynamoDB instead of using S3
+ C. Place a Cloudfront distribution in front of the S3 bucket		-Correct
+ D. Place an Elastic Load balancer in front of the S3 bucket
+Unattempted
+The AWS Documentation mentions the following
+If your workload is mainly sending GET requests, in addition to the preceding guidelines, you should consider using Amazon CloudFront for performance optimization. By integrating CloudFront with Amazon S3, you can distribute content to your users with low latency and a high data transfer rate. You also send fewer direct requests to Amazon S3, which reduces your costs.
+Since the documentation clearly mentions this , all other options are invalid
+For more information on request rate configurations for S3, please refer to the below URL
+https://docs.aws.amazon.com/AmazonS3/latest/dev/request-rate-perf-considerations.html
+The correct answer is: Place a Cloudfront distribution in front of the S3 bucket
+
+
+
+11. Question
+Your team is planning on creating a Lambda function which will interact with a DynamoDB stream. Which of the following would need to be in place to ensure the Lambda function can interact with the DynamoDB table.
+
+ A. Access Keys for an IAM user embedded in the function
+ B. IAM Role with required permissions to access DynamoDB		-Correct
+ C. The password for an IAM user in the environment variable for the Lambda function
+ D. A Security group rule to allow egress traffic into DynamoDB
+Unattempted
+The AWS Documentation mentions the following
+Regardless of what invokes a Lambda function, AWS Lambda always executes a Lambda function on your behalf. If your Lambda function needs to access any AWS resources, you need to grant the relevant permissions to access those resources. You also need to grant AWS Lambda permissions to poll your DynamoDB stream. You grant all of these permissions to an IAM role (execution role) that AWS Lambda can assume to poll the stream and execute the Lambda function on your behalf. You create this role first and then enable it at the time you create the Lambda function
+For more information on using Lambda with DynamoDB, please refer to the below URL
+https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html
+The correct answer is: IAM Role with required permissions to access DynamoDB
+
+
+
+12. Question
+Your development team is planning on building an application based on the Microservice architecture pattern. Docker containers would be used to build the application. When deploying the application to AWS, which of the following services should be considered. Choose 2 answers from the options given below?
+
+ A. AWS EC2
+ B. AWS ECS		-Correct
+ C. Application Load balancer		-Correct
+ D. Classic Load balancer
+Unattempted
+The AWS Documentation, shows the example of a simple Microservices Architecture
+Option A is incorrect since ECS should be preferred for its ability to provide a serverless architecture for your docker containers
+Option D is incorrect since the Application Load balancer has better support for docker containers.
+For more information on a simple microservices architecture, please refer to the below URL
+https://docs.aws.amazon.com/aws-technical-content/latest/microservices-on-aws/simple-microservices-architecture-on-aws.html
+The correct answers are: AWS ECS, Application Load balancer
+
+
+
+13. Question
+Your team is using the AWS CodeBuild service for an application build. As part of Integration testing during the build phase, the application needs to access an RDS instance in a private subnet. How can you ensure this is possible?
+
+ A. Create a VPC Endpoint and ensure the codebuild project configuration is modified with the endpoint information
+ B. Provide additional VPC-specific configuration information as part of your AWS CodeBuild project		-Correct
+ C. Mark the subnet as a public subnet during the time of the Integration tests
+ D. Use a NAT gateway to relay the requests from AWS CodeBuild to the RDS Instance
+Unattempted
+This is given in the AWS Documentation
+Typically, resources in an VPC are not accessible by AWS CodeBuild. To enable access, you must provide additional VPC-specific configuration information as part of your AWS CodeBuild project configuration. This includes the VPC ID, the VPC subnet IDs, and the VPC security group IDs. VPC-enabled builds are then able to access resources inside your VPC.
+VPC connectivity from AWS CodeBuild builds makes it possible to:
+Run integration tests from your build against data in an Amazon RDS database that’s isolated on a private subnet.
+Query data in an Amazon ElastiCache cluster directly from tests.
+Interact with internal web services hosted on Amazon EC2, Amazon ECS, or services that use internal Elastic Load Balancing.
+Since the requirements are clearly mentioned in the documentation , all other options are incorrect
+For more information on VPC support for AWS CodeBuild, please refer to the below URL
+https://docs.aws.amazon.com/codebuild/latest/userguide/vpc-support.html
+The correct answer is: Provide additional VPC-specific configuration information as part of your AWS CodeBuild project
+
+
+
+14. Question
+Your team has developed an application that makes use of an SQS queue for distributed messaging. Your team needs to monitor the number of messages in the queue. Which of the following can be used to get this information?
+
+ A. AWS Cloudwatch		-Correct
+ B. AWS Cloudtrail
+ C. AWS Config
+ D. AWS Inspector
+Unattempted
+This is given in the AWS Documentation
+Amazon SQS and Amazon CloudWatch are integrated so you can use CloudWatch to view and analyze metrics for your Amazon SQS queues. You can view and analyze your queues’ metrics from the Amazon SQS console, the CloudWatch console, using the AWS CLI, or using the CloudWatch API. You can also set CloudWatch alarms for Amazon SQS metrics.
+CloudWatch metrics for your Amazon SQS queues are automatically collected and pushed to CloudWatch every five minutes. These metrics are gathered on all queues that meet the CloudWatch guidelines for being active. CloudWatch considers a queue to be active for up to six hours if it contains any messages or if any action accesses it.
+Option B is incorrect since this is an API monitoring service
+Option C is incorrect since this is resource configuration service
+Option D is incorrect since this is used to check EC2 Instances for vulnerabilities
+For more information on monitoring using Cloudwatch, please refer to the below URL
+https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-monitoring-using-cloudwatch.html
+The correct answer is: AWS Cloudwatch
+
+
+
+15. Question
+You’re in charge for creating a cloudformation template. This template needs to create resources for multiple types of environment. The template needs to be flexible so that it can create resources based on the type of environment. How can you achieve this? Choose 2 answers from the options given below.
+
+ A. Create an Input Parameter to take in the type of environment.		-Correct
+ B. Use the Outputs section to define the type of environment
+ C. Use the Custom Resources feature to create resources based on the type of environment
+ D. Use the Conditions section to create resources based on the type of environment		-Correct
+Unattempted
+This is given in the AWS Documentation
+The optional Conditions section contains statements that define the circumstances under which entities are created or configured. For example, you can create a condition and then associate it with a resource or output so that AWS CloudFormation only creates the resource or output if the condition is true. Similarly, you can associate the condition with a property so that AWS CloudFormation only sets the property to a specific value if the condition is true. If the condition is false, AWS CloudFormation sets the property to a different value that you specify.
+You might use conditions when you want to reuse a template that can create resources in different contexts, such as a test environment versus a production environment. In your template, you can add an EnvironmentType input parameter, which accepts either prod or test as inputs.
+Since this is clearly given in the documentation, all other options are incorrect
+For more information on conditions in a Cloudformation template, please refer to the below URL
+https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/conditions-section-structure.html
+The correct answers are: Create an Input Parameter to take in the type of environment., Use the Conditions section to create resources based on the type of environment
+
+
+
+16. Question
+You’ve setup an application on a set of EC2 Instances. It is a web-based application. You’ve also setup a load balancer. During the initial round of testing after deploying, the users complain that they are not able to reach the home page for the web based application. Which of the following must you check? Choose 2 answers from the options given below
+
+ A. Ensure that the load balancer is attached to a private subnet
+ B. Ensure that the load balancer is attached to a public subnet		-Correct
+ C. Ensure that the Security Group of the Load balancer allows traffic from the internet		-Correct
+ D. Ensure that the Security Group of the EC2 allows traffic from the internet
+Unattempted
+This is given in the AWS Documentation
+Option A is invalid since the load balancer should be attached to a public subnet
+Option D is invalid since the Security Group for the Load balancer should allow traffic from the internet
+For more information on troubleshooting the load balancer, please refer to the below URL
+https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-troubleshooting.html
+The correct answers are: Ensure that the load balancer is attached to a public subnet, Ensure that the Security Group of the Load balancer allows traffic from the internet
+
+
+
+17. Question
+Your team is working on an API definition which will be deployed using the API gateway service. You then need to ensure that control is established on who can access the various resources within the API gateway. Which of the following can help ensure this security requirement is met?
+
+ A. Key Policies
+ B. IAM Policies		-Correct
+ C. Resource Policies
+ D. IAM Roles
+Unattempted
+This is given in the AWS Documentation
+Since this is clearly given in the documentation, all other options are incorrect
+For more information on using IAM Policies for controlling access, please refer to the below URL
+https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-control-access-using-iam-policies-to-invoke-api.html
+The correct answer is: IAM Policies
+
+
+
+18. Question
+Your team has developed an application that will be launched on EC2 Instances that are part of the an Autoscaling Group. It needs to be ensured that the application can get the IP address of the Instance. How can you achieve this?
+
+ A. Make the application query the Instance Metadata		-Correct
+ B. Make the application query the Instance Userdata
+ C. Make the application query the Autoscaling Group
+ D. Make the application query the Launch configuration
+Unattempted
+This is given in the AWS Documentation
+Instance metadata is data about your instance that you can use to configure or manage the running instance
+Because your instance metadata is available from your running instance, you do not need to use the Amazon EC2 console or the AWS CLI. This can be helpful when you’re writing scripts to run from your instance. For example, you can access the local IP address of your instance from instance metadata to manage a connection to an external application.
+Since the data can only be retrieved from the Instance Metadata , all other options are invalid
+For more information on Instance Metadata, please refer to the below URL
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html
+The correct answer is: Make the application query the Instance Metadata
+
+
+
+19. Question
+You are a developer for a company. You are using planning on using the X-Ray service to trace all incoming HTTP requests for an application being developed. In the X-Ray SDK which of the following feature would you use to fulfil this requirement?
+
+ A. Interceptors		-Correct
+ B. Client handlers
+ C. Server handlers
+ D. Daemon service
+Unattempted
+This is given in the AWS Documentation
+The X-Ray SDK provides:
+· Interceptors to add to your code to trace incoming HTTP requests
+· Client handlers to instrument AWS SDK clients that your application uses to call other AWS services
+· An HTTP client to use to instrument calls to other internal and external HTTP web services
+Since this is clearly given in the documentation, all other options are incorrect
+For more information on using AWS X-Ray, please refer to the below URL
+https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html
+The correct answer is: Interceptors
+
+
+
+20. Question		[OPTIONS_MISSING]
+You have to create a DynamoDB table called Customers which will have 2 attributes. One is the ID which will be the partition key and the other is the Name which will be the sort key. Which of the following is the right definition for the CLI command that would be used to create the table?
+
+ A.
+ B.
+Unattempted
+An example of this is given in the AWS Documentation
+Option B is incorrect since the keys are not being defined here
+Option C is incorrect since the Name key should be RANGE and the ID should be HASH
+Option D is incorrect since the right CLI command is create-table
+For more information on working with tables, please refer to the below URL
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.Basics.html
+The correct answer is: aws dynamodb create-table \
+–table-name Customer \
+–attribute-definitions \
+AttributeName=ID,AttributeType=N \
+AttributeName=Name,AttributeType=S \
+–key-schema \
+AttributeName=ID,KeyType=HASH \
+AttributeName=Name,KeyType=RANGE \
+–provisioned-throughput \
+ReadCapacityUnits=10,WriteCapacityUnits=5
+
+
+
+21. Question
+Your working on a system that will make use of AWS Kinesis. Here you will various log sources that will send data onto AWS Kinesis. You are looking at creating an initial number of shards for the Kinesis stream. Which of the following can be used in the calculation for the an initial number of shards for the Kinesis stream. Choose 2 answers from the options given below.
+
+ A. Incoming write bandwidth		-Correct
+ B. Outgoing write bandwidth
+ C. Incoming read bandwidth
+ D. Outgoing read bandwidth		-Correct
+Unattempted
+This is given in the AWS Documentation
+For more information on Amazon Kinesis streams, please refer to the below URL
+https://docs.aws.amazon.com/streams/latest/dev/amazon-kinesis-streams.html
+The correct answers are: Incoming write bandwidth, Outgoing read bandwidth
+
+
+
+22. Question
+Your team is working on an application that will connect to a MySQL RDS Instance. The security mandate is that the connection to the application needs to be encrypted. How can you accomplish this?
+
+ A. By using Access Keys assigned to an IAM user
+ B. By using Private Key pairs
+ C. By using SSL		-Correct
+ D. By using KMS Keys
+Unattempted
+The AWS Documentation mentions the following
+Option A is incorrect since this is used for programmatic access for a user
+Option B is incorrect since this is used for connection to an EC2 Instance
+Option D is incorrect since is normally used for encrypting data at rest or before data is sent in transit
+For more information on using RDS with SSL, please refer to the below URL
+https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html
+The correct answer is: By using SSL
+
+
+
+23. Question
+Your development team has developed a series of Docker containers that will be part of an application. The deployment team is looking at using the Elastic Container service for hosting these containers. Which of the following are 2 possible data sources for storing the Docker based images?
+
+ A. On the EC2 Instances
+ B. In Docker Hub		-Correct
+ C. In the Elastic Container Registry		-Correct
+ D. Store them as Amazon Machine Images
+Unattempted
+The AWS Documentation architecture diagram of the Elastic Container service shows the 2 sources from where you can download the Docker containers
+Because the AWS Documentation clearly mentions this , all other options are invalid.
+For more information on the Amazon Container Service, please refer to the below URL
+https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html
+The correct answers are: In Docker Hub, In the Elastic Container Registry
+
+
+
+24. Question
+As a database developer, you have started working with Redshift. Your IT administrator has provisioned a Redshift cluster. You now need to load data into the Redshift cluster from S3. Which of the following command should you use for this activity?
+
+ A. GET
+ B. COPY		-Correct
+ C. MERGE
+ D. PUT
+Unattempted
+This is given in the AWS Documentation
+The ideal command to be used is given in the documentation , hence all other options are incorrect
+For more information on working with a sample Redshift cluster, please refer to the below URL
+https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-create-sample-db.html
+The correct answer is: COPY
+
+
+
+25. Question
+Your development team is planning on using the AWS Batch service to process a high number of intensive performance computing jobs. Which of the following integration services with AWS Batch will allow you to monitor the progress of the jobs?
+
+ A. AWS Cloudtrail
+ B. AWS Cloudwatch Events		-Correct
+ C. AWS Config
+ D. AWS SQS
+Unattempted
+The AWS Documentation mentions the following
+Using CloudWatch Events, you can monitor the progress of jobs, build AWS Batch custom workflows with complex dependencies, generate usage reports or metrics around job execution, or build your own custom dashboards. With AWS Batch and CloudWatch Events, you can eliminate scheduling and monitoring code that continuously polls AWS Batch for job status changes. Instead, handle AWS Batch job state changes asynchronously using any CloudWatch Events target, such as AWS Lambda, Amazon Simple Queue Service, Amazon Simple Notification Service, or Amazon Kinesis Data Streams.
+Option A is incorrect since this is an API Monitoring service
+Option C is incorrect since this is used to monitor configuration changes
+Option D is incorrect since this is used as a messaging service
+For more information on Cloudwatch event stream, please refer to the below URL
+https://docs.aws.amazon.com/batch/latest/userguide/cloudwatch_event_stream.html
+The correct answer is: AWS Cloudwatch Events
+
+
+
+26. Question
+Your developing an application that is going to make use of AWS Cognito. The default sign-in and sign-up features of the AWS Cognito service will be used. There is a security requirement to ensure that if the user’s credentials are compromised, then they would need to use a new password. Which of the following needs to be in place for this? Choose 2 answers from the options given below
+
+ A. Ensure to create a user pool in AWS Cognito		-Correct
+ B. Ensure to “Block use” for compromised credentials in the Advanced Security section		-Correct
+ C. Ensure to “Block use” for compromised credentials in the Basic Security section
+ D. Ensure to create a user pool in AWS Cognito
+Unattempted
+This is given in the AWS Documentation
+Option C is incorrect since this configuration needs to be done in the Advanced Security section
+Option D is incorrect since this is used to create unique identities for your users and federate them with identity providers and there is no mention of this in the requirement
+For more information on Cognito User pools, please refer to the below URL
+https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-compromised-credentials.html
+The correct answers are: Ensure to create a user pool in AWS Cognito, Ensure to “Block use” for compromised credentials in the Advanced Security section
+
+
+
+27. Question
+Your company has a development application that needs to interact with an S3 bucket. There is a requirement that all data in the bucket is encrypted at rest. You also need to ensure that the keys are managed by you. Which of the following can you use for this purpose? Choose 2 answers from the options given below
+
+ A. Server-Side Encryption with AWS Managed Keys
+ B. Server-Side Encryption with AWS KMS Keys
+ C. Server-Side Encryption with Customer-Provided Keys		-Correct
+ D. Client-Side Encryption		-Correct
+Unattempted
+This is given in the AWS Documentation
+Use Server-Side Encryption with Customer-Provided Keys (SSE-C) – You manage the encryption keys and Amazon S3 manages the encryption, as it writes to disks, and decryption, when you access your objects.
+You can encrypt data client-side and upload the encrypted data to Amazon S3. In this case, you manage the encryption process, the encryption keys, and related tools
+Options A and B are incorrect since here the keys are managed by AWS.
+For more information on Server-side encryption for S3, please refer to the below URL
+https://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html
+The correct answers are: Server-Side Encryption with Customer-Provided Keys, Client-Side Encryption
+
+
+
+28. Question
+You are setting out policies for allowing access to users for objects in an S3 bucket. You have configured a policy for testing which currently works as intended. You try to create a more restrictive policy but find out that the changes are not working as intended. What can you do to resolve the issue in the EASIEST way possible?
+
+ A. Delete the current version of the policy and recreate the older one
+ B. Revert back to the previous version of the policy		-Correct
+ C. Recreate the IAM users again
+ D. Use the recycle bin to get the deleted policies back
+Unattempted
+The AWS Documentation mentions the following
+You create a customer managed policy that allows users to administer a particular Amazon S3 bucket using the AWS Management Console. Upon creation, your customer managed policy has only one version, identified as v1, so that version is automatically set as the default. The policy works as intended.
+Later, you update the policy to add permission to administer a second Amazon S3 bucket. IAM creates a new version of the policy, identified as v2, that contains your changes. You set version v2 as the default, and a short time later your users report that they lack permission to use the Amazon S3 console. In this case, you can roll back to version v1 of the policy, which you know works as intended. To do this, you set version v1 as the default version. Your users are now able to use the Amazon S3 console to administer the original bucket.
+Because the AWS Documentation clearly mentions this , all other options are invalid.
+For more information on the Amazon Container Service, please refer to the below URL
+https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html
+The correct answer is: Revert back to the previous version of the policy
+
+
+
+29. Question
+You are currently a Business Intelligence developer for a company. A lot of data sources that are defined for the Logistics team in your company is hosted in AWS. They are now looking for a quick solution to build visualization screens around the data hosted in AWS. Which of the following can be used to fulfil this requirement?
+
+ A. AWS Redshift
+ B. AWS Quicksight		-Correct
+ C. AWS Glue
+ D. AWS DynamoDB
+Unattempted
+This is given in the AWS Documentation
+Amazon QuickSight is a business analytics service you can use to build visualizations, perform ad hoc analysis, and get business insights from your data. It can automatically discover AWS data sources and also works with your data sources. Amazon QuickSight enables organizations to scale to hundreds of thousands of users and delivers responsive performance by using a robust in-memory engine (SPICE).
+Option A is invalid because this is a datawarehousing solution
+Option C is invalid because this service is fully managed ETL (extract, transform, and load) service
+Option D is invalid because this is a fully managed NoSQL database
+For more information on AWS Quicksight, please refer to the below URL
+https://docs.aws.amazon.com/quicksight/latest/user/welcome.html
+The correct answer is: AWS Quicksight
+
+
+
+30. Question
+Your team is working on an application that it going to work with a DynamoDB table. At the design stage, you are trying to find out the optimum way to define partition keys and secondary indexes. Which of the following are recommendations for defining secondary indexes? Choose 2 answers from the options given below.
+
+ A. Keep the number of indexes to a minimum		-Correct
+ B. Define as many indexes as possible to maximize performance
+ C. Avoid indexing tables that experience heavy write activity		-Correct
+ D. Add indexes to tables that experience heavy write activity
+Unattempted
+The AWS Documentation mentions the following
+· Keep the number of indexes to a minimum. Don’t create secondary indexes on attributes that you don’t query often. Indexes that are seldom used contribute to increased storage and I/O costs without improving application performance.
+· Avoid indexing tables that experience heavy write activity. In a data capture application, for example, the cost of I/O operations required to maintain an index on a table with a very high write load can be significant. If you need to index data in such a table, it may be more effective to copy the data to another table that has the necessary indexes and query it there.
+Since the documentation mentions this clearly, all other options are invalid
+For more information on working with indexes, please refer to the below URL
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-indexes-general.html
+The correct answers are: Keep the number of indexes to a minimum, Avoid indexing tables that experience heavy write activity
+
+
+
+31. Question
+Your team is currently publishing items to an S3 bucket. You need to record the size of the objects in a separate DynamoDB table. How can you ensure that each uploaded object triggers a record in the DynamoDB table in an ideal manner? Choose 2 answers from the options given below.
+
+ A. Create a new SQS queue
+ B. Create a new Lambda function		-Correct
+ C. Add the SQS queue to the source event for the S3 bucket
+ D. Add the Lambda function to the source event for the S3 bucket		-Correct
+Unattempted
+This is given in the AWS Documentation
+Amazon S3 can publish events (for example, when an object is created in a bucket) to AWS Lambda and invoke your Lambda function by passing the event data as a parameter. This integration enables you to write Lambda functions that process Amazon S3 events. In Amazon S3, you add bucket notification configuration that identifies the type of event that you want Amazon S3 to publish and the Lambda function that you want to invoke.
+Options A and C are incorrect since the ideal option would be to create a Lambda function that could be used to automatically record the data size and then place a record in the DynamoDB table
+For more information on S3 with Lambda, please refer to the below URL
+https://docs.aws.amazon.com/lambda/latest/dg/with-s3.html
+The correct answers are: Create a new Lambda function, Add the Lambda function to the source event for the S3 bucket
+
+
+
+32. Question
+You are planning on developing and deploying a Node.js Lambda function. The code has a dependency on a lot of third-party libraries. Which of the following needs to be done to ensure the code can be executed in the AWS Lambda service?
+
+ A. Install the third-party libraries in the Lambda service
+ B. Create a deployment package with your code and the third-party libraries		-Correct
+ C. Use Cloudformation templates to deploy the third-party libraries
+ D. Use an IAM Role with the required permissions on those libraries
+Unattempted
+The AWS Documentation mentions the following
+If you are writing code that uses other resources, such as a graphics library for image processing, or you want to use the AWS CLI instead of the console, you need to first create the Lambda function deployment package, and then use the console or the CLI to upload the package.
+Because of what is mentioned in the AWS Documentation, all other options are invalid
+For more information on creating the deployment package, please refer to the below URL
+https://docs.aws.amazon.com/lambda/latest/dg/nodejs-create-deployment-pkg.html
+The correct answer is: Create a deployment package with your code and the third-party libraries
+
+
+
+33. Question
+Your developers have been given access to a CodeCommit Repository. You need to ensure that if any changes are made to a repository, notifications are sent accordingly. Which of the below 2 destinations can be used for the notifications.
+
+ A. AWS Lambda		-Correct
+ B. AWS SNS		-Correct
+ C. AWS Config
+ D. AWS IAM
+Unattempted
+The AWS Documentation mentions the following
+You can configure an AWS CodeCommit repository so that code pushes or other events trigger actions, such as sending a notification from Amazon Simple Notification Service (Amazon SNS) or invoking a function in AWS Lambda. You can create up to ten triggers for each AWS CodeCommit repository.
+Option C is incorrect since this is used to monitor configuration changes
+Option D is incorrect since this is used for managing IAM users
+For more information on the notification, please refer to the below URL
+https://docs.aws.amazon.com/codecommit/latest/userguide/how-to-notify.html
+The correct answers are: AWS Lambda, AWS SNS
+
+
+
+34. Question
+An application is making calls to a DynamoDB table. The queries are taking on a lot of read capacity. The table has a large number of attributes. Not all of the attributes are used in the query. Which of the following can be used to minimize the read capacity being used by the queries?
+
+ A. Use global secondary indexes with projected attributes		-Correct
+ B. Use an Application Load balancer in front of the DynamoDB table
+ C. Consider using parallel scans on the table
+ D. Use a cloudfront distribution in front of the DynamoDB table
+Unattempted
+You can use Global secondary indexes and use only those attributes which will be queried. This can help reduce the amount of read throughput used on the table.
+Options B and D are invalid because these are invalid architecture designs
+Option C is incorrect since using queries is more effective
+For more information on general guidelines for indexes, please refer to the below URL
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-indexes-general.html
+The correct answer is: Use global secondary indexes with projected attributes
+
+
+
+35. Question
+A company is making use of the Simple Notification service to send notifications to various subscribers for their service. There is a user requirement for the subscriber to only receive certain types of messages and not all messages published to the topic. How can you achieve this?
+
+ A. By adding a filter policy to the topic		-Correct
+ B. By adding an IAM policy to the topic
+ C. Publish the messages to an SQS queue
+ D. Publish the messages to a Lambda function
+Unattempted
+The AWS Documentation mentions the following
+By default, a subscriber of an Amazon SNS topic receives every message published to the topic. To receive only a subset of the messages, a subscriber assigns a filter policy to the topic subscription.
+A filter policy is a simple JSON object. The policy contains attributes that define which messages the subscriber receives. When you publish a message to a topic, Amazon SNS compares the message attributes to the attributes in the filter policy for each of the topic’s subscriptions. If there is a match between the attributes, Amazon SNS sends the message to the subscriber. Otherwise, Amazon SNS skips the subscriber without sending the message to it. If a subscription lacks a filter policy, the subscription receives every message published to its topic.
+Since the documentation clearly mentions this , all other options are incorrect
+For more information on message filtering, please refer to the below URL
+https://docs.aws.amazon.com/sns/latest/dg/message-filtering.html
+The correct answer is: By adding a filter policy to the topic
+
+
+
+36. Question
+You’ve developed an application that is going to be hosted on an EC2 Instance. The company has decided to use Cloudfront to distribute the content. The IT Security department has mandated that the traffic is encrypted between Cloudfront and the Viewer and Cloudfront and the origin as well. How can you achieve this? Choose 2 answers from the options given below.
+
+ A. Ensure that HTTP is mapped to port 443 at the origin
+ B. Ensure that KMS keys are used to encrypt the traffic
+ C. Ensure that the Viewer Protocol policy is set to HTTPS only or Redirect HTTP to HTTPS		-Correct
+ D. Ensure that the Origin Protocol policy is set to HTTPS only		-Correct
+Unattempted
+This is given in the AWS Documentation
+Since this is clearly given in the documentation, all other options are incorrect
+For more information on configuring HTTPS between the Viewer and Cloudfront and the Origin and Cloudfront, please refer to the below URL
+https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-https-viewers-to-cloudfront.html
+https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-https-cloudfront-to-custom-origin.html
+The correct answers are: Ensure that the Viewer Protocol policy is set to HTTPS only or Redirect HTTP to HTTPS, Ensure that the Origin Protocol policy is set to HTTPS only
+
+
+
+37. Question
+You are using a custom tool known as POSTMAN to make API requests to resources in AWS. Part of the job of sending requests is to sign the request. Which of the following would you use to sign the API requests made to AWS?
+
+ A. Your user name and password
+ B. A private key file
+ C. KMS keys
+ D. Access Keys		-Correct
+Unattempted
+The AWS Documentation mentions the following
+When you send HTTP requests to AWS, you sign the requests so that AWS can identify who sent them. You sign requests with your AWS access key, which consists of an access key ID and secret access key. Some requests do not need to be signed, such as anonymous requests to Amazon Simple Storage Service (Amazon S3) and some API operations in AWS Security Token Service (AWS STS) such as AssumeRoleWithWebIdentity.
+Option A is incorrect since this is used for console-based access
+Option B is incorrect since this is used for logging onto EC2 Instances
+Option C is incorrect since this is use for encrypting data
+For more information on signing API requests, please refer to the below URL
+https://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html
+The correct answer is: Access Keys
+
+
+
+38. Question
+Your team is planning on delivering content to users by using the Cloudfront service and an S3 bucket as the source. You need to ensure that a custom value is placed for the amount of time the object is stored in the Cloudfront cache. Which of the following 2 options can be used to fulfil this requirement?
+
+ A. Configure the origin to add an Expires header field to the object		-Correct
+ B. Configure the Cloudfront distribution to add an Expires header field to the object
+ C. Specify a value for Minimum TTL in CloudFront cache behaviors		-Correct
+ D. Specify a value for Minimum TTL in the origin object
+Unattempted
+This is also mentioned in the AWS Documentation
+For web distributions, to control how long your objects stay in a CloudFront cache before CloudFront forwards another request to your origin, you can:
+· Configure your origin to add a Cache-Control or an Expires header field to each object.
+· Specify a value for Minimum TTL in CloudFront cache behaviors.
+· Use the default value of 24 hours.
+Since this is clearly mentioned in the AWS Documentation , the other options are invalid
+For more information on request and response behaviour for Cloudfront with S3, please refer to the below URL
+https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorS3Origin.html
+The correct answers are: Configure the origin to add an Expires header field to the object , Specify a value for Minimum TTL in CloudFront cache behaviors
+
+
+
+39. Question
+You have to develop an Orders processing system. The system needs to store the Product Information which contains the image for every product. Which of the following implementation steps should be used when storing the Product related data. Choose 2 answers from the options given below
+
+ A. Store the Product ID, Name and price in a DynamoDB table		-Correct
+ B. Store the Product Image as an attribute in the same table
+ C. Store the Product ID, Name and price in an S3 bucket
+ D. Store the Product Image in an S3 bucket		-Correct
+Unattempted
+This is also mentioned in the AWS Documentation
+As mentioned above, you can also take advantage of Amazon Simple Storage Service (Amazon S3) to store large attribute values that cannot fit in a DynamoDB item. You can store them as an object in Amazon S3 and then store the object identifier in your DynamoDB item.
+You can also use the object metadata support in Amazon S3 to provide a link back to the parent item in DynamoDB. Store the primary key value of the item as Amazon S3 metadata of the object in Amazon S3. Doing this often helps with maintenance of the Amazon S3 objects.
+Option B is incorrect since the Images should ideally be stored as an object in S3
+Option C is incorrect since the ID and Name data should ideally be stored in a table
+For more information on best developer practises for DynamoDB, please refer to the below URL
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/best-practices.html
+The correct answers are: Store the Product ID, Name and price in a DynamoDB table, Store the Product Image in an S3 bucket
+
+
+
+40. Question
+Your team is transitioning a stateful based web application to AWS. You need to decide the services which will be used to host the application. Which of the following would be included in the design? Choose 2 answers from the options given below
+
+ A. DynamoDB to store the session data		-Correct
+ B. AWS Lambda to store the session data
+ C. An Application Load balancer to distribute traffic		-Correct
+ D. An API gateway to distribute traffic
+Unattempted
+The AWS Documentation shows how DynamoDB can be used to store session data
+And the application load balancer can be used to distribute traffic for the application
+Option B is incorrect since this service is used as a Compute Service
+Option D is incorrect since this is an API management service
+For more information on AWS Cloud Best practises, please refer to the below URL
+https://d1.awsstatic.com/whitepapers/AWS_Cloud_Best_Practices.pdf
+The correct answers are: DynamoDB to store the session data, An Application Load balancer to distribute traffic
+
+
+
+41. Question
+Your company has an existing Redshift cluster. The sales team currently store historical data in the cluster. There is now a requirement to ensure that all data is encrypted at rest. How can you achieve this?
+
+ A. Enable the Encryption feature for the cluster
+ B. Enable encryption for the underlying EBS volumes
+ C. Use SSL certificates to encrypt the data at rest
+ D. Create a new cluster with encryption enabled		-Correct
+Unattempted
+The AWS Documentation mentions the following
+In Amazon Redshift, you can enable database encryption for your clusters to help protect data at rest. When you enable encryption for a cluster, the data blocks and system metadata are encrypted for the cluster and its snapshots.
+Encryption is an optional, immutable setting of a cluster. If you want encryption, you enable it during the cluster launch process.To go from an unencrypted cluster to an encrypted cluster or the other way around, unload your data from the existing cluster and reload it in a new cluster with the chosen encryption setting.
+Option A is invalid since you cannot enable Encryption for an existing cluster
+Option B is invalid since the encryption needs to be enabled at the cluster level
+Option C is invalid since SSL certificates are used for encryption of data in transit
+For more information on database encryption with Redshift, please refer to the below URL
+https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html
+The correct answer is: Create a new cluster with encryption enabled
+
+
+
+42. Question
+As a developer you are looking at making use of AWS Cognito Sync. Which of the below are features of this service. Choose 2 answers from the options given below.
+
+ A. Cross-device syncing of application-related user data		-Correct
+ B. Synching of offline data back to AWS
+ C. Push Sync Notification		-Correct
+ D. Sync data with DynamoDB
+Unattempted
+The AWS Documentation mentions the following
+Amazon Cognito Sync is an AWS service and client library that enable cross-device syncing of application-related user data. You can use it to synchronize user profile data across mobile devices and web applications. The client libraries cache data locally so your app can read and write data regardless of device connectivity status. When the device is online, you can synchronize data, and if you set up push sync, notify other devices immediately that an update is available.
+Since the documentation clearly gives the features of this service, all other options are invalid
+For more information on AWS Cognito Sync, please refer to the below URL
+https://docs.aws.amazon.com/cognito/latest/developerguide/getting-started-with-cognito-sync.html
+The correct answers are: Cross-device syncing of application-related user data, Push Sync Notification
+
+
+
+43. Question
+Your team has developed a web application that will run on an EC2 Instance. There is a deployment requirement wherein if the primary application fails, the requests need to be routed to a static web site. Which of the following can help you achieve this?
+
+ A. A Classic Load balancer placed in front of the EC2 Instances
+ B. An Application Load balancer placed in front of the EC2 Instances
+ C. A health check in Route 53		-Correct
+ D. The swap URL feature in Elastic Beanstalk
+Unattempted
+The AWS Documentation mentions the following
+Amazon Route 53 health checks monitor the health and performance of your web applications, web servers, and other resources. Each health check that you create can monitor one of the following:
+· The health of a specified resource, such as a web server
+· The status of other health checks
+· The status of an Amazon CloudWatch alarm
+Options A and B are incorrect since the Load balancers are used to distribute traffic and not divert traffic
+Option D is incorrect since the application is not being hosted on Elastic Beanstalk
+For more information on DNS failover, please refer to the below URL
+https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html
+The correct answer is: A health check in Route 53
+
+
+
+44. Question
+Your application is currently configured to interact with an S3 bucket. Now you are getting errors that the bucket does not exist. Which of the following is the best way to understand how the bucket was deleted?
+
+ A. Use the Cloudwatch logs to see the Bucket Deletion API request
+ B. Use the Cloudtrail logs to see the Bucket Deletion API request		-Correct
+ C. Use the AWS Inspector service to see the Bucket Deletion API request
+ D. Use the AWS Trusted Advisor service to see the Bucket Deletion API request
+Unattempted
+You can use the Cloudtrail service to see when the bucket was deleted and who initiated the bucket deletion request.
+Option A is incorrect since the logs will not have the detailed information about the bucket deletion request
+Option C is incorrect since this service is only used to check the vulnerabilities on servers
+Option D is incorrect since this service is only used to provide recommendations
+For more information on Cloudtrail logging, please refer to the below URL
+https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudtrail-logging.html
+The correct answer is: Use the Cloudtrail logs to see the Bucket Deletion API request
+
+
+
+45. Question
+Your team has decided to host a static web site using the Simple Storage Service. A bucket has been defined with the domain name, the objects uploaded, and the static web site hosting enabled for the bucket. But you are still not able to able to access the web site. Which of the following could be the underlying issue?
+
+ A. You need to enable versioning for the bucket as well
+ B. The bucket must have public read access		-Correct
+ C. You need to ensure the storage class is infrequent access
+ D. You need to use AWS Managed Keys
+Unattempted
+The AWS Documentation mentions the following
+To host a static website, you configure an Amazon S3 bucket for website hosting, and then upload your website content to the bucket. This bucket must have public read access. It is intentional that everyone in the world will have read access to this bucket.
+Option A is incorrect since this feature is used to avoid accidental deletion of objects
+Option C is incorrect since this the storage class should ideally be standard storage
+Option D is incorrect since this is used for encryption of objects at rest
+For more information on static web site hosting, please refer to the below URL
+https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html
+The correct answer is: The bucket must have public read access
+
+
+
+46. Question
+Your team is developing an application makes use of Docker containers. These containers will be deployed to the Elastic Container Service. The applications on these containers need to interact with DynamoDB tables. Which of the following is the most secure way to ensure the containers can interact with DynamoDB?
+
+ A. Create an IAM Role for the ECS Tasks		-Correct
+ B. Embed the Access Keys in the containers
+ C. Embed the Access Keys in the cluster
+ D. Use an IAM user’s credentials to spin up the cluster
+Unattempted
+The AWS Documentation mentions the following
+With IAM roles for Amazon ECS tasks, you can specify an IAM role that can be used by the containers in a task. Applications must sign their AWS API requests with AWS credentials, and this feature provides a strategy for managing credentials for your applications to use, similar to the way that Amazon EC2 instance profiles provide credentials to EC2 instances. Instead of creating and distributing your AWS credentials to the containers or using the EC2 instance’s role, you can associate an IAM role with an ECS task definition or RunTask API operation. The applications in the task’s containers can then use the AWS SDK or CLI to make API requests to authorized AWS services.
+All other options are invalid since the most secure way is to use IAM Roles for accessing AWS services
+For more information on IAM Roles for tasks, please refer to the below URL
+https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html
+The correct answer is: Create an IAM Role for the ECS Tasks
+
+
+
+47. Question
+Your company needs to develop an application that needs to have a caching facility in place. The application cannot afford many cache failures and should be highly available. Which of the following would you choose for this purpose?
+
+ A. Use Memcached on an EC2 Instance
+ B. Use ElastiCache – Memcached
+ C. Use ElastiCache – Redis in Cluster Mode		-Correct
+ D. Use Redis on an EC2 Instance
+Unattempted
+The AWS Documentation mentions the following
+ElastiCache for Redis has multiple features to enhance reliability for critical production deployments:
+· Automatic detection and recovery from cache node failures.
+· Multi-AZ with automatic failover of a failed primary cluster to a read replica in Redis clusters that support replication.
+· Redis (cluster mode enabled) supports partitioning your data across up to 15 shards.
+· Redis version 3.2.6 supports in-transit and at-rest encryption with authentication so you can build HIPAA-compliant applications.
+· Flexible Availability Zone placement of nodes and clusters for increased fault tolerance
+Options A and D are incorrect since using just an EC2 Instance would be a single point of failure
+Option B is incorrect since Redis would be better for high availability
+For more information on Redis ElastiCache, please refer to the below URL
+https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.html
+The correct answer is: Use ElastiCache – Redis in Cluster Mode
+
+
+
+48. Question
+Your team is developing a set of Lambda functions. You need to ensure the team uses the best practises for working with AWS Lambda. Which of the following is an advantage on instantiating the AWS Client outside of the AWS Lambda function handler?
+
+ A. Ability to decode errors better
+ B. Ability to instantiate an object for each invocation
+ C. Ability to reuse Execution Context		-Correct
+ D. Ability to call functions faster
+Unattempted
+This is given as one of the best practises for AWS Lambda in the documentation
+Take advantage of Execution Context reuse to improve the performance of your function. Make sure any externalized configuration or dependencies that your code retrieves are stored and referenced locally after initial execution. Limit the re-initialization of variables/objects on every invocation. Instead use static initialization/constructor, global/static variables and singletons. Keep alive and reuse connections (HTTP, database, etc.) that were established during a previous invocation.
+Since this is clearly given in the AWS Documentation, all other options are invalid
+For more information on Best practices, please refer to the below URL
+https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html
+The correct answer is: Ability to reuse Execution Context
+
+
+
+49. Question
+Your team is developing a series of Lambda functions. You need to ensure that you analyse the invocations of the functions during the testing phase. Which of the following tools can help you achieve this? Choose 2 answers from the options given below.
+
+ A. Amazon Cloudwatch		-Correct
+ B. Amazon Inspector
+ C. Amazon X-Ray		-Correct
+ D. Amazon Cloudtrail
+Unattempted
+The AWS Documentation mentions the following
+Option B is incorrect since this is used to check EC2 Instances for vulnerabilities
+Option D is incorrect since this is used to monitor API activity
+For more information on troubleshooting AWS Lambda, please refer to the below URL
+https://docs.aws.amazon.com/lambda/latest/dg/troubleshooting.html
+The correct answers are: Amazon Cloudwatch, Amazon X-Ray
+
+
+
+50. Question
+You are a developer for an application. The application needs to make use of AWS for managing authentication. The users should be able to authenticate using identity providers such as Facebook and Google. At the same time, you also need to enable guest user access to limited resources. How can you achieve this in the best possible way?
+
+ A. Use IAM users and groups
+ B. Use AWS Cognito and identity pools with both authenticated and unauthenticated identities		-Correct
+ C. Use AWS federated identities
+ D. Use AWS Cognito App Sync
+Unattempted
+The AWS Documentation mentions the following
+Amazon Cognito identity pools support both authenticated and unauthenticated identities. Authenticated identities belong to users who are authenticated by any supported identity provider. Unauthenticated identities typically belong to guest users.
+Option A is incorrect since this would be too much of a maintenance overhead to maintain the users
+Option C is incorrect since we don’t need federation access over here
+Option D is incorrect since we don’t need Sync capabilities here
+For more information on Identity pools, please refer to the below URL
+https://docs.aws.amazon.com/cognito/latest/developerguide/identity-pools.html
+The correct answer is: Use AWS Cognito and identity pools with both authenticated and unauthenticated identities
+
+
+
+51. Question
+As a developer, you need your operations team to monitor a set of metrics for an application. They also need to be notified in case any of the metrics crosses the threshold. How can you achieve this?
+
+ A. Publish custom metrics for the application that can be monitored via Cloudwatch. Create Alarms for notifications.		-Correct
+ B. Ask the System administrators to monitor the Cloudwatch logs
+ C. Ask the System administrators to monitor the Cloudtrail logs
+ D. Use the inbuilt metrics for Cloudwatch. Create Alarms for notifications.
+Unattempted
+The AWS Documentation mentions the following
+You can create a CloudWatch alarm that watches a single metric. The alarm performs one or more actions based on the value of the metric relative to a threshold over a number of time periods. The action can be an Amazon EC2 action, an Amazon EC2 Auto Scaling action, or a notification sent to an Amazon SNS topic. You can also add alarms to CloudWatch dashboards and monitor them visually. When an alarm is on a dashboard, it turns red when it is in the ALARM state, making it easier for you to monitor its status proactively.
+You can publish your own metrics to CloudWatch using the AWS CLI or an API. You can view statistical graphs of your published metrics with the AWS Management Console.
+Option B is invalid since this is used for logging purposes and here you need to view the metrics
+Option C is invalid since this is used for API monitoring purposes
+Option D is invalid since here we have to assume that we need to monitor metrics for an application and hence you would need to publish custom metrics
+For more information on publishing custom metrics and alarms, please refer to the below URL
+https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html
+https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html
+The correct answer is: Publish custom metrics for the application that can be monitored via Cloudwatch. Create Alarms for notifications.
+
+
+
+52. Question
+An application consists of an Autoscaling Group. It has been determined that the best way to scale the group is based on the number of concurrent users. How can you achieve this?
+
+ A. Create a tag for the Group to contain the number of concurrent users
+ B. Create a custom metric for the number of concurrent users		-Correct
+ C. Since concurrent user metrics are not available, base the scaling of the group on CPU percentage
+ D. Since concurrent user metrics are not available, base the scaling of the group on Memory percentage
+Unattempted
+The AWS Documentation mentions the following
+With target tracking scaling policies, you select a predefined metric or configure a customized metric and set a target value. Application Auto Scaling creates and manages the CloudWatch alarms that trigger the scaling policy and calculates the scaling adjustment based on the metric and the target value. The scaling policy adds or removes capacity as required to keep the metric at, or close to, the specified target value. In addition to keeping the metric close to the target value, a target tracking scaling policy also adjusts to changes in the metric due to a changing load pattern and minimizes changes to the capacity of the scalable target.
+Since you can define a custom metric based on concurrent usage, you can scale the Autoscaling group based on that. Based on this all other options are invalid.
+For more information on auto scaling based on target tracking, please refer to the below URL
+https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html
+The correct answer is: Create a custom metric for the number of concurrent users
+
+
+
+53. Question
+Your team currently has a MySQL database on their on-premise data center. They now need to port the database onto AWS onto a suitable data store. Which of the following can be used for this purpose?
+
+ A. AWS Config
+ B. AWS Database Migration Service		-Correct
+ C. AWS Trusted Advisor
+ D. AWS EC2
+Unattempted
+The AWS Documentation mentions the following
+AWS Database Migration Service (AWS DMS) is a cloud service that makes it easy to migrate relational databases, data warehouses, NoSQL databases, and other types of data stores. You can use AWS DMS to migrate your data into the AWS Cloud, between on-premises instances, or between combinations of cloud and on-premises setups.
+Option A is invalid since this is a configuration service
+Option C is invalid since this is a recommendations service
+Option D is invalid since this is a compute service
+For more information on the Data Migration service, please refer to the below URL
+https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html
+The correct answer is: AWS Database Migration Service
+
+
+
+54. Question
+Your company has a SOAP service that receives requests in XML. The service is going to be placed behind the API gateway service. Which of the following must be done to ensure that requests made to the API gateway service can be consumed by the SOAP service?
+
+ A. Create a mapping template		-Correct
+ B. Setup a gateway response
+ C. Enable support for binary workloads
+ D. Setup Private integrations
+Unattempted
+The AWS Documentation mentions the following
+In API Gateway, an API’s method request can take a payload in a different format from the corresponding integration request payload, as required in the backend. Similarly, the backend may return an integration response payload different from the method response payload, as expected by the frontend. API Gateway lets you use mapping templates to map the payload from a method request to the corresponding integration request and from an integration response to the corresponding method response.
+A mapping template is a script expressed in Velocity Template Language (VTL) and applied to the payload using JSONPath expressions. The payload can have a data model according to the JSON schema draft 4. You must define the model in order to have API Gateway to generate a SDK or to enable basic request validation for your API. You do not have to define any model to create a mapping template. However, a model can help you create a template because API Gateway will generate a template blueprint based on a provided model.
+Option B is incorrect since this is used to customize gateway responses
+Option C is incorrect since this is used specifically for binary workloads
+Option D is incorrect since this is used for use within a VPC
+For more information on models and mappings, please refer to the below URL
+https://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html
+The correct answer is: Create a mapping template
+
+
+
+55. Question
+As a developer, you have the requirement to access resources in another account. Which of the following is the best way to achieve this?
+
+ A. Create a cross account role and call the AssumeRole API		-Correct
+ B. Create a user in the destination account and share the password
+ C. Create a user in the destination account and share the Access Keys
+ D. Create an IAM Role and attach it to an EC2 Instance
+Unattempted
+The AWS Documentation mentions the following
+For cross-account access, imagine that you own multiple accounts and need to access resources in each account. You could create long-term credentials in each account to access those resources. However, managing all those credentials and remembering which one can access which account can be time consuming. Instead, you can create one set of long-term credentials in one account and then use temporary security credentials to access all the other accounts by assuming roles in those accounts.
+All other options are incorrect since the right option is to use cross account roles
+For more information on Assuming a Role, please refer to the below URL
+https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html
+The correct answer is: Create a cross account role and call the AssumeRole API
+
+
+
+56. Question
+An application needs to make use of the SQS service for sending and receiving messages. The application takes 60 seconds to process a message. Assuming that a queue has been created with the default settings, which one of the following must be implemented?
+
+ A. Call the ChangeMessageVisibility API and increase the timeout. Call the DeleteMessage API to delete the message.		-Correct
+ B. Call the DeleteMessage API to increase the timeout.
+ C. Call the ChangeMessageVisibility API and decrease the timeout. Call the DeleteMessage API to delete the message.
+ D. Call the DeleteMessage API to delete the message from the queue first. Call the ChangeMessageVisibility API and increase the timeout
+Unattempted
+The AWS Documentation mentions the following
+Changes the visibility timeout of a specified message in a queue to a new value. The default visibility timeout for a message is 30 seconds. The minimum is 0 seconds. The maximum is 12 hours.
+For example, you have a message with a visibility timeout of 5 minutes. After 3 minutes, you call ChangeMessageVisibility with a timeout of 10 minutes. You can continue to call ChangeMessageVisibility to extend the visibility timeout to the maximum allowed time. If you try to extend the visibility timeout beyond the maximum, your request is rejected.
+Options B and D are incorrect since you first need to call ChangeMessageVisibility API
+Option C is incorrect since the ChangeMessageVisibility API should be used to increase the timeout
+For more information on the visibility timeout, please refer to the below URL
+https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_ChangeMessageVisibility.html
+The correct answer is: Call the ChangeMessageVisibility API and increase the timeout. Call the DeleteMessage API to delete the message.
+
+
+
+57. Question
+As a programmer you have been hired to develop an application for a company. The application needs to first encrypt the data at the client side before sending it to a destination location. How can you achieve this? The size of the data is generally around 1 – 4 MB. Each object needs to have its own key to encrypt the data.
+
+ A. Upload the data to KMS and use the CMK key to encrypt the data
+ B. Use the CMK key ARN to get the key and encrypt the data
+ C. Use the GenerateDataKey API to get the key from a CMK		-Correct
+ D. Upload the data to an S3 bucket with encryption enabled
+Unattempted
+The AWS Documentation mentions the following
+We recommend that you use the following pattern to encrypt data locally in your application:
+1. Use this operation (GenerateDataKey) to get a data encryption key.
+2. Use the plaintext data encryption key (returned in the Plaintext field of the response) to encrypt data locally, then erase the plaintext data key from memory.
+3. Store the encrypted data key (returned in the CiphertextBlob field of the response) alongside the locally encrypted data.
+Option A is incorrect since you don’t upload the data to KMS to encrypt it.
+Option B is incorrect since you don’t use the CMK key to encrypt large data objects
+Option D is incorrect since here the data would only be encrypted at rest and the question states that the object needs to be encrypted at the client side.
+For more information on the Generate Data Key API, please refer to the below URL
+https://docs.aws.amazon.com/kms/latest/APIReference/API_GenerateDataKey.html
+The correct answer is: Use the GenerateDataKey API to get the key from a CMK
+
+
+
+58. Question
+Your team is developing a set of Lambda functions. They need to debug the Lambda functions using the X-Ray service. Which of the following are environment variables which are used by AWS Lambda to communicate with the X-Ray service? Choose 3 answers from the options given below
+
+ A. _X_AMZN_TRACE_ID		-Correct
+ B. AWS_XRAY_CONTEXT_MISSING		-Correct
+ C. AWS_XRAY_DAEMON_ADDRESS		-Correct
+ D. AWS_LAMBDA_XRAY
+Unattempted
+The AWS Documentation mentions the following
+AWS Lambda uses environment variables to facilitate communication with the X-Ray daemon and configure the X-Ray SDK.
+· _X_AMZN_TRACE_ID: Contains the tracing header, which includes the sampling decision, trace ID, and parent segment ID. If Lambda receives a tracing header when your function is invoked, that header will be used to populate the _X_AMZN_TRACE_ID environment variable. If a tracing header was not received, Lambda will generate one for you.
+· AWS_XRAY_CONTEXT_MISSING: The X-Ray SDK uses this variable to determine its behavior in the event that your function tries to record X-Ray data, but a tracing header is not available. Lambda sets this value to LOG_ERROR by default.
+· AWS_XRAY_DAEMON_ADDRESS: This environment variable exposes the X-Ray daemon’s address in the following format: IP_ADDRESS:PORT. You can use the X-Ray daemon’s address to send trace data to the X-Ray daemon directly, without using the X-Ray SDK.
+For more information on using Lambda with X-Ray, please refer to the below URL
+https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html
+The correct answers are: _X_AMZN_TRACE_ID, AWS_XRAY_CONTEXT_MISSING, AWS_XRAY_DAEMON_ADDRESS
+
+
+
+59. Question
+You are currently working on a function for AWS Lambda. When uploading the package for your AWS Lambda function, you are receiving the following error
+CodeStorageExceededException
+What can you do to surpass this error?
+
+ A. Raise a call with AWS Support to raise the limit on storage
+ B. Change the code to Node.js for taking up less storage
+ C. Reduce the size for your code		-Correct
+ D. Change the memory limit
+Unattempted
+The AWS Documentation mentions the following
+Since the documentation clearly mentions this , all other options are invalid.
+For more information on limits for AWS Lambda, please refer to the below URL
+https://docs.aws.amazon.com/lambda/latest/dg/limits.html
+The correct answer is: Reduce the size for your code
+
+
+
+60. Question
+Your team has just started using the API gateway service. Several AWS Lambda functions are used as the backend for the gateway service. You have deployed the API and made is available for test users. You have now made a change to the method response for the API gateway. What should you do next?
+
+ A. Recreate the gateway service
+ B. Redeploy the API		-Correct
+ C. Redeploy the Lambda function
+ D. Make a copy of the gateway API
+Unattempted
+The AWS Documentation mentions the following
+To deploy an API, you create an API deployment and associate it with a stage. Each stage is a snapshot of the API and is made available for the client to call. Every time you update an API, which includes modification of methods, integrations, authorizers, and anything else other than stage settings, you must redeploy the API to an existing stage or to a new stage.
+All other options are incorrect since the right way is to Redeploy the API
+For more information on how to deploy an API, please refer to the below URL
+https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-deploy-api.html
+The correct answer is: Redeploy the API
+
+
+
+61. Question
+Your team is planning on deploying an application using the worker environment on AWS Elastic beanstalk. Which of the following is an additional requirement for a worker environment in AWS Elastic Beanstalk?
+
+ A. Ensure that the application is uploaded as a zip file
+ B. Ensure that the application size does not exceed 512 MB
+ C. Ensure that the application does not include a parent level folder
+ D. Ensure that the application contains a file called cron.yaml		-Correct
+Unattempted
+The AWS Documentation mentions the following
+When you use the AWS Elastic Beanstalk console to deploy a new application or an application version, you’ll need to upload a source bundle. Your source bundle must meet the following requirements:
+· Consist of a single ZIP file or WAR file (you can include multiple WAR files inside your ZIP file)
+· Not exceed 512 MB
+· Not include a parent folder or top-level directory (subdirectories are fine)
+If you want to deploy a worker application that processes periodic background tasks, your application source bundle must also include a cron.yaml file
+Since this is clearly mentioned in the documentation all other options are incorrect.
+For more information on application source bundles in Elastic beanstalk, please refer to the below URL
+https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/applications-sourcebundle.html
+The correct answer is: Ensure that the application contains a file called cron.yaml
+
+
+
+62. Question
+A Company has a web application. They want to deploy it to AWS. They don’t want to manage the underlying infrastructure. Which of the following should they use for hosting the application?
+
+ A. AWS Lambda and API Gateway		-Correct
+ B. AWS EC2 and Cloudfront
+ C. AWS Lambda and Cloudfront
+ D. AWS Lambda and EC2
+Unattempted
+The AWS Documentation mentions the following
+AWS Lambda is a compute service that lets you run code without provisioning or managing servers. AWS Lambda executes your code only when needed and scales automatically, from a few requests per day to thousands per second. You pay only for the compute time you consume – there is no charge when your code is not running. With AWS Lambda, you can run code for virtually any type of application or backend service – all with zero administration
+Amazon API Gateway is an AWS service that enables developers to create, publish, maintain, monitor, and secure APIs at any scale. You can create APIs that access AWS or other web services, as well as data stored in the AWS Cloud.
+Options B and D are incorrect since for EC2 you would need to manage the compute layer
+Option C is incorrect since Cloudfront is not used along with AWS Lambda
+For more information on AWS Lambda and the API gateway service, please refer to the below URL
+https://docs.aws.amazon.com/lambda/latest/dg/welcome.html
+https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html
+The correct answer is: AWS Lambda and API Gateway
+
+
+
+63. Question
+A company has an application that is making use of a DynamoDB table. There is now a requirement to ensure that all changes to the items in the table are recorded and stored in a MySQL database. Which of the following would ideally be one of the implementation steps?
+
+ A. Enable DynamoDB Accelerator
+ B. Enable DynamoDB global tables
+ C. Enable DynamoDB streams		-Correct
+ D. Enable DynamoDB triggers
+Unattempted
+The AWS Documentation mentions the following
+DynamoDB Streams enables solutions such as these, and many others. DynamoDB Streams captures a time-ordered sequence of item-level modifications in any DynamoDB table and stores this information in a log for up to 24 hours. Applications can access this log and view the data items as they appeared before and after they were modified, in near real time.
+Option A is invalid since this is used to provide DynamoDB-compatible caching service that enables you to benefit from fast in-memory performance for demanding applications
+Option B is invalid since this is used to provide a fully managed solution for deploying a multi-region, multi-master database, without having to build and maintain your own replication solution
+Option D is invalid since there are no inbuilt triggers in DynamoDB
+For more information on DynamoDB streams, please refer to the below URL
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html
+The correct answer is: Enable DynamoDB streams
+
+
+
+64. Question
+You have developed a Lambda function. This function needs to run on a scheduled basis. Which of the following can be done to accomplish this requirement in an ideal manner?
+
+ A. Use the schedule service in AWS Lambda
+ B. Use an EC2 Instance to schedule the Lambda invocation
+ C. Use Cloudwatch events to schedule the Lambda function		-Correct
+ D. Use Cloudtrail to schedule the Lambda function
+Unattempted
+The AWS Documentation mentions the following
+Option A is incorrect since there is no inbuilt scheduler in AWS Lambda
+Option B is incorrect since this would add more maintenance overhead
+Option D is incorrect since this service is an API monitoring service
+For more information on running Lambda functions on schedules, please refer to the below URL
+https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLambdaSchedule.html
+The correct answer is: Use Cloudwatch events to schedule the Lambda function
+
+
+
+65. Question
+Your team is planning on using the AWS Code Build service to test out the build of the application. The application needs to connect to a database. How should you store the database password in a secure manner so that it is available during the build process?
+
+ A. Store the password as an environment variable on the build server
+ B. Store the password in AWS Systems Manager		-Correct
+ C. Store the password in a config file on the build server
+ D. Store the password in a config file in the application
+Unattempted
+The AWS Documentation mentions the following
+We strongly discourage using environment variables to store sensitive values, especially AWS access key IDs and secret access keys. Environment variables can be displayed in plain text using tools such as the AWS CodeBuild console and the AWS CLI.
+For sensitive values, we recommend you store them in the Amazon EC2 Systems Manager Parameter Store and then retrieve them from your build spec.
+All other options are invalid because they are all insecure ways to access passwords in applications from AWS CodeBuild.
+For more information on referencing environment variables, please refer to the below URL
+https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-env-vars.html
+The correct answer is: Store the password in AWS Systems Manager
