@@ -1,0 +1,1272 @@
+1. Question
+An application currently makes use of DynamoDB tables. There are thousand requests made per second on the DynamoDB table. Another application takes the changes to the items in the DynamoDB table , for further analytics processing. Which of the following can be affectively used to manage this requirement?
+
+ A. Enable a scan on the entire table to check for changes
+ B. Create a query to check for changes
+ C. Enable global tables for DynamoDB
+ D. Enable streams for DynamoDB		-Correct
+Unattempted
+The below information from the AWS Documentation helps to supplement this requirement
+Capturing Table Activity with DynamoDB Streams
+Many applications can benefit from the ability to capture changes to items stored in a DynamoDB table, at the point in time when such changes occur. Here are some example use cases:
+An application in one AWS region modifies the data in a DynamoDB table. A second application in another AWS region reads these data modifications and writes the data to another table, creating a replica that stays in sync with the original table.
+A popular mobile app modifies data in a DynamoDB table, at the rate of thousands of updates per second. Another application captures and stores data about these updates, providing near real time usage metrics for the mobile app.
+A global multi-player game has a multi-master topology, storing data in multiple AWS regions. Each master stays in sync by consuming and replaying the changes that occur in the remote regions.
+An application automatically sends notifications to the mobile devices of all friends in a group as soon as one friend uploads a new picture.
+A new customer adds data to a DynamoDB table. This event invokes another application that sends a welcome email to the new customer.
+DynamoDB Streams enables solutions such as these, and many others. DynamoDB Streams captures a time-ordered sequence of item-level modifications in any DynamoDB table, and stores this information in a log for up to 24 hours. Applications can access this log and view the data items as they appeared before and after they were modified, in near real time.
+Options A and B are incorrect since these would result in a lot of throughput requirement for the table
+Option C is incorrect since this is used for replication of data
+For more information on DynamoDB streams , please refer to the below URL
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html
+The correct answer is: Enable streams for DynamoDB
+
+
+
+2. Question
+An application currently makes use of DynamoDB tables. There is a requirement that a user can only view certain items in the table. How can this be accomplished?
+
+ A. Make use of queries based on the partition key
+ B. Make use of queries based on the sort key
+ C. Create a separate index on the table
+ D. Use IAM polices with specific conditions		-Correct
+Unattempted
+The AWS Documentation mentions this specific use case
+Hide information so that only a subset of attributes are visible to the user. An example might be an app that displays flight data for nearby airports, based on the user’s location. Airline names, arrival and departure times, and flight numbers are all displayed. However, attributes such as pilot names or the number of passengers are hidden.
+To implement this kind of fine-grained access control, you write an IAM permissions policy that specifies conditions for accessing security credentials and the associated permissions. You then apply the policy to IAM users, groups, or roles that you create using the IAM console. Your IAM policy can restrict access to individual items in a table, access to the attributes in those items, or both at the same time.
+All other options are invalid since the right approach is to use IAM polices with specific conditions
+For more information on specifying conditions , please refer to the below URL
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/specifying-conditions.html
+The correct answer is: Use IAM polices with specific conditions
+
+
+
+3. Question
+You’ve created a Lambda function with the default settings. You add code to this function which makes calls to DynamoDB. You try and test the function. But the function is not completing its execution. Which of the following might be probable causes for this? Choose 2 answers from the options given below
+
+ A. The IAM Role attached to the function does not have access to DynamoDB		-Correct
+ B. The timeout of the function has been reached.		-Correct
+ C. You need to deploy the function first
+ D. You need to create a version for the function first
+Unattempted
+These are given as some of the requirements in the AWS Documentation
+Option C is incorrect since deployment is not needed from the AWS Console.
+Option D is incorrect since this is not a pre-requisite for the function to run
+For more information on AWS Lambda resource model , please refer to the below URL
+https://docs.aws.amazon.com/lambda/latest/dg/resource-model.html
+The correct answers are: The IAM Role attached to the function does not have access to DynamoDB, The timeout of the function has been reached.
+
+
+
+4. Question
+A company is planning on developing an application that is going to make use of a DynamoDB table. The structure of the table is given below
+Attribute Name
+Type
+Description
+Customer ID
+String
+Automatically generated GUID
+Customer Name
+String
+Name of the Customer
+Location
+String
+Place/ Area
+Interests
+String
+Wish list of products
+Which of the following should be chosen as the partition key to ensure the MOST effective distribution of keys?
+
+ A. Customer ID		-Correct
+ B. Customer Name
+ C. Location
+ D. Interests
+Unattempted
+The most effective one will be the Customer ID since this would ideally be unique and hence give a better key partition. Because of GUID provides programmatically unique Identity.
+For more information on DynamoDB , please refer to the below URL
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/best-practices.html
+The correct answer is: Customer ID
+
+
+
+5. Question
+You are a developer for a company. You have been asked to deploy an application for development purposes onto an Elastic beanstalk environment. You need to ensure that custom software is installed on the backend Linux servers that are launched as part of the Elastic Beanstalk environment. Which of the following can be used to achieve this? Choose 2 answers from the options given below
+
+ A. Create an XML file with the required package names to be installed on the server
+ B. Create an YAML file with the required package names to be installed on the server		-Correct
+ C. Place the file in the .ebextensions folder in your Application Source Bundle		-Correct
+ D. Place the file in the .config folder in your Application Source Bundle
+Unattempted
+The AWS Documentation mentions the following
+AWS Elastic Beanstalk supports a large number of configuration options that let you modify the settings that are applied to resources in your environment. Several of these options have default values that can be overridden to customize your environment. Other options can be configured to enable additional features.
+Elastic Beanstalk supports two methods of saving configuration option settings. Configuration files in YAML or JSON format can be included in your application’s source code in a directory named .ebextensions and deployed as part of your application source bundle. You create and manage configuration files locally.
+Option A is invalid because the configuration file needs to be in YAML or JSON format
+Option D is invalid because the configuration file needs to be placed in the .ebextensions folder
+For more information on the environment configuration options , please refer to the below URL
+https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-configuration-methods-before.html
+The correct answers are: Create an YAML file with the required package names to be installed on the server, Place the file in the .ebextensions folder in your Application Source Bundle
+
+
+
+6. Question
+You are planning on hosting a static web site using the features available with S3. Which of the following steps need to be carried out in order to ensure that you can host your static web site in S3. Choose 3 answers from the options given below
+
+ A. Enable WebSite hosting		-Correct
+ B. Enable versioning for the bucket
+ C. Configure an Index document		-Correct
+ D. Ensure that permissions are set for Website access		-Correct
+Unattempted
+This is given in the AWS Documentation
+Configuring a Bucket for Website Hosting
+You can host a static website in an Amazon Simple Storage Service (Amazon S3) bucket. However, to do so requires some configuration. Some optional configurations are also available, depending on your website requirements.
+Required configurations:
+Enabling Website Hosting
+Configuring Index Document Support
+Permissions Required for Website Access
+Option B is invalid since this is not a pre-requisite to have web sites hosted in S3
+For more information on S3 web site hosting , please refer to the below URL
+https://docs.aws.amazon.com/AmazonS3/latest/dev/HowDoIWebsiteConfiguration.html
+The correct answers are: Enable WebSite hosting, Configure an Index document, Ensure that permissions are set for Website access
+
+
+
+7. Question
+You are developing an application which will make use of Kinesis Firehose for streaming the records onto the Simple Storage Service. You company policy mandates that all data needs to be encrypted at rest. How can you achieve this with Kinesis Firehose? Choose 2 answers for the options given below.
+
+ A. Enable Encryption for a Kinesis Data Firehose		-Correct
+ B. Install an SSL certificate in Kinesis Data Firehose
+ C. Ensure that all data records are transferred via SSL
+ D. Ensure that Kinesis streams are used to transfer the data from the producers		-Correct
+Unattempted
+This is given in the AWS Documentation
+If you have sensitive data, you can enable server-side data encryption when you use Amazon Kinesis Data Firehose. However, this is only possible if you use a Kinesis stream as your data source. When you configure a Kinesis stream as the data source of a Kinesis Data Firehose delivery stream, Kinesis Data Firehose no longer stores the data at rest. Instead, the data is stored in the Kinesis stream.
+Options B and C are invalid because this is used for encrypting data in transit
+For more information on Data encryption with Kinesis Firehose , please refer to the below URL
+https://docs.aws.amazon.com/firehose/latest/dev/encryption.html
+The correct answers are: Enable Encryption for a Kinesis Data Firehose, Ensure that Kinesis streams are used to transfer the data from the producers
+
+
+
+8. Question
+Your company currently used Puppet as its configuration management software. You are the development lead and now have to deploy an application for development onto AWS. You have to leverage your company’s existing scripts on Puppet for deployment of the environment. Which of the following would be the best service for deployment of the application?
+
+ A. AWS Elasticbeanstalk
+ B. AWS Opswork		-Correct
+ C. AWS Redshift
+ D. AWS DynamoDB
+Unattempted
+The AWS Documentation mentions the following
+AWS OpsWorks is a configuration management service that helps you configure and operate applications in a cloud enterprise by using Puppet or Chef. AWS OpsWorks Stacks and AWS OpsWorks for Chef Automate let you use Chef cookbooks and solutions for configuration management, while OpsWorks for Puppet Enterprise lets you configure a Puppet Enterprise master server in AWS. Puppet offers a set of tools for enforcing the desired state of your infrastructure, and automating on-demand tasks.
+Option A is incorrect since Opswork should be chosen as the preference since its support Puppet
+Options C and D are incorrect since these are data stores
+For more information on Opswork , please refer to the below URL
+https://docs.aws.amazon.com/opsworks/latest/userguide/welcome.html
+The correct answer is: AWS Opswork
+
+
+
+9. Question
+Your company is developing an application that will primarily be used by users on their mobile devices. The users need to have the ability to authenticate themselves via identity providers through Security Assertion Markup Language 2.0 . Which of the following service should be used for user management?
+
+ A. AWS STS with IAM
+ B. AWS Cognito Identity pools		-Correct
+ C. AWS Security pools
+ D. AWS IAM pools
+Unattempted
+This is also given in the AWS Documentation
+Amazon Cognito supports authentication with identity providers through Security Assertion Markup Language 2.0 (SAML 2.0). You can use an identity provider that supports SAML with Amazon Cognito to provide a simple onboarding flow for your users. Your SAML-supporting identity provider specifies the IAM roles that can be assumed by your users so that different users can be granted different sets of permissions.
+Because of what is mentioned in the AWS Documentation, all other options are invalid
+For more information on SAML Identity provider , please refer to the below URL
+https://docs.aws.amazon.com/cognito/latest/developerguide/saml-identity-provider.html
+The correct answer is: AWS Cognito Identity pools
+
+
+
+10. Question
+Your company is planning on storing documents in an S3 bucket. The documents are sensitive, and employees should use Multi Factor authentication when trying to access documents. Which of the following must be done to fulfil this requirement?
+
+ A. Ensure that Encryption is enabled the bucket AWS server-side encryption
+ B. Ensure that Encryption is enabled the bucket using KMS keys
+ C. Ensure that the a bucket policy is in place with a condition of "aws:MultiFactorAuthPresent": "false" with a Deny policy		-Correct
+ D. Ensure that the a bucket policy is in place with a condition of "aws:MultiFactorAuthPresent": "true" with a Deny policy
+Unattempted
+The AWS Documentation gives an example on how to add a bucket policy which ensures that only if users are MFA authenticated , will they have access the bucket.
+Options A and B are incorrect since the question talks about MFA and not encryption
+Option D is incorrect since aws:MultiFactorAuthPresent should be checked against the false value for a Deny policy
+For more information on this use case scenario , please refer to the below URL
+https://aws.amazon.com/premiumsupport/knowledge-center/enforce-mfa-other-account-access-bucket/
+The correct answer is: Ensure that the a bucket policy is in place with a condition of “aws:MultiFactorAuthPresent”: “false” with a Deny policy
+
+
+
+11. Question
+You’re are a developer for a company that has been hired to lead the application development for a company. The application needs to interact with a backend data store. The application would need to perform many complex join operations on the data store. Which of the following would be ideal data store for the application?
+
+ A. AWS DynamoDB
+ B. AWS RDS		-Correct
+ C. AWS Redshift
+ D. AWS S3
+Unattempted
+Amazon Relational Database Service (Amazon RDS) is a web service that makes it easier to set up, operate, and scale a relational database in the cloud. It provides cost-efficient, resizable capacity for an industry-standard relational database and manages common database administration tasks. Since you need complex query design , it is better to choose one of the available relational database services
+Option A is incorrect since AWS DynamoDB does not support complex joins
+Option C is incorrect since this is normally used for petabyte data storage
+Option D is incorrect since this is used for Object level storage
+For more information on AWS RDS , please refer to the below URL
+https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html
+The correct answer is: AWS RDS
+
+
+
+12. Question
+You’ve created a local Java based Lambda function. You then package and upload the function to AWS. You try to run the function with the default settings , but the function does not run as expected. Which of the following could be the reasons for the issue? Choose 2 answers from the options given below.
+
+ A. The name assigned to the function is not correct.
+ B. The amount of CPU assigned to the function is not enough.
+ C. The amount of memory assigned to the function is not enough.		-Correct
+ D. The timeout specified for the function is too less.		-Correct
+Unattempted
+Since the function is created with the default settings , the timeout for the function would be 3 seconds and the memory would default to 128 MB. For a Java based function, this would be too less. Hence you need to ensure the right settings are put in place for the function.
+Q: How are compute resources assigned to an AWS Lambda function?
+In the AWS Lambda resource model, you choose the amount of memory you want for your function, and are allocated proportional CPU power and other resources. For example, choosing 256MB of memory allocates approximately twice as much CPU power to your Lambda function as requesting 128MB of memory and half as much CPU power as choosing 512MB of memory. You can set your memory in 64MB increments from 128MB to 1.5GB.
+Option A is invalid since the name is not a reason for the function not working
+Option B is invalid since the CPU is allocated by AWS automatically.
+For more information on creating a function , please refer to the below URL
+https://docs.aws.amazon.com/lambda/latest/dg/get-started-create-function.html
+The correct answers are: The amount of memory assigned to the function is not enough., The timeout specified for the function is too less.
+
+
+
+13. Question
+As a developer , you have created some Lambda functions and are now hosting them via the AWS API gateway service. You need to control access to the API gateway. Which of the following can be incorporated to control access to the API gateway? Choose 2 answers from the options given below.
+
+ A. AWS Cognito User pool		-Correct
+ B. Lambda Authorizers		-Correct
+ C. API Methods
+ D. API stages
+Unattempted
+The AWS Documentation mentions the following
+As an alternative to using IAM roles and policies or Lambda authorizers (formerly known as custom authorizers), you can use an Amazon Cognito user pool to control who can access your API in Amazon API Gateway.
+Option C is invalid since these are used to define methods such as GET , POST for your API gateway
+Option D is invalid since this is used to host the different stages for your API gateway
+For more information on using the API gateway with Cognito , please refer to the below URL
+https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html
+The correct answers are: AWS Cognito User pool, Lambda Authorizers
+
+
+
+14. Question
+Your application is making requests to a DynamoDB table. Due to the certain surge of requests , you are now getting throttling errors in your application. Which of the following can be used to resolve such errors? Choose 2 answers from the options given below.
+
+ A. Use exponential backoff in your requests from the application		-Correct
+ B. Consider using multiple sort keys
+ C. Change the throughput capacity on the tables		-Correct
+ D. Consider using global tables
+Unattempted
+Using exponential backoff in your requests can put some retires for your application to help with your surge of requests.
+Alternatively, you can increase the throughput capacity defined for your table.
+Option B is invalid because better use of partition keys could help
+Option D is invalid because this is used for having multiple copies of your table in additional regions
+For more information on API retries , please refer to the below URL
+https://docs.aws.amazon.com/general/latest/gr/api-retries.html
+For more information on DynamoDB Throughput capacity , please refer to the below URL
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ProvisionedThroughput.html
+The correct answers are: Use exponential backoff in your requests from the application, Change the throughput capacity on the tables
+
+
+
+15. Question
+Your development team currently uses Jenkins for managing the CI/CD process. You need to move the process on to AWS. Which of the following service would be the ideal service for this requirement?
+
+ A. AWS CodeBuild
+ B. AWS CodePipeline		-Correct
+ C. AWS Elastic Beanstalk
+ D. AWS Opswork
+Unattempted
+CodePipeline is a continuous delivery service for fast and reliable application updates. Jenkins is a popular continuous integration and continuous delivery tool. Jenkins can build and test your software projects continuously while offering various delivery options as well as a very extensible interface powered by Jenkins plugins.
+AWS CodePipieline plugin for Jenkins helps to implement the CI/CD process.
+https://aws.amazon.com/blogs/devops/building-continuous-deployment-on-aws-with-aws-codepipeline-jenkins-and-aws-elastic-beanstalk/
+Option A is incorrect. The question asks about migration your CI/CD tool to AWS. CodeBuild is not a fully-fledged CI/CD solution. It is solely a build tool; AWS CodeBuild is a fully managed build service that compiles source code, runs tests, and produces software packages that are ready to deploy.
+Options C and D are incorrect since this is used for managing application environments
+For more information on AWS CodeBuild , please refer to the below URL
+https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html
+The correct answer is: AWS CodePipeline
+
+
+
+16. Question
+Your application currently makes use of SQS Standard queues. The requirements for the application have now changed, and there is now a need for exactly-once processing of messages. How can you achieve this?
+
+ A. Use the AWS Console to covert the standard queue to a FIFO queue
+ B. Use the AWS CLI to covert the standard queue to a FIFO queue
+ C. Add the .fifo extension to the existing queue
+ D. Create a new FIFO queue and point the application to the new queue		-Correct
+Unattempted
+This is clearly mentioned in the AWS Documentation
+Moving from a Standard Queue to a FIFO Queue
+If you have an existing application that uses standard queues and you want to take advantage of the ordering or exactly-once processing features of FIFO queues, you need to configure the queue and your application correctly.
+Note
+You can’t convert an existing standard queue into a FIFO queue. To make the move, you must either create a new FIFO queue for your application or delete your existing standard queue and recreate it as a FIFO queue.
+All other options are invalid because you can’t make changes to an existing queue
+For more information on FIFO queues , please refer to the below URL
+https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html
+The correct answer is: Create a new FIFO queue and point the application to the new queue
+
+
+
+17. Question
+Your application is currently hosted in an Elastic beanstalk environment. Configuration changes need to be made to the environment. You have been told that the changes should not affect the current environment since downtime needs to be minimized. Which of the following Elastic Deployment mechanisms would you consider using?
+
+ A. All at Once
+ B. Rolling
+ C. Rolling with Additional Batch
+ D. Immutable		-Correct
+Unattempted
+The AWS Documentation mentions the following
+Immutable updates are an alternative to rolling updates where a temporary Auto Scaling group is launched outside of your environment with a separate set of instances running on the new configuration, which are placed behind your environment’s load balancer. Old and new instances both serve traffic until the new instances pass health checks, at which time the new instances are moved into your environment’s Auto Scaling group and the temporary group and old instances are terminated.
+All other options are invalid since it clearly mentions that the current environment should not be changed.
+For more information on updating environments , please refer to the below URL
+https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environments-updating.html
+The correct answer is: Immutable
+
+
+
+18. Question
+You’re the team lead for an application. You have been instructed to make use of Jenkins for your CI/CD pipeline and other AWS Services for deployment purposes. Which of the following would you consider fulfilling this requirement?
+Select 2 Options.
+
+ A. Configure an EC2 Instance with Jenkins Installed		-Correct
+ B. Configure the Access Keys on the EC2 Instance to access Code Pipeline
+ C. Configure an IAM Role for EC2 to access Code Pipeline		-Correct
+ D. Use the AWS CodeBuild service
+Unattempted
+This is given in the AWS Documentation
+As a best practice, when you use a Jenkins build provider for your pipeline’s build or test action, install Jenkins on an Amazon EC2 instance and configure a separate EC2 instance profile. Make sure the instance profile grants Jenkins only the AWS permissions required to perform tasks for your project, such as retrieving files from Amazon S3.
+The instance profile provides applications running on an Amazon EC2 instance with the credentials to access other AWS services. As a result, you do not need to configure AWS credentials (AWS access key and secret key).
+Option B is incorrect since this is not the secure way to access AWS resources
+Option D is incorrect since you have been told as per the question to make use of the Jenkins software
+For more information on Best practises for CodePipeline , please refer to the below URL
+https://docs.aws.amazon.com/codepipeline/latest/userguide/best-practices.html
+The correct answers are: Configure an EC2 Instance with Jenkins Installed, Configure an IAM Role for EC2 to access Code Pipeline
+
+
+
+19. Question
+Your developing a system that will be sending messages to an SQS queue. Another application will be running on an EC2 Instance that will be used to process the messages. Which of the following are BEST practices when it comes to making COST effective use of the SQS queues? Choose 2 answers from the options given below
+
+ A. Use short polling for SQS queues
+ B. Use long polling for SQS queues		-Correct
+ C. Group the SQS API operations in batches		-Correct
+ D. Use single queue operations
+Unattempted
+This is given in the AWS Documentation
+Reducing Amazon SQS Costs
+The following best practices can help you reduce costs and take advantage of additional potential cost reduction and near-instantaneous response.
+Batching Message Actions
+To reduce costs, batch your message actions:
+To send, receive, and delete messages, and to change the message visibility timeout for multiple messages with a single action, use the Amazon SQS batch API actions.
+To combine client-side buffering with request batching, use long polling together with the buffered asynchronous client included with the AWS SDK for Java.
+Note: The Amazon SQS Buffered Asynchronous Client doesn’t currently support FIFO queues.
+Because of what is mentioned in the AWS Documentation as best practises , other options are invalid
+For more information on reducing costs for SQS , please refer to the below URL
+https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/reducing-costs.html
+The correct answers are: Use long polling for SQS queues, Group the SQS API operations in batches
+
+
+
+20. Question
+An application is currently in production that makes calls to an AWS RDS Instance. The reporting part of the application is taking a hit and is experiencing a lot of performance issues. Which of the following can be used to alleviate the issue faced by the reporting module of the application?
+
+ A. Place an Elastic Load Balancer in front of the reporting part of the application
+ B. Enable Read Replica’s for the database and make the reporting module point to the Read Replica		-Correct
+ C. Move the database to DynamoDB and make the reporting module point to the new DynamoDB table
+ D. Enable Multi-AZ for the database make the reporting module point to the Secondary database
+Unattempted
+The AWS Documentation mentions the following
+You can reduce the load on your source DB instance by routing read queries from your applications to the read replica. Read replicas allow you to elastically scale out beyond the capacity constraints of a single DB instance for read-heavy database workloads.
+Option A is incorrect since placing the ELB will not reduce the load on the queries
+Option C is incorrect since changing the entire architecture is not the ideal approach
+Option D is incorrect since this is used for fault tolerant scenarios for the database
+For more information on Read Replica’s , please refer to the below URL
+https://aws.amazon.com/rds/details/read-replicas/
+The correct answer is: Enable Read Replica’s for the database and make the reporting module point to the Read Replica
+
+
+
+21. Question
+You’ve developed an AWS Lambda function but are running into a lot of performance issues. You decide to use the AWS X-Ray service to diagnose the issues. Which of the following must be done to ensure that you can use the X-Ray service with your Lambda function?
+
+ A. Ensure that the X-Ray daemon process is installed with the Lambda function
+ B. Ensure that the Lambda function is registered with X-Ray
+ C. Ensure that the IAM Role assigned to the Lambda function has access to the X-Ray service		-Correct
+ D. Ensure that the IAM Role assigned to the X-Ray function has access to the Lambda function
+Unattempted
+The AWS Documentation mentions the following
+Setting Up AWS X-Ray with Lambda
+Following, you can find detailed information on how to set up X-Ray with Lambda.
+Before You Begin
+To enable tracing on your Lambda function using the Lambda CLI, you must first add tracing permissions to your function’s execution role. To do so, take the following steps:
+Sign in to the AWS Management Console and open the IAM console at https://console.aws.amazon.com/iam/.
+Find the execution role for your Lambda function.
+Attach the following managed policy: AWSXrayWriteOnlyAccess
+Option A is incorrect since this is used if you need to use X-Ray with an application which is hosted on an EC2 Instance
+Option B is incorrect since this is not required to begin using the X-Ray service with AWS Lambda
+Option D is incorrect since the permissions need to be assigned the other way around.
+For more information on enabling X-Ray with AWS Lambda , please refer to the below URL
+https://docs.aws.amazon.com/lambda/latest/dg/enabling-x-ray.html
+The correct answer is: Ensure that the IAM Role assigned to the Lambda function has access to the X-Ray service
+
+
+
+22. Question
+You are working for a gaming company that is going to building a gaming application. You have been told to come up with a caching solution for the leader part of the application. Which of the following would you consider for this purpose?
+
+ A. Consider using SQS Queues
+ B. Consider using ElastiCache – Memcached
+ C. Consider using ElastiCache – Redis		-Correct
+ D. Consider using AWS RDS MySQL
+Unattempted
+The AWS Documentation mentions this as a specific use case for Redis Cache
+All other options are invalid , since ElastiCache Redis is specially built for this sort of use case scenarios
+For more information on Elastic Cache Redis Use case , please refer to the below URL
+https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/elasticache-use-cases.html
+The correct answer is: Consider using ElastiCache – Redis
+
+
+
+23. Question
+You’ve deployed an application using AWS Lambda and the API gateway service. You need to deploy a newer version of the application. Management has instructed that the newer version be tested by a few users first before being fully deployed. How can you accomplish this in the easiest way possible?
+
+ A. Create a new Lambda function and a new API gateway. Give the users the new URL
+ B. Create a new version of the existing Lambda function and a new API gateway. Give the users the new URL
+ C. Create a canary release in the API gateway service		-Correct
+ D. Create another resource and method. Deploy the API. Give the users the new URL
+Unattempted
+The AWS Documentation mentions the following
+In a canary release deployment, total API traffic is separated at random into a production release and a canary release with a pre-configured ratio. Typically, the canary release receives a small percentage of API traffic and the production release takes up the rest. The updated API features are only visible to API traffic through the canary. You can adjust the canary traffic percentage to optimize test coverage or performance.
+Options A and B are invalid. Even though possible , would add too much of a maintenance overhead.
+Option D is invalid because this is not the right way for a new deployment
+For more information on canary release , please refer to the below URL
+https://docs.aws.amazon.com/apigateway/latest/developerguide/canary-release.html
+The correct answer is: Create a canary release in the API gateway service
+
+
+
+24. Question
+A company currently has an application that works with DynamoDB. The application is a high revenue generating application for the company. Their current response time for their read workloads is in the order of milliseconds. But to bump up hits to their pages , they want to reduce the response time to microseconds. Which of the following would you suggest to fulfil this requirement?
+
+ A. Consider deploying an ElastiCache in front of DynamoDB
+ B. Consider using DynamoDB global tables
+ C. Consider using DynamoDB acceleration		-Correct
+ D. Consider using a higher throughput for the tables
+Unattempted
+The AWS Documentation mentions the following
+DAX is a DynamoDB-compatible caching service that enables you to benefit from fast in-memory performance for demanding applications. DAX addresses three core scenarios:
+1. As an in-memory cache, DAX reduces the response times of eventually-consistent read workloads by an order of magnitude, from single-digit milliseconds to microseconds.
+2. DAX reduces operational and application complexity by providing a managed service that is API-compatible with Amazon DynamoDB, and thus requires only minimal functional changes to use with an existing application.
+Option A is invalid because ElastiCache would not guarantee for certain such a great reduction in response times.
+Option B is invalid because this option is used when you want to make rpelicas of the tables in different regions
+Option D is invalid because this option is used only when you have throttling errors for the table
+For more information on DAX , please refer to the below URL
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.html
+The correct answer is: Consider using DynamoDB acceleration
+
+
+
+25. Question
+You have been told to make use of Cloudformation templates for deploying applications on EC2 Instances. These Instances need to be preconfigured with the NGINX web server to host the application. How could you accomplish this with Cloudformation?
+
+ A. Use the cfn-init helper script in Cloudformation		-Correct
+ B. Use the Output resource type in Cloudformation
+ C. Use the Parameter resource type in Cloudformation
+ D. Use SAML to deploy the template
+Unattempted
+The AWS Documentation mentions the following
+When you launch stacks, you can install and configure software applications on Amazon EC2 instances by using the cfn-init helper script and the AWS::CloudFormation::Init resource. By using AWS::CloudFormation::Init, you can describe the configurations that you want rather than scripting procedural steps.
+Because of what the AWS documentation clearly mentions, all other options are invalid
+For more information on the best practices for Cloudformation , please refer to the below URL
+https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/best-practices.html
+The correct answer is: Use the cfn-init helper script in Cloudformation
+
+
+
+26. Question
+You are currently managing deployments for a Lambda application via Code Deploy. You have a new version of the Lambda function in place. You have been told that all traffic needs to be shifted instantaneously to the new function. Which deployment technique would you employ in CodeDeploy?
+
+ A. Canary
+ B. Gradual
+ C. Linear
+ D. All-at-Once		-Correct
+Unattempted
+The AWS Documentation mentions the following
+There are three ways traffic can shift during a deployment:
+· Canary: Traffic is shifted in two increments. You can choose from predefined canary options that specify the percentage of traffic shifted to your updated Lambda function version in the first increment and the interval, in minutes, before the remaining traffic is shifted in the second increment.
+· Linear: Traffic is shifted in equal increments with an equal number of minutes between each increment. You can choose from predefined linear options that specify the percentage of traffic shifted in each increment and the number of minutes between each increment.
+· All-at-once: All traffic is shifted from the original Lambda function to the updated Lambda function version at once.
+Because of the options present in the documentation , all other options become invalid.
+For more information on deployment configurations , please refer to the below URL
+https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html
+The correct answer is: All-at-Once
+
+
+
+27. Question
+You’re developing an application that is going to be hosted in AWS Lambda. The function will make calls to a database. The security mandate is that all connection strings should be kept secure. Which of the following is the MOST secure way to implement this?
+
+ A. Use Lambda Environment variables
+ B. Put the database connection string in the app.json file
+ C. Put the database connection string in AWS Systems Manager Parameter Store		-Correct
+ D. Place the database connection string in the AWS Lambda function itself since all lambda functions are encrypted at rest
+Unattempted
+The AWS Documentation mentions the following
+AWS Systems Manager Parameter Store provides secure, hierarchical storage for configuration data management and secrets management. You can store data such as passwords, database strings, and license codes as parameter values. You can store values as plain text or encrypted data. You can then reference values by using the unique name that you specified when you created the parameter. Highly scalable, available, and durable, Parameter Store is backed by the AWS Cloud. Parameter Store is offered at no additional charge.
+Option A would only be valid If the option also said that the variable would be in encrypted format
+Option B is invalid since this is the most unsecure way to store database strings
+Option D is invalid since this is not the case with Lambda functions
+For more information on the Systems Manager Parameter store , please refer to the below URL
+https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-paramstore.html
+The correct answer is: Put the database connection string in AWS Systems Manager Parameter Store
+
+
+
+28. Question
+You are a team lead for the development of an application that will be hosted in AWS. The application will consist of a front end which will allow users to upload files. Part of the application will consist of sending and processing of messages by a backend service. You have been told to reduce the cost for the backend service , but also ensure efficiency. Which of the following would you consider in the implementation of the backend service? Choose 2 answers from the options given below
+
+ A. Create an SQS queue to handle the processing of messages		-Correct
+ B. Create an SNS topics to handle the processing of messages
+ C. Create a Lambda function to process the messages from the queue		-Correct
+ D. Create an EC2 Instance to process the messages from the queue
+Unattempted
+The SQS queue can be used to handle the sending and receiving of messages. To reduce costs you can use Lambda functions to process the messages. The below is also given in the AWS Documentation
+Using AWS Lambda with Amazon SQS
+Attaching an Amazon SQS queue as an AWS Lambda event source is an easy way to process the queue’s content using a Lambda function. Lambda takes care of:
+Automatically retrieving messages and directing them to the target Lambda function.
+Deleting them once your Lambda function successfully completes.
+Option B is incorrect since you should use SQS for handling of messages
+Option D is incorrect since this would not be a cost-effective option
+For more information on working with SQS , please refer to the below URL
+https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html
+The correct answers are: Create an SQS queue to handle the processing of messages, Create a Lambda function to process the messages from the queue
+
+
+
+29. Question
+Your team is currently working on source code that’s defined in a Subversion repository. The company has just started using AWS tools for their CI/CD process and has now mandated that source code be migrated to AWS CodeCommit. Which of the following steps would you perform to fulfil this requirement. Choose 2 answers from the options given below.
+
+ A. Migrate the code as it is to the AWS Code Commit Repository
+ B. Migrate the code to a Git Repository first		-Correct
+ C. Migrate Git code to AWS Code Commit		-Correct
+ D. Ensure to clone the current repository before committing it to AWS Code Commit
+Unattempted
+The AWS Documentation mentions the following
+Migrate to AWS CodeCommit
+You can migrate a Git repository to an AWS CodeCommit repository in a number of ways: by cloning it, mirroring it, migrating all or just some of the branches, and so on. You can also migrate local, unversioned content on your computer to AWS CodeCommit.
+The following topics demonstrate some of the ways you can choose to migrate a repository. Your steps may vary, depending on the type, style, or complexity of your repository and the decisions you make about what and how you want to migrate. For very large repositories, you might want to consider migrating incrementally.
+Note
+You can migrate to AWS CodeCommit from other version control systems, such as Perforce, Subversion, or TFS, but you will have to migrate to Git first.
+Options A and D are incorrect since you need to migrate the repository to Git first.
+For more information on migrating a repository , please refer to the below URL
+https://docs.aws.amazon.com/codecommit/latest/userguide/how-to-migrate-repository.html
+The correct answers are: Migrate the code to a Git Repository first, Migrate Git code to AWS Code Commit
+
+
+
+30. Question
+You need to setup a RESTful API service in AWS that would be serviced via the following url
+https://democompany.com/customers?ID=1
+So customers should be able to get their details whilst providing the ID to the API. Which of the following would you define to fulfil this requirement? Choose 2 answers from the options given below
+
+ A. A Lambda function and expose the Lambda function to the customers. Pass the ID as a parameter to the function
+ B. An API gateway with a Lambda function to process the customer information		-Correct
+ C. Expose the GET method in the API Gateway		-Correct
+ D. Expose the GET method in the Lambda function
+Unattempted
+The ideal approach would be to define the code to get the customer information in the Lambda function. Then attach the Lambda function to the API gateway service. Expose the GET method in the API gateway so that users can call the API accordingly.
+For more information on methods for the API gateway , please refer to the below URL
+https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-method-settings-method-request.html
+The correct answers are: An API gateway with a Lambda function to process the customer information, Expose the GET method in the API Gateway
+
+
+
+31. Question
+Your application currently makes use of AWS Kinesis streams. The data rate of the application is now increasing due to the increased number of producers. Which of the following can be done to keep up with the increased data rate?
+
+ A. Increase the number of partition keys in the stream
+ B. Increase the number of shards		-Correct
+ C. Increase the sequence numbers
+ D. Enable server-side encryption
+Unattempted
+This is given in the AWS Documentation
+Shard
+A shard is a uniquely identified sequence of data records in a stream. A stream is composed of one or more shards, each of which provides a fixed unit of capacity. Each shard can support up to 5 transactions per second for reads, up to a maximum total data read rate of 2 MB per second and up to 1,000 records per second for writes, up to a maximum total data write rate of 1 MB per second (including partition keys). The data capacity of your stream is a function of the number of shards that you specify for the stream. The total capacity of the stream is the sum of the capacities of its shards.
+If your data rate increases, you can increase or decrease the number of shards allocated to your stream.
+Since this is given in the documentation , all other options are invalid
+For more information on the key concepts with shards , please refer to the below URL
+https://docs.aws.amazon.com/streams/latest/dev/key-concepts.html
+The correct answer is: Increase the number of shards
+
+
+
+32. Question
+You have an application that needs to encrypt data using the KMS service. The company has already defined the customer master key in AWS for usage in the application. Which of the following steps must be followed in the encryption process? Choose 2 answers from the options given below
+
+ A. Use the GenerateDataKey to get the data key to encrypt the data		-Correct
+ B. Use CustomerMaster Key to encrypt the data
+ C. Delete the plaintext data encryption key after the data is encrypted		-Correct
+ D. Delete the Customer Master Key after the data is encrypted
+Unattempted
+Options B and D are incorrect because you will not use the Customer Key directly to encrypt and decrypt data.
+The AWS Documentation mentions the following
+We recommend that you use the following pattern to encrypt data locally in your application:
+1. Use this operation (GenerateDataKey) to get a data encryption key.
+2. Use the plaintext data encryption key (returned in the Plaintext field of the response) to encrypt data locally, then erase the plaintext data key from memory.
+3. Store the encrypted data key (returned in the CiphertextBlob field of the response) alongside the locally encrypted data.
+For more information on generating data key , please refer to the below URL
+https://docs.aws.amazon.com/kms/latest/APIReference/API_GenerateDataKey.html
+The correct answers are: Use the GenerateDataKey to get the data key to encrypt the data, Delete the plaintext data encryption key after the data is encrypted
+
+
+
+33. Question
+Your company is planning on using the Simple Storage service to host objects that will be accessed by users. In order to ensure optimal performance when requests are made to get the objects from the bucket, which of the following is the right way to use define the keys for optimal performance?
+
+ A. demoawsbucket/2019-14-03-15-00-00/Image1.jpg
+ B. demoawsbucket/sample/232a-2019-14-03-15-00-00 Image1.jpg
+ C. demoawsbucket/232a-2019-14-03-15-00-00/ Image1.jpg		-Correct
+ D. demoawsbucket/sample/ Image1.jpg
+Unattempted
+Latest Update: Based on the New S3 announcement (S3 performance)Amazon S3 now provides increased request rate performance. But AWS not yet updated the exam Questions. So as per exam Option C is the correct answer.
+https://aws.amazon.com/about-aws/whats-new/2018/07/amazon-s3-announces-increased-request-rate-performance/
+All other options are incorrect since they are no the correct ways to store object keys for optimal performance.
+The correct answer is: demoawsbucket/232a-2019-14-03-15-00-00/ Image1.jpg
+
+
+
+34. Question
+A company currently has an application that works with DynamoDB. You have been requested to increase the performance of the underlying queries for the DynamoDB table by using Indexes. Which of the following are the best practises when it comes to working with Indexes efficiently? Choose 2 answers from the options given below.
+
+ A. Try to create as many indexes as possible
+ B. Try to keep the number of indexes to a minimum		-Correct
+ C. Avoid indexing tables with a lot of read activity
+ D. Avoid indexing tables with a lot of write activity		-Correct
+Unattempted
+The AWS Documentation mentions the following
+Use Indexes Efficiently
+Keep the number of indexes to a minimum. Don’t create secondary indexes on attributes that you don’t query often. Indexes that are seldom used contribute to increased storage and I/O costs without improving application performance.
+Avoid indexing tables that experience heavy write activity. In a data capture application, for example, the cost of I/O operations required to maintain an index on a table with a very high write load can be significant. If you need to index data in such a table, it may be more effective to copy the data to another table that has the necessary indexes and query it there.
+Because of what is mentioned in the AWS Documentation , the other options are invalid
+For more information on using Indexes efficiently , please refer to the below URL
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-indexes-general.html
+The correct answers are: Try to keep the number of indexes to a minimum, Avoid indexing tables with a lot of write activity
+
+
+
+35. Question
+Your developing an application that is working with a DynamoDB table. You need to create a query which has a search criterion. Which of the following must be done in order to work with search queries? Choose 2 answers from the options given below
+
+ A. Specify a key condition expression in the query		-Correct
+ B. Specify a partition key name and value in the equality condition		-Correct
+ C. Specify a sort key name and value in the equality condition
+ D. Specify a filter expression
+Unattempted
+The AWS Documentation mentions the following
+Key Condition Expression
+To specify the search criteria, you use a key condition expression—a string that determines the items to be read from the table or index.
+You must specify the partition key name and value as an equality condition.
+Option C is incorrect since you need to mention the partition key and not the sort key
+Option D is incorrect since this is used to further filter results
+For more information on working with queries , please refer to the below URL
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html
+The correct answers are: Specify a key condition expression in the query, Specify a partition key name and value in the equality condition
+
+
+
+36. Question
+A DynamoDB table is set to have a Read capacity of 10. Which of the following will give the maximum read throughput for the table?
+
+ A. Read capacity set to 10 for 4KB reads of data at strong consistency
+ B. Read capacity set to 10 for 4KB reads of data at eventual consistency		-Correct
+ C. Read capacity set to 15 for 1KB reads of data at strong consistency
+ D. Write capacity set to 10 for 1KB reads of data at eventual consistency
+Unattempted
+The calculation of throughput capacity for option B would be
+Read capacity(10) * Amount of data(4) = 40.
+Since its required at eventual consistency , we can double the read throughput to 40*2=80
+For Option A
+Read capacity(10) * Amount of data(4) = 40. Since we need strong consistency we have would get a read throughput of 40
+For Option C
+Read capacity(15) * Amount of data(1) = 15. Since we need strong consistency we have would get a read throughput of 15
+Option D is incorrect. Because it’s talking about the write capacity.
+The correct answer is: Read capacity set to 10 for 4KB reads of data at eventual consistency
+
+
+
+37. Question
+Your team needs to create a custom Elastic Beanstalk environment. The application requires an instance that needs a lot of custom software installed. Which of the following is the ideal way to prepare this environment?
+
+ A. Ensure that you choose a Web server environment
+ B. Ensure that you choose a Worker environment
+ C. Create multiple environments
+ D. Create a custom AMI		-Correct
+Unattempted
+The AWS Documentation mentions the following
+When you create an AWS Elastic Beanstalk environment, you can specify an Amazon Machine Image (AMI) to use instead of the standard Elastic Beanstalk AMI included in your platform configuration’s solution stack. A custom AMI can improve provisioning times when instances are launched in your environment if you need to install a lot of software that isn’t included in the standard AMIs.
+Options A and B are incorrect because the question does not mention the type of environment that needs to be created.
+Option C is incorrect since this is a not a requirement for creating a custom environment
+For more information on using custom environments , please refer to the below URL
+https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.customenv.html
+The correct answer is: Create a custom AMI
+
+
+
+38. Question
+You’re developing an application that is going to be deployed in the Elastic beanstalk environment. You need to ensure that the data that gets generated by the application persists even If the environment is torn down. How can you accomplish this? Choose 3 answers from the options given below.
+
+ A. Consider storing the data in an Elastic File System		-Correct
+ B. Leave the data as it is , because Elastic beanstalk will automatically persist the storage
+ C. Consider storing the data in a DynamoDB table		-Correct
+ D. Consider storing the data in S3		-Correct
+Unattempted
+The AWS Documentation mentions the following
+Option B is invalid because the documentation clearly states that the data is not persisted in Elastic beanstalk
+For more information on persistent storage with Elastic beanstalk , please refer to the below URL
+https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.concepts.design.html
+The correct answers are: Consider storing the data in an Elastic File System, Consider storing the data in a DynamoDB table, Consider storing the data in S3
+
+
+
+39. Question
+You’ve currently developed an application which makes use of AWS RDS – MySQL service. During the testing phase , you can see that the database is taking a performance hit. After further investigation, you can see that the same queries are causing the performance bottleneck on the application. Which of the following development steps should be taken to resolve this issue?
+
+ A. Use the Multi-AZ feature for the underlying database
+ B. Change the underlying instance type for the database
+ C. Use SQS queues to store the results of the query for faster access
+ D. Use AWS ElastiCache to store the results of the query for faster access		-Correct
+Unattempted
+Option A is invalid because this is used for high availability of the database
+Option B is invalid because we don’t know what the current configuration of the server is to make a guess that this could be the underlying issue.
+Option C is invalid because this service is normally used for messaging across distributed components of an application.
+The AWS Documentation states the following which makes sense to use AWS ElasticCache for this scenario
+Amazon ElastiCache offers fully managed Redis and Memcached. Seamlessly deploy, operate, and scale popular open source compatible in-memory data stores. Build data-intensive apps or improve the performance of your existing apps by retrieving data from high throughput and low latency in-memory data stores.
+For more information on AWS ElastiCache, please refer to the below link
+https://aws.amazon.com/elasticache/
+The correct answer is: Use AWS ElastiCache to store the results of the query for faster access
+
+
+
+40. Question
+You’ve just started developing an application on your On-premise network. This application will interact with the Simple Storage Service and some DynamoDB tables. How would you as the developer ensure that your SDK can interact with the AWS services on the cloud?
+
+ A. Create an IAM Role with the required permissions and add it to your workstation
+ B. Create an IAM Role with the required permissions and make a call to the STS service
+ C. Create an IAM User , generate the access keys. Use the Access keys from within your program.		-Correct
+ D. Create an IAM User , generate a security token. Use the Security Token from within your program.
+Unattempted
+Options A and B are incorrect since we need to use AWS Access keys during development and not IAM Roles
+Option D is incorrect since we should not be generating a security token to interact with the various AWS services during the development phase.
+When working on development, you need to use the AWS Access keys to work with the AWS Resources
+The AWS Documentation additionally mentions the following
+You use different types of security credentials depending on how you interact with AWS. For example, you use a user name and password to sign in to the AWS Management Console. You use access keys to make programmatic calls to AWS API operations.
+For more information on usage of credentials in AWS , please refer to the below link
+https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html
+The correct answer is: Create an IAM User , generate the access keys. Use the Access keys from within your program.
+
+
+
+41. Question
+You are a developer for your company. You are working on creating Cloudformation templates for different environments. You want to be able to base the creation of the environments on the values passed at runtime to the template. How can you achieve this?
+
+ A. Specify an Outputs section
+ B. Specify a parameters section		-Correct
+ C. Specify a metadata section
+ D. Specify a transform section
+Unattempted
+You can use the Parameters section to take in values at runtime. You can then use the values of those parameters to define how the template gets executed.
+The AWS Documentation also mentions the following
+Parameters (optional)
+Values to pass to your template at runtime (when you create or update a stack). You can refer to parameters from the Resources and Outputs sections of the template.
+Option A is invalid since this is used to describes the values that are returned whenever you view your stack’s properties
+Option C is invalid since this is used to specify objects that provide additional information about the template.
+Option D is invalid since this is used to specify options for the SAM Model
+For more information on working of cloudformation templates , please refer to the below URL
+https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html
+The correct answer is: Specify a parameters section
+
+
+
+42. Question
+You’re planning on using the AWS CodeDeploy tool for deployment of your application. Which of the following is used to specify how your application will be deployed to the underlying instances?
+
+ A. appConfig.json
+ B. Deployment Group
+ C. appConfig.YAML
+ D. AppSpec.json		-Correct
+Unattempted
+This is mentioned in the AWS Documentation
+Because of what is mentioned in the documentation on what is the functionality of the AppSpec file , all other options are incorrect
+For more information on Code Deploy , please refer to the below URL
+https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html
+The correct answer is: AppSpec.json
+
+
+
+43. Question
+You are creating a Lambda function that will be accessing a database. Due to compliance reasons , all database connecting strings must be stored encrypted at rest. How can you accomplish this in the Lambda function? Choose 2 answers from the options given below
+
+ A. Put the database connection string in the Lambda function
+ B. Put the database connecting string as an environment variable		-Correct
+ C. Encrypt the entire Lambda function
+ D. Enable encryption of the environment variable		-Correct
+Unattempted
+Option A is incorrect
+The connection string is assigned to an environment variable with in a Lambda function. We cannot directly put the connection string into the lambda function.
+Option B is correct
+The connection string is assigned to an environment variable with in a Lambda function.
+Option C is incorrect
+You need to enable encryption for the environment variable and not the lambda function.
+Option D is correct
+You need to enable encryption for the environment variable.
+You can do this via Environment variables as mentioned in the AWS Documentation
+Expand the Environment variables section.
+Enter your key-value pair. Expand the Encryption configuration section. Note that Lambda provides a default service key under KMS key to encrypt at rest which encrypts your information after it has been uploaded. If the information you provided is sensitive, you can additionally check the Enable helpers for encryption in transit checkbox and supply a custom key. This masks the value you entered and results in a call to AWS KMS to encrypt the value and return it as Ciphertext. If you haven’t created a KMS key for your account, you will be provided a link to the AWS IAM console to create one. The account must have have encrypt and decrypt permissions for that key. Note that the Encrypt button toggles to Decrypt after you choose it. This affords you the option to update the information. Once you have done that, choose the Encrypt button.
+The Code button provides sample decrypt code specific to the runtime of your Lambda function that you can use with your application.
+Because of what is mentioned in the documentation , all other options are invalid
+For more information on environment variables in Lambda , please refer to the below URL
+https://docs.aws.amazon.com/lambda/latest/dg/tutorial-env_console.html
+The correct answers are: Put the database connecting string as an environment variable, Enable encryption of the environment variable
+
+
+
+44. Question
+You are the team lead for an application that is already in production and making use of S3 buckets. Users from another country have now started actively using the objects in the S3 bucket. Which of the following can be done to reduce the latency of access to objects for the new users?
+
+ A. Enable cross region replication for the bucket		-Correct
+ B. Enable Encryption for the bucket
+ C. Host a static web site
+ D. Change the storage class
+Unattempted
+This is given as a use case in the documentation
+When to Use CRR
+Cross-region replication can help you do the following:
+Comply with compliance requirements—Although Amazon S3 stores your data across multiple geographically distant Availability Zones by default, compliance requirements might dictate that you store data at even greater distances. Cross-region replication allows you to replicate data between distant AWS Regions to satisfy these requirements.
+Minimize latency—If your customers are in two geographic locations, you can minimize latency in accessing objects by maintaining object copies in AWS Regions that are geographically closer to your users.
+Increase operational efficiency—If you have compute clusters in two different AWS Regions that analyze the same set of objects, you might choose to maintain object copies in those Regions.
+Maintain object copies under different ownership—Regardless of who owns the source object you can tell Amazon S3 to change replica ownership to the AWS account that owns the destination bucket. This is referred to as the owner override option. You might use this option restrict access to object replicas.
+Option B is invalid since this is only used when you want to secure data at rest
+Option C is invalid since this is only used when you want to have a static web site in place
+Option D is invalid since this will not help reduce latency
+For more information on cross region replication , please refer to the below URL
+https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html
+The correct answer is: Enable cross region replication for the bucket
+
+
+
+45. Question
+As an API developer , you have just configured an API with the AWS API gateway service. You are testing out the API and get the below response whenever an action is made to an undefined API resource.
+{ “message”: “Missing Authentication Token” }
+You want to customize the error response and make it more user readable. How can you achieve this?
+
+ A. By setting up the appropriate method in the API gateway
+ B. By setting up the appropriate method integration request in the API gateway
+ C. By setting up the appropriate gateway response in the API gateway		-Correct
+ D. By setting up the appropriate gateway request in the API gateway
+Unattempted
+This is mentioned in the AWS Documentation
+Set up Gateway Responses to Customize Error Responses
+If API Gateway fails to process an incoming request, it returns to the client an error response without forwarding the request to the integration backend. By default, the error response contains a short descriptive error message. For example, if you attempt to call an operation on an undefined API resource, you receive an error response with the { “message”: “Missing Authentication Token” } message. If you are new to API Gateway, you may find it difficult to understand what actually went wrong.
+For some of the error responses, API Gateway allows customization by API developers to return the responses in different formats. For the Missing Authentication Token example, you can add a hint to the original response payload with the possible cause, as in this example: {“message”:”Missing Authentication Token”, “hint”:”The HTTP method or resources may not be supported.”}.
+The documentation clearly mentions how this should be configured , hence the other options are all invalid.
+For more information on the gateway response , please refer to the below URL
+https://docs.aws.amazon.com/apigateway/latest/developerguide/customize-gateway-responses.html
+The correct answer is: By setting up the appropriate gateway response in the API gateway
+
+
+
+46. Question
+You are a developer for your company who is responsible for development and deployment of AWS Lambda functions. You have been told to start the automated deployment of Lambda based applications. Which of the following can be used for automated deployment? Choose 3 answers from the options given below
+
+ A. AWS API gateway
+ B. AWS Code Pipeline		-Correct
+ C. AWS Code Build		-Correct
+ D. AWS Code Deploy		-Correct
+Unattempted
+The AWS Documentation mentions the following
+Automating Deployment of Lambda Applications
+In the previous section, you learned how to create a SAM template, generate your deployment package, and use the AWS CLI to manually deploy your serverless application. In this section, you will leverage the following AWS services to fully automate the deployment process.
+AWS CodePipeline: You use AWS CodePipeline to model, visualize, and automate the steps required to release your serverless application. For more information, see What is AWS CodePipeline?
+AWS CodeBuild: You use AWS CodeBuild to build, locally test, and package your serverless application. For more information, see What is AWS CodeBuild?
+AWS CloudFormation: You use AWS CloudFormation to deploy your application. For more information, see What is AWS CloudFormation?
+AWS CodeDeploy: You use AWS CodeDeploy to gradually deploy updates to your serverless applications. For more information on how to do this, see Gradual Code Deployment.
+Option A is invalid because this can be used in front of the Lambda function but cannot be used to do the automated deployment.
+For more information on automating deployment , please refer to the below URL
+https://docs.aws.amazon.com/lambda/latest/dg/automating-deployment.html
+The correct answers are: AWS Code Pipeline, AWS Code Build, AWS Code Deploy
+
+
+
+47. Question
+Your developing an application that is going to make use of Docker containers. Traffic needs to be routed based on demand to the application. Dynamic host port mapping would be used for the docker containers. Which of the following would you use for distribution of traffic to the docker containers?
+
+ A. AWS Application Load Balancer		-Correct
+ B. AWS Network Load Balancer
+ C. AWS Route 53
+ D. AWS Classic Load Balancer
+Unattempted
+The AWS Documentation mentions the following
+Application Load Balancers offer several features that make them attractive for use with Amazon ECS services:
+· Application Load Balancers allow containers to use dynamic host port mapping (so that multiple tasks from the same service are allowed per container instance).
+· Application Load Balancers support path-based routing and priority rules (so that multiple services can use the same listener port on a single Application Load Balancer).
+Options B and D are invalid since Application is ideally used when you have the requirement for path based routing
+Option C is incorrect since this is used for DNS Routing
+For more information on Service Load Balancing , please refer to the below URL
+https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html
+The correct answer is: AWS Application Load Balancer
+
+
+
+48. Question
+Your developing a set of Lambda functions for your application. The company mandates that all calls to Lambda functions be recorded. Which of the below service can help achieve this?
+
+ A. AWS Cloudwatch
+ B. AWS CloudTrail		-Correct
+ C. AWS VPC Flow Logs
+ D. AWS Trusted Advisor
+Unattempted
+The AWS Documentation mentions the following
+AWS Lambda is integrated with AWS CloudTrail, a service that captures API calls made by or on behalf of AWS Lambda in your AWS account and delivers the log files to an Amazon S3 bucket that you specify. CloudTrail captures API calls made from the AWS Lambda console or from the AWS Lambda API. Using the information collected by CloudTrail, you can determine what request was made to AWS Lambda, the source IP address from which the request was made, who made the request, when it was made, and so on
+Option A is incorrect since this can only give information on the logs from Cloudwatch but not who called the Lambda function itself.
+Option C is incorrect since this is used for logging network traffic to the VPC
+Option D is incorrect since this cannot give API logging information
+For more information on using Cloudtrail , please refer to the below URL
+https://docs.aws.amazon.com/lambda/latest/dg/logging-using-cloudtrail.html
+The correct answer is: AWS CloudTrail
+
+
+
+49. Question
+Your developing an application that is going to make use of Docker containers. You need to use an orchestration service on the AWS Cloud for managing the application. Which of the following service would you use for this purpose?
+
+ A. AWS Code Deploy
+ B. AWS ECS		-Correct
+ C. AWS SQS
+ D. AWS Cloudfront
+Unattempted
+The AWS Documentation mentions the following
+Amazon Elastic Container Service (Amazon ECS) is a highly scalable, fast, container management service that makes it easy to run, stop, and manage Docker containers on a cluster.
+Option A is invalid since this is used for automated application deployments
+Option C is invalid since this is used for queuing service
+Option D is invalid since this is used for content delivery
+For more information on the Elastic Container service , please refer to the below URL
+https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html
+The correct answer is: AWS ECS
+
+
+
+50. Question
+A company is planning on using the API gateway service to expose API’s to external users. They need to ensure the right authorization measures are in place. Which of the following can be used to control access to API’s in the API gateway? Choose 3 answers from the options given below
+
+ A. Resource policies		-Correct
+ B. IAM Policies		-Correct
+ C. Key policies
+ D. Lambda authorizers		-Correct
+Unattempted
+The AWS Documentation mentions the following
+API Gateway supports multiple mechanisms for controlling access to your API:
+· Resource policies let you create resource-based policies to allow or deny access to your APIs and methods from specified source IP addresses or VPC endpoints.
+· Standard AWS IAM roles and policies offer flexible and robust access controls that can be applied to an entire API or individual methods.
+· Cross-origin resource sharing (CORS) lets you control how your API responds to cross-domain resource requests.
+· Lambda authorizers are Lambda functions that control access to your API methods using bearer token authentication as well as information described by headers, paths, query strings, stage variables, or context variables request parameters.
+· Amazon Cognito user pools let you create customizable authentication and authorization solutions.
+· Client-side SSL certificates can be used to verify that HTTP requests to your backend system are from API Gateway.
+· Usage plans let you provide API keys to your customers — and then track and limit usage of your API stages and methods for each API key.
+Option C is invalid since this is used to provide authorization for KMS keys
+For more information on controlling access to the API gateway , please refer to the below URL
+https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-to-api.html
+The correct answers are: Resource policies, IAM Policies, Lambda authorizers
+
+
+
+51. Question
+Your developing a .Net Core application that is going to be hosted in an Elastic beanstalk environment. The application is going to make backend calls to a database. You need to increase the performance of the application during the testing phase. How can you diagnose any performance issues in the easiest way possible?
+
+ A. Place a Load balancer in front of Elastic beanstalk
+ B. Place instrumentation calls in your code
+ C. Make use of traces using the X-Ray service		-Correct
+ D. Use Cloudwatch logs to debug issues
+Unattempted
+The best way is to use the X-Ray service which can be used to automatically see the call trace and time spend in each layer. The below snapshot from the AWS Documentation showcases this
+AWS X-Ray is a service that collects data about requests that your application serves. X-Ray provides tools you can use to view, filter, and gain insights into that data to identify issues and opportunities for optimization. For any traced request to your application, you can see detailed information in the AWS X-Ray console. This includes information not only about the request and response, but also about calls that your application makes to downstream AWS resources, microservices, databases, and HTTP web APIs.
+Option A is incorrect since this will not help you diagnose ways to improve the performance of your application
+Option B is partially correct , you can do this , but the easiest way is to use the X-Ray service
+Option D is incorrect since the logs will not give detailed time tracing of the calls of your application
+For more information on an example on this , please refer to the below URL
+https://aws.amazon.com/blogs/developer/new-aws-x-ray-net-core-support/
+The correct answer is: Make use of traces using the X-Ray service
+
+
+
+52. Question
+Your currently deploying an application that needs to have a sign-up and sign-in functionality added. As much as possible , you would want to reduce the coding effort required for these modules. You also need to ensure that code is executed automatically after the sign-in process is complete. How can you achieve this? Choose 2 answers from the options below.
+
+ A. Use the AWS Cognito service to provide the sign-up and sign-in functionality		-Correct
+ B. Use the AWS IAM service to provide the sign-up and sign-in functionality
+ C. Use AWS Cloudwatch events to trigger code that will be run after the user sign-in process is complete
+ D. Trigger a lambda function ?to execute the code associated with the post authentication event.		-Correct
+Unattempted
+This is mentioned in the AWS Documentation
+You can create an AWS Lambda function and then trigger that function during user pool operations such as user sign-up, confirmation, and sign-in (authentication) with a Lambda trigger. You can add authentication challenges, migrate users, and customize verification messages.
+Option B is incorrect since IAM cannot simulate the sign-in and sign-up process that would be required by the application.
+Option C is incorrect since Cloudwatch events will not be able to carry out this requirement.
+For more information on using Lambda triggers with AWS Cognito , please refer to the below URL
+https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html
+The correct answers are: Use the AWS Cognito service to provide the sign-up and sign-in functionality, Trigger a lambda function ?to execute the code associated with the post authentication event.
+
+
+
+53. Question
+A company is developing an application which interacts with an existing DynamoDB table. There is now a security mandate that all data must be encrypted at rest. How can you achieve this requirement? Choose 2 answers from the options given below
+
+ A. Create a new table with Encryption Enabled		-Correct
+ B. Copy the data from the existing table to the new table		-Correct
+ C. Enable Encryption for the existing table
+ D. Enable your application to use the SDK to decrypt the data
+Unattempted
+This is mentioned in the AWS Documentation
+Amazon DynamoDB Encryption at Rest
+Amazon DynamoDB offers fully managed encryption at rest. DynamoDB encryption at rest provides enhanced security by encrypting your data at rest using an AWS Key Management Service (AWS KMS) managed encryption key for DynamoDB. This functionality eliminates the operational burden and complexity involved in protecting sensitive data.
+To get started with encryption at rest, you need to create a table with encryption at rest enabled.
+Important
+Encryption at rest can be enabled only when you are creating a new DynamoDB table. Currently, you can’t enable encryption at rest on an existing table. After encryption at rest is enabled, it can’t be disabled. We recommend that you enable encryption for any tables that contain sensitive data
+For more information on Encryption of DynamoDB , please refer to the below URL
+Option C is incorrect because encryption can’t be enabled for an existing table
+Option D is incorrect because DynamoDB will automatically decrypt the data for you. You don’t need to use the SDK in this case.
+For more information on Encryption at rest for DynamoDB , please refer to the below URL
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/EncryptionAtRest.html
+The correct answers are: Create a new table with Encryption Enabled, Copy the data from the existing table to the new table
+
+
+
+54. Question
+You’ve been asked to move an existing development environment on the AWS Cloud. This environment consists mainly of Docker based containers. You need to ensure that minimum effort is taken during the migration process. Which of the following step would you consider for this requirement?
+
+ A. Create an Opswork stack and deploy the Docker containers
+ B. Create an application and Environment for the Docker containers in the Elastic Beanstalk service		-Correct
+ C. Create an EC2 Instance. Install Docker and deploy the necessary containers.
+ D. Create an EC2 Instance. Install Docker and deploy the necessary containers. Add an Autoscaling Group for scalability of the containers.
+Unattempted
+The Elastic Beanstalk service is the ideal service to quickly provision development environments. You can also create environments which can be used to host Docker based containers.
+Option A is incorrect since using Opswork is best suited when you have multiple stacks and want to use configuration tools for the environment.
+Options C and D are incorrect since this would involve a lot of effort in deployment.
+For more information on using Docker containers in Elastic Beanstalk, please refer to the below link
+https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker.html
+The correct answer is: Create an application and Environment for the Docker containers in the Elastic Beanstalk service
+
+
+
+55. Question
+Your company is planning on using the AWS CodePipeline service for their CI/CD process. They have their own propriety build process that needs to be incorporated in CodePipeline. How can you achieve this?
+
+ A. Create a default action for your Pipeline
+ B. Create a custom action for your Pipeline		-Correct
+ C. Create a primary action for your Pipeline
+ D. Create a secondary action for your Pipeline
+Unattempted
+This is mentioned in the AWS Documentation
+AWS CodePipeline includes a number of actions that help you configure build, test, and deploy resources for your automated release process. If your release process includes activities that are not included in the default actions, such as an internally developed build process or a test suite, you can create a custom action for that purpose and include it in your pipeline. You can use the AWS CLI to create custom actions in pipelines associated with your AWS account.
+Because of what is mentioned in the documentation , all other options are incorrect
+For more information on creating custom actions , please refer to the below URL
+https://docs.aws.amazon.com/codepipeline/latest/userguide/actions-create-custom-action.html
+The correct answer is: Create a custom action for your Pipeline
+
+
+
+56. Question
+Your team lead has finished creating a build project in the console. You have access to run the build but not to access the project. You want to specify a different source location for the build. How can you achieve this?
+
+ A. Issue the update project command and specify the new location of the build
+ B. Specify the new location of the build in the buildspec.yml file and issue the update-project command
+ C. Specify the new location of the build in the buildspec.yml file and use the start-build command		-Correct
+ D. Specify the new location of the build in the buildspec.yml file and use the update-build command
+Unattempted
+Options A and B are incorrect since the question mentions that you don’t have access to the project
+Option D is incorrect since you have to use the start-build command
+The AWS Documentation mentions the following
+To override the default build spec file name, location, or both, do one of the following:
+· Run the AWS CLI create-project or update-project command, setting the buildspec value to the path to the alternate build spec file relative to the value of the built-in environment variable CODEBUILD_SRC_DIR. You can also do the equivalent with the create project operation in the AWS SDKs. For more information, see Create a Build Project or Change a Build Project’s Settings.
+· Run the AWS CLI start-build command, setting the buildspecOverride value to the path to the alternate build spec file relative to the value of the built-in environment variable CODEBUILD_SRC_DIR. You can also do the equivalent with the start build operation in the AWS SDKs
+For more information on the build specification for AWS Code Deploy, please refer to the below link
+https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html
+The correct answer is: Specify the new location of the build in the buildspec.yml file and use the start-build command
+
+
+
+57. Question
+You’re a developer for a company that is developing a .net based application. This application will be hosted in AWS. There is a need to encrypt data. Currently the company does not have a key store for managing encryption. Which of the following could the developer use in this code for encrypting data?
+
+ A. Use S3 Server-side encryption to work with encryption keys
+ B. Use the AWS KMS service to generate data keys		-Correct
+ C. Use the AWS Config service to generate data keys
+ D. Use S3 client-side encryption to work with encryption keys
+Unattempted
+The AWS Documentation mentions the following
+AWS Key Management Service (AWS KMS) is a managed service that makes it easy for you to create and control the encryption keys used to encrypt your data. The master keys that you create in AWS KMS are protected by FIPS 140-2 validated cryptographic modules.
+Options A and D are incorrect since here there is no mention of working with the S3 service
+Option C is incorrect because the AWS Config service can’t be used to work with encryption keys
+For more information on the KMS service, please refer to the below link
+https://docs.aws.amazon.com/kms/latest/developerguide/overview.html
+The correct answer is: Use the AWS KMS service to generate data keys
+
+
+
+58. Question
+Your working as a team lead for your company. You have been told to manage the Blue Green Deployment methodology for one of the applications. Which of the following are some of the approaches for implementing this methodology? Choose 2 answers from the options given below
+
+ A. Using Autoscaling Groups to scale on demands for both deployments
+ B. Using Route 53 with Weighted Routing policies		-Correct
+ C. Using Route 53 with Latency Routing policies
+ D. Using Elastic Beanstalk with the swap URL feature		-Correct
+Unattempted
+The AWS Documentation mentions the following
+Weighted routing lets you associate multiple resources with a single domain name (example.com) or subdomain name (acme.example.com) and choose how much traffic is routed to each resource. This can be useful for a variety of purposes, including load balancing and testing new versions of software.
+Because AWS Elastic Beanstalk performs an in-place update when you update your application versions, your application can become unavailable to users for a short period of time. You can avoid this downtime by performing a blue/green deployment, where you deploy the new version to a separate environment, and then swap CNAMEs of the two environments to redirect traffic to the new version instantly.
+Option A is incorrect as on its own Autoscaling should be used to shift traffic and not on demand for such deployments
+Option C is incorrect since you need to use Route 53 with Weighted Routing policies
+For more information on weighted routing policy, please refer to the below link
+https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-weighted
+For more information on the Swap URL feature, please refer to the below link
+https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.CNAMESwap.html
+The correct answers are: Using Route 53 with Weighted Routing policies, Using Elastic Beanstalk with the swap URL feature
+
+
+
+59. Question
+You’ve written an application that uploads objects onto an S3 bucket. The size of the object varies between 200 – 500 MB. You’ve seen that the application sometimes takes a longer than expected time to upload the object. You want to improve the performance of the application. Which of the following would you consider?
+
+ A. Create multiple threads and upload the objects in the multiple threads
+ B. Write the items in batches for better performance
+ C. Use the Multipart upload API		-Correct
+ D. Enable versioning on the Bucket
+Unattempted
+All other options are invalid since the best way to handle large object uploads to the S3 service is to use the Multipart upload API
+The AWS Documentation mentions the following to support this
+The Multipart upload API enables you to upload large objects in parts. You can use this API to upload new large objects or make a copy of an existing object (see Operations on Objects).
+Multipart uploading is a three-step process: You initiate the upload, you upload the object parts, and after you have uploaded all the parts, you complete the multipart upload. Upon receiving the complete multipart upload request, Amazon S3 constructs the object from the uploaded parts, and you can then access the object just as you would any other object in your bucket.
+For more information on Amazon S3 Multipart file upload, please refer to the below link
+https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html
+The correct answer is: Use the Multipart upload API
+
+
+
+60. Question
+You’ve been hired as a developer to work on an application. This application will be making use of an AWS RDS database and ElastiCache. A requirement is present which states that the cache should always have the most recent data that is present in the database and should not contain stale data.
+What strategy for ElastiCache can the Developer use to implement this?
+
+ A. Lazy loading
+ B. Write-through		-Correct
+ C. Error retries
+ D. Exponential backoff
+Unattempted
+The AWS Documentation mentions the following
+Write Through
+The write through strategy adds data or updates data in the cache whenever data is written to the database.
+Advantages and Disadvantages of Write Through
+Advantages of Write Through
+Data in the cache is never stale.
+Since the data in the cache is updated every time it is written to the database, the data in the cache is always current.
+Write penalty vs. Read penalty.
+Every write involves two trips:
+A write to the cache
+A write to the database
+Which adds latency to the process. That said, end users are generally more tolerant of latency when updating data than when retrieving data. There is an inherent sense that updates are more work and thus take longer.
+Because of what mentioned in the documentation , all other options are incorrect.
+For more information on different caching mechanisms, please refer to the below link
+https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/Strategies.html
+The correct answer is: Write-through
+
+
+
+61. Question
+You’ve just created an AWS Lambda function. You’re running the function , but the output of the function is not as expected. You need to check and see what is the issue? Which of the following can help the developer debug the issue with the Lambda function?
+
+ A. Check Cloudwatch logs		-Correct
+ B. Check VPC Flow Logs
+ C. Check AWS Trusted Advisor
+ D. Check AWS Inspector
+Unattempted
+The AWS Documentation mentions the following
+AWS Lambda automatically monitors Lambda functions on your behalf, reporting metrics through Amazon CloudWatch. To help you troubleshoot failures in a function, Lambda logs all requests handled by your function and also automatically stores logs generated by your code through Amazon CloudWatch Logs.
+All other options are invalid since the right approach is to the check the Cloudwatch logs for any errors in the AWS lambda function
+For more information on monitoring functions, please refer to the below link
+https://docs.aws.amazon.com/lambda/latest/dg/monitoring-functions-logs.html
+The correct answer is: Check Cloudwatch logs
+
+
+
+62. Question
+You have a set of developers that need to work with applications hosted on the Elastic Beanstalk environment. You need to ensure they can work with the beanstalk environments but not give them access to the AWS Console. How can you achieve this in the BEST way possible?
+
+ A. Ask them to manage the environments via the SDK
+ B. Ask them to manage the environments via the EB CLI		-Correct
+ C. Ask them to manage the environments via an EC2 Instance
+ D. Ask them to manage the environments via an ECS cluster
+Unattempted
+The AWS Documentation mentions the following
+The EB CLI is a command line interface for Elastic Beanstalk that provides interactive commands that simplify creating, updating and monitoring environments from a local repository. Use the EB CLI as part of your everyday development and testing cycle as an alternative to the AWS Management Console.
+Because of what the AWS Documentation mentions , all other options are invalid
+For more information on using the Elastic Beanstalk CLI, please refer to the below link
+https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3.html
+The correct answer is: Ask them to manage the environments via the EB CLI
+
+
+
+63. Question
+You’ve been hired as a developer to work on an application. This application is hosted on an EC2 Instance and interacts with an SQS queue. It’s been noticed that when messages are being pulled by the application , a lot of empty responses are being returned. What change can you make to ensure that the application uses the SQS queue effectively.
+
+ A. Use long polling		-Correct
+ B. Set a custom visibility timeout
+ C. Use short polling
+ D. Implement exponential backoff.
+Unattempted
+Option B is invalid because this is valid only for the processing time for the Messages.
+Option C is invalid because this would not be a cost-effective option
+Option D is invalid because this is not a practice for SQS queues
+The AWS Documentation mentions the following
+Long polling helps reduce the cost of using Amazon SQS by eliminating the number of empty responses (when there are no messages available for a ReceiveMessagerequest) and false empty responses (when messages are available but aren’t included in a response)
+For more information on long polling in SQS, please refer to the below link
+https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-long-polling.html
+The correct answer is: Use long polling
+
+
+
+64. Question
+Your defining a Redis cluster using the AWS Elasticache service. You need to define common values across the nodes for memory usage and item sizes. Which of the following component of the ElastiCache service allows you to define this?
+
+ A. Endpoints
+ B. Parameter Groups		-Correct
+ C. Security Groups
+ D. Subnet Groups
+Unattempted
+The AWS Documentation mentions the following
+Cache parameter groups are an easy way to manage runtime settings for supported engine software. Parameters are used to control memory usage, eviction policies, item sizes, and more. An ElastiCache parameter group is a named collection of engine-specific parameters that you can apply to a cluster. By doing this, you make sure that all of the nodes in that cluster are configured in exactly the same way.
+Because of what the AWS Documentation mentions , all other options are invalid
+For more information on the components for Elasticache , please refer to the below link
+https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Components.html
+The correct answer is: Parameter Groups
+
+
+
+65. Question
+You are the lead for your development team. There is a requirement to provision an application using the Elastic beanstalk service. It’s a custom application wherein there are a lot of configuration files and patches that need to be download. Which of the following would be the best way to provision the environment in the least time possible?
+
+ A. Use a custom AMI for the underlying instances		-Correct
+ B. Use configuration files to download and install the updates
+ C. Use the User data section for the Instances to download the updates
+ D. Use the metadata data section for the Instances to download the updates
+Unattempted
+The AWS Documentation mentions the following
+When you create an AWS Elastic Beanstalk environment, you can specify an Amazon Machine Image (AMI) to use instead of the standard Elastic Beanstalk AMI included in your platform configuration’s solution stack. A custom AMI can improve provisioning times when instances are launched in your environment if you need to install a lot of software that isn’t included in the standard AMIs.
+Using configuration files is great for configuring and customizing your environment quickly and consistently. Applying configurations, however, can start to take a long time during environment creation and updates. If you do a lot of server configuration in configuration files, you can reduce this time by making a custom AMI that already has the software and configuration that you need.
+Options B and C are invalid since these options would not result in the least amount of time for setting up the environment.
+Option D is invalid since the metadata data section is used for getting information about the underlying instances
+For more information on working with custom environments, please refer to the below URL
+https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.customenv.html
+The correct answer is: Use a custom AMI for the underlying instances
