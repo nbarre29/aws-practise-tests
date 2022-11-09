@@ -1,0 +1,937 @@
+1. Question
+Which of the following datatypes can be indexed in DynamoDB. Choose 3 answers from the options given below
+
+ A. String		-Correct
+ B. Number		-Correct
+ C. List
+ D. Boolean		-Correct
+Unattempted
+This is clearly provided in the AWS documentation For more information on DynamoDB please refer to the below link: https://aws.amazon.com/dynamodb/faqs/ https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBMapper.DataTypes.html
+
+
+
+2. Question
+What are the consistency models available for Local Secondary Indexes in DynamoDB? Choose 2 answers from the options given below
+
+ A. Strong consistent reads		-Correct
+ B. Primary reads
+ C. Secondary reads
+ D. Eventual consistent reads		-Correct
+Unattempted
+This is clearly provided in the AWS documentation For more information on DynamoDB please refer to the below link: https://aws.amazon.com/dynamodb/faqs/
+
+
+
+3. Question
+What is maximum limit for the size of an item collection in DynamoDB? Choose an answer from the options below
+
+ A. 1 GB
+ B. 10MB
+ C. 10 GB		-Correct
+ D. 100 MB
+Unattempted
+This is clearly provided in the AWS documentation For more information on DynamoDB please refer to the below link: https://aws.amazon.com/dynamodb/faqs/
+
+
+
+4. Question
+What is the key feature of SWF? Choose the correct answer from the options below.
+
+ A. attempts to deliver tasks/messages in order but does not guarantee delivery order
+ B. does not guarantee delivery order of messages/tasks
+ C. guarantees delivery order of messages/tasks		-Correct
+ D. can deliver tasks in order only if the developer programmatically instructs the application to do so
+Unattempted
+One of the main differences between SWF and SQS is the guarantee of delivery of messages and tasks. Amazon SWF keeps track of all tasks and events in an application. Amazon SQS requires you to implement your own application-level tracking, especially if your application uses multiple queues. For more information on SWF , please visit the link: https://aws.amazon.com/swf/faqs/
+
+
+
+5. Question
+What is the smallest amount of reserved capacity that can be purchased for DynamoDB? Choose an answer from the options below
+
+ A. 100		-Correct
+ B. 10
+ C. 1000
+ D. 10,000
+Unattempted
+This is clearly provided in the AWS documentation For more information on DynamoDB please refer to the below link: https://aws.amazon.com/dynamodb/faqs/
+
+
+
+6. Question
+What is the maximum size of an item in DynamoDB? Choose an answer from the options below
+
+ A. 400KB		-Correct
+ B. 100KB
+ C. 1 MB
+ D. 5 MB
+Unattempted
+This is clearly provided in the AWS documentation For more information on DynamoDB please refer to the below link: https://aws.amazon.com/dynamodb/faqs/
+
+
+
+7. Question
+What is the limit on the number of attributes an item can have in DynamoDB? Choose an answer from the options below
+
+ A. 100
+ B. 200
+ C. 1000
+ D. No limit		-Correct
+Unattempted
+This is clearly provided in the AWS documentation For more information on DynamoDB please refer to the below link: https://aws.amazon.com/dynamodb/faqs/
+
+
+
+8. Question
+What are the API’s available for DynamoDB? Choose 3 answers from the options below
+
+ A. CreateTable		-Correct
+ B. UpdateTable		-Correct
+ C. ListAllTables
+ D. UpdateItem		-Correct
+Unattempted
+For Listing tables , the correct API call is ListTables. Hence option C is the wrong one out. For more information on DynamoDB please refer to the below link: https://aws.amazon.com/dynamodb/faqs/
+
+
+
+9. Question
+When computing the read capacity for a scan operations, to what KB is the number of bytes rounded off to? 
+
+ A. 1 KB
+ B. 4 KB		-Correct
+ C. 2 KB
+ D. 8 KB
+Unattempted
+The read units required is the number of bytes fetched by the scan operation, rounded to the nearest 4KB, divided by 4KB. Scanning a table with consistent reads consumes twice the read capacity as a scan with eventually consistent reads.  For more information on DynamoDB please refer to the below link: https://aws.amazon.com/dynamodb/faqs/
+
+
+
+10. Question
+What is the Amazon SNS endpoint for The US East (Northern Virginia)? Choose one answer from the options below
+
+ A. http://sns.us-east-1.amazonaws.com		-Correct
+ B. http://sns.us-east-1a.amazonaws.com
+ C. http://sns.us-east-1b.amazonaws.com
+ D. http://sns.ap-southeast-1.amazonaws.com
+Unattempted
+The various SNS endpoints for AWS are given below.
+The US East (Northern Virginia) end-point is: http://sns.us-east-1.amazonaws.com
+The US West (Oregon) end-point is: http://sns.us-west-2.amazonaws.com
+The US West (Northern California) end-point is: http://sns.us-west-1.amazonaws.com
+The EU(Ireland) end-point is: http://sns.eu-west-1.amazonaws.com
+The EU(Frankfurt) end-point is: http://sns.eu-central-1.amazonaws.com
+The Asia Pacific (Singapore) end-point is: http://sns.ap-southeast-1.amazonaws.com
+The Asia Pacific (Tokyo) end-point is: http://sns.ap-northeast-1.amazonaws.com
+The Asia Pacific (Sydney) end-point is: http://sns.ap-southeast-2.amazonaws.com
+The South America (Sao Paulo) end-point is: http://sns.sa-east-1.amazonaws.com
+For more information on SNS please refer to the below link:
+https://aws.amazon.com/sns/faqs/
+
+
+
+11. Question
+What is the limit to the number of characters for a topic name in sns? Choose one answer from the options below
+
+ A. 128
+ B. 256		-Correct
+ C. 512
+ D. 1024
+Unattempted
+Topic names are limited to 256 characters. Alphanumeric characters plus hyphens (-) and underscores (_) are allowed. Topic names must be unique within an AWS account.  For more information on SNS please refer to the below link: https://aws.amazon.com/sns/faqs/
+
+
+
+12. Question
+When a subscriber subscribes to a topic in SNS, what is the time period available for confirmation? Choose one answer from the options below
+
+ A. 1 day
+ B. 3 Days		-Correct
+ C. 5 Days
+ D. 10 Days
+Unattempted
+This is clearly given in the AWS documentation  For more information on SNS please refer to the below link: https://aws.amazon.com/sns/faqs/
+
+
+
+13. Question
+How is the coordination between worker processes done in SWF? Choose the correct answer from the options below.
+
+ A. By writing a program called the decider		-Correct
+ B. By using SQS
+ C. By using a master worker process
+ D. This is not possible
+Unattempted
+This is clearly mentioned in the AWS documentation For more information on SWF , please visit the link: https://aws.amazon.com/swf/faqs/
+
+
+
+14. Question
+Explain what the following resource in a CloudFormation template does. Choose the best possible answer.
+“SNSTopic” : {
+     “Type” : “AWS::SNS::Topic”,
+     “Properties” : {
+           “Subscription” : [{
+                  “Protocol” : “sqs”,
+                  “Endpoint” : { “Fn::GetAtt” : [ “SQSQueue”, “Arn” ] }
+             } ]
+}
+
+ A. Creates an SNS topic which allows SQS subscription endpoints to be added as a parameter on the template
+ B. Creates an SNS topic that allow SQS subscription endpoints
+ C. Creates an SNS topic and then invokes the call to create an SQS queue with a logical resource name of SQSQueue
+ D. Creates an SNS topic and adds a subscription ARN endpoint for the SQS resource created under the logical name SQSQueue		-Correct
+Unattempted
+The intrinsic function Fn::GetAtt returns the value of an attribute from a resource in the template. This has nothing to do with adding parameters (Option A is wrong) or allowing endpoints (Option B is wrong) or invoking relevant calls (Option C is wrong) For more information on Fn:: GetAtt function please refer to the below link: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html
+
+
+
+15. Question
+What result would you expect from the Fn::Join function in the following line in a CloudFormation template? Choose an answer from the options below
+“Fn::Join” : [ “/”, [ “list-a”,”list-b”,”list-c”] ]
+
+ A. lista-listb-listc
+ B. list-c/list-b/list-a
+ C. list-a:list-b:list-c
+ D. list-a/list-b/list-c		-Correct
+Unattempted
+The intrinsic function Fn::Join appends a set of values into a single value, separated by the specified delimiter. If a delimiter is the empty string, the set of values are concatenated with no delimiter. For more information on Fn:: Join function please refer to the below link: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-join.html
+
+
+
+16. Question
+You have reached your account limit for the number of CloudFormation stacks in a region. How do you increase your limit? Choose an answer from the options below
+
+ A. Make an API call
+ B. Change Limit Settings in AWS CloudFormation Console
+ C. Cloudformation limit cannot be increased
+ D. Contact AWS		-Correct
+Unattempted
+This is clearly given in the AWS documentation For more information on cloudformation  please refer to the below link: https://aws.amazon.com/cloudformation/faqs/
+
+
+
+17. Question
+Which API call is used to list all resources that belong to a CloudFormation Stack? Choose an answer from the options below
+
+ A. GetTemplate
+ B. DescribeStackResources
+ C. describe-stacks
+ D. ListStackResources		-Correct
+Unattempted
+Returns descriptions of all resources of the specified stack. For deleted stacks, list-stack-resources returns resource information for up to 90 days after the stack has been deleted. For more information on ListStackResources, please visit the link: http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ListStackResources.html
+
+
+
+18. Question
+fn:GetAtt is used on a CloudFormation template to: Choose an answer from the options below
+
+ A. Conditionally create stack resources
+ B. Return the value of an attribute from a resource on the template		-Correct
+ C. Appends a set of values into a single value which can include resources on the template
+ D. Returns the value corresponding to keys into a two-level map declared in the mappings section
+Unattempted
+The intrinsic function Fn::GetAtt returns the value of an attribute from a resource in the template. For more information on Fn:: GetAtt function please refer to the below link: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html
+
+
+
+19. Question
+The following code snippet is the resources section of a CloudFormation template that you have written.
+“Resources” : {
+    “EC2Instance” : {
+        “Type” : “AWS::EC2::Instance”,
+         “Properties” : {
+             “InstanceType” : { “Ref” : “InstanceType” },
+              “SecurityGroups” : [ { “Ref” : “InstanceSecurityGroup” } ], 
+              “KeyName” : { “Ref” : “KeyName” },
+               “ImageId” : { “Fn::FindInMap” : [ “AWSRegionArch2AMI”, { “Ref” : “AWS::Region” },
+                { “Fn::FindInMap” : [ “AWSInstanceType2Arch”, { “Ref” : “InstanceType” }, “Arch” ] }
+               ]
+        }
+   }
+},
+You have used the reference function to define your instance type as follows.
+“InstanceType” : { “Ref” : “InstanceType” },
+The referencing function is referencing the instance type. Where is this value most likely coming from?
+
+ A. From the parameters section of your CloudFormation template.		-Correct
+ B. From the mappings section of your CloudFormation template.
+ C. From the second line of this resources section.
+ D. From the conditions section of your CloudFormation template.
+Unattempted
+The Instance type is mostly coming from the parameters section. Within the same template, you can use the Ref intrinsic function to specify the parameter value in other parts of the template. The following snippet uses the InstanceTypeParameter parameter to specify the instance type for an EC2 instance resource For more information on the Instrinsic reference function URL: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html
+
+
+
+20. Question
+What are some of the benefits of using AWS SWF? Choose the correct answer from the options below.
+
+ A. Centralize the coordination of steps in the application.
+ B. Automate workflows that include human tasks
+ C. Manage the flow of work between application components
+ D. All of the above		-Correct
+Unattempted
+Amazon SWF can be used to address many challenges that arise while building applications with distributed components. For example, you can use Amazon SWF and the accompanying AWS Flow Framework for:
+Writing your applications as asynchronous programs using simple programming constructs that abstract details such as initiating tasks to run remotely and tracking the program’s runtime state.
+Maintaining your application’s execution state (e.g. which steps have completed, which ones are running, etc.). You do not have to use databases, custom systems, or ad hoc solutions to keep execution state.
+Communicating and managing the flow of work between your application components. With Amazon SWF, you do not need to design a messaging protocol or worry about lost and duplicated tasks.
+Centralizing the coordination of steps in your application. Your coordination logic does not have to be scattered across different components, but can be encapsulated in a single program.
+Integrating a range of programs and components, including legacy systems and 3rd party cloud services, into your applications. By allowing your application flexibility in where and in what combination the application components are deployed, Amazon SWF helps you gradually migrate application components from private data centers to public cloud infrastructure without disrupting the application availability or performance.
+Automating workflows that include long-running human tasks (e.g. approvals, reviews, investigations, etc.) Amazon SWF reliably tracks the status of processing steps that run up to several days or months.
+For more information on SWF , please visit the link:
+https://aws.amazon.com/swf/faqs/
+
+
+
+21. Question
+You are writing an AWS CloudFormation Template to create a static S3 website configuration. The resources section of this template will be used for access control of the bucket and is defined in the 5th line of the below code snippet. What should the value of “AccessControl” be so that the owner of the bucket gets full control and all users get READ access only.
+“Resources” : {
+     “S3Bucket” : {
+            “Type” : “AWS::S3::Bucket”,
+             “Properties” : {
+                     “AccessControl” : “ANSWER TO THE QUESTION”,
+                      “BucketName”: { “Ref” : “BucketName” },
+                      “WebsiteConfiguration” : {
+                                “IndexDocument” : “index.html”,
+                                “ErrorDocument” : “error.html”
+                        }
+             }
+  }
+
+ A. BucketOwnerRead
+ B. BucketOwnerFullControl
+ C. AuthenticatedRead
+ D. PublicRead		-Correct
+Unattempted
+Since the question states that all users need read access, then by default we need to assign the public read permission
+For static website, it needs to be publicly readable only permissions for all users to access the site.
+For more information refer to AWS documentation @ URL:
+https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-s3.html#scenario-s3-bucket-website
+Property AccessControl should be set to canned ACL PublicRead which grants FULL_CONTROL to the owner and READ access to AllUsers group.
+Please review the section on Canned ACLs from Access Control List (ACL) Overview of Amazon S3 Developer Guide:
+http://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl
+
+
+
+22. Question
+You are writing an AWS CloudFormation template and you want to assign values to properties that will not be available until runtime. You know that you can use intrinsic functions to do this but are unsure as to which part of the template they can be used in. Which of the following is correct in describing how you can currently use intrinsic functions in an AWS CloudFormation template? Choose an answer from the options below
+
+ A. You can use intrinsic functions in any part of a template.
+ B. You can use intrinsic functions only in specific parts of a template. Currently, you can use intrinsic functions in resource properties, outputs, metadata attributes, and update policy attributes. You can also use intrinsic functions to conditionally create stack resources		-Correct
+ C. You can use intrinsic functions only in the resource properties part of a template.
+ D. You can use intrinsic functions in any part of a template, except AWSTemplateFormatVersion and Description
+Unattempted
+This is clearly given in the AWS documentation For more information on intrinsic function please refer to the below link: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference.html
+
+
+
+23. Question
+In AWS CloudFormation, the intrinsic function Fn::Join appends a set of values into a single value, separated by the specified delimiter. If a delimiter is the empty string, the set of values are concatenated with no delimiter.
+Keeping the above in mind what value will the following example return?
+“Fn::Join” : [ “-“, [ “the”, “demo”, “app” ] ]
+
+ A. the-demo-app		-Correct
+ B. –thedemoapp
+ C. -the-demo-app
+ D. -the-demo-app-
+Unattempted
+The intrinsic function Fn::Join appends a set of values into a single value, separated by the specified delimiter. If a delimiter is the empty string, the set of values are concatenated with no delimiter. For more information on Fn:: Join function please refer to the below link: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-join.html
+
+
+
+24. Question
+Of the 6 available sections on a CloudFormation template (Template Description Declaration, Template Format Version Declaration, Parameters, Resources, Mappings, Outputs), which is the only one required for a CloudFormation template to be accepted? Choose an answer from the options below
+
+ A. Parameters
+ B. Template Declaration
+ C. Mappings
+ D. Resources		-Correct
+Unattempted
+If you refer to the documentation, you will see that Resources is the only mandatory field Specifies the stack resources and their properties, such as an Amazon Elastic Compute Cloud instance or an Amazon Simple Storage Service bucket.  For more information on cloudformation templates, please refer to the below link: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html
+
+
+
+25. Question
+Which command line commands list all current stacks in your CloudFormation service? Choose the 2 correct answers from the options below
+
+ A. AWS cloudformation create-stack
+ B. AWS cloudformation list-stacks		-Correct
+ C. AWS cloudformation describe-stack-resources
+ D. AWS cloudformation describe-stacks		-Correct
+Unattempted
+The AWS cloudformation list-stacks command enables you to get a list of any of the stacks you have created (even those which have been deleted up to 90 days). You can use an option to filter results by stack status, such as CREATE_COMPLETE and DELETE_COMPLETE. The AWS cloudformation list-stackscommand returns summary information about any of your running or deleted stacks, including the name, stack identifier, template, and status. The AWS cloudformation describe-stacks command provides information on your running stacks. You can use an option to filter results on a stack name. This command returns information about the stack, including the name, stack identifier, and status. For more information on describing stacks, please refer to the below link: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html
+
+
+
+26. Question
+What is the default behavior of a CloudFormation stack if creation fails? Choose the correct answers from the options below
+
+ A. Rollback		-Correct
+ B. Delete
+ C. Undo
+ D. None of the above; the stack continues creating and the failed resource is ignored
+Unattempted
+By default, the “automatic rollback on error” feature is enabled. This will cause all AWS resources that AWS CloudFormation created successfully for a stack up to the point where an error occurred to be deleted. This is useful when, for example, you accidentally exceed your default limit of Elastic IP addresses, or you don’t have access to an EC2 AMI you’re trying to run. This feature enables you to rely on the fact that stacks are either fully created, or not at all, which simplifies system administration and layered solutions built on top of AWS CloudFormation. For more information on cloudformation, please refer to the below link: https://aws.amazon.com/cloudformation/faqs/
+
+
+
+27. Question
+The following code snippet is the parameters section of a CloudFormation template that you have written.
+“Parameters” : {
+     “KeyName”: {
+             “Description” : “answer to the question”,
+              “Type”: “AWS::EC2::KeyPair::KeyName”,
+                …
+       }
+}
+Which of the the following is the best description of what this section will do once you run your CloudFormation template?
+
+ A. It will ask you if you want to create a new key pair to use.
+ B. It will ask you to input any name and that name will then be the name of the new key pair it will generate.
+ C. It will ask you to provide the name of an existing EC2 KeyPair to use.		-Correct
+ D. It will create a new key pair automatically for you named KeyName.
+Unattempted
+When you use AWS-specific parameter types, anyone who uses your template to create or update a stack must specify existing AWS values that are in his account and in the region for the current stack. AWS-specific parameter types help ensure that input values for these types exist and are correct before AWS CloudFormation creates or updates any resources. For example, if you use the AWS::EC2::KeyPair::KeyName parameter type, AWS CloudFormation validates the input value against users’ existing key pair names before it creates any resources, such as Amazon EC2 instances. For more information on cloudformation parameters, please refer to the below link: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html
+
+
+
+28. Question
+What is one of the major use cases for using SWF? Choose the correct answer from the options below.
+
+ A. Storing files In S3.
+ B. Video encoding.		-Correct
+ C. Storing files In database.
+ D. Provisioning servers.
+Unattempted
+This is clearly mentioned in the AWS documentation For more information on SWF , please visit the link: https://aws.amazon.com/swf/faqs/
+
+
+
+29. Question
+How much Cloudformation does cost per hour? Choose the correct answer from the options below
+
+ A. 0.05$
+ B. 0.10$
+ C. 0.15$
+ D. There is no cost		-Correct
+Unattempted
+This is clearly mentioned in the AWS documentation For more information on intrinsic function please refer to the below link: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference.html
+
+
+
+30. Question
+What are the different programming language SDK’s available for SWF. Choose 3 correct answer from the options below.
+
+ A. .Net		-Correct
+ B. PHP		-Correct
+ C. Erlang
+ D. Java		-Correct
+Unattempted
+This is clearly mentioned in the AWS documentation For more information on SWF , please visit the link: https://aws.amazon.com/swf/faqs/
+
+
+
+31. Question
+In SWF what are the containers called for segregating application resources. Choose the correct answer from the options below.
+
+ A. Dockers
+ B. Domains		-Correct
+ C. Namespaces
+ D. Metrics
+Unattempted
+This is clearly mentioned in the AWS documentation For more information on SWF , please visit the link: https://aws.amazon.com/swf/faqs/
+
+
+
+32. Question
+You have created a mobile application that relies on reading data from DynamoDB. How could you give each mobile device permissions to read from DynamoDB? Choose an answer from the options below
+
+ A. Connect to an EC2 instance which will pull the data from DynamoDB securely
+ B. Create an IAM role that can be assumed by an app that allows federated users		-Correct
+ C. Add the username and password into the app code
+ D. Create an IAM user
+Unattempted
+Before your application can access a database, it must be authenticated to ensure that the application is allowed to use the database, and authorized so that the application can only perform actions for which it has permissions.
+Please refer to the link below for more information: 
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SQLtoNoSQL.Accessing.html
+When providing permission to any AWS service from an EC2 instance, you need to always use IAM roles. So here you would create an IAM Role with permissions to add Cloudwatch metrics. To specify a role, follow the below steps
+Step 1) Go to your security dashboard and click on Roles. Click on Create New Role.
+Step 2) Provide a name to the role and select the Role Type as Amazon EC2.
+Step 3) Attach the relevant policy
+Step 4) Once the role is created, when launching an EC2 instance, you can mention the role the EC2 instance needs to be launched with.
+Since other options have no mention of IAM roles, all of them are invalid.
+For more information on IAM Roles, please visit the below URL:
+http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html
+
+
+
+33. Question
+You define the following S3 bucket policy to grant users access to your bucket, but the S3 bucket policy editor will not allow you to submit it. Why is this policy not working? Choose the correct answer from the options below
+{
+   “Id”: “Policy1441839160967”,
+   “Version”: “2012-10-17”,
+   “Statement”: [
+    {
+         “Sid”: “Stmt1441839157568”,
+         “Action”: [
+             “s3:ListBucket”
+          ],
+        “Effect”: “Allow”,
+        “Resource”: “arn:AWS:s3:::demo.testbucket.2 ”
+     }
+  ]
+}
+
+ A. This is a NACL
+ B. S3 bucket policies require a Principal be defined		-Correct
+ C. The Resource name is incorrect - S3 bucket names cannot contain periods
+ D. This is an IAM policy
+Unattempted
+In its most basic sense, a policy contains the following elements:
+Resources – Buckets and objects are the Amazon S3 resources for which you can allow or deny permissions. In a policy, you use the Amazon Resource Name (ARN) to identify the resource.
+Actions – For each resource, Amazon S3 supports a set of operations. You identify resource operations you will allow (or deny) by using action keywords
+Effect – What the effect will be when the user requests the specific action—this can be either allow or deny.
+Principal – The account or user who is allowed access to the actions and resources in the statement. You specify a principal only in a bucket policy. It is the user, account, service, or other entity who is the recipient of this permission. In a user policy, the user to which the policy is attached is the implicit principal.
+For more information on bucket policies please visit the below link:
+http://docs.aws.amazon.com/AmazonS3/latest/dev/access-policy-language-overview.html
+
+
+
+34. Question
+Which DynamoDB API call does not consume capacity units? Choose the correct answer from the options below
+
+ A. DeleteItem
+ B. UpdateTable		-Correct
+ C. GetItem
+ D. UpdateItem
+Unattempted
+Modifies the provisioned throughput settings, global secondary indexes, or DynamoDB Streams settings for a given table. All of the other commands access the items of the table and hence consumes capacity units For more information on  UpdateTable command please visit the below link: http://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_UpdateTable.html
+
+
+
+35. Question
+As you retrieve information from DynamoDB, you receive this error: “ProvisionedThroughputExceededException”, but upon investigation you notice that you’re not exceeding your table read capacity throughput. What is causing this error? Choose the correct answer from the options below
+
+ A. DynamoDB needs a short amount of time to pre-warm before being able to handle a spike in demand, even if a table has enough throughput capacity configured
+ B. Metrics reported by AWS are not always real-time and could take a minute or so to appear
+ C. This happens when using sort keys because they consume an extra read capacity for each call which doubles throughput
+ D. You exceeded your maximum allowed provisioned throughput for a table or for one or more global secondary indexes.		-Correct
+Unattempted
+You exceeded your maximum allowed provisioned throughput for a table or for one or more global secondary indexes. For more information on DynamoDB programming errors command please visit the below link: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html
+
+
+
+36. Question
+Which of the following is not true about SWF? Choose the correct answer from the options below
+
+ A. Decision tasks occur when the state of the workflow changes.
+ B. EC2 instances can perform a worker task.
+ C. Humans can perform a decision task.		-Correct
+ D. A server residing outside of an AWS datacenter can perform a worker task.
+Unattempted
+Humans can perform an activity task, but not a decision task. For more information on SWF please visit the below link: https://aws.amazon.com/swf/faqs/
+
+
+
+37. Question
+Your items are 6KB in size and you want to have 100 strongly consistent reads per second. How many read capacity units do you need to provision? Choose the correct answer from the options below
+
+ A. 50
+ B. 100
+ C. 80
+ D. 200		-Correct
+Unattempted
+Since each item is 6KB and if we near it to the nearest 4KB , we get 2. Since we need 100 strongly consistent , it becomes (100*2) = 200. For more information on DynamoDB provisioned throughput please visit the below link: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ProvisionedThroughput.html
+
+
+
+38. Question
+One unit of read capacity is ____ in size? Choose the correct answer from the options below
+
+ A. 5 KB
+ B. 3 KB
+ C. 2 KB
+ D. 4 KB		-Correct
+Unattempted
+This is clearly mentioned in the AWS documentation. For more information on DynamoDB read consistency please visit the below link: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ProvisionedThroughput.html
+
+
+
+39. Question
+Since S3 object are stored lexicographically, by introducing “randomness” to your S3 names it helps S3 storage distribute the I/O load across more than one partition. Given the following examples, how could you add a hashed prefix to the naming convention to increase I/O performance? Choose the correct answer from the options below
+
+ A. bucket/8761-2010-26-05-15-00-00/8761/myfolder234234/photo1.jpg
+ B. 8761bucket/2010-26-05-15-00-00/myfolder234234/photo1.jpg
+ C. bucket/8761-2010-26-05-15-00-00/myfolder234234/photo1.jpg		-Correct
+ D. bucket/2010-26-05-15-00-00/bucket/myfolder234234/photo1.jpg
+Unattempted
+One way to introduce randomness to key names is to add a hash string as prefix to the key name. For example, you can compute an MD5 hash of the character sequence that you plan to assign as the key name. From the hash, pick a specific number of characters, and add them as the prefix to the key name. 
+For more information on request rate considerations please visit the below link:
+http://docs.aws.amazon.com/AmazonS3/latest/dev/request-rate-perf-considerations.html
+
+
+
+40. Question
+What is the maximum size of an S3 object? Choose an answer from the options below
+
+ A. 5GB
+ B. 5TB		-Correct
+ C. 1TB
+ D. 500MB
+Unattempted
+This is mentioned in the AWS documentation. For more information on S3 please visit the below link: https://aws.amazon.com/s3/faqs/
+
+
+
+41. Question
+Which of the following is a default limit in S3? Choose the correct answer from the options below
+
+ A. Objects have no size limitation
+ B. Objects can have a maximum size of 5 GB
+ C. Accounts can have a maximum of 100 buckets		-Correct
+ D. Buckets can have a maximum size of 5 TB
+Unattempted
+This is clearly given in the AWS documentation For more information on AWS service limits please visit the below link: http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html
+
+
+
+42. Question
+Which API call would you use to query an item by it’s primary hash key? Choose the correct answer from the options below
+
+ A. PutItem
+ B. Scan
+ C. GetItem		-Correct
+ D. query
+Unattempted
+The GetItem operation returns a set of attributes for the item with the given primary key. If there is no matching item, GetItem does not return any data and there will be no Item element in the response.
+GetItem provides an eventually consistent read by default. If your application requires a strongly consistent read, set ConsistentRead to true. Although a strongly consistent read might take more time than an eventually consistent read, it always returns the last updated value.
+For more information on the GetItem command please visit the below link:
+http://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_GetItem.html
+
+
+
+43. Question
+You attempt to create a new S3 bucket “Demo-Bucket-1234-US-East-2-Production-Envrionment-12.25.14” in the US-EAST-2 region and the bucket creation fails. Why?
+Choose the correct answer from the options below.
+
+ A. The bucket name uses the dash character (“-”)
+ B. The bucket name uses capital letters.		-Correct
+ C. The length of the bucket name is longer than the limit of 63 characters.
+ D. The bucket name uses the period character (“.”)
+Unattempted
+See AWS Doc for the naming conventions for S3 buckets
+The bucket name can be between 3 and 63 characters long, and can contain only lower-case characters, numbers, periods, and dashes.
+Each label in the bucket name must start with a lowercase letter or number.
+The bucket name cannot contain underscores, end with a dash, have consecutive periods, or use dashes adjacent to periods.
+The bucket name cannot be formatted as an IP address (198.51.100.24).
+For more information on the S3 naming conventions please visit the below link:
+http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-s3-bucket-naming-requirements.html
+
+
+
+44. Question
+When using the Ref function in CloudFormation, what do we get back if we pass in the logical ID of an AWS::EC2::Instance object? Choose the correct answer from the options below
+
+ A. The object's creation status
+ B. The object's InstanceId		-Correct
+ C. Nothing, the AWS::EC2::Instance is not a valid resource type
+ D. All of the attributes associated with that EC2 instance resource
+Unattempted
+This is clearly given in the AWS documentation For more information on the Cloudformation AWS::EC2::Instance command please visit the below link: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance.html
+
+
+
+45. Question
+You have created an Elastic Load Balancer with Duration-Based sticky sessions enabled in front of your six EC2 web application instances in US-West-2. For High Availability, there are three web application instances in Availability Zone 1 and three web application instances in Availability Zone 2. To load test, you set up a software-based load tester in Availability Zone 2 to send traffic to the Elastic Load Balancer, as well as letting several hundred users browse to the ELB’s hostname. After a while, you notice that the users’ sessions are spread evenly across the EC2 instances in both AZ’s, but the software-based load tester’s traffic is hitting only the instances in Availability Zone 2. What steps can you take to resolve this problem? Choose the 2 correct answer from the options below
+
+ A. Create a software-based load tester in US-East-1 and test from there
+ B. Force the software-based load tester to re-resolve DNS before every request		-Correct
+ C. Use a third party load-testing service to send requests from globally distributed clients		-Correct
+ D. Switch to Application-Controlled sticky sessions
+Unattempted
+“If you do not ensure that DNS is re-resolved or use multiple test clients to simulate increased load, the test may continue to hit a single IP address when Elastic Load Balancing has actually allocated many more IP addresses. Because your end users will not all be resolving to that single IP address, your test will not be a realistic sampling of real-world behavior.” Please refer to the below article URL: http://aws.amazon.com/articles/1636185810492479
+
+
+
+46. Question
+You run an ad-supported photo sharing website using S3 to serve photos to visitors of your site. At some point you find out that other sites have been linking to the photos on your site, causing loss to your business. What is an effective method to mitigate this? Choose the correct answer from the options below
+
+ A. Use CloudFront distributions for static content.
+ B. Store photos on an EBS volume of the web server.
+ C. Remove public read access and use signed URLs with expiry dates.		-Correct
+ D. Block the IPs of the offending websites in Security Groups.
+Unattempted
+You can distribute private content using a signed URL that is valid for only a short time—possibly for as little as a few minutes. Signed URLs that are valid for such a short period are good for distributing content on-the-fly to a user for a limited purpose, such as distributing movie rentals or music downloads to customers on demand.  For more information on Signed URL’s please visit the below link: http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-signed-urls.html
+
+
+
+47. Question
+Which of the following are subject to eventual consistency? Choose the correct answer from the options below
+
+ A. S3 objects in the US-East-1 region
+ B. Reads of a DynamoDB table, unless you specify otherwise		-Correct
+ C. All reads of a DynamoDB table
+ D. S3 objects in the US-Standard region
+Unattempted
+This is clearly mentioned in the documentation For more information on DynamoDB read consistency please visit the below link: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html
+
+
+
+48. Question
+What is the default timeout for visibility queue in SQS in seconds? Choose the correct answer from the options below
+
+ A. 30		-Correct
+ B. 14
+ C. 10
+ D. 60
+Unattempted
+Each queue starts with a default setting of 30 seconds for the visibility timeout. You can change that setting for the entire queue. Typically, you’ll set the visibility timeout to the average time it takes to process and delete a message from the queue. When receiving messages, you can also set a special visibility timeout for the returned messages without changing the overall queue timeout. For more information on SQS please visit the below link: https://aws.amazon.com/sqs/faqs/
+
+
+
+49. Question
+Which of the following bucket names is invalid? Choose 2 correct answer from the options below
+
+ A. Demo.com		-Correct
+ B. demo-com
+ C. demo.com
+ D. .demo.com		-Correct
+Unattempted
+See AWS Doc for the naming conventions for S3 buckets
+The bucket name can be between 3 and 63 characters long, and can contain only lower-case characters, numbers, periods, and dashes.
+Each label in the bucket name must start with a lowercase letter or number.
+The bucket name cannot contain underscores, end with a dash, have consecutive periods, or use dashes adjacent to periods.
+The bucket name cannot be formatted as an IP address (198.51.100.24).
+For more information on the S3 naming conventions please visit the below link:
+http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-s3-bucket-naming-requirements.html
+
+
+
+50. Question
+Your supervisor calls you wanting to know why she has not been receiving email notifications for AWS billing alerts. What do you suspect the problem might be and how can you find out? Choose 3 correct answer from the options below
+
+ A. The SNS queue is not AutoScaling properly. Verify by viewing Performance Statistics in SNS.
+ B. The SNS Subscription is not configured for Email notifications. Verify by viewing Subscriptions for the appropriate Topic in SNS		-Correct
+ C. Your supervisor has not responded to the confirmation email sent from SNS when you added a subscription for her email address. Verify by viewing Subscriptions for the appropriate Topic in SNS		-Correct
+ D. Billing alerts are not configured. Verify by viewing Billing Alerts in Account Preferences		-Correct
+Unattempted
+To receive messages published to a topic, you have to subscribe an endpoint to that topic. An endpoint is a mobile app, web server, email address, or an Amazon SQS queue that can receive notification messages from Amazon SNS. Once you subscribe an endpoint to a topic and the subscription is confirmed, the endpoint will receive all messages published to that topic.
+For more information on Topic subscription please visit the below link:
+http://docs.aws.amazon.com/sns/latest/dg/SubscribeTopic.html
+Before you create a billing alarm, you must enable billing alerts. You need to do this only once. After you enable billing alerts, you can’t turn them off.
+For more information on the billing alerts please visit the below link:
+http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier-alarms.html
+
+
+
+51. Question
+You want to find out what AMIs are available for you to use in a given region. Which API call is most appropriate? Choose an answer from the options below
+
+ A. ListInstances
+ B. ListAMIs
+ C. DescribeImages		-Correct
+ D. DescribeAMIs
+Unattempted
+Describes one or more of the images (AMIs, AKIs, and ARIs) available to you. Images available to you include public images, private images that you own, and private images owned by other AWS accounts but for which you have explicit launch permissions. For more information on the command please visit the below link: http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeImages.html
+
+
+
+52. Question
+Which statement about DynamoDB is true? Choose the correct answer from the options below
+
+ A. DynamoDB uses a pessimistic locking model.
+ B. DynamoDB restricts item access during reads.
+ C. DynamoDB uses conditional writes for consistency.		-Correct
+ D. DynamoDB restricts item access during writes.
+Unattempted
+To help clients coordinate writes to data items, DynamoDB supports conditional writes for PutItem,DeleteItem, and UpdateItem operations. With a conditional write, an operation succeeds only if the item attributes meet one or more expected conditions; otherwise it returns an error. For more information on conditional writes please visit the below link: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html#WorkingWithItems.ConditionalUpdate
+
+
+
+53. Question
+Which of the following statements is true about DynamoDB? Choose the correct answer from the options below
+
+ A. Read requests are eventually consistent unless otherwise specified.		-Correct
+ B. Read requests are strongly consistent.
+ C. Tables do not contain primary keys.
+ D. None of the above
+Unattempted
+This is clearly mentioned in the documentation For more information on DynamoDB read consistency please visit the below link: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html
+
+
+
+54. Question
+What is the default limit for CloudFormation templates per region? Choose the correct answer from the options below
+
+ A. There are no limits to the number of templates		-Correct
+ B. 200
+ C. 20
+ D. 40
+Unattempted
+As per the AWS documentation , only Cloudformation stacks have a limit For more information on AWS service limits please visit the below link: http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html
+
+
+
+55. Question
+You have an EC2 instance deployed with an IAM role with write access permissions to an SQS queue. The instance is attempting to write a 512 KB message to an SQS queue. What will the result of this attempt be? Choose the correct answer from the options below
+
+ A. It will fail because it is greater than the 256 KB limit for SQS messages.		-Correct
+ B. It will fail because SQS requires the EC2 instance to use API keys with permissions to write to the queue.
+ C. It will succeed as a single message request.
+ D. It will succeed but be considered as 8 message requests because SQS measures message requests in 64 KB chunks.
+Unattempted
+The maximum message size for SQS messages is 256KB. For more information on SQS please visit the below link: https://aws.amazon.com/sqs/faqs/
+
+
+
+56. Question
+You receive a call from a potential client who explains that one of the many services they offer is a website running on a t2.micro EC2 instance where users can submit requests for customized e-cards to be sent to their friends and family. The e-card website administrator was on a cruise and was shocked when he returned to the office in mid-January to find hundreds of angry emails complaining that customers’ loved ones had not received their Christmas cards. He also had several emails from CloudWatch alerting him that the SQS queue for the e-card application had grown to over 500 messages on December 25th. You investigate and find that the problem was caused by a crashed EC2 instance which serves as an application server. What do you advise your client to do first? Choose the correct answer from the options below
+
+ A. Use an autoscaling group to create as many application servers as needed to process all of the Christmas card SQS messages.
+ B. Reboot the application server immediately so that it begins processing the Christmas card SQS messages.
+ C. Redeploy the application server as a larger instance type so that it can process the Christmas card SQS messages faster.
+ D. Send an apology to the customers notifying them that their cards will not be delivered.		-Correct
+Unattempted
+The maximum retention period for SQS messages is 14 days, hence all the messages would have been lost by the mid of Jan. For more information on SQS please visit the below link: https://aws.amazon.com/sqs/faqs/
+
+
+
+57. Question
+Which of the following can be increased by contacting AWS? Choose 2 correct answer from the options below
+
+ A. DynamoDB tables per account		-Correct
+ B. DynamoDB secondary indexes per table
+ C. S3 buckets per account		-Correct
+ D. S3 buckets per region
+Unattempted
+This is clearly mentioned in the AWS documentation http://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html#limits-tables
+
+
+
+58. Question
+Your “forums” table has a primary key of “id”. Using DynamoDB, you’re able to query the data based on the id primary key. You need to be able to query the forums table by userId. What would you add to the table during table creation time? Choose a correct answer from the options below
+
+ A. Create a second table that contains all the information by userId.
+ B. Create a hash and range primary key.
+ C. Create a secondary index.		-Correct
+ D. None of the above
+Unattempted
+Some applications might need to perform many kinds of queries, using a variety of different attributes as query criteria. To support these requirements, you can create one or more global secondary indexes and issue Query requests against these indexes URL: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.html
+
+
+
+59. Question
+You’re using CloudFormation templates to build out staging environments. What section of the CloudFormation would you edit in order to allow the user to specify the PEM key-name at start time? Choose a correct answer from the options below
+
+ A. Parameters Section		-Correct
+ B. Declaration Section
+ C. Mappings Section
+ D. Resources Section
+Unattempted
+You can use the optional Parameters section to pass values into your template when you create a stack. With parameters, you can create templates that are customized each time you create a stack. Each parameter must contain a value when you create a stack. You can specify a default value to make the parameter optional so that you don’t need to pass in a value when creating a stack. For more information on cloudformation parameters please visit the below link: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html
+
+
+
+60. Question
+By default, what event occurs if your CloudFormation receives an error during creation? Choose a correct answer from the options below
+
+ A. DELETE_IN_PROGRESS
+ B. ROLLBACK_IN_PROGRESS		-Correct
+ C. DELETE_COMPLETE
+ D. CREATION_IN_PROGRESS
+Unattempted
+By default, the “automatic rollback on error” feature is enabled. This will cause all AWS resources that AWS CloudFormation created successfully for a stack up to the point where an error occurred to be deleted For more information on cloudformation please visit the below link: https://aws.amazon.com/cloudformation/faqs/
+
+
+
+61. Question
+A corporate web application is deployed within an Amazon VPC, and is connected to the corporate data center via IPSec VPN. The application must authenticate against the on-premise LDAP server. Once authenticated, logged-in users can only access an S3 keyspace specific to the user. Choose 2 answer from the options below
+
+ A. The application authenticates against LDAP. The application then calls the IAM Security Service to login to IAM using the LDAP credentials. The application can use the IAM temporary credentials to access the appropriate S3 bucket.
+ B. Develop an identity broker which authenticates against IAM Security Token Service to assume an IAM Role to get temporary AWS security credentials. The application calls the identity broker to get AWS temporary security credentials with access to the app
+ C. Develop an identity broker which authenticates against LDAP, and then calls IAM Security Token Service to get IAM federated user credentials. The application calls the identity broker to get IAM federated user credentials.		-Correct
+ D. The application authenticates against LDAP, and retrieves the name of an IAM role associated with the user. The application then calls the IAM Security Token Service to assume that IAM Role. The application can use the temporary credentials to access the app.		-Correct
+Unattempted
+If you already manage user identities outside of AWS, you can use IAM identity providers instead of creating IAM users in your AWS account. With an identity provider , you can manage your user identities outside of AWS and give these external user identities permissions to use AWS resources in your account. This is useful if your organization already has its own identity system, such as a corporate user directory. It is also useful if you are creating a mobile app or web application that requires access to AWS resources. For more information on identity providers please visit the below link: http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers.html
+
+
+
+62. Question
+Which statement about DynamoDB is true? Choose a correct answer from the options below
+
+ A. DynamoDB does not support conditional writes.
+ B. DynamoDB uses optimistic concurrency control.		-Correct
+ C. DynamoDB is a relational database service.
+ D. None of the above
+Unattempted
+Optimistic locking is a strategy to ensure that the client-side item that you are updating (or deleting) is the same as the item in DynamoDB. If you use this strategy, then your database writes are protected from being overwritten by the writes of others — and vice-versa For more information on DynamoDB optimistic concurrency control please visit the below link: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBMapper.OptimisticLocking.html
+
+
+
+63. Question
+Which of the following will not make a CloudFormation stack deployment to ‘rollback’? Choose a correct answer from the options below.
+
+ A. The template contains invalid JSON syntax		-Correct
+ B. A subnet specified in the template does not exist
+ C. An AMI specified in the template exists in a different region than the one in which the stack is being deployed.
+ D. The template specifies an instance-store backed AMI and an incompatible EC2 instance type.
+Unattempted
+Here we are looking at the best practices while deploying AWS CloudFormation.
+According to the best practices we can validate the stack templates which will help you to identify the syntax and semantic error, such as circular dependencies, before AWS CloudFormation creates any resources. So If we are encountering a JSON syntax error it will return a template validation error prior to the creation and  deployment of resources itself.
+Further information is available on:
+https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/best-practices.html#nested
+For more information on cloudformation stacks please visit the below link:
+http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacks.html
+
+
+
+64. Question
+Which of the following types of servers would this CloudFormation template be most appropriate for? Choose a correct answer from the options below
+{
+  “AWSTemplateFormatVersion” : “2010-09-09”,
+   “Description” : “My CloudFormation Template”,
+   “Resources” : {
+        “MyInstance” : {
+               “Type” : “AWS::EC2::Instance”,
+               “Properties” : {
+                     “InstanceType” : “t2.micro”,
+                     “ImageId” : “ami-030f4133”,
+                     “NetworkInterfaces” : [{
+                     “AssociatePublicIpAddress” : “true”,
+                     “DeviceIndex” : “0”,
+                     “DeleteOnTermination” : “true”,
+                     “SubnetId” : “subnet-0c2c0855”,
+                     “GroupSet” : [“sg-53a4e434”]
+                }
+            ]
+        }             
+    }
+  }
+}
+
+ A. Domain Controller
+ B. Log collection server
+ C. Database server
+ D. Bastion host		-Correct
+Unattempted
+The bastion host needs a minimum configuration and a public IP address. The above cloudformation template best fits this. For more information on cloudformation please visit the below link: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-whatis-concepts.html
+
+
+
+65. Question
+You are creating several DynamoDB tables for a new project. While doing so, you receive the error message, “LimitExceededException.” You are well below the maximum number of tables per account and there is no read or write activity on the tables yet. Why have you received this error? Choose a correct answer from the options below
+
+ A. You attempted to create GSI at the time of table creation.
+ B. You attempted to create local indexes at the same time you created the tables
+ C. You failed to pre-warm the tables
+ D. You attempted to create more than one table with a secondary index at a time		-Correct
+Unattempted
+There are too many concurrent control plane operations. The cumulative number of tables and indexes in the CREATING, DELETING or UPDATING state cannot exceed 10.
+For more information on dynamo DB errors please visit the below link:
+http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html
+You can create up to 5 Global Secondary Indexes at the same time while creating a table and we should also provide ProvisionedThroughput settings for the index too. It will not throw the LimitExceededException error.
+However if you create more than 1 table with GSI simultaneously it will give us an LimitExceededException error.
+More information is available at: 
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.OnlineOps.html
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#Programming.Errors.MessagesAndCodes
+If you want to create more than one table with secondary indexes, you must do so sequentially. For example, you would create the first table and wait for it to become ACTIVE, create the next table and wait for it to become ACTIVE, and so on. If you attempt to concurrently create more than one table with a secondary index, DynamoDB will return a LimitExceededException.
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SecondaryIndexes.html
