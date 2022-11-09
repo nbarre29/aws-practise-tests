@@ -1,0 +1,832 @@
+1. Question
+Which of the below functions is used in Cloudformation to retrieve an object from a set of objects? Choose an answer from the options below
+
+ A. Fn::GetAtt
+ B. Fn::Combine
+ C. Fn::Join
+ D. Fn::Select		-Correct
+Unattempted
+This is clearly given in the AWS documentation For more information on the function please refer to the below link: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-select.html
+
+
+
+2. Question
+What result would you expect from the Fn::Join function in the following line in a CloudFormation template? Choose an answer from the options below
+“Fn::Join” : [ “.”, [ “1”,”2″,”3″] ]
+
+ A. 1.2.3		-Correct
+ B. .1.2.3
+ C. .1.2.3.
+ D. 1.2.3.
+Unattempted
+The intrinsic function Fn::Join appends a set of values into a single value, separated by the specified delimiter. If a delimiter is the empty string, the set of values are concatenated with no delimiter. For more information on Fn:: Join function please refer to the below link: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-join.html
+
+
+
+3. Question
+An administrator is getting an error while trying to create a new bucket in S3? You feel that bucket limit has been crossed. What is the bucket limit per account in AWS?Choose the correct answer from the options below
+
+ A. 100		-Correct
+ B. 50
+ C. 1000
+ D. 150
+Unattempted
+This is clearly mentioned in the AWS documentation. For more information on AWS service limitations, please visit the link: http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html
+
+
+
+4. Question
+What result would you expect from the Fn::Select function in the following line in a CloudFormation template? Choose an answer from the options below
+{ “Fn::Select” : [ “1”, [ “1”, “2”, “3”, “4” ] ] }
+
+ A. 1
+ B. 2		-Correct
+ C. 3
+ D. 4
+Unattempted
+The intrinsic function Fn::Select returns a single object from a list of objects by index.
+In this case, Fn::Select returns 2 which is Answer B.
+For more information on intrinsic functions, Please check
+http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference.html
+Intrinsic function Fn::Select reference:
+http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-select.html
+
+
+
+5. Question
+What result would you expect from the Fn::split function in the following line in a CloudFormation template? Choose an answer from the options below
+{ “Fn::Split” : [ “|” , “a|b|c” ] }
+
+ A. ["a", "b", "c"]		-Correct
+ B. ["a|", "b|", "c|"]
+ C. “abc”
+ D. ["a"]
+Unattempted
+To split a string into a list of string values so that you can select an element from the resulting string list, use the Fn::Split intrinsic function. Specify the location of splits with a delimiter, such as , (a comma). After you split a string, use the Fn::Select function to pick a specific element. For more information on intrinsic functions , please visit the below URL: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-join.html
+
+
+
+6. Question
+Which of the below API calls can be used to get information about stacks based on a specific filter. Choose an answer from the options below
+
+ A. ListStacks		-Correct
+ B. GetStacks
+ C. GetAllStacks
+ D. ListFilterStacks
+Unattempted
+This is clearly given in the AWS documentation For more information on the API, please visit the below URL: http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ListStacks.html
+
+
+
+7. Question
+Which of the below configuration softwares can Cloudformation be used with? Choose 2 answers from the options below
+
+ A. Chef		-Correct
+ B. Ansible
+ C. Powershell
+ D. Puppet		-Correct
+Unattempted
+This is clearly mentioned in the AWS documentation For more information on cloudformation, please refer to the below link: https://aws.amazon.com/cloudformation/faqs/
+
+
+
+8. Question
+In DynamoDB you get the following error “ItemCollectionSizeLimitExceededException”. What could be the possible cause for this error. Choose an answer from the options below
+
+ A. Number of tables have exceeded in DynamoDB
+ B. Number of Indexes have increased
+ C. Size of a group of items with the same partition key value has exceeded 10GB.		-Correct
+ D. None of the above
+Unattempted
+This is clearly given in the AWS documentation For more information on DynamoDB errors, please refer to the below link: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html
+
+
+
+9. Question
+Your items are 15KB in size and you want to have 100 strongly consistent reads per second. How many read capacity units do you need to provision? Choose the correct answer from the options below
+
+ A. 100
+ B. 200
+ C. 300
+ D. 400		-Correct
+Unattempted
+Since each item is 15KB and if we near it to the nearest 4KB , we get 4. Since we need 100 strongly consistent , it becomes (100*4) = 400. For more information on DynamoDB provisioned throughput please visit the below link: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ProvisionedThroughput.html
+
+
+
+10. Question
+You decide to create a bucket on AWS S3 called ‘newbucket’ and then perform the following actions in the order that they are listed here.
+– You upload a file to the bucket called ‘file1’
+– You upload a file called ‘file2’
+– You enable versioning on the bucket
+Which of the following is true for your bucket ‘newbucket’? Choose the correct answer from the options below
+
+ A. There will be 1 version ID for file1 and file2.
+ B. There will be 1 version ID for file1 and null version ID for file2.
+ C. There will be 1 version ID for file2 and null version ID for file1.
+ D. The version ID will be null for both file1 and file2		-Correct
+Unattempted
+Any objects uploaded prior to versioning will have the version ID as NULL. This is clearly mentioned in the AWS documentation. For more information on S3 versioning, please visit the below link: http://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html
+
+
+
+11. Question
+Which of the descriptions below best describes what the following bucket policy does?
+{  
+   “Version”:”2012-10-17″,
+   “Id”:”Statement1”, 
+   “Statement”:[  
+      {  
+         “Sid”:” Statement2″,
+         “Effect”:”Allow”,
+         “Principal”:”*”,
+         “Action”:[  
+            “s3:GetObject”,
+            “s3:PutObject”
+         ],
+         “Resource”:”arn:aws:s3:::mybucket/*”,
+         “Condition”:{  
+            “StringLike”:{  
+               “aws:Referer”:[  
+                  “http://www.example.com/*”,
+                  “http://www.demo.com/*”
+               ]
+            }
+         }
+      }
+   ]
+}
+Choose the correct answer from the options below
+
+ A. It allows read or write actions on the bucket 'mybucket'
+ B. It allows read access to the bucket 'mybucket' but only if it is accessed from example.com or demo.com
+ C. It allows unlimited access to the bucket 'mybucket'
+ D. It allows read or write access to the bucket 'mybucket' but only if it is accessed from example.com or demo.com		-Correct
+Unattempted
+The PutObject allows one to put objects in an S3 bucket. For more information on S3 bucket policy examples, please visit the link: http://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html
+
+
+
+12. Question
+While working with the AWS API you receive the following error message: 409 Conflict. What might be the cause of this error?
+
+ A. BadDigest
+ B. User does not have proper permissions to make the API call
+ C. Bucket is not empty		-Correct
+ D. Bucket name does not exist
+Unattempted
+This is clearly provided as part of the S3 error codes in the S3 documentation. For more information on S3 Error codes, please visit the link: http://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList
+
+
+
+13. Question
+What is used in S3 to enable client web applications that are loaded in one domain to interact with resources in a different domain? Choose the correct answer from the options below
+
+ A. CORS Configuration		-Correct
+ B. Public Object Permissions
+ C. Public ACL Permissions
+ D. None of the above
+Unattempted
+Cross-origin resource sharing (CORS) defines a way for client web applications that are loaded in one domain to interact with resources in a different domain. With CORS support in Amazon S3, you can build rich client-side web applications with Amazon S3 and selectively allow cross-origin access to your Amazon S3 resources. For more information on S3 CORS configuration, please visit the link: http://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html
+
+
+
+14. Question
+Your items are 12KB in size and you want to have 100 strongly consistent reads per second. How many read capacity units do you need to provision? Choose the correct answer from the options below
+
+ A. 50
+ B. 300		-Correct
+ C. 80
+ D. 200
+Unattempted
+Since each item is 12KB and if we near it to the nearest 4KB , we get 3. Since we need 100 strongly consistent , it becomes (100*3) = 300. For more information on DynamoDB provisioned throughput please visit the below link: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ProvisionedThroughput.html
+
+
+
+15. Question
+When using the Ref function in CloudFormation, what do we get back if we pass in the logical ID of an AWS::EC2::EIP object? Choose the correct answer from the options below
+
+ A. The instance public IP		-Correct
+ B. The AMI IP
+ C. Nothing, the AWS::EC2::Instance is not a valid resource type
+ D. All of the attributes associated with that EC2 instance resource
+Unattempted
+This is clearly given in the AWS documentation For more information on the Cloudformation AWS::EC2::EIP command please visit the below link: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-eip.html
+
+
+
+16. Question
+What is the content delivery network service available in AWS? Choose one answer from the options below
+
+ A. Autoscaling
+ B. SNS
+ C. Cloudfront		-Correct
+ D. EC2
+Unattempted
+Amazon CloudFront is a global content delivery network (CDN) service that accelerates delivery of your websites, APIs, video content or other web assets. It integrates with other Amazon Web Services products to give developers and businesses an easy way to accelerate content to end users with no minimum usage commitments. For more information on cloudfront please visit the below link: https://aws.amazon.com/cloudfront/
+
+
+
+17. Question
+What is the notification service available in AWS? Choose one answer from the options below
+
+ A. Autoscaling
+ B. SNS		-Correct
+ C. Cloudfront
+ D. EC2
+Unattempted
+Amazon Simple Notification Service (Amazon SNS) is a fast, flexible, fully managed push notification service that lets you send individual messages or to fan-out messages to large numbers of recipients. Amazon SNS makes it simple and cost effective to send push notifications to mobile device users, email recipients or even send messages to other distributed services. With Amazon SNS, you can send notifications to Apple, Google, Fire OS, and Windows devices, as well as to Android devices in China with Baidu Cloud Push. You can use SNS to send SMS messages to mobile device users worldwide. For more information on SNS please visit the below link: https://aws.amazon.com/sns/
+
+
+
+18. Question
+What is the storage service available in AWS? Choose one answer from the options below
+
+ A. S3		-Correct
+ B. SNS
+ C. Cloudfront
+ D. EC2
+Unattempted
+Amazon Simple Storage Service (Amazon S3) is storage for the Internet. You can use Amazon S3 to store and retrieve any amount of data at any time, from anywhere on the web. You can accomplish these tasks using the simple and intuitive web interface of the AWS Management Console. For more information on S3 please visit the below link: https://aws.amazon.com/documentation/s3/
+
+
+
+19. Question
+What is the load balancing service available in AWS? Choose one answer from the options below
+
+ A. ELB		-Correct
+ B. SNS
+ C. Cloudfront
+ D. SES
+Unattempted
+Elastic Load Balancing automatically distributes incoming application traffic across multiple Amazon EC2 instances. It enables you to achieve fault tolerance in your applications, seamlessly providing the required amount of load balancing capacity needed to route application traffic. For more information on SES please visit the below link: https://aws.amazon.com/elasticloadbalancing/?nc2=h_m1
+
+
+
+20. Question
+What is the emailing service available in AWS? Choose one answer from the options below
+
+ A. S3
+ B. SNS
+ C. Cloudfront
+ D. SES		-Correct
+Unattempted
+Amazon Simple Email Service (Amazon SES) is a cost-effective email service built on the reliable and scalable infrastructure that Amazon.com developed to serve its own customer base. With Amazon SES, you can send and receive email with no required minimum commitments – you pay as you go, and you only pay for what you use. For more information on SES please visit the below link: https://aws.amazon.com/ses/
+
+
+
+21. Question
+Which of the following bucket names is invalid? Choose 2 correct answer from the options below
+
+ A. Example_com		-Correct
+ B. example-com
+ C. example.com
+ D. example.com-		-Correct
+Unattempted
+AWS Doc shows the naming conventions for S3 buckets
+The bucket name can be between 3 and 63 characters long, and can contain only lower-case characters, numbers, periods, and dashes.
+Each label in the bucket name must start with a lowercase letter or number.
+The bucket name cannot contain underscores, end with a dash, have consecutive periods, or use dashes adjacent to periods.
+The bucket name cannot be formatted as an IP address (198.51.100.24).
+For more information on the S3 naming conventions please visit the below link:
+http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-s3-bucket-naming-requirements.html
+
+
+
+22. Question
+CloudFormation natively supports creation of which AWS resources?
+Choose 3 answers from options below.
+
+ A. Network ACL’s		-Correct
+ B. RouteTables		-Correct
+ C. Metadata
+ D. EC2		-Correct
+Unattempted
+AWS CloudFormation introduces two concepts: ‘The template’, a JSON or YAML-format, text-based file that describes all the AWS resources you need to deploy to run your application and ‘the stack’, the set of AWS resources that are created and managed as a single unit when AWS CloudFormation instantiates a template. CloudFormation supports a rich set of AWS resourcs. For up-to-date comprehensive list of supported AWS resources and their features, please visit ‘Supported AWS Services’ page of CloudFormation user guide at http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-supported-resources.html On top of that, AWS CloudFormation custom resources enable management of additional AWS and non-AWS resources. For further details, please visit http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-custom-resources.html
+
+
+
+23. Question
+In Cloudformation what is the limit to the number of parameters in the template? Choose an answer from the options below
+
+ A. 10
+ B. 60		-Correct
+ C. 100
+ D. No Limit
+Unattempted
+This is clearly given in the AWS documentation  For more information on the cloudformation please visit the below link: https://aws.amazon.com/cloudformation/faqs/
+
+
+
+24. Question
+What type of data can be stored in S3? Choose the correct answer from the options below
+
+ A. Text data
+ B. Video format
+ C. MP4 format
+ D. Virtually any type of data format		-Correct
+Unattempted
+This is clearly given in the AWS documentation For more information on S3 please visit the below link: https://aws.amazon.com/s3/faqs/
+
+
+
+25. Question
+What are some of the advantages of using AWS SNS?
+
+ A. Instantaneous, push-based delivery (no polling)
+ B. Simple APIs and easy integration with applications
+ C. Flexible message delivery over multiple transport protocols
+ D. All of the above		-Correct
+Unattempted
+This is clearly given in the AWS documentation For more information on SNS please visit the below link: https://aws.amazon.com/sns/faqs/
+
+
+
+26. Question
+While working with the S3 API you receive the error: 403 forbidden. What is the most likely cause of this? Choose a correct answer from the options below
+
+ A. BucketAlreadyExists
+ B. InvalidAccessKeyID		-Correct
+ C. BadDigest
+ D. NoSuchBucket
+Unattempted
+This is clearly mentioned in the AWS documentation For more information on S3 error responses please visit the below link: http://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html
+
+
+
+27. Question
+When using REST API with S3 what needs to set in the header request for encryption to occur for the object? Choose the correct answer from the options below
+
+ A. x-amz-content-sha256
+ B. x-amz-server-side-encryption		-Correct
+ C. Content-MD5
+ D. No header is needed
+Unattempted
+Server-side encryption is about protecting data at rest. Server-side encryption with Amazon S3-managed encryption keys (SSE-S3) employs strong multi-factor encryption. Amazon S3 encrypts each object with a unique key. As an additional safeguard, it encrypts the key itself with a master key that it regularly rotates. Amazon S3 server-side encryption uses one of the strongest block ciphers available, 256-bit Advanced Encryption Standard (AES-256), to encrypt your data.
+Amazon S3 supports bucket policies that you can use if you require server-side encryption for all objects that are stored in your bucket. 
+For this you need to set the header as x-amz-server-side-encryption in the REST API call.
+For more information on S3 server side encryption, please refer to the below URL:
+http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html
+
+
+
+28. Question
+For which of these languages/platforms does AWS provide an SDK? Choose 3 correct answer from the options below
+
+ A. Rexx
+ B. Mobile SDK		-Correct
+ C. Go		-Correct
+ D. Python		-Correct
+Unattempted
+This is as per the AWS documentation For more information on AWS toolkits available, please refer to the below URL: https://aws.amazon.com/tools/
+
+
+
+29. Question
+What is the largest size of an object which can be uploaded by a PUT request in S3? Choose the correct answer from the options below
+
+ A. 5 GB		-Correct
+ B. 1 TB
+ C. 100 MB
+ D. 1 GB
+Unattempted
+This is clearly mentioned in the AWS documentation For more information on S3 please refer to the below URL:  https://aws.amazon.com/s3/faqs/
+
+
+
+30. Question
+If your table item’s size is 6KB and you want to have 90 strongly consistent reads per second, how many read capacity units will you need to provision on the table? Choose the correct answer from the options below
+
+ A. 180		-Correct
+ B. 90
+ C. 10
+ D. 19
+Unattempted
+When we round off the item size to 4KB, we get 2 read per item. Since there are 90 requests , it means 90*2 =180 reads per seconds. For more information on provisioned throughtput, please refer to the below URL: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ProvisionedThroughput.html
+
+
+
+31. Question
+When you set up a static web site in S3 what are the most important steps to carry out? Choose 3 correct answer from the options below
+
+ A. Upload an index document to your S3 bucket		-Correct
+ B. Select the “Make Public” permission for your bucket’s objects		-Correct
+ C. Create an Alias record in Route 53
+ D. Enable static website hosting in your S3 bucket properties		-Correct
+Unattempted
+When you go to S3, make sure that static website hosting is enabled. Also upload the index.html document , make sure it is Public and also ensure that it is put as the Index document. For more information on all S3 web site hosting please refer to the below URL: http://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html
+
+
+
+32. Question
+Which feature of DynamoDB provides a time-ordered sequence of item-level changes made to data? Choose an correct answer from the options below
+
+ A. DynamoDB Streams		-Correct
+ B. DynamoDB tables
+ C. DynamoDB Indexes
+ D. DynamoDB views
+Unattempted
+This is clearly given in the AWS documentation For more information on DynamoDB please refer to the below URL: https://aws.amazon.com/dynamodb/faqs/
+
+
+
+33. Question
+What are the different types of storage classes in S3?
+Choose 2 answers from the options below
+
+ A. RRS		-Correct
+ B. RDS
+ C. SES
+ D. Glacier		-Correct
+Unattempted
+Option B is relational database which is wrong.
+Option C is wrong which is Simple Email service.
+This is clearly given in the AWS documentation
+For more information on S3 please visit the below link:
+https://aws.amazon.com/s3/faqs/
+
+
+
+34. Question
+You want 10 strongly consistent 1KB writes per second. How many units of throughput capacity do you need to provision? Choose the correct answer from the options below
+
+ A. 10		-Correct
+ B. 9
+ C. 5
+ D. 4
+Unattempted
+When we round off the item size to 1KB, we get 1 write per item. Since there are 10 requests , it means 10 writes per seconds. For more information on provisioned throughtput, please refer to the below URL: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ProvisionedThroughput.html
+
+
+
+35. Question
+Which of the following is NOT a S3 REST API operation?
+
+ A. Put Object
+ B. Upload Part
+ C. Write Object		-Correct
+ D. Get Bucket
+Unattempted
+There is no REST API operation Write Object in S3. For more information on S3 REST API, please refer to the below URL: http://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html
+
+
+
+36. Question
+A security system monitors 3000 cameras saving image metadata every 30 seconds to an Amazon DynamoDB. Each sample involves writing 256 bytes of data and the writes are evenly distributed over time.
+How much write throughput is required for the target table. Choose an answer from the options below
+
+ A. 30 write capacity unit
+ B. 100 write capacity unit		-Correct
+ C. 600 write capacity unit
+ D. 300 write capacity unit
+Unattempted
+When we round off the item size to 1KB, we get 1 write per item. Since there are 3000 cameras saving data every 30 seconds , means that there are 3000 writes per 30 seconds and (3000/30) = 100 writes per second. For more information on provisioned throughtput, please refer to the below URL: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ProvisionedThroughput.html
+
+
+
+37. Question
+Which RDS are supported as AWS services? 
+Choose 2 answers from the options below
+
+ A. DB2
+ B. Oracle		-Correct
+ C. MongoDB
+ D. mySQL		-Correct
+Unattempted
+Amazon Relational Database Service (Amazon RDS) makes it easy to set up, operate, and scale a relational database in the cloud. It provides cost-efficient and resizable capacity while managing time-consuming database administration tasks, freeing you up to focus on your applications and business. Amazon RDS provides you six familiar database engines to choose from, including Amazon Aurora, PostgreSQL, MySQL, MariaDB, Oracle, and Microsoft SQL Server. For more information on RDS, please refer to the below URL: https://aws.amazon.com/rds/
+
+
+
+38. Question
+Which of the following AWS services is used to launch virtual servers? Choose an answer from the options below
+
+ A. AWS IAM
+ B. Amazon Cloudwatch
+ C. Amazon EC2		-Correct
+ D. AWS Cloudrail
+Unattempted
+Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud. It is designed to make web-scale cloud computing easier for developers. For more information on AWS EC2, please refer to the below URL: https://aws.amazon.com/ec2/
+
+
+
+39. Question
+Which of the following AWS services provides a managed NoSQL  database? Choose an answer from the options below
+
+ A. AWS DynamoDB		-Correct
+ B. Amazon Cloudwatch
+ C. Amazon EC2
+ D. AWS Cloudrail
+Unattempted
+Amazon DynamoDB is a fast and flexible NoSQL database service for all applications that need consistent, single-digit millisecond latency at any scale. It is a fully managed cloud database and supports both document and key-value store models. Its flexible data model and reliable performance make it a great fit for mobile, web, gaming, ad tech, IoT, and many other applications For more information on AWS dynamoDB, please refer to the below URL: https://aws.amazon.com/dynamodb/
+
+
+
+40. Question
+Your IT Project Manager wants you to perform a penetration testing on your AWS environment? What needs to be considered when performing penetration testing in AWS? Choose an answer from the options below
+
+ A. Penetration testing is never allowed
+ B. AWS automatically performs penetration testing
+ C. A customer can perform penetration testing at any time
+ D. A customer should request permission from AWS before performing perform penetration testing		-Correct
+Unattempted
+This is clearly mentioned in the AWS documentation For more information on penetration testing using AWS, please refer to the below URL: https://aws.amazon.com/security/penetration-testing/
+
+
+
+41. Question
+In IAM what is the representation of a person or service. Choose an answer from the options below
+
+ A. User		-Correct
+ B. Group
+ C. Team
+ D. Role
+Unattempted
+An IAM user is an entity that you create in AWS. The IAM user represents the person or service who uses the IAM user to interact with AWS
+An IAM group is a collection of IAM users. You can use groups to specify permissions for a collection of users, which can make those permissions easier to manage for those users
+An IAM role is very similar to a user, in that it is an identity with permission policies that determine what the identity can and cannot do in AWS
+For more information on IAM entities , please visit the URL:
+http://docs.aws.amazon.com/IAM/latest/UserGuide/id.html
+
+
+
+42. Question
+Which of the following are the responsibility of the customer. Choose 2 answers from the options below
+
+ A. Virtualization Infrastructure
+ B. Managing security groups		-Correct
+ C. Physical security of AWS data centers
+ D. Patching the OS on the running EC2 instance		-Correct
+Unattempted
+Please see the shared responsibility model as shared by AWS
+
+
+
+43. Question
+In SWF what helps in developing Amazon SWF based applications. Choose an answer from the options below.
+
+ A. Workers
+ B. Deciders
+ C. Flow Framework		-Correct
+ D. Workflow starter
+Unattempted
+AWS Flow Framework is a programming framework that enables you to develop Amazon SWF-based applications quickly and easily. It abstracts the details of task-level coordination and asynchronous interaction with simple programming constructs. Coordinating workflows in Amazon SWF involves initiating remote actions that take variable times to complete (e.g. activity tasks) and implementing the dependencies between them correctly. For more information on SWF , please visit the URL: https://aws.amazon.com/swf/faqs/
+
+
+
+44. Question
+In SWF what is the maximum number of open activity tasks ? Choose an answer from the options below
+
+ A. 10
+ B. 100
+ C. 1000		-Correct
+ D. No limit
+Unattempted
+Please check the AWS documentation provided below For more information on SWF , please visit the URL: https://aws.amazon.com/swf/faqs/
+
+
+
+45. Question
+A customer has enabled website hosting on a bucket named “company” in the Singapore region. What website URL is assigned to your bucket?
+
+ A. company.s3-website-ap-southeast-1.amazonaws.com		-Correct
+ B. s3-website.company.amazonaws.com
+ C. s3-website.company.website-ap-southeast-1.amazonaws.com
+ D. company.ap-southeast-1.amazonaws.com
+Unattempted
+You have the chance to enable static web site hosting for S3 buckets. This can be done via the properties option for the bucket. The end point of the bucket for static hosting will also be configured. For more information on S3 buckets, please visit the link: http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html
+
+
+
+46. Question
+How can you ensure maximum protection of preserved versions in S3? Choose one answer from the options below.
+
+ A. Versioning
+ B. Encryption
+ C. MFA		-Correct
+ D. None of the above
+Unattempted
+This is clearly given in the AWS documentation For more information on S3 please visit the below link: https://aws.amazon.com/s3/faqs/
+
+
+
+47. Question
+What are the different services provided by AWS. Choose all that apply
+
+ A. SES		-Correct
+ B. SNS		-Correct
+ C. Route53		-Correct
+ D. Sharepoint
+Unattempted
+To see the entire list of services, go to the Products section on AWS URL: https://aws.amazon.com/products/
+
+
+
+48. Question
+Which of the following is an example of a good DynamoDB hash key schema for provisioned throughput efficiency? Choose an answer from the options below
+
+ A. Employee ID, where the application has many different employees.		-Correct
+ B. Empoyee Status where most status codes are the same
+ C. Service ID, where there are few service Id’s.
+ D. Company ID, where there are 2 companies
+Unattempted
+Always have the primary key or hash key for those attributes which will have many values. And only option A fits that requirement. For more information on DynamoDB tables , please visit the URL: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html
+
+
+
+49. Question
+What are the supported protocols for AWS ELB. Choose 2 answers from the options below.
+
+ A. HTTP		-Correct
+ B. XML
+ C. SSL		-Correct
+ D. JSON
+Unattempted
+This is clearly given in the AWS documentation  For more information on ELB, please refer to the link: https://aws.amazon.com/elasticloadbalancing/classicloadbalancer/faqs/
+
+
+
+50. Question
+What is the default setting of connection draining in ELB. Choose an answer from the options below.
+
+ A. 300 seconds		-Correct
+ B. 30 seconds
+ C. 60 seconds
+ D. 600 seconds
+Unattempted
+To ensure that a Classic Load Balancer stops sending requests to instances that are de-registering or unhealthy, while keeping the existing connections open, use connection draining. This enables the load balancer to complete in-flight requests made to instances that are de-registering or unhealthy. When you enable connection draining, you can specify a maximum time for the load balancer to keep connections alive before reporting the instance as de-registered. The maximum timeout value can be set between 1 and 3,600 seconds (the default is 300 seconds). When the maximum time limit is reached, the load balancer forcibly closes connections to the de-registering instance. For more information on ELB, please refer to the link: http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-conn-drain.html
+
+
+
+51. Question
+Is there a limit on the number of subnets that can be created per VPC? Choose an answer from the options below.
+
+ A. 100
+ B. 200		-Correct
+ C. 300
+ D. No limit
+Unattempted
+This is clearly given in the aws documentation For more information on VPC, please refer to the link https://aws.amazon.com/vpc/faqs/
+
+
+
+52. Question
+What is the VPC that is created for your AWS account for the first time. Choose an answer from the options below.
+
+ A. Primary VPC
+ B. First VPC
+ C. Default VPC		-Correct
+ D. Initial VPC
+Unattempted
+A default VPC is a logically isolated virtual network in the AWS cloud that is automatically created for your AWS account the first time you provision Amazon EC2 resources. When you launch an instance without specifying a subnet-ID, your instance will be launched in your default VPC. For more information on VPC, please refer to the link: https://aws.amazon.com/vpc/faqs/
+
+
+
+53. Question
+What are the 2 ways in which you can get data into S3-Standard IA? Choose 2 answers from the options below.
+
+ A. Put request by changing the x-amz-storage-class header		-Correct
+ B. Use lifecycle policies		-Correct
+ C. Using SNS
+ D. Using SES
+Unattempted
+This is clearly given in the AWS documentation For more information on S3 please visit the below link: https://aws.amazon.com/s3/faqs/
+
+
+
+54. Question
+Which API call would you create a new item in dynamoDB? Choose the correct answer from the options below
+
+ A. PutItem		-Correct
+ B. Scan
+ C. GetItem
+ D. query
+Unattempted
+Creates a new item, or replaces an old item with a new item. If an item that has the same primary key as the new item already exists in the specified table, the new item completely replaces the existing item. You can perform a conditional put operation (add a new item if one with the specified primary key doesn’t exist), or replace an existing item if it has certain attribute values. In addition to putting an item, you can also return the item’s attribute values in the same operation, using the ReturnValues parameter. For more information on the PutItem command please visit the below link: http://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_GetItem.html
+
+
+
+55. Question
+If you are connecting to AWS from a computer, not an EC2 instance, you need to create an AWS user, attach permissions, and use the API access key and secret access key in your code. Choose the correct answer from the options below
+
+ A. True 		-Correct
+ B. False
+Unattempted
+Users need their own access keys to make programmatic calls to AWS from the AWS Command Line Interface (AWS CLI), Tools for Windows PowerShell, the AWS SDKs, or direct HTTP calls using the APIs for individual AWS services. To fill this need, you can create, modify, view, or rotate access keys (access key IDs and secret access keys) for IAM users. For more information on IAM access keys please visit the link: http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
+
+
+
+56. Question
+AMIs can be shared to individual AWS accounts. Choose the correct answer from the options below
+
+ A. True		-Correct
+ B. False
+Unattempted
+This is clearly mentioned in the AWS documentation. For more information on how to share AMI’s, please refer to the below link: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharingamis-explicit.html
+
+
+
+57. Question
+An IAM role, when assigned to an EC2 instance, will allow code to be executed on that instance without API access keys. Choose the correct answer from the options below
+
+ A. True		-Correct
+ B. False
+Unattempted
+The best practise for IAM is to create roles which has specific access to an AWS service and then give the user permission to the AWS service via the role.
+To get the role in place , follow the below steps
+Step 1) Create a role which has the required ELB access
+Step 2) You need to provide permissions to the underlying EC2 instances in the Elastic Load Balancer
+For the best practises on IAM policies, please visit the link:
+http://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html
+
+
+
+58. Question
+To enable a VPC EC2 instance to be publicly accessible without a NAT instance or NAT Gateway, it must have a public IP address inside of a subnet that has a route to an internet gateway. Choose the correct answer from the options below
+
+ A. True		-Correct
+ B. False
+Unattempted
+The below example shows a VPC which has an EC2 instance in a subnet which has an internet gateway. You can see that in order to get to the internet, it needs to have a public IP address. For more information on the default VPC, please refer to the below link: http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/default-vpc.html
+
+
+
+59. Question
+Being a good solutions architect means you will always plan for failures in your AWS cloud environment. Choose the correct answer from the options below
+
+ A. True		-Correct
+ B. False
+Unattempted
+An AWS architect should always design their environment to be prone to disaster recovery. AWS allows one via AMI’s , Cloud formation template and a variety of other services to create disaster recovery scenarios for an organization. For more information on the AWS disaster recovery, please refer to the below link: https://aws.amazon.com/disaster-recovery/
+
+
+
+60. Question
+Can a VPC subnet can have multiple route tables. Choose the correct answer from the options below
+
+ A. True
+ B. False		-Correct
+Unattempted
+This is clearly mentioned in the AWS documentation that there can be only one route table per subnet For more information on Route tables, please refer to the below link: http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html
+
+
+
+61. Question
+All operations on elastic IP addresses can be performed programmatically through the API, or manually from the AWS Management Console. Choose the correct answer from the options below
+
+ A. True		-Correct
+ B. False
+Unattempted
+To allocate an Elastic IP address for use in EC2-VPC using the console
+1. Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
+2. In the navigation pane, choose Elastic IPs.
+3. Choose Allocate new address.
+4. (EC2-Classic accounts) Choose VPC, and then choose Allocate. Close the confirmation screen.
+5. (VPC-only accounts) Choose Allocate, and close the confirmation screen.
+To allocate via the CLI use the command – allocate-address 
+For more information on AWS Elastic IP’s, please refer to the below link:
+http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html
+
+
+
+62. Question
+Buckets can contain both encrypted and non-encrypted objects. Choose the correct answer from the options below
+
+ A. True		-Correct
+ B. False
+Unattempted
+When objects are uploaded to S3 , they can either be encrypted or non-encrypted. There are various ways to encrypt objects is S3.
+Use Server-Side Encryption with Amazon S3-Managed Keys (SSE-S3) – Each object is encrypted with a unique key employing strong multi-factor encryption. As an additional safeguard, it encrypts the key itself with a master key that it regularly rotates. Amazon S3 server-side encryption uses one of the strongest block ciphers available, 256-bit Advanced Encryption Standard (AES-256), to encrypt your data. 
+Use Server-Side Encryption with AWS KMS-Managed Keys (SSE-KMS) – Similar to SSE-S3, but with some additional benefits along with some additional charges for using this service. There are separate permissions for the use of an envelope key (that is, a key that protects your data’s encryption key) that provides added protection against unauthorized access of your objects in S3. SSE-KMS also provides you with an audit trail of when your key was used and by whom. Additionally, you have the option to create and manage encryption keys yourself, or use a default key that is unique to you, the service you’re using, and the region you’re working in. 
+Use Server-Side Encryption with Customer-Provided Keys (SSE-C) – You manage the encryption keys and Amazon S3 manages the encryption, as it writes to disks, and decryption, when you access your objects.
+ For client side encryption please check below AWS docs link:
+http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html
+
+
+
+63. Question
+True or False: A core benefit of using a SQS subscription endpoint with Amazon SNS is that SQS Messages can be delivered to applications that require immediate notification of an event and messages are also persistent in an Amazon SQS queue for other applications to process later in time (considering the SQS limitation on how long the messages can be stored in SQS queue).
+
+ A. True		-Correct
+ B. False
+Unattempted
+The Amazon Simple Queue Service (SQS) and the Amazon Simple Notification Service (SNS) are important “glue” components for scalable, cloud-based applications (see the Reference Architectures in the AWS Architecture Center to learn more about how to put them to use in your own applications). One common design pattern is called “fanout.” In this pattern, a message published to an SNS topic is distributed to a number of SQS queues in parallel. By using this pattern, you can build applications that take advantage parallel, asynchronous processing For more information on SNS and SQS integration, please refer to the link: https://aws.amazon.com/blogs/aws/queues-and-notifications-now-best-friends/
+
+
+
+64. Question
+Can one configure anonymous access to a queue? Choose the correct answer from the options below
+
+ A. True		-Correct
+ B. False
+Unattempted
+As per the AWS documentation, anonymous access is allowed via IAM policies For more information on AWS SQS, please refer to the link: https://aws.amazon.com/sqs/faqs/
+
+
+
+65. Question
+Is SQS PCI DSS certified? Choose the correct answer from the options below
+
+ A. True		-Correct
+ B. False
+Unattempted
+As per the AWS documentation , AWS SQS is PCI DSS certified. For more information on AWS SQS, please refer to the link: https://aws.amazon.com/sqs/faqs/
