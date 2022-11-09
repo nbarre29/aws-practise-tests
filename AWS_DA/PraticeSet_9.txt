@@ -1,0 +1,832 @@
+1. Question
+What type of block cipher does Amazon S3 offer for server side encryption? Choose an answer from the options below
+
+ A. RC5
+ B. Blowfish
+ C. Triple DES
+ D. Advanced Encryption Standard		-Correct
+Unattempted
+Server-side encryption is about protecting data at rest. Server-side encryption with Amazon S3-managed encryption keys (SSE-S3) employs strong multi-factor encryption. Amazon S3 encrypts each object with a unique key. As an additional safeguard, it encrypts the key itself with a master key that it regularly rotates. Amazon S3 server-side encryption uses one of the strongest block ciphers available, 256-bit Advanced Encryption Standard (AES-256), to encrypt your data. The object creation REST APIs (see Specifying Server-Side Encryption Using the REST API) provide a request header, x-amz-server-side-encryption that you can use to request server-side encryption. For more information on S3 encryption, please visit the link: http://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html
+
+
+
+2. Question
+Which of the following is an example of a good DynamoDB hash key schema for provisioned throughput efficiency? Choose an answer from the options below
+
+ A. User ID, where the application has many different users.		-Correct
+ B. Status Code where most status codes are the same
+ C. Device ID, where one is by far more popular than all the others.
+ D. Game Type, where there are three possible game types
+Unattempted
+Always have the primary key or hash key for those attributes which will have many values. And only option A fits that requirement. For more information on DynamoDB tables , please visit the URL: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html
+
+
+
+3. Question
+Company A has an S3 bucket containing premier content that they intend to make available to only paid subscribers of their website. The S3 bucket currently has default permissions of all objects being private to prevent inadvertent exposure of the premier content to non-paying website visitors. How can Company A provide only paid subscribers the ability to download a premier content file in the S3 bucket?
+
+ A. Apply a bucket policy that grants anonymous users to download the content from the S3 bucket
+ B. Generate a pre-signed object URL for the premier content file when a paid subscriber requests a download		-Correct
+ C. Add a bucket policy that requires Multi-Factor Authentication for requests to access the S3 bucket objects
+ D. Enable server side encryption on the S3 bucket for data protection against the non-paying website visitors
+Unattempted
+A pre-signed URL gives you access to the object identified in the URL, provided that the creator of the pre-signed URL has permissions to access that object. That is, if you receive a pre-signed URL to upload an object, you can upload the object only if the creator of the pre-signed URL has the necessary permissions to upload that object. For more information on Pre-signed urls , please visit the link: http://docs.aws.amazon.com/AmazonS3/latest/dev/PresignedUrlUploadObject.html
+
+
+
+4. Question
+What happens, by default, when one of the resources in a CloudFormation stack cannot be created? Choose an answer from the options below
+
+ A. The stack creation continues, and the final results indicate which steps failed.
+ B. CloudFormation templates are parsed in advance so stack creation is guaranteed to succeed.
+ C. Previously-created resources are kept but the stack creation terminates.
+ D. Previously-created resources are deleted and the stack creation terminates.		-Correct
+Unattempted
+By default, the “automatic rollback on error” feature is enabled. This will cause all AWS resources that AWS CloudFormation created successfully for a stack up to the point where an error occurred to be deleted. This is useful when, for example, you accidentally exceed your default limit of Elastic IP addresses, or you don’t have access to an EC2 AMI you’re trying to run. This feature enables you to rely on the fact that stacks are either fully created, or not at all, which simplifies system administration and layered solutions built on top of AWS CloudFormation. For more information on cloudformation, please refer to the below link: https://aws.amazon.com/cloudformation/faqs/
+
+
+
+5. Question
+Which features can be used to restrict access to data in S3? Choose 2 answers from the options below
+
+ A. Set an S3 Bucket policy.		-Correct
+ B. Enable IAM Identity Federation.
+ C. Set an S3 ACL on the bucket or the object.		-Correct
+ D. Use Server-Side encryption to encrypt the data stored in S3 bucket.
+Unattempted
+By default, all Amazon S3 resources—buckets, objects, and related subresources (for example, lifecycleconfiguration and website configuration)—are private: only the resource owner, an AWS account that created it, can access the resource. The resource owner can optionally grant access permissions to others by writing an access policy. Amazon S3 offers access policy options broadly categorized as resource-based policies and user policies. Access policies you attach to your resources (buckets and objects) are referred to as resource-based policies. For example, bucket policies and access control lists (ACLs) are resource-based policies. You can also attach access policies to users in your account. These are called user policies. You may choose to use resource-based policies, user policies, or some combination of these to manage permissions to your Amazon S3 resources. For more information on S3 access permissions please visit the below link: http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html
+
+
+
+6. Question
+You run an ad-supported photo sharing website using S3 to serve photos to visitors of your site. At some point you find out that other sites have been linking to the photos on your site, causing loss to your business. What is an effective method to mitigate this? Choose an answer from the options below
+
+ A. Store photos on an EBS volume of the web server
+ B. Remove public read access and use signed URLs with expiry dates.		-Correct
+ C. Use CloudFront distributions for static content.
+ D. Block the IPs of the offending websites in Security Groups.
+Unattempted
+A pre-signed URL gives you access to the object identified in the URL, provided that the creator of the pre-signed URL has permissions to access that object. That is, if you receive a pre-signed URL to upload an object, you can upload the object only if the creator of the pre-signed URL has the necessary permissions to upload that object. For more information on Pre-signed urls , please visit the link: http://docs.aws.amazon.com/AmazonS3/latest/dev/PresignedUrlUploadObject.html
+
+
+
+7. Question
+Games-R-Us is launching a new game app for mobile devices. Users will log into the game using their existing Facebook account and the game will record player data and scoring information directly to a DynamoDB table. What is the most secure approach for signing requests to the DynamoDB API? Choose an answer from the options below
+
+ A. Create an IAM user with access credentials that are distributed with the mobile app to sign the requests
+ B. Distribute the AWS root account access credentials with the mobile app to sign the requests
+ C. Request temporary security credentials using web identity federation to sign the requests		-Correct
+ D. Establish cross account access between the mobile app and the DynamoDB table to sign the requests
+Unattempted
+With web identity federation, you don’t need to create custom sign-in code or manage your own user identities. Instead, users of your app can sign in using a well-known identity provider (IdP) —such as Login with Amazon, Facebook, Google, or any other OpenID Connect (OIDC)-compatible IdP, receive an authentication token, and then exchange that token for temporary security credentials in AWS that map to an IAM role with permissions to use the resources in your AWS account. Using an IdP helps you keep your AWS account secure, because you don’t have to embed and distribute long-term security credentials with your application. For more information on web identity federation , please visit the link: http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc.html
+
+
+
+8. Question
+You are inserting 1000 new items every second in a DynamoDB table. Once an hour these items are analyzed and then are no longer needed. You need to minimize provisioned throughput, storage, and API calls. Given these requirements, what is the most efficient way to manage these Items after the analysis? Choose an answer from the options below
+
+ A. Retain the items in a single table
+ B. Delete items individually over a 24 hour period
+ C. Delete the table and create a new table per hour		-Correct
+ D. Create a new table per hour
+Unattempted
+The main point of the question is to minimize provisioned throughput.
+Option A is wrong because the table will grow and increase provisioned throughput.
+Option B is wrong because the table will grow and increase provisioned throughput over the 24 hour period.
+Option D is partially correct , you still need to delete the older table.
+For more information on DynamoDB provisioned throughput please visit the below link:
+http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ProvisionedThroughput.html
+
+
+
+9. Question
+Company D is running their corporate website on Amazon S3 accessed from http//www.companyd.com. Their marketing team has published new web fonts to a separate S3 bucket accessed by the S3 endpoint https://s3-us-west1. amazonaws.com/cdfonts. While testing the new web fonts, Company D recognized the web fonts are being blocked by the browser. What should Company D do to prevent the web fonts from being blocked by the browser?
+
+ A. Create a policy on the cdfonts bucket to enable access to everyone
+ B. Add the Content-MD5 header to the request for webfonts in the cdfonts bucket from the website
+ C. Configure the cdfonts bucket to allow cross-origin requests by creating a CORS configuration		-Correct
+ D. Enable versioning on the cdfonts bucket for each web font
+Unattempted
+Cross-origin resource sharing (CORS) defines a way for client web applications that are loaded in one domain to interact with resources in a different domain. With CORS support in Amazon S3, you can build rich client-side web applications with Amazon S3 and selectively allow cross-origin access to your Amazon S3 resources. For more information on S3 CORS configuration, please visit the link: http://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html
+
+
+
+10. Question
+How is provisioned throughput affected by the chosen consistency model when reading data from a DynamoDB table? Choose an answer from the options below
+
+ A. Strongly consistent reads uses the same amount of provisioned read throughput as eventually consistent reads
+ B. Strongly consistent reads uses variable provisioned read throughput depending on read activity
+ C. Strongly consistent reads uses more provisioned read throughput than eventually consistent reads.		-Correct
+ D. Strongly consistent reads uses less provisioned read throughput than eventually consistent reads
+Unattempted
+A unit of Write Capacity enables you to perform one write per second for items of up to 1KB in size. Similarly, a unit of Read Capacity enables you to perform one strongly consistent read per second (or two eventually consistent reads per second) of items of up to 4KB in size.  Hence the strong consistency is more expensive and uses more throughput than the eventual consistency. For more information on DynamoDB , please visit the below link: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ProvisionedThroughput.html#HowItWorks.ProvisionedThroughput.Reads
+
+
+
+11. Question
+You have an environment that consists of a public subnet using Amazon VPC and 3 instances that are running in this subnet. These three instances can successfully communicate with other hosts on the Internet. You launch a fourth instance in the same subnet, using the same AMI and security group configuration you used for the others, but find that this instance cannot be accessed from the Internet. What should you do to enable internet access? Choose an answer from the options below
+
+ A. Deploy a NAT instance into the public subnet.
+ B. Modify the routing table for the public subnet
+ C. Configure a publically routable IP Address In the host OS of the fourth instance.
+ D. Assign an Elastic IP address to the fourth instance.		-Correct
+Unattempted
+An Elastic IP address is a static IPv4 address designed for dynamic cloud computing. An Elastic IP address is associated with your AWS account. With an Elastic IP address, you can mask the failure of an instance or software by rapidly remapping the address to another instance in your account. An Elastic IP address is a public IPv4 address, which is reachable from the Internet. If your instance does not have a public IPv4 address, you can associate an Elastic IP address with your instance to enable communication with the Internet; for example, to connect to your instance from your local computer. For more information on Elastic IP, please visit the below link: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html
+
+
+
+12. Question
+After launching an instance that you intend to serve as a NAT (Network Address Translation) device in a public subnet you modify your route tables to have the NAT device be the target of internet bound traffic of your private subnet. When you try and make an outbound connection to the Internet from an instance in the private subnet, you are not successful. Which of the following steps could resolve the issue? Choose an answer from the options below
+
+ A. Attaching a second Elastic Network interface (ENI) to the NAT instance, and placing it in the private subnet
+ B. Attaching an Elastic IP address to the instance in the private subnet
+ C. Attaching a second Elastic Network Interface (ENI) to the instance in the private subnet, and placing it in the public subnet
+ D. Disabling the Source/Destination Check attribute on the NAT instance		-Correct
+Unattempted
+You can use a network address translation (NAT) instance in a public subnet in your VPC to enable instances in the private subnet to initiate outbound IPv4 traffic to the Internet or other AWS services, but prevent the instances from receiving inbound traffic initiated by someone on the Internet. Each EC2 instance performs source/destination checks by default. This means that the instance must be the source or destination of any traffic it sends or receives. However, a NAT instance must be able to send and receive traffic when the source or destination is not itself. Therefore, you must disable source/destination checks on the NAT instance. For more information on NAT instance, please refer to the below URL: http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html
+
+
+
+13. Question
+When using a large Scan operation in DynamoDB, what technique can be used to minimize the impact of a scan on a table’s provisioned throughput? Choose an answer from the options below
+
+ A. Set a smaller page size for the scan		-Correct
+ B. Pre-warm the table by updating all items
+ C. Use parallel scans
+ D. Define a range index on the table
+Unattempted
+This is clearly given in the ASW documentation For more information on guidelines on queries and scans in dynamoDB, please refer to the below URL: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScanGuidelines.html
+
+
+
+14. Question
+An application stores payroll information nightly in DynamoDB for a large number of employees across hundreds of offices. Item attributes consist of individual name, office identifier, and cumulative daily hours. Managers run reports for ranges of names working in their office. One query is. “Return all Items in this office for names starting with A through E”. Which table configuration will result in the lowest impact on provisioned throughput for this query? Choose an answer from the options below
+
+ A. Configure the table to have a range index on the name attribute, and a hash index on the office identifier		-Correct
+ B. Configure a hash index on the name attribute and no range index
+ C. Configure the table to have a hash index on the name attribute, and a range index on the office identifier
+ D. Configure a hash index on the office Identifier attribute and no range index
+Unattempted
+Key points of this question to consider are ‘large number of employees across hundreds of offices’ and ‘reports for ranges of names working in their office.’
+Answer B is ruled out because it assumes employee names are unique which might not be the case of ‘large number of employees across hundreds of offices’.
+Answer D is obviously incorrect as it doesn’t allow an office to have more than one employee. (hash key only model requires unique hashes.)
+Answer C makes employees of a single office to be spread over multiple partitions and requires a SCAN operation to generate reports for ranges of names working in a single office. This table configuration requires SCAN operations for reports for ranges of names working in an office. A SCAN operation is not recommended on large tables, because it can consume large amounts of system resources. (see http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SQLtoNoSQL.ReadData.html)
+Answer A puts all employees of a single office in to a single hash. With configuring the table to have a range index on the name attribute, and a hash index on the office identifier, a QUERY operation is sufficient to generate reports like ‘Return all Items in this office for names starting with A through E’. This table configuration results in the lowest impact on provisioned throughput. This is the optimal arrangement to accommodate regular ‘reports for ranges of names working in an office.’
+Reference:
+http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html
+http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ProvisionedThroughput.html
+http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SQLtoNoSQL.Rea
+
+
+
+15. Question
+What item operation allows the retrieval of multiple items from a DynamoDB table in a single API call? Choose an answer from the options below
+
+ A. GetItem
+ B. BatchGetItem		-Correct
+ C. GetMultipleItems
+ D. GetItemRange
+Unattempted
+The BatchGetItem operation returns the attributes of one or more items from one or more tables. You identify requested items by primary key. A single operation can retrieve up to 16 MB of data, which can contain as many as 100 items. BatchGetItem will return a partial result if the response size limit is exceeded, the table’s provisioned throughput is exceeded, or an internal processing failure occurs. If a partial result is returned, the operation returns a value for UnprocessedKeys For more information on the command, please visit the link: http://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_BatchGetItem.html
+
+
+
+16. Question
+In DynamoDB, what type of HTTP response codes indicate that a problem was found with the client request sent to the service? Choose an answer from the options below
+
+ A. 5xx HTTP response code
+ B. 200 HTTP response code
+ C. 306 HTTP response code
+ D. 4xx HTTP response code		-Correct
+Unattempted
+This is clearly given in the AWS documentation For more information on DynamoDB errors, please visit the link: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html
+
+
+
+17. Question
+Which of the below logical operators are allowed in a DynamoDB query? Choose 3 answers from the options below
+
+ A. NOT		-Correct
+ B. XOR
+ C. OR		-Correct
+ D. AND		-Correct
+Unattempted
+This is clearly given in the AWS documentation For more information on DynamoDB , please visit the following URL: https://aws.amazon.com/dynamodb/faqs/
+
+
+
+18. Question
+Which of the below APIS are available for tables in DynamoDB?
+Choose 3 answers from the options below
+
+ A. CreateTable		-Correct
+ B. UpdateAllTables
+ C. UpdateTable		-Correct
+ D. ListTables		-Correct
+Unattempted
+This is clearly given in the aws documentation For more information on DynamoDB , please visit the following URL: https://aws.amazon.com/dynamodb/faqs/
+
+
+
+19. Question
+What are the new type of SQS queues available in some regions? Choose an answer from the options below
+
+ A. LIFO
+ B. Dynamic
+ C. FIFO		-Correct
+ D. Static
+Unattempted
+For more information on SQS , please visit the following URL: https://aws.amazon.com/sqs/faqs/
+
+
+
+20. Question
+What configuration does AWS provide to handle unsuccessfully-processed messages in SQS? Choose an answer from the options below
+
+ A. Retention queues
+ B. Delivery queues
+ C. Dead letter queues		-Correct
+ D. There is no such option available
+Unattempted
+This is clearly given in the AWS documentation For more information on SQS , please visit the following URL: https://aws.amazon.com/sqs/faqs/
+
+
+
+21. Question
+What are the 2 actions required to fanout identical messages to multiple SQS queues. Choose 2 answers from the options below
+
+ A. Use Amazon SNS to create a topic.		-Correct
+ B. Create and subscribe multiple Amazon SQS standard queues to the Amazon SNS topic.		-Correct
+ C. Create and subscribe single Amazon SQS standard queues to the Amazon SNS topic.
+ D. Use Cloudformation templates
+Unattempted
+This is clearly given in the AWS documentation For more information on SQS , please visit the following URL: https://aws.amazon.com/sqs/faqs/
+
+
+
+22. Question
+What are the protocol versions supported by SQS.  Choose 3 answers from the options below
+
+ A. TLS 1.0		-Correct
+ B. TLS 1.1		-Correct
+ C. TLS 1.2		-Correct
+ D. TLS 1.3
+Unattempted
+This is clearly given in the AWS documentation For more information on SQS , please visit the following URL: https://aws.amazon.com/sqs/faqs/
+
+
+
+23. Question
+How long can messages live in an SQS queue. Choose the correct answer from the options below
+
+ A. 12 hours
+ B. 10 days
+ C. 14 days		-Correct
+ D. 1 year
+Unattempted
+This is clearly given in the AWS documentation For more information on SQS , please visit the following URL: https://aws.amazon.com/sqs/faqs/
+
+
+
+24. Question
+What is the maximum length of a topic name in SNS? Choose the correct answer from the options below
+
+ A. 128 characters
+ B. 256 characters		-Correct
+ C. 512 characters
+ D. There is no limit
+Unattempted
+This is clearly given in the AWS documentation For more information on SNS , please visit the following URL: https://aws.amazon.com/sns/faqs/
+
+
+
+25. Question
+What are some of the owner operations possible in SNS?
+Choose 3 correct answers from the options below
+
+ A. CreateTopic		-Correct
+ B. DeleteTopic		-Correct
+ C. ListSubscriptions
+ D. AddPermission		-Correct
+Unattempted
+This is clearly given in the AWS documentation
+Amazon SNS provides a set of simple APIs to enable event notifications for topic owners, subscribers and publishers.
+Owner operations:
+    CreateTopic – Create a new topic.
+    DeleteTopic – Delete a previously created topic.
+    ListTopics – List of topics owned by a particular user (AWS ID).
+    ListSubscriptionsByTopic – List of subscriptions for a particular topic
+    SetTopicAttributes – Set/modify topic attributes, including setting and modifying publisher/subscriber permissions, transports supported, etc.
+    GetTopicAttributes – Get/view existing attributes of a topic
+    AddPermission – Grant access to selected users for the specified actions
+    RemovePermission – Remove permissions for selected users for the specified actions
+  
+For more information on SNS , please visit the following URL:
+https://aws.amazon.com/sns/faqs/
+
+
+
+26. Question
+Which of the following SNS information item has the following information – ” A Universally Unique Identifier, unique for each notification published”. Choose the correct answer from the options below
+
+ A. TopicARN
+ B. Messageid		-Correct
+ C. Type
+ D. Message
+Unattempted
+This is clearly given in the AWS documentation For more information on SNS , please visit the following URL: https://aws.amazon.com/sns/faqs/
+
+
+
+27. Question
+What is the maximum number of topics allowed per account in SNS? Choose the correct answer from the options below
+
+ A. 1,000
+ B. 10,000
+ C. 100,000		-Correct
+ D. There is no limit
+Unattempted
+This is clearly given in the AWS documentation For more information on SNS , please visit the following URL: https://aws.amazon.com/sns/faqs/
+
+
+
+28. Question
+When a Simple Queue Service message triggers a task that takes 5 minutes to complete, which process below will result in successful processing of the message and remove it from the queue while minimizing the chances of duplicate processing? Choose an answer from the options below
+
+ A. Retrieve the message with an increased visibility timeout, delete the message from the queue, process the message
+ B. Retrieve the message with increased DelaySeconds, process the message, delete the message from the queue
+ C. Retrieve the message with an increased visibility timeout, process the message, delete the message from the queue		-Correct
+ D. Retrieve the message with increased DelaySeconds, delete the message from the queue, process the message
+Unattempted
+Since the default visibility timeout is less than 5 minutes , call the API to increase the timeout and then process and delete the message accordingly. For more information on visibility timeout , please refer to the below link: http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html
+
+
+
+29. Question
+Your Manager wants to have a facility to have templates from EC2 instances launched in any region without much effort. When it comes to Amazon Machine images (AMIS) which of the below statements are true when it comes to a given public AMI. Choose an answer from the options below
+
+ A. be used to launch EC2 Instances in any AWS region.
+ B. only be used to launch EC2 instances in the same country as the AMI is stored.
+ C. only be used to launch EC2 instances in the same AWS region as the AMI is stored.		-Correct
+ D. only be used to launch EC2 instances in the same AWS availability zone as the AMI is stored
+Unattempted
+AMI’s can only be shared within a region. To make them available across regions , you need to copy them across regions. You can copy an Amazon Machine Image (AMI) within or across an AWS region using the AWS Management Console, the AWS command line tools or SDKs, or the Amazon EC2 API, all of which support the CopyImageaction. You can copy both Amazon EBS-backed AMIs and instance store-backed AMIs. You can copy AMIs with encrypted snapshots and encrypted AMIs. For more information on how to copy AMI’s, please refer to the below link: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html
+
+
+
+30. Question
+What is the format of structured notification messages sent by Amazon SNS? Choose an answer from the options below
+
+ A. An XML object containing MessageId, UnsubscribeURL, Subject, Message and other values
+ B. A JSON object containing MessageId, DuplicateFlag, Message and other values
+ C. An XML object containing MessageId, DuplicateFlag, Message and other values
+ D. A JSON object containing MessageId, unsubscribeURL, Subject, Message and other values		-Correct
+Unattempted
+For more information on SNS notification format, please refer to the link: http://docs.aws.amazon.com/sns/latest/dg/json-formats.html
+
+
+
+31. Question
+What is the size limit for volumes in instances that are based on Amazon Instance Store backed AMI’s. Choose an answer from the options below?
+
+ A. 16 TiB
+ B. 10 GiB		-Correct
+ C. 100 GiB
+ D. 50 GiB
+Unattempted
+As per the AWS documentation, the Size limit for Amazon Instance Store backed instances is 10 GiB. For more information on Instance type differences, please refer to the below link: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html
+
+
+
+32. Question
+Which API call is used to Bundle an Amazon instance store-backed Windows instance? Choose the correct answer from the options below
+
+ A. AllocateInstance
+ B. CreateImage
+ C. BundleInstance		-Correct
+ D. ami-register-image
+Unattempted
+This is given in the AWS documentation For more information on BundleInstance, please refer to the below link: http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_BundleInstance.html
+
+
+
+33. Question
+What is one difference between an Amazon EBS-backed and an instance-store backed instance? Choose the correct answer from the options below
+
+ A. Instance-store backed instances can be stopped and restarted
+ B. The size limit for Instance store volumes is 16 TiB
+ C. Virtual Private Cloud requires EBS backed instances
+ D. The instance type and kernel for an EBS backed AMI can easily be changed as compared to an Instance store-backed AMI.		-Correct
+Unattempted
+This is clearly mentioned in the AWS documentation For more information on Instance type differences, please refer to the below link: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html
+
+
+
+34. Question
+What is the hourly rate to run an Autoscaling service? Choose the correct answer from the options below
+
+ A. .002/hour
+ B. .01/hour
+ C. Free		-Correct
+ D. .05/hour
+Unattempted
+This is clearly mentioned in the AWS documentation that there are no charges for using the Autoscaling service as it is. For more information on Autoscaling, please refer to the below link: https://aws.amazon.com/autoscaling/
+
+
+
+35. Question
+What is required for a subnet to control the flow of traffic in a subnet? Choose one answer from the options below?
+
+ A. Route table		-Correct
+ B. Subnet table
+ C. VPC table
+ D. Route53
+Unattempted
+This is clearly mentioned in the AWS documentation that Route tables are used to control the flow of traffic in a subnet. For more information on Route tables, please refer to the below link: http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html
+
+
+
+36. Question
+Which service provided by AWS allows one to have a dedicated private connection from a remote network to your VPC? Choose the correct answer from the options below
+
+ A. AWS Direct Connect		-Correct
+ B. Server
+ C. Elastic IP Address
+ D. None of the above
+Unattempted
+AWS Direct Connect – AWS Direct Connect provides a dedicated private connection from a remote network to your VPC. You can combine this connection with an AWS hardware VPN connection to create an IPsec-encrypted connection. For more information on AWS direct connect, please refer to the below link: https://aws.amazon.com/directconnect/
+
+
+
+37. Question
+As per the IAM decision logic what is the first step of access permissions for any resource in AWS. Choose the correct answer from the options below
+
+ A. A default deny		-Correct
+ B. An explicit deny
+ C. An allow
+ D. An explicit allow
+Unattempted
+The below diagram shows the evaluation logic of IAM policies. And as per the evaluation logic, it is clear that the above scenario leads to a default deny. For more information on the IAM policy evaluation logic, please refer to the link: http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html
+
+
+
+38. Question
+What is one of the common pattern scenario’s when it comes to the combination of SNS and SQS? Choose the correct answer from the options below
+
+ A. fanin
+ B. fanout		-Correct
+ C. Neither option A and B
+ D. Both option A and B
+Unattempted
+One common design pattern is called “fanout.” In this pattern, a message published to an SNS topic is distributed to a number of SQS queues in parallel. By using this pattern, you can build applications that take advantage parallel, asynchronous processing For more information on SNS and SQS integration, please refer to the link: https://aws.amazon.com/blogs/aws/queues-and-notifications-now-best-friends/
+
+
+
+39. Question
+What are the different S3 Encryption techniques?
+
+ A. Use Server-Side Encryption with Amazon S3-Managed Keys
+ B. Server-Side Encryption with AWS KMS-Managed Keys
+ C. Server-Side Encryption with Customer-Provided Keys
+ D. All of the above		-Correct
+Unattempted
+There are various ways to encrypt objects is S3.
+Use Server-Side Encryption with Amazon S3-Managed Keys (SSE-S3) – Each object is encrypted with a unique key employing strong multi-factor encryption. As an additional safeguard, it encrypts the key itself with a master key that it regularly rotates. Amazon S3 server-side encryption uses one of the strongest block ciphers available, 256-bit Advanced Encryption Standard (AES-256), to encrypt your data. 
+Use Server-Side Encryption with AWS KMS-Managed Keys (SSE-KMS) – Similar to SSE-S3, but with some additional benefits along with some additional charges for using this service. There are separate permissions for the use of an envelope key (that is, a key that protects your data’s encryption key) that provides added protection against unauthorized access of your objects in S3. SSE-KMS also provides you with an audit trail of when your key was used and by whom. Additionally, you have the option to create and manage encryption keys yourself, or use a default key that is unique to you, the service you’re using, and the region you’re working in. 
+Use Server-Side Encryption with Customer-Provided Keys (SSE-C) – You manage the encryption keys and Amazon S3 manages the encryption, as it writes to disks, and decryption, when you access your objects.
+For more information on S3 encryption, please visit the link:
+http://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html
+
+
+
+40. Question
+Which of the following would you not expect to see in an SNS message body? Choose the correct answer from the options below
+
+ A. Signature
+ B. MessageId
+ C. SigningCertURL
+ D. SNSID		-Correct
+Unattempted
+For more information on SNS notification format, please refer to the link: http://docs.aws.amazon.com/sns/latest/dg/json-formats.html
+
+
+
+41. Question
+You are explaining SQS message attributes to an IT admin. What specifically do you need to tell the IT admin about the message attributes of SQS? 
+Choose the correct answer from the options below
+
+ A. Name, type, and value can be empty or null but the message body cannot be empty or null.
+ B. Name, type, and value must not be empty or null but the message body can be empty or null.
+ C. Name, type, and value can be empty or null and the message body can be empty or null.
+ D. Name, type, and value must not be empty or null and the message body shouldn't be empty or null either.		-Correct
+Unattempted
+Amazon Simple Notification Service (Amazon SNS) provides support for delivery of message attributes to Amazon SQS endpoints. Message attributes allow you to provide structured metadata items (such as timestamps, geospatial data, signatures, and identifiers) about the message Also the requirement for each attribute to be not NULL in addition to the message body is given in the AWS documentation. For more information on SNS message attributes, please refer to the link: http://docs.aws.amazon.com/sns/latest/dg/SNSMessageAttributes.html
+
+
+
+42. Question
+An IT admin has enabled long polling in their SQS queue. What must be done for long polling to be enabled in SQS? Choose the correct answer from the options below
+
+ A. Create a dead letter queue.
+ B. Set the message size to 256KB
+ C. Set the ReceiveMessageWaitTimeSeconds property of the queue to 0 seconds
+ D. Set the ReceiveMessageWaitTimeSeconds property of the queue to 20 seconds		-Correct
+Unattempted
+Amazon SQS long polling is a way to retrieve messages from your Amazon SQS queues. While the regular short polling returns immediately, even if the message queue being polled is empty, long polling doesn’t return a response until a message arrives in the message queue, or the long poll times out. Long polling makes it inexpensive to retrieve messages from your Amazon SQS queue as soon as the messages are available. Using long polling might reduce the cost of using SQS, because you can reduce the number of empty receives For more information on Long polling, please refer to the link: http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-long-polling.html
+
+
+
+43. Question
+What is the minimum value that can be configured for Amazon SQS MaximumMessageSize attribute?
+
+ A. 1KB		-Correct
+ B. 128KB
+ C. 16 KB
+ D. 256KB
+Unattempted
+This is clearly specified in the AWS documentation. For more information on AWS SQS, please refer to the link: https://aws.amazon.com/sqs/faqs/
+
+
+
+44. Question
+In SQS when the ReceiveMessageWaitTimeSeconds is set to a value of 20 seconds, what is the functionality being served in SQS? Choose the correct answer from the options below
+
+ A. Short polling
+ B. SQS retention
+ C. Long polling		-Correct
+ D. None of the above
+Unattempted
+Amazon SQS long polling is a way to retrieve messages from your Amazon SQS queues. While the regular short polling returns immediately, even if the message queue being polled is empty, long polling doesn’t return a response until a message arrives in the message queue, or the long poll times out.
+Long polling makes it inexpensive to retrieve messages from your Amazon SQS queue as soon as the messages are available. Using long polling might reduce the cost of using SQS, because you can reduce the number of empty receives
+To enable long polling u need to set the value of ReceiveMessageWaitTimeSeconds to greater than 0 and less than or equal to 20 seconds.
+For more information on Long polling, please refer to the link:
+http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-long-polling.html
+
+
+
+45. Question
+An IT admin is worried about the number of message queues being created in the SQS in their AWS account? Is there a limit, if yes, what is the correct limit? Choose the correct answer from the options below
+
+ A. 50
+ B. 100
+ C. 200
+ D. There is no limit		-Correct
+Unattempted
+As per the AWS documentation, there is no limit on the number of queues. For more information on AWS SQS, please refer to the link: https://aws.amazon.com/sqs/faqs/
+
+
+
+46. Question
+What can be used to deploy workers and deciders in Amazon SWF? Choose the correct answer from the options below.
+
+ A. Amazon EC2 instances
+ B. Amazon Lambda
+ C. On-premise machines
+ D. All of the above		-Correct
+Unattempted
+This is clearly mentioned in the AWS documentation For more information on SWF , please visit the link: https://aws.amazon.com/swf/faqs/
+
+
+
+47. Question
+What are some of the benefits of using AWS SWF? Choose 2 correct answer from the options below.
+
+ A. Integrating a range of programs and components.		-Correct
+ B. Automate workflows that include human tasks		-Correct
+ C. Load balancing between applications
+ D. Routing between applications
+Unattempted
+Amazon SWF can be used to address many challenges that arise while building applications with distributed components. For example, you can use Amazon SWF and the accompanying AWS Flow Framework for:
+Writing your applications as asynchronous programs using simple programming constructs that abstract details such as initiating tasks to run remotely and tracking the program’s runtime state.
+Maintaining your application’s execution state (e.g. which steps have completed, which ones are running, etc.). You do not have to use databases, custom systems, or ad hoc solutions to keep execution state.
+Communicating and managing the flow of work between your application components. With Amazon SWF, you do not need to design a messaging protocol or worry about lost and duplicated tasks.
+Centralizing the coordination of steps in your application. Your coordination logic does not have to be scattered across different components, but can be encapsulated in a single program.
+Integrating a range of programs and components, including legacy systems and 3rd party cloud services, into your applications. By allowing your application flexibility in where and in what combination the application components are deployed, Amazon SWF helps you gradually migrate application components from private data centers to public cloud infrastructure without disrupting the application availability or performance.
+Automating workflows that include long-running human tasks (e.g. approvals, reviews, investigations, etc.) Amazon SWF reliably tracks the status of processing steps that run up to several days or months.
+For more information on SWF , please visit the link:
+https://aws.amazon.com/swf/faqs/
+
+
+
+48. Question
+What is one of the major use cases for using SWF? 
+
+ A. Storing files In S3.
+ B. Migrating components from the datacenter to the cloud		-Correct
+ C. Storing files In database.
+ D. Provisioning servers.
+Unattempted
+This is clearly mentioned in the AWS documentation For more information on SWF , please visit the link: https://aws.amazon.com/swf/faqs/
+
+
+
+49. Question
+For S3 server side encryption what needs to be included in the API header call? Choose the correct answer from the options below
+
+ A. AES256
+ B. amz-server-side-encryption
+ C. x-amz-server-side-encryption		-Correct
+ D. server-side-encryption
+Unattempted
+When using server-side encryption with customer-provided encryption keys (SSE-C), you must provide encryption key information using the following request headers. The object creation REST APIs provide a request header, x-amz-server-side-encryption that you can use to request server-side encryption. For more information on server side encryption , please refer to the below URL: http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html
+
+
+
+50. Question
+What are the different ways to access SWF?
+
+ A. AWS SDK for Java
+ B. AWS Management console
+ C. AWS SWF API’s
+ D. All of the above		-Correct
+ E. Both A and B
+ F. Both B and C
+Unattempted
+This is clearly mentioned in the AWS documentation For more information on SWF , please visit the link: https://aws.amazon.com/swf/faqs/
+
+
+
+51. Question
+What in AWS can be used to restrict access to SWF? 
+
+ A. ACL
+ B. SWF Roles
+ C. IAM		-Correct
+ D. None of the above
+Unattempted
+This is clearly mentioned in the AWS documentation For more information on SWF, please visit the link: https://aws.amazon.com/swf/faqs/
+
+
+
+52. Question
+What is the maximum number of SWF workflows/activity types allowed in each SWF domain? Choose the correct answer from the options below.
+
+ A. 1000
+ B. 100
+ C. 10,000		-Correct
+ D. 100,000
+Unattempted
+You can have a maximum of 10,000 workflow and activity types (in total) that are either registered or deprecated in each domain. You can have a maximum of 100 Amazon SWF domains (including registered and deprecated domains) in your AWS account. For more information on SWF , please visit the link: https://aws.amazon.com/swf/faqs/
+
+
+
+53. Question
+Which of the following is the best option for creating a primary key in DynamoDB? Select the BEST possible answer.
+
+ A. student_id where there are many students.		-Correct
+ B. course_name where there are few courses.
+ C. department_id where there are only several departments.
+ D. None of the above
+Unattempted
+When defining primary keys , you should always use a many to few principle and only Option A follows that principle. For more information on dynamoDB , please visit the link: https://aws.amazon.com/dynamodb/faqs/
+
+
+
+54. Question
+Which of the below features in DynamoDB can be used to increment or decrement the value of an existing attribute without interfering with other write requests? Choose the correct answer from the options below.
+
+ A. Increment write
+ B. Increment read
+ C. Atomic counters		-Correct
+ D. Number counters
+Unattempted
+DynamoDB supports atomic counters, where you use the UpdateItem operation to increment or decrement the value of an existing attribute without interfering with other write requests. (All write requests are applied in the order in which they were received.) For example, a web application might want to maintain a counter per visitor to their site. In this case, the application would need to increment this counter regardless of its current value. For more information on working with items in dynamoDB , please visit the link: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html
+
+
+
+55. Question
+Company A is writing 5 items to the products table every second. Each item is 20Kb in size. What would be the required provisioned write throughput for best performance? Choose the correct answer from the options below.
+
+ A. 100		-Correct
+ B. 160
+ C. 155
+ D. 16
+Unattempted
+For write capacity, the rule is to divide the item size by 1KB. Hence we need to divide 20 by 1 which gives us 20 to the nearest 1KB. Since we are writing 5 items per second , we need to multiply 20*5 = 100. For more information on working with tables in dynamoDB , please visit the link: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html
+
+
+
+56. Question
+What is the maximum size of an item in DynamoDB? Choose the correct answer from the options below.
+
+ A. 1 MB
+ B. 400 KB		-Correct
+ C. 1 GB
+ D. 10 GB
+Unattempted
+This is clearly given in the AWS documentation For more information on DynamoDB limits, please visit the link: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html
+
+
+
+57. Question
+What is the maximum number of items that the BatchGetItem API retrieve from DynamoDB? Choose the correct answer from the options below.
+
+ A. 10
+ B. 100		-Correct
+ C. 1000
+ D. There is no limit
+Unattempted
+This is clearly given in the AWS documentation For more information on DynamoDB limits, please visit the link: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html
+
+
+
+58. Question
+What is the maximum limit of data that can be retrieved by a scan operation in DynamoDB? Choose the correct answer from the options below.
+
+ A. 1 MB		-Correct
+ B. 10 MB
+ C. 400 KB
+ D. There is no limit
+Unattempted
+This is clearly given in the AWS documentation For more information on DynamoDB limits, please visit the link: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html
+
+
+
+59. Question
+Which of the following is a valid S3 bucket name? Choose the correct answer from the options below
+
+ A. .example.com
+ B. example.com		-Correct
+ C. –example.com
+ D. example.-com
+Unattempted
+Naming restrictions for buckets are given below AWS Doc
+Bucket names must be at least 3 and no more than 63 characters long.
+Bucket names must be a series of one or more labels. Adjacent labels are separated by a single period (.). Bucket names can contain lowercase letters, numbers, and hyphens. Each label must start and end with a lowercase letter or a number.
+Bucket names must not be formatted as an IP address (e.g., 192.168.5.4).
+When using virtual hosted–style buckets with SSL, the SSL wildcard certificate only matches buckets that do not contain periods. To work around this, use HTTP or write your own certificate verification logic. We recommend that you do not use periods (“.”) in bucket names.
+For more information on S3 bucket naming conventions, please visit the link:
+http://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html
+
+
+
+60. Question
+What is used in DynamoDB to help a write operation only succeed if the item attributes meet one or more expected conditions? Choose answer from the options below.
+
+ A. Conditional Writes		-Correct
+ B. Eventual Consistency
+ C. Extra API read calls to determine if the data was updated before the update call is made
+ D. Atomic Counters
+Unattempted
+To help clients coordinate writes to data items, DynamoDB supports conditional writes for PutItem, DeleteItem, and UpdateItem operations. With a conditional write, an operation succeeds only if the item attributes meet one or more expected conditions; otherwise it returns an error For more information on working with items , please visit the link: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html
+
+
+
+61. Question
+Company B has a DynamoDB table where the average item size is 20KB. Company B anticipates the application will read 10 items from the table per second using eventually consistent reads. How much read capacity throughput should they provision? Choose the correct answer from the options below.
+
+ A. 50
+ B. 100
+ C. 25		-Correct
+ D. 20
+Unattempted
+For read capacity, the rule is to divide the item size by 4KB. Hence we need to divide 20 by 4 which gives us 5 to the nearest 4KB. Since we are writing 10 items per second, we need to multiply 10*5 =50. Since it is eventual consistency, we need to divide by 2 which gives us 25. For more information on working with tables in dynamoDB , please visit the link: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html
+
+
+
+62. Question
+What can be used in DynamoDB as part of the Query API call to filter results based on the values of primary keys? Choose an answer from the options below
+
+ A. Expressions		-Correct
+ B. Conditions
+ C. Query API
+ D. Scan API
+Unattempted
+This is clearly provided in the AWS documentation  For more information on DynamoDB please refer to the below link: https://aws.amazon.com/dynamodb/faqs/
+
+
+
+63. Question
+What is the one write capacity unit size (When you create a table or index in Amazon DynamoDB, you must specify your capacity requirements for read and write activity)?.
+Choose an answer from the options below.
+
+ A. 1 KB		-Correct
+ B. 4 KB
+ C. 2 KB
+ D. 8 KB
+Unattempted
+This is clearly given in the AWS documentation  For more information on DynamoDB provisioned throughput please refer to the below link: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ProvisionedThroughput.html
+
+
+
+64. Question
+Which of the below functions is used in Cloudformation to return the value corresponding to keys in a two-level map that is declared in the Mappings section? Choose an answer from the options below
+
+ A. Fn::GetAtt
+ B. Fn::GetMap
+ C. Fn::FindInMap		-Correct
+ D. Fn::ReadMap
+Unattempted
+This is clearly given in the AWS documentation For more information on the function please refer to the below link: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-findinmap.html
+
+
+
+65. Question
+Which of the below functions is used in Cloudformation to append a set of values into a single value? Choose an answer from the options below
+
+ A. Fn::GetAtt
+ B. Fn::Combine
+ C. Fn::Join		-Correct
+ D. Fn::Select
+Unattempted
+This is clearly given in the AWS documentation For more information on the function please refer to the below link: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-join.html
